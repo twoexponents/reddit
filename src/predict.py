@@ -27,7 +27,8 @@ cont_features_fields = common_features_fields + post_features_fields
 len_liwc_features = 93
 len_w2v_features = 300
 
-input_dim = len(cont_features_fields) + len(user_features_fields) + len_liwc_features + len_w2v_features
+#input_dim = len(cont_features_fields) + len(user_features_fields) + len_liwc_features + len_w2v_features
+input_dim = len(cont_features_fields) + len(user_features_fields) + len_liwc_features
 
 output_dim = 2 # (0, 1)
 hidden_size = 500
@@ -38,13 +39,12 @@ epochs = 1
 def main(argv):
     # 1.1 load feature dataset
     d_features = pickle.load(open('../data/contentfeatures.others.p', 'r'))
-    d_w2vfeatures = pickle.load(open('../data/contentfeatures.googlenews.posts.p', 'r'))
+    # d_w2vfeatures = pickle.load(open('../data/contentfeatures.googlenews.posts.p', 'r'))
     d_userfeatures = pickle.load(open('../data/userfeatures.activity.p', 'r'))
 
     print 'features are loaded'
 
-    for seq_length in xrange(1, 2):
-        print 'seq_length: %d'%(seq_length)
+    for seq_length in xrange(2, 3):
         f = open('../data/seq.learn.%d.csv'%(seq_length), 'r')
         learn_instances = map(lambda x:x.replace('\n', '').split(','), f.readlines())
         f.close()
@@ -52,33 +52,43 @@ def main(argv):
         np.random.shuffle(learn_instances)
 
         learn_X = []; learn_Y = []
-
+        cnt = 0;
         for seq in learn_instances:
             sub_x = []
 
             try:
+                element_order = 0
                 for element in seq[:-1]: # seq[-1] : Y. element: 't3_7dfvv'
                     cont_features = [0.0]*len(cont_features_fields)
                     liwc_features = [0.0]*len_liwc_features
-                    w2v_features = [0.0]*len_w2v_features
+                    #w2v_features = [0.0]*len_w2v_features
                     user_features = [0.0]*len(user_features_fields)
 
                     # if the features of element ID exist, bring it.
+                    if (cnt%1000 == 0):
+                        print cnt, " ", element
+                    cnt+=1;
+
                     if d_features.has_key(element):
-                        cont_features = d_features[element]['cont']
-                        liwc_features = d_features[element]['liwc']
-                        w2v_features = d_w2vfeatures[element]['glove.mean'][0]
-                        user_features = d_userfeatures[element]['user']
+                        if len(d_features[element]['cont']) == 130:
+                            cont_features = d_features[element]['cont']
+                            liwc_features = d_features[element]['liwc']
+                            #w2v_features = d_w2vfeatures[element]['glove.mean'][0]
+                            user_features = d_userfeatures[element]['user']
 
                     # append each element's features of seq to the sub_x
-                    sub_x.append(np.array(cont_features+liwc_features+w2v_features.tolist()+user_features))
+                    # sub_x.append(np.array(cont_features+liwc_features+w2v_features.tolist()+user_features))
+                    sub_x.append(np.array(cont_features+liwc_features+user_features))
+                    element_order += 1
 
                 learn_X.append(np.array(sub_x)) # feature list
                 learn_Y.append(seq[-1])
 
             except Exception, e:
-                #print e
+                # print e
                 continue
+
+        print 'size of learn_Y: %d' % len(learn_Y)
 
         print Counter(learn_Y) # shows the number of '0' and '1'
 
@@ -112,17 +122,19 @@ def main(argv):
                 for element in seq[:-1]:
                     cont_features = [0.0]*len(cont_features_fields)
                     liwc_features = [0.0]*len_liwc_features
-                    w2v_features = [0.0]*len_w2v_features
+                    #w2v_features = [0.0]*len_w2v_features
                     user_features = [0.0]*len(user_features_fields)
 
                     if d_features.has_key(element):
-                        cont_features = d_features[element]['cont']
-                        liwc_features = d_features[element]['liwc']
-                        w2v_features = d_w2vfeatures[element]['glove.tfidf'][0]
-                        user_features = d_userfeatures[element]['user']
+                        if len(d_features[element]['cont']) == 130:
+                            cont_features = d_features[element]['cont']
+                            liwc_features = d_features[element]['liwc']
+                            #w2v_features = d_w2vfeatures[element]['glove.tfidf'][0]
+                            user_features = d_userfeatures[element]['user']
 
 
-                    sub_x.append(np.array(cont_features+liwc_features+w2v_features.tolist()+user_features))
+                    # sub_x.append(np.array(cont_features+liwc_features+w2v_features.tolist()+user_features))
+                    sub_x.append(np.array(cont_features+liwc_features+user_features))
 
                 test_X.append(np.array(sub_x))
                 test_Y.append(seq[-1])
@@ -170,7 +182,7 @@ def main(argv):
             cells.append(cell)
 
         cells = tf.nn.rnn_cell.MultiRNNCell(cells) # stackedRNN
-        ## cells = tf.nn.rnn_cell.MultiRNNCell([cell] * 2)
+        # cells = tf.nn.rnn_cell.MultiRNNCell([cell] * 2)
 
         outputs, states = tf.nn.dynamic_rnn(cells, X,
                 dtype=tf.float32) # called RNN driver
@@ -235,7 +247,6 @@ def main(argv):
 
             predicts = []
 
-            print 'seq_length: %d'%(seq_length)
             f = open('../result/result.rnn.%d.tsv'%(seq_length), 'w')
             for v1, v2 in zip(out, test_Y):
                 f.write('%d,%s\n'%(v1, v2))
