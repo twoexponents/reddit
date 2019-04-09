@@ -2,6 +2,7 @@ import tensorflow as tf
 import numpy as np
 import sys
 import cPickle as pickle
+
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import precision_recall_fscore_support
 
@@ -27,24 +28,24 @@ cont_features_fields = common_features_fields + post_features_fields
 len_liwc_features = 93
 len_w2v_features = 300
 
-#input_dim = len(cont_features_fields) + len(user_features_fields) + len_liwc_features + len_w2v_features
-input_dim = len(cont_features_fields) + len(user_features_fields) + len_liwc_features
+input_dim = len(cont_features_fields) + len(user_features_fields) + len_liwc_features + len_w2v_features
+#input_dim = len(cont_features_fields) + len(user_features_fields) + len_liwc_features
 
 output_dim = 2 # (0, 1)
 hidden_size = 500
 learning_rate = 0.001
 batch_size = 1000
-epochs = 1
+epochs = 10 
 
 def main(argv):
     # 1.1 load feature dataset
     d_features = pickle.load(open('../data/contentfeatures.others.p', 'r'))
-    # d_w2vfeatures = pickle.load(open('../data/contentfeatures.googlenews.posts.p', 'r'))
+    d_w2vfeatures = pickle.load(open('../data/contentfeatures.googlenews.posts.p', 'r'))
     d_userfeatures = pickle.load(open('../data/userfeatures.activity.p', 'r'))
 
     print 'features are loaded'
 
-    for seq_length in xrange(2, 3):
+    for seq_length in xrange(1, 2):
         f = open('../data/seq.learn.%d.csv'%(seq_length), 'r')
         learn_instances = map(lambda x:x.replace('\n', '').split(','), f.readlines())
         f.close()
@@ -56,29 +57,33 @@ def main(argv):
         for seq in learn_instances:
             sub_x = []
 
+            if seq[-1] == '0':
+                continue
+
             try:
                 element_order = 0
                 for element in seq[:-1]: # seq[-1] : Y. element: 't3_7dfvv'
-                    cont_features = [0.0]*len(cont_features_fields)
-                    liwc_features = [0.0]*len_liwc_features
+                    #cont_features = [0.0]*len(cont_features_fields)
+                    #liwc_features = [0.0]*len_liwc_features
                     #w2v_features = [0.0]*len_w2v_features
-                    user_features = [0.0]*len(user_features_fields)
+                    #user_features = [0.0]*len(user_features_fields)
 
                     # if the features of element ID exist, bring it.
-                    if (cnt%1000 == 0):
-                        print cnt, " ", element
-                    cnt+=1;
+                    #if (cnt%1000 == 0):
+                    #    print cnt, " ", element
+                    #cnt+=1;
 
                     if d_features.has_key(element):
-                        if len(d_features[element]['cont']) == 130:
-                            cont_features = d_features[element]['cont']
-                            liwc_features = d_features[element]['liwc']
-                            #w2v_features = d_w2vfeatures[element]['glove.mean'][0]
-                            user_features = d_userfeatures[element]['user']
+                        cont_features = d_features[element]['cont']
+                        liwc_features = d_features[element]['liwc']
+                        w2v_features = d_w2vfeatures[element]['glove.mean'][0]
+                        user_features = d_userfeatures[element]['user']
+                    else:
+                        print 'It does not have the element.'
 
                     # append each element's features of seq to the sub_x
-                    # sub_x.append(np.array(cont_features+liwc_features+w2v_features.tolist()+user_features))
-                    sub_x.append(np.array(cont_features+liwc_features+user_features))
+                    sub_x.append(np.array(cont_features+liwc_features+w2v_features.tolist()+user_features))
+                    #sub_x.append(np.array(cont_features+liwc_features+user_features))
                     element_order += 1
 
                 learn_X.append(np.array(sub_x)) # feature list
@@ -92,10 +97,10 @@ def main(argv):
 
         print Counter(learn_Y) # shows the number of '0' and '1'
 
-        learn_X_reshape = np.reshape(np.array(learn_X), [-1, seq_length*input_dim]) # row num = file's row num
-        sample_model = RandomUnderSampler(random_state=42) # random_state = seed. undersampling: diminish majority class
-        learn_X, learn_Y = sample_model.fit_sample(learn_X_reshape, learn_Y)
-        learn_X = np.reshape(learn_X, [-1, seq_length, input_dim])
+        #learn_X_reshape = np.reshape(np.array(learn_X), [-1, seq_length*input_dim]) # row num = file's row num
+        #sample_model = RandomUnderSampler(random_state=42) # random_state = seed. undersampling: diminish majority class
+        #learn_X, learn_Y = sample_model.fit_sample(learn_X_reshape, learn_Y)
+        #learn_X = np.reshape(learn_X, [-1, seq_length, input_dim])
 
         matrix = []
         for v1, v2 in zip(learn_X, learn_Y):
@@ -122,19 +127,20 @@ def main(argv):
                 for element in seq[:-1]:
                     cont_features = [0.0]*len(cont_features_fields)
                     liwc_features = [0.0]*len_liwc_features
-                    #w2v_features = [0.0]*len_w2v_features
+                    w2v_features = [0.0]*len_w2v_features
                     user_features = [0.0]*len(user_features_fields)
 
                     if d_features.has_key(element):
-                        if len(d_features[element]['cont']) == 130:
-                            cont_features = d_features[element]['cont']
-                            liwc_features = d_features[element]['liwc']
-                            #w2v_features = d_w2vfeatures[element]['glove.tfidf'][0]
-                            user_features = d_userfeatures[element]['user']
+                        cont_features = d_features[element]['cont']
+                        liwc_features = d_features[element]['liwc']
+                        w2v_features = d_w2vfeatures[element]['glove.tfidf'][0]
+                        user_features = d_userfeatures[element]['user']
+                    else:
+                        print 'It does not have the element.'
 
 
-                    # sub_x.append(np.array(cont_features+liwc_features+w2v_features.tolist()+user_features))
-                    sub_x.append(np.array(cont_features+liwc_features+user_features))
+                    sub_x.append(np.array(cont_features+liwc_features+w2v_features.tolist()+user_features))
+                    # sub_x.append(np.array(cont_features+liwc_features+user_features))
 
                 test_X.append(np.array(sub_x))
                 test_Y.append(seq[-1])
@@ -171,7 +177,7 @@ def main(argv):
         biases[key] = tf.Variable(tf.random_normal([2]))
 
         cells = []
-        for _ in range(4):
+        for _ in range(2):
             #cell = tf.contrib.rnn.BasicLSTMCell(num_units=hidden_size,
             #                                       state_is_tuple=True,
             #                                       activation=tf.nn.relu)
@@ -182,7 +188,6 @@ def main(argv):
             cells.append(cell)
 
         cells = tf.nn.rnn_cell.MultiRNNCell(cells) # stackedRNN
-        # cells = tf.nn.rnn_cell.MultiRNNCell([cell] * 2)
 
         outputs, states = tf.nn.dynamic_rnn(cells, X,
                 dtype=tf.float32) # called RNN driver
@@ -191,7 +196,7 @@ def main(argv):
         outputs = outputs[:, -1]
 
 
-        #optimizers = {}
+        optimizers = {}
         pred = []
 
         # Using dropout -> Fail
@@ -204,15 +209,15 @@ def main(argv):
 
         l1_output = tf.matmul(bn_output, weights['fc_l1']) + biases['fc_l1']
         #l1_output = tf.nn.relu(tf.matmul(outputs, weights['fc_l1']) + biases['fc_l1']) # might move relu layer to the behind of bn
-        l1_bn_output = tf.contrib.layers.batch_norm(l1_output, center=True, scale=True, is_training=is_training)
+        #l1_bn_output = tf.contrib.layers.batch_norm(l1_output, center=True, scale=True, is_training=is_training)
         #l1_dropout = tf.layers.dropout(l1_output, rate=1-keep_prob, training=is_training)
 
-        l2_output = tf.matmul(l1_bn_output, weights['fc_l2']) + biases['fc_l2']
+        l2_output = tf.matmul(l1_output, weights['fc_l2']) + biases['fc_l2']
         #l2_output = tf.nn.relu(tf.matmul(l1_bn_output, weights['fc_l2']) + biases['fc_l2']
-        l2_bn_output = tf.contrib.layers.batch_norm(l2_output, center=True, scale=True, is_training=is_training)
+        #l2_bn_output = tf.contrib.layers.batch_norm(l2_output, center=True, scale=True, is_training=is_training)
 
-        logits = tf.matmul(l2_bn_output, weights['fc_l3']) + biases['fc_l3']
-        labels = tf.one_hot(Y, depth=output_dim)
+        logits = tf.matmul(l2_output, weights['fc_l3']) + biases['fc_l3']
+        labels = tf.one_hot(Y, depth=output_dim) # output_dim: 2
 
         loss = tf.nn.softmax_cross_entropy_with_logits_v2(labels=labels, logits=logits)
         cost = tf.reduce_mean(loss)
@@ -224,10 +229,11 @@ def main(argv):
             sess.run(tf.global_variables_initializer())
             count = 0
             for _ in range(epochs):
+
+                # train batch by batch
                 batch_index_start = 0
                 batch_index_end = batch_size
 
-                # train batch by batch
                 for i in range(int(len(learn_X)/batch_size)):
                     X_train_batch = learn_X[batch_index_start:batch_index_end]
                     Y_train_batch = learn_Y[batch_index_start:batch_index_end]
@@ -245,6 +251,10 @@ def main(argv):
 
             out = np.vstack(rst).T
 
+            temp = map(lambda x:x[0], out.tolist())
+            print '# predict', Counter(temp)
+            print '# test', Counter(test_Y)
+
             predicts = []
 
             f = open('../result/result.rnn.%d.tsv'%(seq_length), 'w')
@@ -256,7 +266,7 @@ def main(argv):
                     decision = True
                 predicts.append(decision)
 
-            print seq_length, len(predicts), len(filter(lambda x:x, predicts))
+            print 'seq_length: %d, # predicts: %d, # corrects: %d' %(seq_length, len(predicts), len(filter(lambda x:x, predicts)))
             print precision_recall_fscore_support(map(int, test_Y), out)
 
             f.close()
