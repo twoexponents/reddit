@@ -34,8 +34,8 @@ input_dim = len(user_features_fields)
 output_dim = 1 # (range 0 to 1)
 hidden_size = 100
 learning_rate = 0.01
-batch_size = 10
-epochs = 10 
+batch_size = 100
+epochs = 5
 
 # jhlim: How about to use data normalization by MinMaxScaler?
 
@@ -47,7 +47,7 @@ def main(argv):
 
     print 'features are loaded'
 
-    for seq_length in xrange(1, 2):
+    for seq_length in xrange(5, 6):
         f = open('../data/seq.learn.%d.csv'%(seq_length), 'r')
         learn_instances = map(lambda x:x.replace('\n', '').split(','), f.readlines())
         f.close()
@@ -235,6 +235,8 @@ def main(argv):
         
         logits = tf.matmul(l2_bn_output, weights['fc_l3']) + biases['fc_l3']
         labels = Y
+
+        logits = tf.contrib.layers.batch_norm(logits, center=True, scale=True, is_training=is_training)
         #labels = tf.one_hot(Y, depth=output_dim)
 
         #loss = tf.nn.softmax_cross_entropy_with_logits_v2(labels=labels, logits=logits)
@@ -265,7 +267,7 @@ def main(argv):
                             feed_dict={X: X_train_batch, Y: Y_train_batch, keep_prob:0.01, is_training:True})
                     
                     print 'iteration : %d, cost: %.8f'%(count, c)
-                    #print 'hypothesis : ', h
+                    print 'hypothesis : ', h
                     print 'logits : ', l
                     #print 'outputs: ', outputs
 
@@ -280,11 +282,14 @@ def main(argv):
 
             out = np.vstack(rst).T
 
-            temp = map(lambda x:x[0], out.tolist())
-            print '# predict', Counter(temp)
+            out = out[0]
+
+            #temp = map(lambda x:x[0], out.tolist())
+            print '# predict', Counter(out)
             print '# test', Counter(map(lambda x:x[0], test_Y))
 
             predicts = []
+            test_Y = map(lambda x:x[0], test_Y)
 
             f = open('../result/result.rnn.%d.tsv'%(seq_length), 'w')
             for v1, v2 in zip(out, test_Y):
