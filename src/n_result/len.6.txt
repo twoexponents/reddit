@@ -1,0 +1,140 @@
+features are loaded
+size of learn_Y: 43134
+Counter({0.0: 22997, 1.0: 20137})
+Counter({0.0: 20137, 1.0: 20137})
+Data loading Complete learn:40274, test:21757
+mean of 0:  nan
+mean of 1:  nan
+# predict Counter({0.0: 21757})
+# test Counter({0.0: 11521, 1.0: 10236})
+seq_length: 6, # predicts: 21757, # corrects: 11521
+(array([0.52953073, 0.        ]), array([1., 0.]), array([0.6924094, 0.       ]), array([11521, 10236]))
+
+
+
+features are loaded
+size of learn_Y: 43134
+Counter({0.0: 22997, 1.0: 20137})
+Counter({0.0: 20137, 1.0: 20137})
+Data loading Complete learn:40274, test:21757
+mean of 0:  nan
+mean of 1:  nan
+# predict Counter({0.0: 21757})
+# test Counter({0.0: 11521, 1.0: 10236})
+seq_length: 6, # predicts: 21757, # corrects: 11521
+(array([0.52953073, 0.        ]), array([1., 0.]), array([0.6924094, 0.       ]), array([11521, 10236]))
+
+
+
+features are loaded
+size of learn_Y: 43134
+Counter({0.0: 22997, 1.0: 20137})
+Counter({0.0: 20137, 1.0: 20137})
+Data loading Complete learn:40274, test:21757
+mean of 0:  0.114337705
+mean of 1:  0.10252233
+# predict Counter({1.0: 13540, 0.0: 8217})
+# test Counter({0.0: 11521, 1.0: 10236})
+seq_length: 6, # predicts: 21757, # corrects: 10709
+(array([0.52878179, 0.47001477]), array([0.3771374 , 0.62172724]), array([0.4402675 , 0.53532974]), array([11521, 10236]))
+
+
+
+features are loaded
+size of learn_Y: 43134
+Counter({0.0: 22997, 1.0: 20137})
+Counter({0.0: 20137, 1.0: 20137})
+Data loading Complete learn:40274, test:21757
+mean of 0:  nan
+mean of 1:  nan
+# predict Counter({0.0: 21757})
+# test Counter({0.0: 11521, 1.0: 10236})
+seq_length: 6, # predicts: 21757, # corrects: 11521
+(array([0.52953073, 0.        ]), array([1., 0.]), array([0.6924094, 0.       ]), array([11521, 10236]))
+
+
+
+features are loaded
+size of learn_Y: 43134
+Counter({0.0: 22997, 1.0: 20137})
+Counter({0.0: 20137, 1.0: 20137})
+Data loading Complete learn:40274, test:21757
+mean of 0:  nan
+mean of 1:  nan
+# predict Counter({0.0: 21757})
+# test Counter({0.0: 11521, 1.0: 10236})
+seq_length: 6, # predicts: 21757, # corrects: 11521
+(array([0.52953073, 0.        ]), array([1., 0.]), array([0.6924094, 0.       ]), array([11521, 10236]))
+
+
+
+features are loaded
+size of learn_Y: 43134
+Counter({0.0: 22997, 1.0: 20137})
+Counter({0.0: 20137, 1.0: 20137})
+Data loading Complete learn:40274, test:21757
+mean of 0:  nan
+mean of 1:  nan
+# predict Counter({0.0: 21757})
+# test Counter({0.0: 11521, 1.0: 10236})
+seq_length: 6, # predicts: 21757, # corrects: 11521
+(array([0.52953073, 0.        ]), array([1., 0.]), array([0.6924094, 0.       ]), array([11521, 10236]))
+
+
+
+features are loaded
+size of learn_Y: 43134
+Counter({0.0: 22997, 1.0: 20137})
+Counter({0.0: 20137, 1.0: 20137})
+Data loading Complete learn:40274, test:21757
+mean of 0:  nan
+mean of 1:  nan
+# predict Counter({0.0: 21757})
+# test Counter({0.0: 11521, 1.0: 10236})
+seq_length: 6, # predicts: 21757, # corrects: 11521
+(array([0.52953073, 0.        ]), array([1., 0.]), array([0.6924094, 0.       ]), array([11521, 10236]))
+
+
+
+features are loaded
+size of learn_Y: 43134
+Counter({0.0: 22997, 1.0: 20137})
+Counter({0.0: 20137, 1.0: 20137})
+Data loading Complete learn:40274, test:21757
+mean of 0:  nan
+mean of 1:  nan
+# predict Counter({0.0: 21757})
+# test Counter({0.0: 11521, 1.0: 10236})
+seq_length: 6, # predicts: 21757, # corrects: 11521
+(array([0.52953073, 0.        ]), array([1., 0.]), array([0.6924094, 0.       ]), array([11521, 10236]))
+
+
+
+features are loaded
+size of learn_Y: 43134
+Counter({0.0: 22997, 1.0: 20137})
+Counter({0.0: 20137, 1.0: 20137})
+Data loading Complete learn:40274, test:21757
+mean of 0:  -0.012702695
+mean of 1:  -0.022039926
+# predict Counter({0.0: 11093, 1.0: 10664})
+# test Counter({0.0: 11521, 1.0: 10236})
+seq_length: 6, # predicts: 21757, # corrects: 10953
+(array([0.53231768, 0.47336834]), array([0.51254231, 0.49316139]), array([0.52224286, 0.4830622 ]), array([11521, 10236]))
+
+
+
+features are loaded
+size of learn_Y: 43134
+Counter({0.0: 22997, 1.0: 20137})
+Counter({0.0: 20137, 1.0: 20137})
+Data loading Complete learn:40274, test:21757
+mean of 0:  nan
+mean of 1:  nan
+# predict Counter({0.0: 21757})
+# test Counter({0.0: 11521, 1.0: 10236})
+seq_length: 6, # predicts: 21757, # corrects: 11521
+(array([0.52953073, 0.        ]), array([1., 0.]), array([0.6924094, 0.       ]), array([11521, 10236]))
+
+
+

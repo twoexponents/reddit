@@ -33,9 +33,10 @@ input_dim = len(user_features_fields)
 
 output_dim = 1 # (range 0 to 1)
 hidden_size = 100
-learning_rate = 0.01
+learning_rate = 0.005
 batch_size = 100
-epochs = 5
+epochs = 10
+input_length = int(sys.argv[1])
 
 # jhlim: How about to use data normalization by MinMaxScaler?
 
@@ -43,11 +44,12 @@ def main(argv):
     # 1.1 load feature dataset
     #d_features = pickle.load(open('../data/contentfeatures.others.p', 'r'))
     #d_w2vfeatures = pickle.load(open('../data/contentfeatures.googlenews.posts.p', 'r'))
+
     d_userfeatures = pickle.load(open('../data/userfeatures.activity.p', 'r'))
 
     print 'features are loaded'
 
-    for seq_length in xrange(5, 6):
+    for seq_length in xrange(input_length, input_length+1):
         f = open('../data/seq.learn.%d.csv'%(seq_length), 'r')
         learn_instances = map(lambda x:x.replace('\n', '').split(','), f.readlines())
         f.close()
@@ -59,15 +61,16 @@ def main(argv):
         for seq in learn_instances:
             sub_x = []
 
-            #if seq[-1] == '0':
+            #if seq[-1] == '1':
             #   continue
 
             try:
                 for element in seq[:-1]: # seq[-1] : Y. element: 't3_7dfvv'
+                    user_features = []
                     #cont_features = [0.0]*len(cont_features_fields)
                     #liwc_features = [0.0]*len_liwc_features
                     #w2v_features = [0.0]*len_w2v_features
-                    user_features = [0.0]*len(user_features_fields)
+                    #user_features = [0.0]*len(user_features_fields)
 
                     # if the features of element ID exist, bring it.
                     #if (cnt%1000 == 0):
@@ -88,10 +91,11 @@ def main(argv):
                         continue
                     # append each element's features of seq to the sub_x
                     #sub_x.append(np.array(cont_features+liwc_features+w2v_features.tolist()+user_features))
-                    sub_x.append(np.array(user_features))
+                    if user_features != []:
+                        sub_x.append(np.array(user_features))
                     #sub_x.append(np.array(cont_features+liwc_features+user_features))
 
-                if user_features[0] != 0:
+                if (len(sub_x) == seq_length):
                     learn_X.append(np.array(sub_x)) # feature list
                     learn_Y.append(float(seq[-1]))
 
@@ -121,7 +125,7 @@ def main(argv):
 
         print Counter(map(lambda x:x[0], learn_Y))
 
-        f = open('../seq.learn.%d.csv'%(seq_length), 'r')
+        f = open('../data/seq.test.%d.csv'%(seq_length), 'r')
         test_instances = map(lambda x:x.replace('\n', '').split(','), f.readlines())
         f.close()
 
@@ -134,10 +138,11 @@ def main(argv):
 
             try:
                 for element in seq[:-1]:
+                    user_features = []
                     #cont_features = [0.0]*len(cont_features_fields)
                     #liwc_features = [0.0]*len_liwc_features
                     #w2v_features = [0.0]*len_w2v_features
-                    user_features = [0.0]*len(user_features_fields)
+                    #user_features = [0.0]*len(user_features_fields)
                     '''
                     if d_features.has_key(element):
                         cont_features = d_features[element]['cont']
@@ -150,12 +155,13 @@ def main(argv):
                     if d_userfeatures.has_key(element):
                         user_features = d_userfeatures[element]['user']
                     else:
+                        #print 'It does not contain the element'
                         continue
 
                     #sub_x.append(np.array(cont_features+liwc_features+w2v_features.tolist()+user_features))
                     sub_x.append(np.array(user_features))
 
-                if user_features[0] != 0:
+                if (len(sub_x) == seq_length):
                     test_X.append(np.array(sub_x))
                     test_Y.append([float(seq[-1])])
 
@@ -166,6 +172,9 @@ def main(argv):
         tf.reset_default_graph()
 
         #print "test_Y: ", test_Y
+        #### For test
+        #test_X = learn_X
+        #test_Y = learn_Y
 
         # 2. Run RNN
         X = tf.placeholder(tf.float32, [None, seq_length, input_dim])
@@ -201,15 +210,15 @@ def main(argv):
 
         # three-level MLP
         key = 'fc_l1'
-        weights[key] = tf.Variable(tf.random_normal([hidden_size, 100]))
-        biases[key] = tf.Variable(tf.random_normal([100]))
+        weights[key] = tf.Variable(tf.random_normal([hidden_size, hidden_size]))
+        biases[key] = tf.Variable(tf.random_normal([hidden_size]))
 
         key = 'fc_l2'
-        weights[key] = tf.Variable(tf.random_normal([100, 100]))
-        biases[key] = tf.Variable(tf.random_normal([100]))
+        weights[key] = tf.Variable(tf.random_normal([hidden_size, hidden_size]))
+        biases[key] = tf.Variable(tf.random_normal([hidden_size]))
 
         key = 'fc_l3'
-        weights[key] = tf.Variable(tf.random_normal([100, 1]))
+        weights[key] = tf.Variable(tf.random_normal([hidden_size, 1]))
         biases[key] = tf.Variable(tf.random_normal([1]))
         
         optimizers = {}
@@ -236,18 +245,23 @@ def main(argv):
         logits = tf.matmul(l2_bn_output, weights['fc_l3']) + biases['fc_l3']
         labels = Y
 
-        logits = tf.contrib.layers.batch_norm(logits, center=True, scale=True, is_training=is_training)
+        #logits = tf.contrib.layers.batch_norm(logits, center=True, scale=True, is_training=is_training)
         #labels = tf.one_hot(Y, depth=output_dim)
 
         #loss = tf.nn.softmax_cross_entropy_with_logits_v2(labels=labels, logits=logits)
         #cost = tf.reduce_mean(loss)
         #optimizers = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(cost)
-        hypothesis = tf.sigmoid(logits)
-        cost = -tf.reduce_mean(Y * tf.log(hypothesis) + (1 - Y) * tf.log(1 - hypothesis))
+        #hypothesis = tf.sigmoid(logits)
+        loss = tf.nn.sigmoid_cross_entropy_with_logits(labels=labels, logits=logits)
+        cost = tf.reduce_mean(loss)
         optimizers = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(cost)
         #optimizers = tf.train.GradientDescentOptimizer(learning_rate=0.01).minimize(cost)
 
+        hypothesis = tf.sigmoid(logits)
         pred.append(tf.cast(hypothesis > 0.5, dtype=tf.float32))
+
+        correct_pred = tf.equal(tf.round(hypothesis), Y)
+        accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
         #pred.append(tf.argmax(tf.nn.softmax(logits), 1))
 
         with tf.Session() as sess:
@@ -263,22 +277,36 @@ def main(argv):
                     X_train_batch = learn_X[batch_index_start:batch_index_end]
                     Y_train_batch = learn_Y[batch_index_start:batch_index_end]
 
-                    opt, c, o, h, l = sess.run([optimizers, cost, outputs, hypothesis, outputs],
+                    opt, c, o, h, l, acc = sess.run([optimizers, cost, outputs, hypothesis, logits, accuracy],
                             feed_dict={X: X_train_batch, Y: Y_train_batch, keep_prob:0.01, is_training:True})
                     
-                    print 'iteration : %d, cost: %.8f'%(count, c)
-                    print 'hypothesis : ', h
-                    print 'logits : ', l
-                    #print 'outputs: ', outputs
+                    #print 'iteration : %d, cost: %.8f'%(count, c)
+                    #print 'logits: '
+                    #print l
+                    #print 'acc: ', acc
 
                     batch_index_start += batch_size
                     batch_index_end += batch_size
                     count += 1
 
-            #print "train_Y: ", Y_train_batch
-            #print "test_Y: ", test_Y
+            rst, c, h, l = sess.run([pred, cost, hypothesis, logits], feed_dict={X: test_X, Y: test_Y, keep_prob:1.0, is_training:True})
+            #print '[RESULT]'
+            #print 'cost: %.8f'%(c)
+            #print 'hypothesis : '
+            #print h
+            #print 'logits : '
+            #print l
+            #print 'Y : '
+            #print 'logtis, Y:'
+            #for i, j in zip(l, test_Y):
+            #    print i, j
 
-            rst = sess.run(pred, feed_dict={X: test_X, Y:test_Y, keep_prob:1.0, is_training:False})
+            list_a = filter(lambda (x,y):y[0]==0.0, zip(l, test_Y))
+            list_b = filter(lambda (x,y):y[0]==1.0, zip(l, test_Y))
+            #print 'len 0: ', len(list_a)
+            #print 'len 1: ', len(list_b)
+            print 'mean of 0: ', np.mean(map(lambda (p, q): p[0], list_a))
+            print 'mean of 1: ', np.mean(map(lambda (p, q): p[0], list_b))
 
             out = np.vstack(rst).T
 

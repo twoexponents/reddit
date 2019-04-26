@@ -1,0 +1,140 @@
+features are loaded
+size of learn_Y: 54831
+Counter({0.0: 28247, 1.0: 26584})
+Counter({0.0: 26584, 1.0: 26584})
+Data loading Complete learn:53168, test:27093
+mean of 0:  -0.30804622
+mean of 1:  -0.2479102
+# predict Counter({0.0: 14995, 1.0: 12098})
+# test Counter({0.0: 14096, 1.0: 12997})
+seq_length: 5, # predicts: 27093, # corrects: 13938
+(array([0.53137713, 0.49347   ]), array([0.56526674, 0.45933677]), array([0.54779829, 0.47579199]), array([14096, 12997]))
+
+
+
+features are loaded
+size of learn_Y: 54831
+Counter({0.0: 28247, 1.0: 26584})
+Counter({0.0: 26584, 1.0: 26584})
+Data loading Complete learn:53168, test:27093
+mean of 0:  -0.02024169
+mean of 1:  0.0024452072
+# predict Counter({1.0: 14536, 0.0: 12557})
+# test Counter({0.0: 14096, 1.0: 12997})
+seq_length: 5, # predicts: 27093, # corrects: 13654
+(array([0.52616071, 0.48479637]), array([0.46871453, 0.54220205]), array([0.49577909, 0.51189482]), array([14096, 12997]))
+
+
+
+features are loaded
+size of learn_Y: 54831
+Counter({0.0: 28247, 1.0: 26584})
+Counter({0.0: 26584, 1.0: 26584})
+Data loading Complete learn:53168, test:27093
+mean of 0:  -0.038451687
+mean of 1:  -0.045502316
+# predict Counter({0.0: 15527, 1.0: 11566})
+# test Counter({0.0: 14096, 1.0: 12997})
+seq_length: 5, # predicts: 27093, # corrects: 13536
+(array([0.51735686, 0.47579111]), array([0.56987798, 0.4234054 ]), array([0.54234885, 0.4480723 ]), array([14096, 12997]))
+
+
+
+features are loaded
+size of learn_Y: 54831
+Counter({0.0: 28247, 1.0: 26584})
+Counter({0.0: 26584, 1.0: 26584})
+Data loading Complete learn:53168, test:27093
+mean of 0:  -0.15924585
+mean of 1:  -0.14929697
+# predict Counter({0.0: 22352, 1.0: 4741})
+# test Counter({0.0: 14096, 1.0: 12997})
+seq_length: 5, # predicts: 27093, # corrects: 13985
+(array([0.52210093, 0.48829361]), array([0.82789444, 0.17811803]), array([0.64036435, 0.26102154]), array([14096, 12997]))
+
+
+
+features are loaded
+size of learn_Y: 54831
+Counter({0.0: 28247, 1.0: 26584})
+Counter({0.0: 26584, 1.0: 26584})
+Data loading Complete learn:53168, test:27093
+mean of 0:  -0.121908434
+mean of 1:  -0.16182499
+# predict Counter({0.0: 16145, 1.0: 10948})
+# test Counter({0.0: 14096, 1.0: 12997})
+seq_length: 5, # predicts: 27093, # corrects: 13468
+(array([0.51458656, 0.47131896]), array([0.58938706, 0.3970147 ]), array([0.54945273, 0.43098768]), array([14096, 12997]))
+
+
+
+features are loaded
+size of learn_Y: 54831
+Counter({0.0: 28247, 1.0: 26584})
+Counter({0.0: 26584, 1.0: 26584})
+Data loading Complete learn:53168, test:27093
+mean of 0:  0.124795906
+mean of 1:  0.1205637
+# predict Counter({1.0: 16270, 0.0: 10823})
+# test Counter({0.0: 14096, 1.0: 12997})
+seq_length: 5, # predicts: 27093, # corrects: 13410
+(array([0.51907974, 0.47891825]), array([0.39855278, 0.59952297]), array([0.45090092, 0.53247685]), array([14096, 12997]))
+
+
+
+features are loaded
+size of learn_Y: 54831
+Counter({0.0: 28247, 1.0: 26584})
+Counter({0.0: 26584, 1.0: 26584})
+Data loading Complete learn:53168, test:27093
+mean of 0:  0.06194693
+mean of 1:  0.07904718
+# predict Counter({1.0: 15565, 0.0: 11528})
+# test Counter({0.0: 14096, 1.0: 12997})
+seq_length: 5, # predicts: 27093, # corrects: 13593
+(array([0.5258501 , 0.48384195]), array([0.43005108, 0.57944141]), array([0.47315017, 0.52734402]), array([14096, 12997]))
+
+
+
+features are loaded
+size of learn_Y: 54831
+Counter({0.0: 28247, 1.0: 26584})
+Counter({0.0: 26584, 1.0: 26584})
+Data loading Complete learn:53168, test:27093
+mean of 0:  0.061028358
+mean of 1:  0.008138935
+# predict Counter({0.0: 14332, 1.0: 12761})
+# test Counter({0.0: 14096, 1.0: 12997})
+seq_length: 5, # predicts: 27093, # corrects: 13379
+(array([0.51332682, 0.47190659]), array([0.52192111, 0.46333769]), array([0.51758829, 0.46758289]), array([14096, 12997]))
+
+
+
+features are loaded
+size of learn_Y: 54831
+Counter({0.0: 28247, 1.0: 26584})
+Counter({0.0: 26584, 1.0: 26584})
+Data loading Complete learn:53168, test:27093
+mean of 0:  -0.14033549
+mean of 1:  -0.086785085
+# predict Counter({0.0: 14035, 1.0: 13058})
+# test Counter({0.0: 14096, 1.0: 12997})
+seq_length: 5, # predicts: 27093, # corrects: 13868
+(array([0.53102957, 0.49126972]), array([0.52873156, 0.49357544]), array([0.52987807, 0.49241988]), array([14096, 12997]))
+
+
+
+features are loaded
+size of learn_Y: 54831
+Counter({0.0: 28247, 1.0: 26584})
+Counter({0.0: 26584, 1.0: 26584})
+Data loading Complete learn:53168, test:27093
+mean of 0:  0.14019735
+mean of 1:  0.16702919
+# predict Counter({1.0: 16181, 0.0: 10912})
+# test Counter({0.0: 14096, 1.0: 12997})
+seq_length: 5, # predicts: 27093, # corrects: 13673
+(array([0.53097507, 0.48692911]), array([0.41103859, 0.60621682]), array([0.46337172, 0.54006443]), array([14096, 12997]))
+
+
+

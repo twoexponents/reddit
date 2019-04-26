@@ -1,0 +1,140 @@
+features are loaded
+size of learn_Y: 33282
+Counter({0.0: 18048, 1.0: 15234})
+Counter({0.0: 15234, 1.0: 15234})
+Data loading Complete learn:30468, test:16366
+mean of 0:  nan
+mean of 1:  nan
+# predict Counter({0.0: 16366})
+# test Counter({0.0: 8972, 1.0: 7394})
+seq_length: 7, # predicts: 16366, # corrects: 8972
+(array([0.5482097, 0.       ]), array([1., 0.]), array([0.70818533, 0.        ]), array([8972, 7394]))
+
+
+
+features are loaded
+size of learn_Y: 33282
+Counter({0.0: 18048, 1.0: 15234})
+Counter({0.0: 15234, 1.0: 15234})
+Data loading Complete learn:30468, test:16366
+mean of 0:  nan
+mean of 1:  nan
+# predict Counter({0.0: 16366})
+# test Counter({0.0: 8972, 1.0: 7394})
+seq_length: 7, # predicts: 16366, # corrects: 8972
+(array([0.5482097, 0.       ]), array([1., 0.]), array([0.70818533, 0.        ]), array([8972, 7394]))
+
+
+
+features are loaded
+size of learn_Y: 33282
+Counter({0.0: 18048, 1.0: 15234})
+Counter({0.0: 15234, 1.0: 15234})
+Data loading Complete learn:30468, test:16366
+mean of 0:  nan
+mean of 1:  nan
+# predict Counter({0.0: 16366})
+# test Counter({0.0: 8972, 1.0: 7394})
+seq_length: 7, # predicts: 16366, # corrects: 8972
+(array([0.5482097, 0.       ]), array([1., 0.]), array([0.70818533, 0.        ]), array([8972, 7394]))
+
+
+
+features are loaded
+size of learn_Y: 33282
+Counter({0.0: 18048, 1.0: 15234})
+Counter({0.0: 15234, 1.0: 15234})
+Data loading Complete learn:30468, test:16366
+mean of 0:  nan
+mean of 1:  nan
+# predict Counter({0.0: 16366})
+# test Counter({0.0: 8972, 1.0: 7394})
+seq_length: 7, # predicts: 16366, # corrects: 8972
+(array([0.5482097, 0.       ]), array([1., 0.]), array([0.70818533, 0.        ]), array([8972, 7394]))
+
+
+
+features are loaded
+size of learn_Y: 33282
+Counter({0.0: 18048, 1.0: 15234})
+Counter({0.0: 15234, 1.0: 15234})
+Data loading Complete learn:30468, test:16366
+mean of 0:  nan
+mean of 1:  nan
+# predict Counter({0.0: 16366})
+# test Counter({0.0: 8972, 1.0: 7394})
+seq_length: 7, # predicts: 16366, # corrects: 8972
+(array([0.5482097, 0.       ]), array([1., 0.]), array([0.70818533, 0.        ]), array([8972, 7394]))
+
+
+
+features are loaded
+size of learn_Y: 33282
+Counter({0.0: 18048, 1.0: 15234})
+Counter({0.0: 15234, 1.0: 15234})
+Data loading Complete learn:30468, test:16366
+mean of 0:  nan
+mean of 1:  nan
+# predict Counter({0.0: 16366})
+# test Counter({0.0: 8972, 1.0: 7394})
+seq_length: 7, # predicts: 16366, # corrects: 8972
+(array([0.5482097, 0.       ]), array([1., 0.]), array([0.70818533, 0.        ]), array([8972, 7394]))
+
+
+
+features are loaded
+size of learn_Y: 33282
+Counter({0.0: 18048, 1.0: 15234})
+Counter({0.0: 15234, 1.0: 15234})
+Data loading Complete learn:30468, test:16366
+mean of 0:  nan
+mean of 1:  nan
+# predict Counter({0.0: 16366})
+# test Counter({0.0: 8972, 1.0: 7394})
+seq_length: 7, # predicts: 16366, # corrects: 8972
+(array([0.5482097, 0.       ]), array([1., 0.]), array([0.70818533, 0.        ]), array([8972, 7394]))
+
+
+
+features are loaded
+size of learn_Y: 33282
+Counter({0.0: 18048, 1.0: 15234})
+Counter({0.0: 15234, 1.0: 15234})
+Data loading Complete learn:30468, test:16366
+mean of 0:  nan
+mean of 1:  nan
+# predict Counter({0.0: 16366})
+# test Counter({0.0: 8972, 1.0: 7394})
+seq_length: 7, # predicts: 16366, # corrects: 8972
+(array([0.5482097, 0.       ]), array([1., 0.]), array([0.70818533, 0.        ]), array([8972, 7394]))
+
+
+
+features are loaded
+size of learn_Y: 33282
+Counter({0.0: 18048, 1.0: 15234})
+Counter({0.0: 15234, 1.0: 15234})
+Data loading Complete learn:30468, test:16366
+mean of 0:  nan
+mean of 1:  nan
+# predict Counter({0.0: 16366})
+# test Counter({0.0: 8972, 1.0: 7394})
+seq_length: 7, # predicts: 16366, # corrects: 8972
+(array([0.5482097, 0.       ]), array([1., 0.]), array([0.70818533, 0.        ]), array([8972, 7394]))
+
+
+
+features are loaded
+size of learn_Y: 33282
+Counter({0.0: 18048, 1.0: 15234})
+Counter({0.0: 15234, 1.0: 15234})
+Data loading Complete learn:30468, test:16366
+mean of 0:  nan
+mean of 1:  nan
+# predict Counter({0.0: 16366})
+# test Counter({0.0: 8972, 1.0: 7394})
+seq_length: 7, # predicts: 16366, # corrects: 8972
+(array([0.5482097, 0.       ]), array([1., 0.]), array([0.70818533, 0.        ]), array([8972, 7394]))
+
+
+
