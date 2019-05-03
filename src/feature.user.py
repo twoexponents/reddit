@@ -2,6 +2,7 @@ import tensorflow as tf
 import numpy as np
 import sys
 import cPickle as pickle
+import time
 
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import precision_recall_fscore_support
@@ -33,12 +34,14 @@ input_dim = len(user_features_fields)
 
 output_dim = 1 # (range 0 to 1)
 hidden_size = 100
-learning_rate = 0.01
+learning_rate = 0.005
 batch_size = 100
-epochs = 10
+epochs = 50
 
 def main(argv):
+    start_time = time.time()
     if len(sys.argv) <= 1:
+        print "sequence len: 1"
         input_length = 1
     else:
         input_length = int(sys.argv[1])
@@ -122,9 +125,6 @@ def main(argv):
         learn_X = map(itemgetter(0), matrix)
         learn_Y = map(lambda x:[x], map(itemgetter(1), matrix))
 
-        #print "learn_X: ", learn_X
-        #print "learn_Y: ", learn_Y
-
         print Counter(map(lambda x:x[0], learn_Y))
 
         f = open('../data/seq.test.%d.csv'%(seq_length), 'r')
@@ -145,15 +145,7 @@ def main(argv):
                     #liwc_features = [0.0]*len_liwc_features
                     #w2v_features = [0.0]*len_w2v_features
                     #user_features = [0.0]*len(user_features_fields)
-                    '''
-                    if d_features.has_key(element):
-                        cont_features = d_features[element]['cont']
-                        liwc_features = d_features[element]['liwc']
-                        w2v_features = d_w2vfeatures[element]['glove.tfidf'][0]
-                        user_features = d_userfeatures[element]['user']
-                    else:
-                        print 'It does not have the element.'
-                    '''
+                    
                     if d_userfeatures.has_key(element):
                         user_features = d_userfeatures[element]['user']
                     else:
@@ -161,7 +153,8 @@ def main(argv):
                         continue
 
                     #sub_x.append(np.array(cont_features+liwc_features+w2v_features.tolist()+user_features))
-                    sub_x.append(np.array(user_features))
+                    if user_features != []:
+                        sub_x.append(np.array(user_features))
 
                 if (len(sub_x) == seq_length):
                     test_X.append(np.array(sub_x))
@@ -257,9 +250,9 @@ def main(argv):
         loss = tf.nn.sigmoid_cross_entropy_with_logits(labels=labels, logits=logits)
         cost = tf.reduce_mean(loss)
 
-        #update_ops = tf.get_collection(tf.GraphKeys.UPDATE_OPS)
-        #with tf.control_dependencies(update_ops):
-        optimizers = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(cost)
+        update_ops = tf.get_collection(tf.GraphKeys.UPDATE_OPS)
+        with tf.control_dependencies(update_ops):
+            optimizers = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(cost)
         #optimizers = tf.train.GradientDescentOptimizer(learning_rate=0.01).minimize(cost)
 
         hypothesis = tf.sigmoid(logits)
@@ -294,7 +287,7 @@ def main(argv):
                     batch_index_end += batch_size
                     count += 1
 
-            rst, c, h, l = sess.run([pred, cost, hypothesis, logits], feed_dict={X: test_X, Y: test_Y, keep_prob:1.0, is_training:True})
+            rst, c, h, l = sess.run([pred, cost, hypothesis, logits], feed_dict={X: test_X, Y: test_Y, keep_prob:1.0, is_training:False})
             #print '[RESULT]'
             #print 'cost: %.8f'%(c)
             #print 'hypothesis : '
@@ -338,6 +331,7 @@ def main(argv):
             print '\n\n'
 
             f.close()
+            print "work time: %s sec"%(time.time()-start_time)
 
 
 if __name__ == '__main__':
