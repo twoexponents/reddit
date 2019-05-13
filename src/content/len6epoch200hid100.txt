@@ -1,0 +1,28 @@
+learning_rate: 0.010000, batch_size 100, epochs 200
+features are loaded
+size of learn_Y: 80449
+Counter({0.0: 41661, 1.0: 38788})
+Counter({0.0: 38788, 1.0: 38788})
+Data loading Complete learn:77576, test:38524
+# predict Counter({1.0: 25740, 0.0: 12784})
+# test Counter({0.0: 19262, 1.0: 19262})
+seq_length: 6, # predicts: 38524, # corrects: 20444, acc: 0.530682
+(array([0.54622966, 0.52296037]), array([0.36252726, 0.69883709]), array([0.43581102, 0.59824008]), array([19262, 19262]))
+work time: 6241.56890297 sec
+
+
+
+learning_rate: 0.010000, batch_size 100, epochs 200
+features are loaded
+size of learn_Y: 80449
+Counter({0.0: 41661, 1.0: 38788})
+Counter({0.0: 38788, 1.0: 38788})
+Data loading Complete learn:77576, test:38524
+# predict Counter({0.0: 28301, 1.0: 10223})
+# test Counter({0.0: 19262, 1.0: 19262})
+seq_length: 6, # predicts: 38524, # corrects: 20865, acc: 0.541610
+(array([0.52832055, 0.57840164]), array([0.77624338, 0.30697747]), array([0.62872401, 0.4010853 ]), array([19262, 19262]))
+work time: 7588.48313212 sec
+
+
+

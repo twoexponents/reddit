@@ -1,0 +1,6294 @@
+learning_rate: 0.010000, batch_size 100, epochs 500
+features are loaded
+size of learn_Y: 117416
+Counter({1.0: 68006, 0.0: 49410})
+Counter({0.0: 49410, 1.0: 49410})
+Data loading Complete learn:98820, test:50464
+epochs: 0
+acc:  0.47
+mean of 0:  -0.48921832
+mean of 1:  1.037418
+epochs: 1
+acc:  0.56
+mean of 0:  0.46501857
+mean of 1:  0.4078371
+epochs: 2
+acc:  0.59
+mean of 0:  0.29362085
+mean of 1:  0.30650246
+epochs: 3
+acc:  0.63
+mean of 0:  0.25246295
+mean of 1:  0.24866319
+epochs: 4
+acc:  0.6
+mean of 0:  -0.01831475
+mean of 1:  0.16967134
+epochs: 5
+acc:  0.59
+mean of 0:  -0.14741641
+mean of 1:  0.07951613
+epochs: 6
+acc:  0.56
+mean of 0:  -0.21807794
+mean of 1:  0.038580094
+epochs: 7
+acc:  0.57
+mean of 0:  -0.2191472
+mean of 1:  -0.012158343
+epochs: 8
+acc:  0.58
+mean of 0:  -0.26468253
+mean of 1:  0.015899096
+epochs: 9
+acc:  0.54
+mean of 0:  -0.20298901
+mean of 1:  0.031068198
+epochs: 10
+acc:  0.59
+mean of 0:  -0.23500891
+mean of 1:  0.05257958
+epochs: 11
+acc:  0.59
+mean of 0:  -0.16837397
+mean of 1:  0.08900829
+epochs: 12
+acc:  0.56
+mean of 0:  -0.16173992
+mean of 1:  0.08534605
+epochs: 13
+acc:  0.55
+mean of 0:  -0.19237189
+mean of 1:  0.06846951
+epochs: 14
+acc:  0.56
+mean of 0:  -0.1699845
+mean of 1:  0.061835166
+epochs: 15
+acc:  0.54
+mean of 0:  -0.17954724
+mean of 1:  0.07054747
+epochs: 16
+acc:  0.56
+mean of 0:  -0.1753143
+mean of 1:  0.08658539
+epochs: 17
+acc:  0.56
+mean of 0:  -0.16990583
+mean of 1:  0.07741029
+epochs: 18
+acc:  0.57
+mean of 0:  -0.17170462
+mean of 1:  0.104914546
+epochs: 19
+acc:  0.58
+mean of 0:  -0.18929407
+mean of 1:  0.09218459
+epochs: 20
+acc:  0.56
+mean of 0:  -0.21792941
+mean of 1:  0.106743455
+epochs: 21
+acc:  0.58
+mean of 0:  -0.21897562
+mean of 1:  0.09829844
+epochs: 22
+acc:  0.59
+mean of 0:  -0.21909466
+mean of 1:  0.11462907
+epochs: 23
+acc:  0.56
+mean of 0:  -0.23340783
+mean of 1:  0.10089508
+epochs: 24
+acc:  0.57
+mean of 0:  -0.24418707
+mean of 1:  0.10378959
+epochs: 25
+acc:  0.56
+mean of 0:  -0.2601764
+mean of 1:  0.13802227
+epochs: 26
+acc:  0.58
+mean of 0:  -0.2870132
+mean of 1:  0.16611376
+epochs: 27
+acc:  0.59
+mean of 0:  -0.27531725
+mean of 1:  0.15089785
+epochs: 28
+acc:  0.55
+mean of 0:  -0.27138525
+mean of 1:  0.1128492
+epochs: 29
+acc:  0.56
+mean of 0:  -0.2733289
+mean of 1:  0.14313312
+epochs: 30
+acc:  0.56
+mean of 0:  -0.3166388
+mean of 1:  0.16207986
+epochs: 31
+acc:  0.58
+mean of 0:  -0.29057232
+mean of 1:  0.14942414
+epochs: 32
+acc:  0.57
+mean of 0:  -0.28534573
+mean of 1:  0.14708307
+epochs: 33
+acc:  0.62
+mean of 0:  -0.30884048
+mean of 1:  0.15292998
+epochs: 34
+acc:  0.61
+mean of 0:  -0.33212337
+mean of 1:  0.15946743
+epochs: 35
+acc:  0.62
+mean of 0:  -0.35746422
+mean of 1:  0.18442795
+epochs: 36
+acc:  0.61
+mean of 0:  -0.38092852
+mean of 1:  0.19185449
+epochs: 37
+acc:  0.68
+mean of 0:  -0.36865354
+mean of 1:  0.20107287
+epochs: 38
+acc:  0.64
+mean of 0:  -0.4062501
+mean of 1:  0.23637
+epochs: 39
+acc:  0.67
+mean of 0:  -0.45678034
+mean of 1:  0.21994957
+epochs: 40
+acc:  0.69
+mean of 0:  -0.49510756
+mean of 1:  0.25989884
+epochs: 41
+acc:  0.65
+mean of 0:  -0.4702634
+mean of 1:  0.3303321
+epochs: 42
+acc:  0.67
+mean of 0:  -0.5244077
+mean of 1:  0.37576875
+epochs: 43
+acc:  0.67
+mean of 0:  -0.5595193
+mean of 1:  0.36795494
+epochs: 44
+acc:  0.64
+mean of 0:  -0.584949
+mean of 1:  0.37328598
+epochs: 45
+acc:  0.65
+mean of 0:  -0.712872
+mean of 1:  0.4605399
+epochs: 46
+acc:  0.69
+mean of 0:  -0.7480153
+mean of 1:  0.43550292
+epochs: 47
+acc:  0.63
+mean of 0:  -0.65931267
+mean of 1:  0.38475522
+epochs: 48
+acc:  0.68
+mean of 0:  -0.77469075
+mean of 1:  0.44196132
+epochs: 49
+acc:  0.67
+mean of 0:  -0.73951614
+mean of 1:  0.42435968
+epochs: 50
+acc:  0.67
+mean of 0:  -0.8338687
+mean of 1:  0.43619072
+epochs: 51
+acc:  0.65
+mean of 0:  -0.8566591
+mean of 1:  0.4838427
+epochs: 52
+acc:  0.65
+mean of 0:  -0.9046057
+mean of 1:  0.5290532
+epochs: 53
+acc:  0.72
+mean of 0:  -1.0304039
+mean of 1:  0.55211294
+epochs: 54
+acc:  0.75
+mean of 0:  -1.1354077
+mean of 1:  0.65103954
+epochs: 55
+acc:  0.72
+mean of 0:  -1.2197359
+mean of 1:  0.6050846
+epochs: 56
+acc:  0.69
+mean of 0:  -1.1997428
+mean of 1:  0.70457965
+epochs: 57
+acc:  0.7
+mean of 0:  -1.1533424
+mean of 1:  0.74992913
+epochs: 58
+acc:  0.75
+mean of 0:  -1.3265114
+mean of 1:  0.832325
+epochs: 59
+acc:  0.66
+mean of 0:  -1.2698485
+mean of 1:  0.8891529
+epochs: 60
+acc:  0.67
+mean of 0:  -1.4646616
+mean of 1:  0.98309827
+epochs: 61
+acc:  0.68
+mean of 0:  -1.1041962
+mean of 1:  0.75262666
+epochs: 62
+acc:  0.66
+mean of 0:  -1.2926465
+mean of 1:  0.7653447
+epochs: 63
+acc:  0.63
+mean of 0:  -1.0924743
+mean of 1:  0.6823038
+epochs: 64
+acc:  0.71
+mean of 0:  -1.5275671
+mean of 1:  0.94788384
+epochs: 65
+acc:  0.63
+mean of 0:  -1.4248278
+mean of 1:  0.8946693
+epochs: 66
+acc:  0.65
+mean of 0:  -1.4794648
+mean of 1:  0.8404185
+epochs: 67
+acc:  0.71
+mean of 0:  -1.5800159
+mean of 1:  0.9132748
+epochs: 68
+acc:  0.71
+mean of 0:  -1.2780583
+mean of 1:  0.76550025
+epochs: 69
+acc:  0.7
+mean of 0:  -1.2589817
+mean of 1:  0.80551744
+epochs: 70
+acc:  0.66
+mean of 0:  -1.4994991
+mean of 1:  0.90625364
+epochs: 71
+acc:  0.68
+mean of 0:  -1.6478933
+mean of 1:  0.99396557
+epochs: 72
+acc:  0.73
+mean of 0:  -1.747937
+mean of 1:  1.0322537
+epochs: 73
+acc:  0.72
+mean of 0:  -1.5925062
+mean of 1:  0.9743969
+epochs: 74
+acc:  0.69
+mean of 0:  -1.4826059
+mean of 1:  0.8746263
+epochs: 75
+acc:  0.68
+mean of 0:  -1.8393681
+mean of 1:  1.0490229
+epochs: 76
+acc:  0.75
+mean of 0:  -1.6064094
+mean of 1:  0.9941972
+epochs: 77
+acc:  0.72
+mean of 0:  -1.8270241
+mean of 1:  1.1029675
+epochs: 78
+acc:  0.72
+mean of 0:  -1.851557
+mean of 1:  1.1493505
+epochs: 79
+acc:  0.75
+mean of 0:  -1.9048933
+mean of 1:  1.1432445
+epochs: 80
+acc:  0.75
+mean of 0:  -1.9076153
+mean of 1:  1.1902373
+epochs: 81
+acc:  0.67
+mean of 0:  -1.7120664
+mean of 1:  1.0006962
+epochs: 82
+acc:  0.74
+mean of 0:  -1.7795197
+mean of 1:  1.0486016
+epochs: 83
+acc:  0.69
+mean of 0:  -1.5293031
+mean of 1:  0.99551547
+epochs: 84
+acc:  0.74
+mean of 0:  -1.9793781
+mean of 1:  1.1632057
+epochs: 85
+acc:  0.74
+mean of 0:  -1.7526382
+mean of 1:  1.020262
+epochs: 86
+acc:  0.72
+mean of 0:  -1.822696
+mean of 1:  1.1193886
+epochs: 87
+acc:  0.74
+mean of 0:  -2.0314977
+mean of 1:  1.2484212
+epochs: 88
+acc:  0.79
+mean of 0:  -2.0514896
+mean of 1:  1.2977798
+epochs: 89
+acc:  0.79
+mean of 0:  -2.2298012
+mean of 1:  1.3798292
+epochs: 90
+acc:  0.79
+mean of 0:  -2.1172557
+mean of 1:  1.3349566
+epochs: 91
+acc:  0.8
+mean of 0:  -2.1989264
+mean of 1:  1.353872
+epochs: 92
+acc:  0.79
+mean of 0:  -2.001114
+mean of 1:  1.2286047
+epochs: 93
+acc:  0.76
+mean of 0:  -2.182734
+mean of 1:  1.3828348
+epochs: 94
+acc:  0.79
+mean of 0:  -2.0167725
+mean of 1:  1.2778107
+epochs: 95
+acc:  0.78
+mean of 0:  -2.0335135
+mean of 1:  1.2404445
+epochs: 96
+acc:  0.74
+mean of 0:  -1.9494947
+mean of 1:  1.1644098
+epochs: 97
+acc:  0.78
+mean of 0:  -2.1911483
+mean of 1:  1.34207
+epochs: 98
+acc:  0.74
+mean of 0:  -2.04671
+mean of 1:  1.2532775
+epochs: 99
+acc:  0.81
+mean of 0:  -2.0800889
+mean of 1:  1.3404171
+epochs: 100
+acc:  0.75
+mean of 0:  -2.0181203
+mean of 1:  1.2115875
+epochs: 101
+acc:  0.77
+mean of 0:  -1.9076039
+mean of 1:  1.0657982
+epochs: 102
+acc:  0.73
+mean of 0:  -1.9986557
+mean of 1:  1.1992165
+epochs: 103
+acc:  0.76
+mean of 0:  -2.3216138
+mean of 1:  1.3530328
+epochs: 104
+acc:  0.77
+mean of 0:  -2.1500466
+mean of 1:  1.2696356
+epochs: 105
+acc:  0.76
+mean of 0:  -1.9745624
+mean of 1:  1.1714747
+epochs: 106
+acc:  0.73
+mean of 0:  -1.9974575
+mean of 1:  1.2686034
+epochs: 107
+acc:  0.78
+mean of 0:  -2.2752159
+mean of 1:  1.5126711
+epochs: 108
+acc:  0.77
+mean of 0:  -2.043634
+mean of 1:  1.288922
+epochs: 109
+acc:  0.71
+mean of 0:  -2.3618462
+mean of 1:  1.2918797
+epochs: 110
+acc:  0.73
+mean of 0:  -2.1725621
+mean of 1:  1.3006994
+epochs: 111
+acc:  0.8
+mean of 0:  -2.002945
+mean of 1:  1.3414185
+epochs: 112
+acc:  0.76
+mean of 0:  -2.2609475
+mean of 1:  1.4197944
+epochs: 113
+acc:  0.79
+mean of 0:  -2.2739487
+mean of 1:  1.4641296
+epochs: 114
+acc:  0.85
+mean of 0:  -2.393665
+mean of 1:  1.5336059
+epochs: 115
+acc:  0.75
+mean of 0:  -2.3136394
+mean of 1:  1.457279
+epochs: 116
+acc:  0.79
+mean of 0:  -2.079961
+mean of 1:  1.3772739
+epochs: 117
+acc:  0.84
+mean of 0:  -2.5271316
+mean of 1:  1.5565894
+epochs: 118
+acc:  0.8
+mean of 0:  -2.4104986
+mean of 1:  1.5345613
+epochs: 119
+acc:  0.81
+mean of 0:  -2.2579844
+mean of 1:  1.5326439
+epochs: 120
+acc:  0.86
+mean of 0:  -2.5651002
+mean of 1:  1.6976079
+epochs: 121
+acc:  0.76
+mean of 0:  -2.3633869
+mean of 1:  1.576195
+epochs: 122
+acc:  0.82
+mean of 0:  -2.2681725
+mean of 1:  1.3949989
+epochs: 123
+acc:  0.83
+mean of 0:  -2.3065891
+mean of 1:  1.4314915
+epochs: 124
+acc:  0.81
+mean of 0:  -2.301727
+mean of 1:  1.424698
+epochs: 125
+acc:  0.78
+mean of 0:  -2.2343106
+mean of 1:  1.2938019
+epochs: 126
+acc:  0.75
+mean of 0:  -2.0936496
+mean of 1:  1.2893798
+epochs: 127
+acc:  0.78
+mean of 0:  -2.3005252
+mean of 1:  1.2945023
+epochs: 128
+acc:  0.76
+mean of 0:  -2.4464645
+mean of 1:  1.4102699
+epochs: 129
+acc:  0.77
+mean of 0:  -2.3944001
+mean of 1:  1.4079722
+epochs: 130
+acc:  0.78
+mean of 0:  -2.3829408
+mean of 1:  1.3847141
+epochs: 131
+acc:  0.79
+mean of 0:  -2.3903294
+mean of 1:  1.365663
+epochs: 132
+acc:  0.74
+mean of 0:  -2.288042
+mean of 1:  1.353073
+epochs: 133
+acc:  0.78
+mean of 0:  -2.3326368
+mean of 1:  1.3968358
+epochs: 134
+acc:  0.8
+mean of 0:  -2.4061077
+mean of 1:  1.3445755
+epochs: 135
+acc:  0.76
+mean of 0:  -2.4735959
+mean of 1:  1.4556282
+epochs: 136
+acc:  0.76
+mean of 0:  -2.1357706
+mean of 1:  1.2118871
+epochs: 137
+acc:  0.77
+mean of 0:  -2.4139264
+mean of 1:  1.4858538
+epochs: 138
+acc:  0.8
+mean of 0:  -2.5135071
+mean of 1:  1.6024349
+epochs: 139
+acc:  0.72
+mean of 0:  -2.2413914
+mean of 1:  1.326966
+epochs: 140
+acc:  0.76
+mean of 0:  -2.4463396
+mean of 1:  1.3916378
+epochs: 141
+acc:  0.81
+mean of 0:  -2.5431247
+mean of 1:  1.5462759
+epochs: 142
+acc:  0.71
+mean of 0:  -2.4839196
+mean of 1:  1.3744352
+epochs: 143
+acc:  0.78
+mean of 0:  -2.3045347
+mean of 1:  1.3050754
+epochs: 144
+acc:  0.79
+mean of 0:  -2.580813
+mean of 1:  1.6501336
+epochs: 145
+acc:  0.74
+mean of 0:  -2.4478593
+mean of 1:  1.5385097
+epochs: 146
+acc:  0.8
+mean of 0:  -2.5729988
+mean of 1:  1.528557
+epochs: 147
+acc:  0.75
+mean of 0:  -2.8804493
+mean of 1:  1.73832
+epochs: 148
+acc:  0.8
+mean of 0:  -2.3470154
+mean of 1:  1.3558065
+epochs: 149
+acc:  0.76
+mean of 0:  -2.746842
+mean of 1:  1.5160441
+epochs: 150
+acc:  0.8
+mean of 0:  -2.8682492
+mean of 1:  1.6558661
+epochs: 151
+acc:  0.78
+mean of 0:  -3.0655704
+mean of 1:  1.6242415
+epochs: 152
+acc:  0.79
+mean of 0:  -2.8961835
+mean of 1:  1.6193691
+epochs: 153
+acc:  0.84
+mean of 0:  -3.2642941
+mean of 1:  1.8026829
+epochs: 154
+acc:  0.82
+mean of 0:  -3.2974732
+mean of 1:  1.9724939
+epochs: 155
+acc:  0.82
+mean of 0:  -2.7417798
+mean of 1:  1.5710937
+epochs: 156
+acc:  0.82
+mean of 0:  -3.3800902
+mean of 1:  2.0052857
+epochs: 157
+acc:  0.83
+mean of 0:  -3.078798
+mean of 1:  1.747956
+epochs: 158
+acc:  0.85
+mean of 0:  -3.446038
+mean of 1:  2.0842316
+epochs: 159
+acc:  0.77
+mean of 0:  -3.291005
+mean of 1:  2.0102866
+epochs: 160
+acc:  0.84
+mean of 0:  -3.2077537
+mean of 1:  2.1449175
+epochs: 161
+acc:  0.78
+mean of 0:  -3.346376
+mean of 1:  2.2163656
+epochs: 162
+acc:  0.86
+mean of 0:  -3.724659
+mean of 1:  2.3286812
+epochs: 163
+acc:  0.81
+mean of 0:  -3.5415504
+mean of 1:  2.325203
+epochs: 164
+acc:  0.82
+mean of 0:  -3.8371785
+mean of 1:  2.4813857
+epochs: 165
+acc:  0.82
+mean of 0:  -3.8634262
+mean of 1:  2.40762
+epochs: 166
+acc:  0.84
+mean of 0:  -3.9101112
+mean of 1:  2.4641256
+epochs: 167
+acc:  0.83
+mean of 0:  -3.7934647
+mean of 1:  2.2190633
+epochs: 168
+acc:  0.79
+mean of 0:  -3.9837768
+mean of 1:  2.2006938
+epochs: 169
+acc:  0.86
+mean of 0:  -3.9884484
+mean of 1:  2.4950445
+epochs: 170
+acc:  0.85
+mean of 0:  -3.9718971
+mean of 1:  2.5303476
+epochs: 171
+acc:  0.84
+mean of 0:  -3.5423808
+mean of 1:  2.3192637
+epochs: 172
+acc:  0.8
+mean of 0:  -3.7266357
+mean of 1:  2.4299438
+epochs: 173
+acc:  0.8
+mean of 0:  -4.120012
+mean of 1:  2.7793927
+epochs: 174
+acc:  0.84
+mean of 0:  -3.861063
+mean of 1:  2.4390945
+epochs: 175
+acc:  0.83
+mean of 0:  -3.82972
+mean of 1:  2.418729
+epochs: 176
+acc:  0.85
+mean of 0:  -3.9806259
+mean of 1:  2.4998598
+epochs: 177
+acc:  0.85
+mean of 0:  -4.074964
+mean of 1:  2.767753
+epochs: 178
+acc:  0.8
+mean of 0:  -4.26001
+mean of 1:  2.8876002
+epochs: 179
+acc:  0.85
+mean of 0:  -3.9594665
+mean of 1:  2.655369
+epochs: 180
+acc:  0.8
+mean of 0:  -3.9936821
+mean of 1:  2.5909941
+epochs: 181
+acc:  0.82
+mean of 0:  -4.671595
+mean of 1:  2.8905854
+epochs: 182
+acc:  0.81
+mean of 0:  -3.966473
+mean of 1:  2.5511682
+epochs: 183
+acc:  0.82
+mean of 0:  -4.1114693
+mean of 1:  2.691554
+epochs: 184
+acc:  0.86
+mean of 0:  -4.931872
+mean of 1:  3.2805707
+epochs: 185
+acc:  0.85
+mean of 0:  -4.353474
+mean of 1:  2.9737055
+epochs: 186
+acc:  0.9
+mean of 0:  -4.5359926
+mean of 1:  3.0956578
+epochs: 187
+acc:  0.86
+mean of 0:  -4.258468
+mean of 1:  2.946021
+epochs: 188
+acc:  0.86
+mean of 0:  -4.698709
+mean of 1:  3.1440766
+epochs: 189
+acc:  0.86
+mean of 0:  -4.161874
+mean of 1:  2.770286
+epochs: 190
+acc:  0.85
+mean of 0:  -4.139119
+mean of 1:  2.7680101
+epochs: 191
+acc:  0.9
+mean of 0:  -4.657744
+mean of 1:  3.1856735
+epochs: 192
+acc:  0.86
+mean of 0:  -4.760886
+mean of 1:  3.2975554
+epochs: 193
+acc:  0.86
+mean of 0:  -4.6735573
+mean of 1:  3.254359
+epochs: 194
+acc:  0.86
+mean of 0:  -4.4480066
+mean of 1:  2.9522815
+epochs: 195
+acc:  0.86
+mean of 0:  -4.982255
+mean of 1:  3.3479292
+epochs: 196
+acc:  0.88
+mean of 0:  -4.9201584
+mean of 1:  3.310721
+epochs: 197
+acc:  0.83
+mean of 0:  -4.5178857
+mean of 1:  3.022174
+epochs: 198
+acc:  0.86
+mean of 0:  -4.2827873
+mean of 1:  2.8478692
+epochs: 199
+acc:  0.84
+mean of 0:  -4.4224343
+mean of 1:  2.9923203
+epochs: 200
+acc:  0.83
+mean of 0:  -4.446023
+mean of 1:  3.0323546
+epochs: 201
+acc:  0.83
+mean of 0:  -4.538871
+mean of 1:  3.1555514
+epochs: 202
+acc:  0.87
+mean of 0:  -4.371512
+mean of 1:  2.9878123
+epochs: 203
+acc:  0.83
+mean of 0:  -4.216812
+mean of 1:  2.829798
+epochs: 204
+acc:  0.84
+mean of 0:  -4.074718
+mean of 1:  2.9666173
+epochs: 205
+acc:  0.85
+mean of 0:  -4.187799
+mean of 1:  2.85711
+epochs: 206
+acc:  0.85
+mean of 0:  -4.3911896
+mean of 1:  2.8464696
+epochs: 207
+acc:  0.79
+mean of 0:  -3.623668
+mean of 1:  2.5811703
+epochs: 208
+acc:  0.85
+mean of 0:  -4.2912793
+mean of 1:  3.0213401
+epochs: 209
+acc:  0.86
+mean of 0:  -4.3601103
+mean of 1:  2.8850734
+epochs: 210
+acc:  0.86
+mean of 0:  -4.204661
+mean of 1:  2.9589686
+epochs: 211
+acc:  0.84
+mean of 0:  -4.010465
+mean of 1:  2.7475402
+epochs: 212
+acc:  0.81
+mean of 0:  -4.1449184
+mean of 1:  2.9338422
+epochs: 213
+acc:  0.81
+mean of 0:  -4.04502
+mean of 1:  2.9345758
+epochs: 214
+acc:  0.8
+mean of 0:  -4.156029
+mean of 1:  2.8148394
+epochs: 215
+acc:  0.79
+mean of 0:  -3.7843933
+mean of 1:  2.7348104
+epochs: 216
+acc:  0.86
+mean of 0:  -4.2678723
+mean of 1:  2.9044826
+epochs: 217
+acc:  0.86
+mean of 0:  -4.044768
+mean of 1:  2.7910087
+epochs: 218
+acc:  0.82
+mean of 0:  -4.380584
+mean of 1:  2.9500287
+epochs: 219
+acc:  0.79
+mean of 0:  -4.577739
+mean of 1:  2.9684465
+epochs: 220
+acc:  0.82
+mean of 0:  -4.5121574
+mean of 1:  3.097116
+epochs: 221
+acc:  0.84
+mean of 0:  -4.1250315
+mean of 1:  2.802642
+epochs: 222
+acc:  0.82
+mean of 0:  -4.553565
+mean of 1:  2.999721
+epochs: 223
+acc:  0.86
+mean of 0:  -4.5915465
+mean of 1:  3.1782405
+epochs: 224
+acc:  0.85
+mean of 0:  -4.226794
+mean of 1:  2.7883825
+epochs: 225
+acc:  0.79
+mean of 0:  -3.7720234
+mean of 1:  2.5598652
+epochs: 226
+acc:  0.87
+mean of 0:  -4.712056
+mean of 1:  3.189582
+epochs: 227
+acc:  0.89
+mean of 0:  -4.6604333
+mean of 1:  3.0993547
+epochs: 228
+acc:  0.85
+mean of 0:  -4.665593
+mean of 1:  3.1509664
+epochs: 229
+acc:  0.87
+mean of 0:  -4.840558
+mean of 1:  3.2136886
+epochs: 230
+acc:  0.86
+mean of 0:  -4.740269
+mean of 1:  3.101641
+epochs: 231
+acc:  0.86
+mean of 0:  -4.274087
+mean of 1:  2.9192557
+epochs: 232
+acc:  0.86
+mean of 0:  -4.8650727
+mean of 1:  3.0660589
+epochs: 233
+acc:  0.9
+mean of 0:  -4.687196
+mean of 1:  2.9337165
+epochs: 234
+acc:  0.9
+mean of 0:  -4.8464365
+mean of 1:  3.1670978
+epochs: 235
+acc:  0.83
+mean of 0:  -4.8336186
+mean of 1:  3.104097
+epochs: 236
+acc:  0.89
+mean of 0:  -4.90782
+mean of 1:  3.2509484
+epochs: 237
+acc:  0.86
+mean of 0:  -5.2760572
+mean of 1:  3.5004656
+epochs: 238
+acc:  0.87
+mean of 0:  -4.596601
+mean of 1:  3.0191674
+epochs: 239
+acc:  0.91
+mean of 0:  -4.8557386
+mean of 1:  3.2529411
+epochs: 240
+acc:  0.86
+mean of 0:  -4.9949985
+mean of 1:  3.236654
+epochs: 241
+acc:  0.89
+mean of 0:  -4.8875937
+mean of 1:  3.2725444
+epochs: 242
+acc:  0.87
+mean of 0:  -4.611808
+mean of 1:  2.9039958
+epochs: 243
+acc:  0.89
+mean of 0:  -4.622056
+mean of 1:  3.1363769
+epochs: 244
+acc:  0.86
+mean of 0:  -4.637086
+mean of 1:  3.2773874
+epochs: 245
+acc:  0.85
+mean of 0:  -4.781076
+mean of 1:  3.112062
+epochs: 246
+acc:  0.85
+mean of 0:  -4.6081657
+mean of 1:  3.0727618
+epochs: 247
+acc:  0.84
+mean of 0:  -4.388995
+mean of 1:  3.0706763
+epochs: 248
+acc:  0.88
+mean of 0:  -4.8604918
+mean of 1:  3.3437397
+epochs: 249
+acc:  0.85
+mean of 0:  -3.9433503
+mean of 1:  2.7898848
+epochs: 250
+acc:  0.8
+mean of 0:  -4.7252274
+mean of 1:  3.1345112
+epochs: 251
+acc:  0.84
+mean of 0:  -4.405038
+mean of 1:  3.0153263
+epochs: 252
+acc:  0.81
+mean of 0:  -4.550543
+mean of 1:  2.8796194
+epochs: 253
+acc:  0.82
+mean of 0:  -4.522964
+mean of 1:  3.1135018
+epochs: 254
+acc:  0.82
+mean of 0:  -4.3205934
+mean of 1:  2.7287493
+epochs: 255
+acc:  0.84
+mean of 0:  -4.701239
+mean of 1:  3.0366616
+epochs: 256
+acc:  0.9
+mean of 0:  -3.95121
+mean of 1:  2.7127986
+epochs: 257
+acc:  0.82
+mean of 0:  -4.6008024
+mean of 1:  3.094788
+epochs: 258
+acc:  0.78
+mean of 0:  -4.3164577
+mean of 1:  2.9419556
+epochs: 259
+acc:  0.88
+mean of 0:  -4.468759
+mean of 1:  3.1395173
+epochs: 260
+acc:  0.85
+mean of 0:  -4.069397
+mean of 1:  2.8076396
+epochs: 261
+acc:  0.92
+mean of 0:  -4.2775145
+mean of 1:  2.8611116
+epochs: 262
+acc:  0.82
+mean of 0:  -4.201888
+mean of 1:  3.0655391
+epochs: 263
+acc:  0.83
+mean of 0:  -4.377115
+mean of 1:  2.828498
+epochs: 264
+acc:  0.85
+mean of 0:  -4.4274435
+mean of 1:  3.125831
+epochs: 265
+acc:  0.86
+mean of 0:  -3.995076
+mean of 1:  2.7837663
+epochs: 266
+acc:  0.77
+mean of 0:  -3.9178994
+mean of 1:  2.4740279
+epochs: 267
+acc:  0.81
+mean of 0:  -4.40822
+mean of 1:  2.8719687
+epochs: 268
+acc:  0.84
+mean of 0:  -4.374288
+mean of 1:  2.9650733
+epochs: 269
+acc:  0.84
+mean of 0:  -4.228865
+mean of 1:  2.7033262
+epochs: 270
+acc:  0.86
+mean of 0:  -4.5333443
+mean of 1:  2.9752426
+epochs: 271
+acc:  0.85
+mean of 0:  -4.797757
+mean of 1:  3.085978
+epochs: 272
+acc:  0.84
+mean of 0:  -4.6735435
+mean of 1:  3.0552423
+epochs: 273
+acc:  0.78
+mean of 0:  -4.253755
+mean of 1:  2.7857156
+epochs: 274
+acc:  0.85
+mean of 0:  -3.955995
+mean of 1:  2.4591582
+epochs: 275
+acc:  0.84
+mean of 0:  -3.9194617
+mean of 1:  2.418296
+epochs: 276
+acc:  0.8
+mean of 0:  -3.9165413
+mean of 1:  2.6339538
+epochs: 277
+acc:  0.78
+mean of 0:  -3.831717
+mean of 1:  2.4610257
+epochs: 278
+acc:  0.76
+mean of 0:  -3.4081936
+mean of 1:  2.3001404
+epochs: 279
+acc:  0.84
+mean of 0:  -4.2544813
+mean of 1:  2.8058553
+epochs: 280
+acc:  0.8
+mean of 0:  -4.4225583
+mean of 1:  2.7861183
+epochs: 281
+acc:  0.79
+mean of 0:  -4.1634674
+mean of 1:  2.703894
+epochs: 282
+acc:  0.82
+mean of 0:  -4.7697268
+mean of 1:  3.0832777
+epochs: 283
+acc:  0.84
+mean of 0:  -4.8635464
+mean of 1:  3.267718
+epochs: 284
+acc:  0.86
+mean of 0:  -4.919805
+mean of 1:  3.50581
+epochs: 285
+acc:  0.81
+mean of 0:  -4.4762545
+mean of 1:  3.065203
+epochs: 286
+acc:  0.85
+mean of 0:  -4.5746713
+mean of 1:  3.1099508
+epochs: 287
+acc:  0.79
+mean of 0:  -4.297396
+mean of 1:  2.9693925
+epochs: 288
+acc:  0.85
+mean of 0:  -4.8658953
+mean of 1:  3.2015145
+epochs: 289
+acc:  0.79
+mean of 0:  -4.589761
+mean of 1:  3.0397668
+epochs: 290
+acc:  0.87
+mean of 0:  -5.0202737
+mean of 1:  3.3420014
+epochs: 291
+acc:  0.82
+mean of 0:  -5.049348
+mean of 1:  3.4766726
+epochs: 292
+acc:  0.85
+mean of 0:  -5.0465865
+mean of 1:  3.3609276
+epochs: 293
+acc:  0.85
+mean of 0:  -5.045201
+mean of 1:  3.5129278
+epochs: 294
+acc:  0.84
+mean of 0:  -4.7108145
+mean of 1:  3.107227
+epochs: 295
+acc:  0.86
+mean of 0:  -5.4747314
+mean of 1:  3.497862
+epochs: 296
+acc:  0.85
+mean of 0:  -5.084248
+mean of 1:  3.3313816
+epochs: 297
+acc:  0.87
+mean of 0:  -5.4678307
+mean of 1:  3.6651833
+epochs: 298
+acc:  0.88
+mean of 0:  -5.15184
+mean of 1:  3.3929133
+epochs: 299
+acc:  0.84
+mean of 0:  -5.1309147
+mean of 1:  3.1864934
+epochs: 300
+acc:  0.82
+mean of 0:  -5.117858
+mean of 1:  3.3864398
+epochs: 301
+acc:  0.85
+mean of 0:  -4.9327593
+mean of 1:  3.073607
+epochs: 302
+acc:  0.82
+mean of 0:  -5.0639925
+mean of 1:  3.4434953
+epochs: 303
+acc:  0.86
+mean of 0:  -5.2434416
+mean of 1:  3.5915709
+epochs: 304
+acc:  0.86
+mean of 0:  -5.6250367
+mean of 1:  3.609655
+epochs: 305
+acc:  0.88
+mean of 0:  -5.781827
+mean of 1:  3.8434832
+epochs: 306
+acc:  0.88
+mean of 0:  -5.718065
+mean of 1:  3.795881
+epochs: 307
+acc:  0.84
+mean of 0:  -6.29387
+mean of 1:  4.0272317
+epochs: 308
+acc:  0.84
+mean of 0:  -5.5022993
+mean of 1:  3.6081994
+epochs: 309
+acc:  0.86
+mean of 0:  -6.252848
+mean of 1:  4.103179
+epochs: 310
+acc:  0.82
+mean of 0:  -5.988195
+mean of 1:  3.7745287
+epochs: 311
+acc:  0.88
+mean of 0:  -5.8274236
+mean of 1:  3.8979576
+epochs: 312
+acc:  0.85
+mean of 0:  -5.8694525
+mean of 1:  3.9199479
+epochs: 313
+acc:  0.9
+mean of 0:  -5.879649
+mean of 1:  3.9085739
+epochs: 314
+acc:  0.87
+mean of 0:  -6.065389
+mean of 1:  4.089875
+epochs: 315
+acc:  0.84
+mean of 0:  -5.990198
+mean of 1:  3.8770375
+epochs: 316
+acc:  0.87
+mean of 0:  -6.00603
+mean of 1:  4.009562
+epochs: 317
+acc:  0.91
+mean of 0:  -5.684512
+mean of 1:  3.974006
+epochs: 318
+acc:  0.89
+mean of 0:  -6.3894978
+mean of 1:  4.2847595
+epochs: 319
+acc:  0.88
+mean of 0:  -5.6950607
+mean of 1:  3.896457
+epochs: 320
+acc:  0.87
+mean of 0:  -5.794198
+mean of 1:  3.781547
+epochs: 321
+acc:  0.89
+mean of 0:  -6.7037797
+mean of 1:  4.3436847
+epochs: 322
+acc:  0.87
+mean of 0:  -6.4165506
+mean of 1:  4.331983
+epochs: 323
+acc:  0.87
+mean of 0:  -6.9864526
+mean of 1:  4.600543
+epochs: 324
+acc:  0.9
+mean of 0:  -6.5044127
+mean of 1:  4.434401
+epochs: 325
+acc:  0.91
+mean of 0:  -6.67527
+mean of 1:  4.298712
+epochs: 326
+acc:  0.92
+mean of 0:  -6.2679853
+mean of 1:  4.34601
+epochs: 327
+acc:  0.88
+mean of 0:  -6.054774
+mean of 1:  4.109533
+epochs: 328
+acc:  0.91
+mean of 0:  -7.3398046
+mean of 1:  5.058555
+epochs: 329
+acc:  0.9
+mean of 0:  -6.662947
+mean of 1:  4.5349636
+epochs: 330
+acc:  0.88
+mean of 0:  -6.2933455
+mean of 1:  4.3324265
+epochs: 331
+acc:  0.87
+mean of 0:  -6.066767
+mean of 1:  4.0394106
+epochs: 332
+acc:  0.92
+mean of 0:  -6.6493134
+mean of 1:  4.7361383
+epochs: 333
+acc:  0.88
+mean of 0:  -6.579895
+mean of 1:  4.6314573
+epochs: 334
+acc:  0.88
+mean of 0:  -6.0133696
+mean of 1:  4.0733953
+epochs: 335
+acc:  0.89
+mean of 0:  -6.2490287
+mean of 1:  4.2312336
+epochs: 336
+acc:  0.87
+mean of 0:  -5.6955786
+mean of 1:  3.9434428
+epochs: 337
+acc:  0.87
+mean of 0:  -6.034255
+mean of 1:  4.071674
+epochs: 338
+acc:  0.87
+mean of 0:  -6.0595274
+mean of 1:  4.041673
+epochs: 339
+acc:  0.86
+mean of 0:  -5.9495506
+mean of 1:  4.1019435
+epochs: 340
+acc:  0.9
+mean of 0:  -6.242179
+mean of 1:  4.227026
+epochs: 341
+acc:  0.89
+mean of 0:  -6.026607
+mean of 1:  4.0416884
+epochs: 342
+acc:  0.91
+mean of 0:  -6.016713
+mean of 1:  3.8769112
+epochs: 343
+acc:  0.91
+mean of 0:  -6.431639
+mean of 1:  4.206439
+epochs: 344
+acc:  0.9
+mean of 0:  -6.124389
+mean of 1:  4.1750774
+epochs: 345
+acc:  0.88
+mean of 0:  -6.3186
+mean of 1:  4.324263
+epochs: 346
+acc:  0.93
+mean of 0:  -5.8779664
+mean of 1:  3.832349
+epochs: 347
+acc:  0.91
+mean of 0:  -7.275992
+mean of 1:  4.762335
+epochs: 348
+acc:  0.91
+mean of 0:  -6.4626107
+mean of 1:  4.3339057
+epochs: 349
+acc:  0.93
+mean of 0:  -6.4961305
+mean of 1:  4.2800756
+epochs: 350
+acc:  0.93
+mean of 0:  -5.7141523
+mean of 1:  3.8530989
+epochs: 351
+acc:  0.87
+mean of 0:  -6.2937174
+mean of 1:  3.7139697
+epochs: 352
+acc:  0.9
+mean of 0:  -6.057353
+mean of 1:  3.9044256
+epochs: 353
+acc:  0.9
+mean of 0:  -6.4210615
+mean of 1:  4.061011
+epochs: 354
+acc:  0.96
+mean of 0:  -6.2210455
+mean of 1:  4.024301
+epochs: 355
+acc:  0.9
+mean of 0:  -6.3966846
+mean of 1:  4.007043
+epochs: 356
+acc:  0.92
+mean of 0:  -6.7421684
+mean of 1:  4.24158
+epochs: 357
+acc:  0.97
+mean of 0:  -6.5897446
+mean of 1:  4.386026
+epochs: 358
+acc:  0.93
+mean of 0:  -6.377399
+mean of 1:  4.091693
+epochs: 359
+acc:  0.94
+mean of 0:  -7.0561247
+mean of 1:  4.348794
+epochs: 360
+acc:  0.9
+mean of 0:  -6.983504
+mean of 1:  4.3631763
+epochs: 361
+acc:  0.95
+mean of 0:  -7.30128
+mean of 1:  4.784922
+epochs: 362
+acc:  0.92
+mean of 0:  -7.050891
+mean of 1:  4.3933005
+epochs: 363
+acc:  0.97
+mean of 0:  -6.6975937
+mean of 1:  4.373149
+epochs: 364
+acc:  0.94
+mean of 0:  -7.1436524
+mean of 1:  4.633334
+epochs: 365
+acc:  0.91
+mean of 0:  -6.7238746
+mean of 1:  4.227314
+epochs: 366
+acc:  0.93
+mean of 0:  -7.0479813
+mean of 1:  4.511783
+epochs: 367
+acc:  0.92
+mean of 0:  -7.2692947
+mean of 1:  4.8198366
+epochs: 368
+acc:  0.89
+mean of 0:  -7.2701807
+mean of 1:  4.7540865
+epochs: 369
+acc:  0.96
+mean of 0:  -7.679535
+mean of 1:  4.8586755
+epochs: 370
+acc:  0.92
+mean of 0:  -6.9110084
+mean of 1:  4.4114094
+epochs: 371
+acc:  0.93
+mean of 0:  -6.794524
+mean of 1:  4.5300374
+epochs: 372
+acc:  0.95
+mean of 0:  -6.719766
+mean of 1:  4.4601865
+epochs: 373
+acc:  0.93
+mean of 0:  -6.4484115
+mean of 1:  4.3386836
+epochs: 374
+acc:  0.88
+mean of 0:  -7.1847243
+mean of 1:  4.6677394
+epochs: 375
+acc:  0.91
+mean of 0:  -7.069003
+mean of 1:  4.692825
+epochs: 376
+acc:  0.87
+mean of 0:  -6.798494
+mean of 1:  4.3351927
+epochs: 377
+acc:  0.92
+mean of 0:  -6.587046
+mean of 1:  4.4700217
+epochs: 378
+acc:  0.94
+mean of 0:  -7.265718
+mean of 1:  4.832097
+epochs: 379
+acc:  0.87
+mean of 0:  -6.196051
+mean of 1:  4.1893826
+epochs: 380
+acc:  0.92
+mean of 0:  -6.865457
+mean of 1:  4.5637755
+epochs: 381
+acc:  0.88
+mean of 0:  -6.2471266
+mean of 1:  4.2610087
+epochs: 382
+acc:  0.9
+mean of 0:  -6.023632
+mean of 1:  4.2069244
+epochs: 383
+acc:  0.92
+mean of 0:  -6.9848633
+mean of 1:  4.7590804
+epochs: 384
+acc:  0.89
+mean of 0:  -6.743235
+mean of 1:  4.522138
+epochs: 385
+acc:  0.9
+mean of 0:  -7.5264845
+mean of 1:  5.268112
+epochs: 386
+acc:  0.94
+mean of 0:  -7.058358
+mean of 1:  4.7197423
+epochs: 387
+acc:  0.91
+mean of 0:  -7.250403
+mean of 1:  4.86828
+epochs: 388
+acc:  0.92
+mean of 0:  -7.7028036
+mean of 1:  5.001538
+epochs: 389
+acc:  0.92
+mean of 0:  -6.9909196
+mean of 1:  4.834633
+epochs: 390
+acc:  0.88
+mean of 0:  -7.1475396
+mean of 1:  4.7797627
+epochs: 391
+acc:  0.92
+mean of 0:  -7.3527923
+mean of 1:  4.9853272
+epochs: 392
+acc:  0.94
+mean of 0:  -7.468248
+mean of 1:  5.069456
+epochs: 393
+acc:  0.92
+mean of 0:  -6.7515936
+mean of 1:  4.787242
+epochs: 394
+acc:  0.93
+mean of 0:  -7.4575057
+mean of 1:  5.1488347
+epochs: 395
+acc:  0.92
+mean of 0:  -7.312074
+mean of 1:  5.029733
+epochs: 396
+acc:  0.89
+mean of 0:  -6.7371836
+mean of 1:  4.463427
+epochs: 397
+acc:  0.87
+mean of 0:  -6.6079893
+mean of 1:  4.552095
+epochs: 398
+acc:  0.95
+mean of 0:  -7.3890104
+mean of 1:  5.225463
+epochs: 399
+acc:  0.93
+mean of 0:  -7.3348274
+mean of 1:  5.0574584
+epochs: 400
+acc:  0.94
+mean of 0:  -7.820323
+mean of 1:  5.308495
+epochs: 401
+acc:  0.94
+mean of 0:  -6.9765196
+mean of 1:  4.8792005
+epochs: 402
+acc:  0.87
+mean of 0:  -7.5099134
+mean of 1:  5.327487
+epochs: 403
+acc:  0.86
+mean of 0:  -7.506097
+mean of 1:  5.1052923
+epochs: 404
+acc:  0.91
+mean of 0:  -7.089606
+mean of 1:  4.9061513
+epochs: 405
+acc:  0.91
+mean of 0:  -7.381686
+mean of 1:  4.992651
+epochs: 406
+acc:  0.9
+mean of 0:  -7.5558853
+mean of 1:  5.2318883
+epochs: 407
+acc:  0.93
+mean of 0:  -7.6075377
+mean of 1:  5.2478766
+epochs: 408
+acc:  0.89
+mean of 0:  -7.804881
+mean of 1:  5.453192
+epochs: 409
+acc:  0.9
+mean of 0:  -7.7022943
+mean of 1:  5.18533
+epochs: 410
+acc:  0.93
+mean of 0:  -8.467547
+mean of 1:  5.633054
+epochs: 411
+acc:  0.88
+mean of 0:  -8.126224
+mean of 1:  5.376417
+epochs: 412
+acc:  0.85
+mean of 0:  -7.4750085
+mean of 1:  4.9696193
+epochs: 413
+acc:  0.87
+mean of 0:  -7.3715734
+mean of 1:  4.733706
+epochs: 414
+acc:  0.92
+mean of 0:  -7.8123055
+mean of 1:  4.840297
+epochs: 415
+acc:  0.88
+mean of 0:  -7.8932395
+mean of 1:  5.358311
+epochs: 416
+acc:  0.9
+mean of 0:  -7.97433
+mean of 1:  5.153203
+epochs: 417
+acc:  0.91
+mean of 0:  -7.9236956
+mean of 1:  5.1216583
+epochs: 418
+acc:  0.9
+mean of 0:  -7.319009
+mean of 1:  4.914163
+epochs: 419
+acc:  0.88
+mean of 0:  -7.8060102
+mean of 1:  5.120807
+epochs: 420
+acc:  0.92
+mean of 0:  -7.620887
+mean of 1:  4.9936547
+epochs: 421
+acc:  0.93
+mean of 0:  -8.315982
+mean of 1:  5.527588
+epochs: 422
+acc:  0.92
+mean of 0:  -8.191757
+mean of 1:  5.442315
+epochs: 423
+acc:  0.89
+mean of 0:  -8.736799
+mean of 1:  5.950076
+epochs: 424
+acc:  0.91
+mean of 0:  -8.083075
+mean of 1:  5.3057723
+epochs: 425
+acc:  0.89
+mean of 0:  -7.8670106
+mean of 1:  5.1115093
+epochs: 426
+acc:  0.94
+mean of 0:  -7.747224
+mean of 1:  5.264292
+epochs: 427
+acc:  0.94
+mean of 0:  -7.2444353
+mean of 1:  4.85829
+epochs: 428
+acc:  0.94
+mean of 0:  -7.6863947
+mean of 1:  4.9600954
+epochs: 429
+acc:  0.92
+mean of 0:  -7.0746603
+mean of 1:  4.5507565
+epochs: 430
+acc:  0.96
+mean of 0:  -8.709726
+mean of 1:  5.8168926
+epochs: 431
+acc:  0.91
+mean of 0:  -8.148578
+mean of 1:  5.2106457
+epochs: 432
+acc:  0.92
+mean of 0:  -7.4195356
+mean of 1:  4.9109225
+epochs: 433
+acc:  0.94
+mean of 0:  -7.9833956
+mean of 1:  5.353116
+epochs: 434
+acc:  0.93
+mean of 0:  -8.037973
+mean of 1:  4.9330297
+epochs: 435
+acc:  0.93
+mean of 0:  -7.674739
+mean of 1:  5.031157
+epochs: 436
+acc:  0.88
+mean of 0:  -8.024168
+mean of 1:  5.160743
+epochs: 437
+acc:  0.89
+mean of 0:  -8.333172
+mean of 1:  5.389583
+epochs: 438
+acc:  0.95
+mean of 0:  -7.0183663
+mean of 1:  4.593848
+epochs: 439
+acc:  0.97
+mean of 0:  -7.931871
+mean of 1:  5.276755
+epochs: 440
+acc:  0.9
+mean of 0:  -8.060488
+mean of 1:  5.3111544
+epochs: 441
+acc:  0.94
+mean of 0:  -6.933801
+mean of 1:  4.65766
+epochs: 442
+acc:  0.99
+mean of 0:  -8.241037
+mean of 1:  5.370148
+epochs: 443
+acc:  0.96
+mean of 0:  -7.9512863
+mean of 1:  5.279189
+epochs: 444
+acc:  0.93
+mean of 0:  -8.47934
+mean of 1:  5.4563937
+epochs: 445
+acc:  0.95
+mean of 0:  -7.190029
+mean of 1:  4.7521
+epochs: 446
+acc:  0.93
+mean of 0:  -7.9735537
+mean of 1:  5.2109632
+epochs: 447
+acc:  0.96
+mean of 0:  -8.057209
+mean of 1:  5.149327
+epochs: 448
+acc:  0.9
+mean of 0:  -7.2927337
+mean of 1:  4.9449077
+epochs: 449
+acc:  0.91
+mean of 0:  -8.358859
+mean of 1:  5.4812527
+epochs: 450
+acc:  0.96
+mean of 0:  -8.414099
+mean of 1:  5.532401
+epochs: 451
+acc:  0.92
+mean of 0:  -8.872165
+mean of 1:  5.8822794
+epochs: 452
+acc:  0.91
+mean of 0:  -7.645343
+mean of 1:  4.970982
+epochs: 453
+acc:  0.93
+mean of 0:  -7.7335534
+mean of 1:  5.3120847
+epochs: 454
+acc:  0.92
+mean of 0:  -8.201203
+mean of 1:  5.6610622
+epochs: 455
+acc:  0.94
+mean of 0:  -8.095736
+mean of 1:  5.353066
+epochs: 456
+acc:  0.97
+mean of 0:  -7.709815
+mean of 1:  4.969685
+epochs: 457
+acc:  0.91
+mean of 0:  -7.625065
+mean of 1:  4.905934
+epochs: 458
+acc:  0.92
+mean of 0:  -7.919378
+mean of 1:  5.1862054
+epochs: 459
+acc:  0.97
+mean of 0:  -7.722786
+mean of 1:  4.981355
+epochs: 460
+acc:  0.93
+mean of 0:  -7.5942245
+mean of 1:  4.835551
+epochs: 461
+acc:  0.9
+mean of 0:  -7.5962877
+mean of 1:  4.960629
+epochs: 462
+acc:  0.95
+mean of 0:  -8.047844
+mean of 1:  5.1767774
+epochs: 463
+acc:  0.89
+mean of 0:  -9.132238
+mean of 1:  5.7966466
+epochs: 464
+acc:  0.91
+mean of 0:  -8.65901
+mean of 1:  5.717927
+epochs: 465
+acc:  0.96
+mean of 0:  -8.389127
+mean of 1:  5.594187
+epochs: 466
+acc:  0.92
+mean of 0:  -7.5328035
+mean of 1:  5.084087
+epochs: 467
+acc:  0.95
+mean of 0:  -8.031499
+mean of 1:  5.0036845
+epochs: 468
+acc:  0.92
+mean of 0:  -8.250494
+mean of 1:  5.250572
+epochs: 469
+acc:  0.95
+mean of 0:  -9.646847
+mean of 1:  5.854712
+epochs: 470
+acc:  0.92
+mean of 0:  -9.0879345
+mean of 1:  6.163753
+epochs: 471
+acc:  0.88
+mean of 0:  -8.119197
+mean of 1:  5.115484
+epochs: 472
+acc:  0.95
+mean of 0:  -8.613588
+mean of 1:  5.561159
+epochs: 473
+acc:  0.95
+mean of 0:  -8.525835
+mean of 1:  5.6694384
+epochs: 474
+acc:  0.92
+mean of 0:  -9.495224
+mean of 1:  6.14054
+epochs: 475
+acc:  0.94
+mean of 0:  -9.55303
+mean of 1:  6.1473594
+epochs: 476
+acc:  0.95
+mean of 0:  -8.736144
+mean of 1:  5.466561
+epochs: 477
+acc:  0.94
+mean of 0:  -9.563719
+mean of 1:  5.973358
+epochs: 478
+acc:  0.94
+mean of 0:  -9.418503
+mean of 1:  6.146867
+epochs: 479
+acc:  0.95
+mean of 0:  -8.716411
+mean of 1:  5.6365423
+epochs: 480
+acc:  0.94
+mean of 0:  -8.522682
+mean of 1:  5.7695494
+epochs: 481
+acc:  0.96
+mean of 0:  -8.789209
+mean of 1:  5.851553
+epochs: 482
+acc:  0.91
+mean of 0:  -8.553659
+mean of 1:  5.213405
+epochs: 483
+acc:  0.89
+mean of 0:  -9.290259
+mean of 1:  5.7699423
+epochs: 484
+acc:  0.92
+mean of 0:  -9.47715
+mean of 1:  6.035654
+epochs: 485
+acc:  0.99
+mean of 0:  -9.029651
+mean of 1:  5.787625
+epochs: 486
+acc:  0.96
+mean of 0:  -8.961678
+mean of 1:  5.9490886
+epochs: 487
+acc:  0.93
+mean of 0:  -9.242303
+mean of 1:  5.6745224
+epochs: 488
+acc:  0.93
+mean of 0:  -9.268888
+mean of 1:  6.030663
+epochs: 489
+acc:  0.94
+mean of 0:  -9.57014
+mean of 1:  5.7744884
+epochs: 490
+acc:  0.95
+mean of 0:  -9.946124
+mean of 1:  5.822233
+epochs: 491
+acc:  0.95
+mean of 0:  -7.889487
+mean of 1:  5.4030075
+epochs: 492
+acc:  0.96
+mean of 0:  -10.036654
+mean of 1:  6.142694
+epochs: 493
+acc:  0.98
+mean of 0:  -9.665613
+mean of 1:  6.35971
+epochs: 494
+acc:  0.96
+mean of 0:  -8.825838
+mean of 1:  5.7995496
+epochs: 495
+acc:  0.96
+mean of 0:  -9.387843
+mean of 1:  6.2936316
+epochs: 496
+acc:  0.93
+mean of 0:  -9.720438
+mean of 1:  6.2769547
+epochs: 497
+acc:  0.96
+mean of 0:  -8.5743685
+mean of 1:  5.635839
+epochs: 498
+acc:  0.98
+mean of 0:  -9.024607
+mean of 1:  6.151968
+epochs: 499
+acc:  0.98
+mean of 0:  -8.289162
+mean of 1:  5.527219
+
+
+
+mean of 0:  0.19811675
+mean of 1:  1.3527557
+# predict Counter({1.0: 25970, 0.0: 24494})
+# test Counter({0.0: 25232, 1.0: 25232})
+seq_length: 3, # predicts: 50464, # corrects: 26396, acc: 0.523066
+(array([0.52376092, 0.52241047]), array([0.50844166, 0.53769023]), array([0.51598761, 0.52994024]), array([25232, 25232]))
+work time: 12941.580241 sec
+
+
+
+learning_rate: 0.010000, batch_size 100, epochs 500
+features are loaded
+size of learn_Y: 117416
+Counter({1.0: 68006, 0.0: 49410})
+Counter({0.0: 49410, 1.0: 49410})
+Data loading Complete learn:98820, test:50464
+epochs: 0
+acc:  0.47
+mean of 0:  1.1296242
+mean of 1:  -1.3143518
+epochs: 1
+acc:  0.55
+mean of 0:  0.15367393
+mean of 1:  0.25920352
+epochs: 2
+acc:  0.49
+mean of 0:  0.26337397
+mean of 1:  0.12168096
+epochs: 3
+acc:  0.57
+mean of 0:  0.10131333
+mean of 1:  0.19800325
+epochs: 4
+acc:  0.55
+mean of 0:  0.026567586
+mean of 1:  0.20483288
+epochs: 5
+acc:  0.56
+mean of 0:  -0.037860062
+mean of 1:  0.15237178
+epochs: 6
+acc:  0.55
+mean of 0:  -0.09169797
+mean of 1:  0.10700212
+epochs: 7
+acc:  0.6
+mean of 0:  -0.16528286
+mean of 1:  0.05146243
+epochs: 8
+acc:  0.57
+mean of 0:  -0.21299537
+mean of 1:  0.020417402
+epochs: 9
+acc:  0.54
+mean of 0:  -0.21986337
+mean of 1:  -0.06717802
+epochs: 10
+acc:  0.57
+mean of 0:  -0.22879751
+mean of 1:  -0.038811203
+epochs: 11
+acc:  0.57
+mean of 0:  -0.24693017
+mean of 1:  -0.014076116
+epochs: 12
+acc:  0.55
+mean of 0:  -0.22933993
+mean of 1:  -0.008109753
+epochs: 13
+acc:  0.58
+mean of 0:  -0.24105346
+mean of 1:  0.019842517
+epochs: 14
+acc:  0.55
+mean of 0:  -0.230263
+mean of 1:  0.058379516
+epochs: 15
+acc:  0.59
+mean of 0:  -0.21388616
+mean of 1:  0.07490922
+epochs: 16
+acc:  0.58
+mean of 0:  -0.22823462
+mean of 1:  0.09606262
+epochs: 17
+acc:  0.59
+mean of 0:  -0.26650128
+mean of 1:  0.100222275
+epochs: 18
+acc:  0.63
+mean of 0:  -0.24376611
+mean of 1:  0.13360114
+epochs: 19
+acc:  0.64
+mean of 0:  -0.28143582
+mean of 1:  0.12645559
+epochs: 20
+acc:  0.62
+mean of 0:  -0.28550047
+mean of 1:  0.121979155
+epochs: 21
+acc:  0.63
+mean of 0:  -0.31598744
+mean of 1:  0.12840365
+epochs: 22
+acc:  0.63
+mean of 0:  -0.31273407
+mean of 1:  0.14582418
+epochs: 23
+acc:  0.64
+mean of 0:  -0.375276
+mean of 1:  0.11649305
+epochs: 24
+acc:  0.65
+mean of 0:  -0.30313033
+mean of 1:  0.15853801
+epochs: 25
+acc:  0.66
+mean of 0:  -0.36725068
+mean of 1:  0.1607456
+epochs: 26
+acc:  0.65
+mean of 0:  -0.30709004
+mean of 1:  0.21755566
+epochs: 27
+acc:  0.62
+mean of 0:  -0.33373132
+mean of 1:  0.15679592
+epochs: 28
+acc:  0.67
+mean of 0:  -0.32693166
+mean of 1:  0.25756517
+epochs: 29
+acc:  0.66
+mean of 0:  -0.3429384
+mean of 1:  0.2716156
+epochs: 30
+acc:  0.61
+mean of 0:  -0.30939618
+mean of 1:  0.20914844
+epochs: 31
+acc:  0.63
+mean of 0:  -0.36548057
+mean of 1:  0.25346085
+epochs: 32
+acc:  0.65
+mean of 0:  -0.35146636
+mean of 1:  0.28274694
+epochs: 33
+acc:  0.67
+mean of 0:  -0.42321664
+mean of 1:  0.3005615
+epochs: 34
+acc:  0.65
+mean of 0:  -0.4235189
+mean of 1:  0.27966362
+epochs: 35
+acc:  0.63
+mean of 0:  -0.40454102
+mean of 1:  0.3203121
+epochs: 36
+acc:  0.64
+mean of 0:  -0.39306942
+mean of 1:  0.32939804
+epochs: 37
+acc:  0.64
+mean of 0:  -0.49740812
+mean of 1:  0.38534147
+epochs: 38
+acc:  0.63
+mean of 0:  -0.48394835
+mean of 1:  0.36180827
+epochs: 39
+acc:  0.66
+mean of 0:  -0.44829354
+mean of 1:  0.4163088
+epochs: 40
+acc:  0.69
+mean of 0:  -0.5045578
+mean of 1:  0.4257655
+epochs: 41
+acc:  0.7
+mean of 0:  -0.49256048
+mean of 1:  0.42793697
+epochs: 42
+acc:  0.68
+mean of 0:  -0.4722164
+mean of 1:  0.4407409
+epochs: 43
+acc:  0.7
+mean of 0:  -0.5423793
+mean of 1:  0.45550153
+epochs: 44
+acc:  0.69
+mean of 0:  -0.559998
+mean of 1:  0.45305082
+epochs: 45
+acc:  0.69
+mean of 0:  -0.5891357
+mean of 1:  0.5174356
+epochs: 46
+acc:  0.73
+mean of 0:  -0.7190565
+mean of 1:  0.5605324
+epochs: 47
+acc:  0.75
+mean of 0:  -0.731295
+mean of 1:  0.61264485
+epochs: 48
+acc:  0.71
+mean of 0:  -0.742626
+mean of 1:  0.55507535
+epochs: 49
+acc:  0.72
+mean of 0:  -0.8368339
+mean of 1:  0.6686815
+epochs: 50
+acc:  0.73
+mean of 0:  -0.71179646
+mean of 1:  0.60796994
+epochs: 51
+acc:  0.7
+mean of 0:  -0.691939
+mean of 1:  0.64217955
+epochs: 52
+acc:  0.7
+mean of 0:  -0.6755727
+mean of 1:  0.5864272
+epochs: 53
+acc:  0.68
+mean of 0:  -0.6575932
+mean of 1:  0.60728616
+epochs: 54
+acc:  0.66
+mean of 0:  -0.6521263
+mean of 1:  0.53514314
+epochs: 55
+acc:  0.62
+mean of 0:  -0.6619298
+mean of 1:  0.52399653
+epochs: 56
+acc:  0.66
+mean of 0:  -0.71835595
+mean of 1:  0.6507687
+epochs: 57
+acc:  0.66
+mean of 0:  -0.77777195
+mean of 1:  0.6439462
+epochs: 58
+acc:  0.68
+mean of 0:  -0.7880285
+mean of 1:  0.710638
+epochs: 59
+acc:  0.66
+mean of 0:  -0.8112889
+mean of 1:  0.67176104
+epochs: 60
+acc:  0.68
+mean of 0:  -0.85901326
+mean of 1:  0.7608544
+epochs: 61
+acc:  0.67
+mean of 0:  -0.8618535
+mean of 1:  0.7809677
+epochs: 62
+acc:  0.64
+mean of 0:  -0.8268228
+mean of 1:  0.74199575
+epochs: 63
+acc:  0.7
+mean of 0:  -0.9398497
+mean of 1:  0.84755117
+epochs: 64
+acc:  0.67
+mean of 0:  -0.89037955
+mean of 1:  0.8317691
+epochs: 65
+acc:  0.69
+mean of 0:  -0.8173415
+mean of 1:  0.78647816
+epochs: 66
+acc:  0.71
+mean of 0:  -0.96203727
+mean of 1:  0.912831
+epochs: 67
+acc:  0.69
+mean of 0:  -1.075786
+mean of 1:  1.0124848
+epochs: 68
+acc:  0.72
+mean of 0:  -1.1203778
+mean of 1:  1.0369352
+epochs: 69
+acc:  0.7
+mean of 0:  -1.1612372
+mean of 1:  1.0909921
+epochs: 70
+acc:  0.69
+mean of 0:  -1.184806
+mean of 1:  1.094898
+epochs: 71
+acc:  0.68
+mean of 0:  -1.3061091
+mean of 1:  1.2574769
+epochs: 72
+acc:  0.68
+mean of 0:  -1.2886783
+mean of 1:  1.2745258
+epochs: 73
+acc:  0.7
+mean of 0:  -1.4192708
+mean of 1:  1.3256176
+epochs: 74
+acc:  0.72
+mean of 0:  -1.4383157
+mean of 1:  1.3490304
+epochs: 75
+acc:  0.74
+mean of 0:  -1.4970051
+mean of 1:  1.393341
+epochs: 76
+acc:  0.69
+mean of 0:  -1.497999
+mean of 1:  1.3927772
+epochs: 77
+acc:  0.7
+mean of 0:  -1.561186
+mean of 1:  1.4135151
+epochs: 78
+acc:  0.74
+mean of 0:  -1.6045686
+mean of 1:  1.4324988
+epochs: 79
+acc:  0.73
+mean of 0:  -1.5846633
+mean of 1:  1.402242
+epochs: 80
+acc:  0.77
+mean of 0:  -1.6338392
+mean of 1:  1.5004541
+epochs: 81
+acc:  0.76
+mean of 0:  -1.7515697
+mean of 1:  1.553943
+epochs: 82
+acc:  0.77
+mean of 0:  -1.6935103
+mean of 1:  1.6467654
+epochs: 83
+acc:  0.77
+mean of 0:  -1.7177942
+mean of 1:  1.5940745
+epochs: 84
+acc:  0.81
+mean of 0:  -1.8987327
+mean of 1:  1.6800661
+epochs: 85
+acc:  0.77
+mean of 0:  -2.0975068
+mean of 1:  1.8581753
+epochs: 86
+acc:  0.79
+mean of 0:  -2.0952444
+mean of 1:  1.861699
+epochs: 87
+acc:  0.8
+mean of 0:  -2.0822368
+mean of 1:  1.862377
+epochs: 88
+acc:  0.79
+mean of 0:  -2.1254728
+mean of 1:  2.0231154
+epochs: 89
+acc:  0.78
+mean of 0:  -2.1628227
+mean of 1:  1.9690078
+epochs: 90
+acc:  0.76
+mean of 0:  -2.2399771
+mean of 1:  2.095499
+epochs: 91
+acc:  0.78
+mean of 0:  -2.2830803
+mean of 1:  2.0841913
+epochs: 92
+acc:  0.81
+mean of 0:  -2.4003325
+mean of 1:  2.2930722
+epochs: 93
+acc:  0.84
+mean of 0:  -2.3271804
+mean of 1:  2.2299907
+epochs: 94
+acc:  0.8
+mean of 0:  -2.4656646
+mean of 1:  2.1879692
+epochs: 95
+acc:  0.8
+mean of 0:  -2.4518638
+mean of 1:  2.3588989
+epochs: 96
+acc:  0.84
+mean of 0:  -2.322398
+mean of 1:  2.2030964
+epochs: 97
+acc:  0.83
+mean of 0:  -2.5474436
+mean of 1:  2.4967484
+epochs: 98
+acc:  0.84
+mean of 0:  -2.5103836
+mean of 1:  2.383392
+epochs: 99
+acc:  0.83
+mean of 0:  -2.6921701
+mean of 1:  2.4899716
+epochs: 100
+acc:  0.85
+mean of 0:  -2.6888433
+mean of 1:  2.5617816
+epochs: 101
+acc:  0.82
+mean of 0:  -2.5556593
+mean of 1:  2.393999
+epochs: 102
+acc:  0.82
+mean of 0:  -2.5883777
+mean of 1:  2.3803892
+epochs: 103
+acc:  0.85
+mean of 0:  -2.5915651
+mean of 1:  2.5142055
+epochs: 104
+acc:  0.82
+mean of 0:  -2.7164645
+mean of 1:  2.5120044
+epochs: 105
+acc:  0.85
+mean of 0:  -2.9842107
+mean of 1:  2.8647811
+epochs: 106
+acc:  0.78
+mean of 0:  -2.529599
+mean of 1:  2.2966733
+epochs: 107
+acc:  0.82
+mean of 0:  -2.5787106
+mean of 1:  2.4404953
+epochs: 108
+acc:  0.79
+mean of 0:  -2.766518
+mean of 1:  2.4300463
+epochs: 109
+acc:  0.8
+mean of 0:  -2.9208758
+mean of 1:  2.616992
+epochs: 110
+acc:  0.78
+mean of 0:  -2.8082714
+mean of 1:  2.548974
+epochs: 111
+acc:  0.82
+mean of 0:  -2.92481
+mean of 1:  2.5159438
+epochs: 112
+acc:  0.82
+mean of 0:  -2.8918197
+mean of 1:  2.594292
+epochs: 113
+acc:  0.85
+mean of 0:  -2.9966557
+mean of 1:  2.801948
+epochs: 114
+acc:  0.82
+mean of 0:  -2.8585465
+mean of 1:  2.5993352
+epochs: 115
+acc:  0.8
+mean of 0:  -3.000641
+mean of 1:  2.6853683
+epochs: 116
+acc:  0.84
+mean of 0:  -2.9073558
+mean of 1:  2.7311292
+epochs: 117
+acc:  0.83
+mean of 0:  -3.0141802
+mean of 1:  2.7498105
+epochs: 118
+acc:  0.81
+mean of 0:  -3.1288292
+mean of 1:  2.7710195
+epochs: 119
+acc:  0.83
+mean of 0:  -3.045564
+mean of 1:  2.6615405
+epochs: 120
+acc:  0.82
+mean of 0:  -2.7371826
+mean of 1:  2.6120028
+epochs: 121
+acc:  0.79
+mean of 0:  -2.7143807
+mean of 1:  2.5066338
+epochs: 122
+acc:  0.82
+mean of 0:  -2.74261
+mean of 1:  2.5582461
+epochs: 123
+acc:  0.83
+mean of 0:  -2.977855
+mean of 1:  2.850611
+epochs: 124
+acc:  0.81
+mean of 0:  -2.7841644
+mean of 1:  2.6496847
+epochs: 125
+acc:  0.84
+mean of 0:  -2.678877
+mean of 1:  2.5554824
+epochs: 126
+acc:  0.8
+mean of 0:  -2.7261288
+mean of 1:  2.6266518
+epochs: 127
+acc:  0.82
+mean of 0:  -2.7749643
+mean of 1:  2.675249
+epochs: 128
+acc:  0.84
+mean of 0:  -2.6637084
+mean of 1:  2.612203
+epochs: 129
+acc:  0.82
+mean of 0:  -2.3727906
+mean of 1:  2.3744385
+epochs: 130
+acc:  0.82
+mean of 0:  -2.4789295
+mean of 1:  2.4466598
+epochs: 131
+acc:  0.83
+mean of 0:  -2.7513924
+mean of 1:  2.6713848
+epochs: 132
+acc:  0.86
+mean of 0:  -2.6657634
+mean of 1:  2.6734853
+epochs: 133
+acc:  0.82
+mean of 0:  -2.7246518
+mean of 1:  2.6674392
+epochs: 134
+acc:  0.87
+mean of 0:  -2.7294922
+mean of 1:  2.6688051
+epochs: 135
+acc:  0.87
+mean of 0:  -2.6853082
+mean of 1:  2.6473453
+epochs: 136
+acc:  0.84
+mean of 0:  -2.5729558
+mean of 1:  2.6523733
+epochs: 137
+acc:  0.82
+mean of 0:  -2.563061
+mean of 1:  2.5358489
+epochs: 138
+acc:  0.83
+mean of 0:  -2.9260104
+mean of 1:  2.865797
+epochs: 139
+acc:  0.83
+mean of 0:  -2.611026
+mean of 1:  2.5995762
+epochs: 140
+acc:  0.83
+mean of 0:  -2.9137356
+mean of 1:  2.7856677
+epochs: 141
+acc:  0.79
+mean of 0:  -2.846307
+mean of 1:  2.8658807
+epochs: 142
+acc:  0.83
+mean of 0:  -2.9004784
+mean of 1:  2.8308032
+epochs: 143
+acc:  0.8
+mean of 0:  -2.8967543
+mean of 1:  2.994425
+epochs: 144
+acc:  0.82
+mean of 0:  -3.2675118
+mean of 1:  3.1577222
+epochs: 145
+acc:  0.8
+mean of 0:  -2.92402
+mean of 1:  2.925186
+epochs: 146
+acc:  0.82
+mean of 0:  -2.8520942
+mean of 1:  2.7710254
+epochs: 147
+acc:  0.83
+mean of 0:  -3.1664832
+mean of 1:  3.1840076
+epochs: 148
+acc:  0.84
+mean of 0:  -3.1756546
+mean of 1:  3.1353562
+epochs: 149
+acc:  0.8
+mean of 0:  -2.9725513
+mean of 1:  3.12264
+epochs: 150
+acc:  0.83
+mean of 0:  -3.0483553
+mean of 1:  3.2345905
+epochs: 151
+acc:  0.83
+mean of 0:  -3.1068625
+mean of 1:  3.260664
+epochs: 152
+acc:  0.86
+mean of 0:  -3.0963242
+mean of 1:  3.2418745
+epochs: 153
+acc:  0.81
+mean of 0:  -3.2519422
+mean of 1:  3.328658
+epochs: 154
+acc:  0.85
+mean of 0:  -3.06737
+mean of 1:  3.1340706
+epochs: 155
+acc:  0.83
+mean of 0:  -3.208911
+mean of 1:  3.267499
+epochs: 156
+acc:  0.84
+mean of 0:  -3.2000554
+mean of 1:  3.3791213
+epochs: 157
+acc:  0.79
+mean of 0:  -3.0975146
+mean of 1:  3.2119489
+epochs: 158
+acc:  0.85
+mean of 0:  -3.5102065
+mean of 1:  3.5497668
+epochs: 159
+acc:  0.81
+mean of 0:  -3.218881
+mean of 1:  3.215863
+epochs: 160
+acc:  0.81
+mean of 0:  -3.1744225
+mean of 1:  3.149543
+epochs: 161
+acc:  0.77
+mean of 0:  -2.2806768
+mean of 1:  2.3219302
+epochs: 162
+acc:  0.8
+mean of 0:  -3.0881548
+mean of 1:  3.0593848
+epochs: 163
+acc:  0.85
+mean of 0:  -3.459862
+mean of 1:  3.3675203
+epochs: 164
+acc:  0.81
+mean of 0:  -3.1326418
+mean of 1:  3.1074116
+epochs: 165
+acc:  0.84
+mean of 0:  -3.3429635
+mean of 1:  3.2716463
+epochs: 166
+acc:  0.82
+mean of 0:  -3.2318592
+mean of 1:  3.1839263
+epochs: 167
+acc:  0.83
+mean of 0:  -3.4190955
+mean of 1:  3.3493543
+epochs: 168
+acc:  0.82
+mean of 0:  -3.3013182
+mean of 1:  3.2053392
+epochs: 169
+acc:  0.83
+mean of 0:  -3.3152475
+mean of 1:  3.3044198
+epochs: 170
+acc:  0.82
+mean of 0:  -3.0873375
+mean of 1:  2.9359286
+epochs: 171
+acc:  0.8
+mean of 0:  -3.2047756
+mean of 1:  3.1588264
+epochs: 172
+acc:  0.83
+mean of 0:  -3.2634602
+mean of 1:  3.3326907
+epochs: 173
+acc:  0.77
+mean of 0:  -3.2603445
+mean of 1:  3.2829127
+epochs: 174
+acc:  0.82
+mean of 0:  -3.3659606
+mean of 1:  3.3719637
+epochs: 175
+acc:  0.81
+mean of 0:  -3.31352
+mean of 1:  3.1480696
+epochs: 176
+acc:  0.81
+mean of 0:  -3.437701
+mean of 1:  3.5539083
+epochs: 177
+acc:  0.83
+mean of 0:  -3.4451456
+mean of 1:  3.3411238
+epochs: 178
+acc:  0.81
+mean of 0:  -3.2421405
+mean of 1:  3.328862
+epochs: 179
+acc:  0.82
+mean of 0:  -3.310508
+mean of 1:  3.3059177
+epochs: 180
+acc:  0.83
+mean of 0:  -3.3470502
+mean of 1:  3.1383648
+epochs: 181
+acc:  0.85
+mean of 0:  -3.5231519
+mean of 1:  3.540685
+epochs: 182
+acc:  0.84
+mean of 0:  -3.6679065
+mean of 1:  3.5135317
+epochs: 183
+acc:  0.83
+mean of 0:  -3.491781
+mean of 1:  3.386445
+epochs: 184
+acc:  0.84
+mean of 0:  -3.3896017
+mean of 1:  3.3641605
+epochs: 185
+acc:  0.8
+mean of 0:  -3.3015332
+mean of 1:  3.2893064
+epochs: 186
+acc:  0.78
+mean of 0:  -3.684082
+mean of 1:  3.6826253
+epochs: 187
+acc:  0.82
+mean of 0:  -3.3040535
+mean of 1:  3.1070879
+epochs: 188
+acc:  0.76
+mean of 0:  -3.2598314
+mean of 1:  3.2018032
+epochs: 189
+acc:  0.75
+mean of 0:  -3.1625292
+mean of 1:  3.1524203
+epochs: 190
+acc:  0.71
+mean of 0:  -3.347921
+mean of 1:  3.3418028
+epochs: 191
+acc:  0.78
+mean of 0:  -3.4716537
+mean of 1:  3.2436595
+epochs: 192
+acc:  0.79
+mean of 0:  -3.683513
+mean of 1:  3.636462
+epochs: 193
+acc:  0.82
+mean of 0:  -3.3759038
+mean of 1:  3.313829
+epochs: 194
+acc:  0.81
+mean of 0:  -3.0986962
+mean of 1:  3.0525277
+epochs: 195
+acc:  0.85
+mean of 0:  -3.6523848
+mean of 1:  3.659761
+epochs: 196
+acc:  0.84
+mean of 0:  -3.6983578
+mean of 1:  3.7844865
+epochs: 197
+acc:  0.83
+mean of 0:  -3.3523273
+mean of 1:  3.3255508
+epochs: 198
+acc:  0.81
+mean of 0:  -3.6790674
+mean of 1:  3.659976
+epochs: 199
+acc:  0.76
+mean of 0:  -3.7198853
+mean of 1:  3.6607685
+epochs: 200
+acc:  0.77
+mean of 0:  -3.6277711
+mean of 1:  3.5641468
+epochs: 201
+acc:  0.8
+mean of 0:  -3.7385767
+mean of 1:  3.687225
+epochs: 202
+acc:  0.81
+mean of 0:  -3.5878654
+mean of 1:  3.6458254
+epochs: 203
+acc:  0.82
+mean of 0:  -3.8074567
+mean of 1:  3.8193705
+epochs: 204
+acc:  0.85
+mean of 0:  -4.0379114
+mean of 1:  4.1834345
+epochs: 205
+acc:  0.8
+mean of 0:  -3.6738832
+mean of 1:  3.8063748
+epochs: 206
+acc:  0.81
+mean of 0:  -3.880588
+mean of 1:  3.9929624
+epochs: 207
+acc:  0.8
+mean of 0:  -3.7304246
+mean of 1:  3.8743587
+epochs: 208
+acc:  0.8
+mean of 0:  -4.0193353
+mean of 1:  4.1632867
+epochs: 209
+acc:  0.85
+mean of 0:  -4.142522
+mean of 1:  4.2156377
+epochs: 210
+acc:  0.81
+mean of 0:  -4.1273932
+mean of 1:  4.327582
+epochs: 211
+acc:  0.83
+mean of 0:  -4.1098022
+mean of 1:  4.350257
+epochs: 212
+acc:  0.82
+mean of 0:  -4.186256
+mean of 1:  4.5269146
+epochs: 213
+acc:  0.86
+mean of 0:  -4.150102
+mean of 1:  4.3841043
+epochs: 214
+acc:  0.87
+mean of 0:  -4.05167
+mean of 1:  4.1876974
+epochs: 215
+acc:  0.82
+mean of 0:  -4.054757
+mean of 1:  4.1217246
+epochs: 216
+acc:  0.77
+mean of 0:  -3.7514503
+mean of 1:  3.8954375
+epochs: 217
+acc:  0.81
+mean of 0:  -3.8475547
+mean of 1:  3.9338224
+epochs: 218
+acc:  0.86
+mean of 0:  -3.9725792
+mean of 1:  3.9423993
+epochs: 219
+acc:  0.83
+mean of 0:  -3.959209
+mean of 1:  3.9625053
+epochs: 220
+acc:  0.84
+mean of 0:  -4.239368
+mean of 1:  4.28233
+epochs: 221
+acc:  0.83
+mean of 0:  -4.3227425
+mean of 1:  4.279107
+epochs: 222
+acc:  0.8
+mean of 0:  -3.9698792
+mean of 1:  4.182625
+epochs: 223
+acc:  0.85
+mean of 0:  -4.4883337
+mean of 1:  4.4724817
+epochs: 224
+acc:  0.87
+mean of 0:  -4.2681103
+mean of 1:  4.334397
+epochs: 225
+acc:  0.82
+mean of 0:  -3.931503
+mean of 1:  4.0541735
+epochs: 226
+acc:  0.84
+mean of 0:  -4.3895617
+mean of 1:  4.483509
+epochs: 227
+acc:  0.85
+mean of 0:  -3.8112333
+mean of 1:  3.9277027
+epochs: 228
+acc:  0.82
+mean of 0:  -3.8007407
+mean of 1:  3.840125
+epochs: 229
+acc:  0.88
+mean of 0:  -4.106685
+mean of 1:  4.1101484
+epochs: 230
+acc:  0.86
+mean of 0:  -4.1279535
+mean of 1:  4.2667785
+epochs: 231
+acc:  0.88
+mean of 0:  -3.9888027
+mean of 1:  4.0672326
+epochs: 232
+acc:  0.86
+mean of 0:  -4.026543
+mean of 1:  4.2402716
+epochs: 233
+acc:  0.88
+mean of 0:  -3.9674811
+mean of 1:  4.0466843
+epochs: 234
+acc:  0.85
+mean of 0:  -3.8649986
+mean of 1:  4.031988
+epochs: 235
+acc:  0.88
+mean of 0:  -3.9990506
+mean of 1:  4.124088
+epochs: 236
+acc:  0.88
+mean of 0:  -4.1787453
+mean of 1:  4.2559023
+epochs: 237
+acc:  0.85
+mean of 0:  -4.2037754
+mean of 1:  4.358169
+epochs: 238
+acc:  0.9
+mean of 0:  -4.169537
+mean of 1:  4.37511
+epochs: 239
+acc:  0.82
+mean of 0:  -3.9041605
+mean of 1:  3.921403
+epochs: 240
+acc:  0.87
+mean of 0:  -3.9737692
+mean of 1:  4.208901
+epochs: 241
+acc:  0.83
+mean of 0:  -4.0166993
+mean of 1:  4.0432444
+epochs: 242
+acc:  0.82
+mean of 0:  -4.181751
+mean of 1:  4.2850614
+epochs: 243
+acc:  0.85
+mean of 0:  -4.0450954
+mean of 1:  4.1867304
+epochs: 244
+acc:  0.84
+mean of 0:  -4.2153425
+mean of 1:  4.2423744
+epochs: 245
+acc:  0.88
+mean of 0:  -4.3540077
+mean of 1:  4.3836255
+epochs: 246
+acc:  0.88
+mean of 0:  -4.24627
+mean of 1:  4.213405
+epochs: 247
+acc:  0.88
+mean of 0:  -4.366634
+mean of 1:  4.236029
+epochs: 248
+acc:  0.86
+mean of 0:  -4.1052904
+mean of 1:  4.169487
+epochs: 249
+acc:  0.87
+mean of 0:  -4.2819963
+mean of 1:  4.377224
+epochs: 250
+acc:  0.84
+mean of 0:  -4.384831
+mean of 1:  4.251474
+epochs: 251
+acc:  0.87
+mean of 0:  -4.4101753
+mean of 1:  4.382634
+epochs: 252
+acc:  0.89
+mean of 0:  -4.260756
+mean of 1:  4.2456026
+epochs: 253
+acc:  0.87
+mean of 0:  -4.1427994
+mean of 1:  4.278874
+epochs: 254
+acc:  0.89
+mean of 0:  -4.2727323
+mean of 1:  4.4646235
+epochs: 255
+acc:  0.86
+mean of 0:  -4.003405
+mean of 1:  3.749126
+epochs: 256
+acc:  0.89
+mean of 0:  -4.471482
+mean of 1:  4.5797935
+epochs: 257
+acc:  0.84
+mean of 0:  -4.1854734
+mean of 1:  4.343228
+epochs: 258
+acc:  0.88
+mean of 0:  -4.5169106
+mean of 1:  4.4599447
+epochs: 259
+acc:  0.87
+mean of 0:  -4.5089335
+mean of 1:  4.530555
+epochs: 260
+acc:  0.85
+mean of 0:  -4.185065
+mean of 1:  4.2170143
+epochs: 261
+acc:  0.89
+mean of 0:  -4.4180613
+mean of 1:  4.4874306
+epochs: 262
+acc:  0.89
+mean of 0:  -4.4862967
+mean of 1:  4.4915237
+epochs: 263
+acc:  0.83
+mean of 0:  -4.0221767
+mean of 1:  4.1072974
+epochs: 264
+acc:  0.86
+mean of 0:  -4.4446974
+mean of 1:  4.5261683
+epochs: 265
+acc:  0.81
+mean of 0:  -3.6504424
+mean of 1:  3.6424046
+epochs: 266
+acc:  0.91
+mean of 0:  -4.5331864
+mean of 1:  4.5361643
+epochs: 267
+acc:  0.87
+mean of 0:  -3.956444
+mean of 1:  4.0845656
+epochs: 268
+acc:  0.86
+mean of 0:  -4.317078
+mean of 1:  4.46211
+epochs: 269
+acc:  0.79
+mean of 0:  -3.8130918
+mean of 1:  3.9733675
+epochs: 270
+acc:  0.87
+mean of 0:  -4.0549817
+mean of 1:  4.2672987
+epochs: 271
+acc:  0.83
+mean of 0:  -4.392198
+mean of 1:  4.4236784
+epochs: 272
+acc:  0.85
+mean of 0:  -3.8714185
+mean of 1:  4.011121
+epochs: 273
+acc:  0.84
+mean of 0:  -4.066407
+mean of 1:  4.326505
+epochs: 274
+acc:  0.81
+mean of 0:  -4.4344177
+mean of 1:  4.5937266
+epochs: 275
+acc:  0.81
+mean of 0:  -4.2114244
+mean of 1:  4.2603617
+epochs: 276
+acc:  0.87
+mean of 0:  -4.442299
+mean of 1:  4.70405
+epochs: 277
+acc:  0.85
+mean of 0:  -4.1468997
+mean of 1:  4.458392
+epochs: 278
+acc:  0.84
+mean of 0:  -4.3095922
+mean of 1:  4.4754457
+epochs: 279
+acc:  0.85
+mean of 0:  -4.349264
+mean of 1:  4.452273
+epochs: 280
+acc:  0.82
+mean of 0:  -4.2899914
+mean of 1:  4.4317636
+epochs: 281
+acc:  0.82
+mean of 0:  -4.4978814
+mean of 1:  4.6937227
+epochs: 282
+acc:  0.88
+mean of 0:  -4.5166965
+mean of 1:  4.5968146
+epochs: 283
+acc:  0.86
+mean of 0:  -4.379345
+mean of 1:  4.5601397
+epochs: 284
+acc:  0.85
+mean of 0:  -4.3369207
+mean of 1:  4.5636697
+epochs: 285
+acc:  0.88
+mean of 0:  -4.8681083
+mean of 1:  4.960999
+epochs: 286
+acc:  0.82
+mean of 0:  -4.233029
+mean of 1:  4.5259056
+epochs: 287
+acc:  0.85
+mean of 0:  -4.998631
+mean of 1:  5.1098876
+epochs: 288
+acc:  0.86
+mean of 0:  -4.50575
+mean of 1:  4.8179703
+epochs: 289
+acc:  0.85
+mean of 0:  -4.5479617
+mean of 1:  4.5570946
+epochs: 290
+acc:  0.86
+mean of 0:  -4.6886835
+mean of 1:  4.8635397
+epochs: 291
+acc:  0.86
+mean of 0:  -4.793233
+mean of 1:  4.92828
+epochs: 292
+acc:  0.86
+mean of 0:  -4.7844877
+mean of 1:  4.7966647
+epochs: 293
+acc:  0.83
+mean of 0:  -4.8963747
+mean of 1:  4.768533
+epochs: 294
+acc:  0.77
+mean of 0:  -4.587848
+mean of 1:  4.668014
+epochs: 295
+acc:  0.83
+mean of 0:  -4.7911463
+mean of 1:  4.98541
+epochs: 296
+acc:  0.89
+mean of 0:  -4.7058964
+mean of 1:  4.653228
+epochs: 297
+acc:  0.82
+mean of 0:  -4.727678
+mean of 1:  5.0225616
+epochs: 298
+acc:  0.82
+mean of 0:  -4.99355
+mean of 1:  5.0397844
+epochs: 299
+acc:  0.85
+mean of 0:  -4.7948375
+mean of 1:  4.9462943
+epochs: 300
+acc:  0.85
+mean of 0:  -4.957528
+mean of 1:  4.876743
+epochs: 301
+acc:  0.83
+mean of 0:  -4.48834
+mean of 1:  4.558856
+epochs: 302
+acc:  0.83
+mean of 0:  -4.4035583
+mean of 1:  4.594577
+epochs: 303
+acc:  0.85
+mean of 0:  -4.908982
+mean of 1:  5.015217
+epochs: 304
+acc:  0.83
+mean of 0:  -4.7974815
+mean of 1:  4.8682547
+epochs: 305
+acc:  0.81
+mean of 0:  -5.102031
+mean of 1:  5.1092944
+epochs: 306
+acc:  0.85
+mean of 0:  -5.051043
+mean of 1:  4.8870387
+epochs: 307
+acc:  0.88
+mean of 0:  -5.0472918
+mean of 1:  5.1785493
+epochs: 308
+acc:  0.91
+mean of 0:  -5.0436563
+mean of 1:  5.050543
+epochs: 309
+acc:  0.93
+mean of 0:  -4.928213
+mean of 1:  5.06857
+epochs: 310
+acc:  0.91
+mean of 0:  -4.8260465
+mean of 1:  4.9867043
+epochs: 311
+acc:  0.9
+mean of 0:  -4.809058
+mean of 1:  4.7866216
+epochs: 312
+acc:  0.89
+mean of 0:  -4.459795
+mean of 1:  4.435126
+epochs: 313
+acc:  0.84
+mean of 0:  -4.8191423
+mean of 1:  5.0493865
+epochs: 314
+acc:  0.85
+mean of 0:  -5.008221
+mean of 1:  5.110634
+epochs: 315
+acc:  0.93
+mean of 0:  -4.939954
+mean of 1:  5.0515857
+epochs: 316
+acc:  0.9
+mean of 0:  -4.4523077
+mean of 1:  4.5498776
+epochs: 317
+acc:  0.91
+mean of 0:  -4.59804
+mean of 1:  4.9346266
+epochs: 318
+acc:  0.92
+mean of 0:  -4.972452
+mean of 1:  4.9504733
+epochs: 319
+acc:  0.84
+mean of 0:  -4.9289494
+mean of 1:  5.107197
+epochs: 320
+acc:  0.88
+mean of 0:  -4.7316537
+mean of 1:  4.823066
+epochs: 321
+acc:  0.93
+mean of 0:  -4.7249913
+mean of 1:  4.912508
+epochs: 322
+acc:  0.92
+mean of 0:  -4.7731066
+mean of 1:  4.84462
+epochs: 323
+acc:  0.9
+mean of 0:  -4.7090096
+mean of 1:  4.859433
+epochs: 324
+acc:  0.9
+mean of 0:  -5.136765
+mean of 1:  5.090135
+epochs: 325
+acc:  0.88
+mean of 0:  -4.5615172
+mean of 1:  4.7503605
+epochs: 326
+acc:  0.9
+mean of 0:  -4.6353674
+mean of 1:  4.8689804
+epochs: 327
+acc:  0.87
+mean of 0:  -4.8165736
+mean of 1:  4.922802
+epochs: 328
+acc:  0.89
+mean of 0:  -4.7026243
+mean of 1:  4.803575
+epochs: 329
+acc:  0.9
+mean of 0:  -4.592323
+mean of 1:  4.80839
+epochs: 330
+acc:  0.94
+mean of 0:  -5.175746
+mean of 1:  5.395407
+epochs: 331
+acc:  0.87
+mean of 0:  -5.257353
+mean of 1:  5.2280045
+epochs: 332
+acc:  0.9
+mean of 0:  -5.061733
+mean of 1:  5.379106
+epochs: 333
+acc:  0.9
+mean of 0:  -4.8088794
+mean of 1:  4.917777
+epochs: 334
+acc:  0.89
+mean of 0:  -4.8379855
+mean of 1:  4.9001307
+epochs: 335
+acc:  0.89
+mean of 0:  -5.100118
+mean of 1:  5.3426094
+epochs: 336
+acc:  0.89
+mean of 0:  -4.7014275
+mean of 1:  4.8791223
+epochs: 337
+acc:  0.9
+mean of 0:  -4.878618
+mean of 1:  5.0207777
+epochs: 338
+acc:  0.9
+mean of 0:  -5.363893
+mean of 1:  5.45421
+epochs: 339
+acc:  0.89
+mean of 0:  -5.1818447
+mean of 1:  5.355784
+epochs: 340
+acc:  0.91
+mean of 0:  -4.817267
+mean of 1:  5.000102
+epochs: 341
+acc:  0.88
+mean of 0:  -4.6977324
+mean of 1:  4.809306
+epochs: 342
+acc:  0.91
+mean of 0:  -4.9842196
+mean of 1:  5.168845
+epochs: 343
+acc:  0.87
+mean of 0:  -4.751153
+mean of 1:  4.77087
+epochs: 344
+acc:  0.86
+mean of 0:  -4.590486
+mean of 1:  4.700204
+epochs: 345
+acc:  0.9
+mean of 0:  -5.0589848
+mean of 1:  5.0939393
+epochs: 346
+acc:  0.89
+mean of 0:  -4.9038224
+mean of 1:  5.0214615
+epochs: 347
+acc:  0.88
+mean of 0:  -4.7153788
+mean of 1:  4.845001
+epochs: 348
+acc:  0.93
+mean of 0:  -5.289134
+mean of 1:  5.185999
+epochs: 349
+acc:  0.92
+mean of 0:  -5.2371755
+mean of 1:  5.157728
+epochs: 350
+acc:  0.93
+mean of 0:  -5.4456444
+mean of 1:  5.431619
+epochs: 351
+acc:  0.93
+mean of 0:  -5.085058
+mean of 1:  5.248812
+epochs: 352
+acc:  0.93
+mean of 0:  -5.634845
+mean of 1:  5.4371896
+epochs: 353
+acc:  0.93
+mean of 0:  -4.910657
+mean of 1:  4.7381835
+epochs: 354
+acc:  0.92
+mean of 0:  -5.8404474
+mean of 1:  6.0508113
+epochs: 355
+acc:  0.9
+mean of 0:  -4.885328
+mean of 1:  4.9672627
+epochs: 356
+acc:  0.88
+mean of 0:  -5.7675734
+mean of 1:  5.9440603
+epochs: 357
+acc:  0.89
+mean of 0:  -5.2947097
+mean of 1:  5.233642
+epochs: 358
+acc:  0.93
+mean of 0:  -5.3439
+mean of 1:  5.5737085
+epochs: 359
+acc:  0.92
+mean of 0:  -5.541985
+mean of 1:  5.52106
+epochs: 360
+acc:  0.89
+mean of 0:  -5.154214
+mean of 1:  5.243299
+epochs: 361
+acc:  0.93
+mean of 0:  -5.6761713
+mean of 1:  5.6356587
+epochs: 362
+acc:  0.93
+mean of 0:  -5.763455
+mean of 1:  6.092927
+epochs: 363
+acc:  0.91
+mean of 0:  -5.1397486
+mean of 1:  5.280934
+epochs: 364
+acc:  0.91
+mean of 0:  -4.9365644
+mean of 1:  4.9404635
+epochs: 365
+acc:  0.93
+mean of 0:  -5.1421223
+mean of 1:  5.219427
+epochs: 366
+acc:  0.89
+mean of 0:  -5.524577
+mean of 1:  5.6714067
+epochs: 367
+acc:  0.93
+mean of 0:  -5.4827266
+mean of 1:  5.545053
+epochs: 368
+acc:  0.92
+mean of 0:  -5.319156
+mean of 1:  5.330914
+epochs: 369
+acc:  0.9
+mean of 0:  -4.9438696
+mean of 1:  4.950633
+epochs: 370
+acc:  0.9
+mean of 0:  -5.2990375
+mean of 1:  5.226139
+epochs: 371
+acc:  0.92
+mean of 0:  -4.9402003
+mean of 1:  5.123588
+epochs: 372
+acc:  0.9
+mean of 0:  -5.455567
+mean of 1:  5.3321314
+epochs: 373
+acc:  0.91
+mean of 0:  -5.4587693
+mean of 1:  5.4675736
+epochs: 374
+acc:  0.91
+mean of 0:  -5.3731112
+mean of 1:  5.257575
+epochs: 375
+acc:  0.93
+mean of 0:  -5.563582
+mean of 1:  5.397402
+epochs: 376
+acc:  0.91
+mean of 0:  -5.396983
+mean of 1:  5.2029757
+epochs: 377
+acc:  0.89
+mean of 0:  -5.4430323
+mean of 1:  5.1826673
+epochs: 378
+acc:  0.93
+mean of 0:  -5.0871367
+mean of 1:  5.1583643
+epochs: 379
+acc:  0.87
+mean of 0:  -5.34633
+mean of 1:  5.2281356
+epochs: 380
+acc:  0.89
+mean of 0:  -5.771438
+mean of 1:  5.5597453
+epochs: 381
+acc:  0.95
+mean of 0:  -5.6911693
+mean of 1:  5.499587
+epochs: 382
+acc:  0.88
+mean of 0:  -5.237914
+mean of 1:  5.2954955
+epochs: 383
+acc:  0.91
+mean of 0:  -5.244306
+mean of 1:  5.230056
+epochs: 384
+acc:  0.93
+mean of 0:  -5.0847907
+mean of 1:  5.0056124
+epochs: 385
+acc:  0.91
+mean of 0:  -5.582819
+mean of 1:  5.5060735
+epochs: 386
+acc:  0.92
+mean of 0:  -5.0352564
+mean of 1:  5.159672
+epochs: 387
+acc:  0.92
+mean of 0:  -5.223463
+mean of 1:  5.2651944
+epochs: 388
+acc:  0.9
+mean of 0:  -5.419161
+mean of 1:  5.1447806
+epochs: 389
+acc:  0.88
+mean of 0:  -5.7677636
+mean of 1:  5.707474
+epochs: 390
+acc:  0.88
+mean of 0:  -4.9542556
+mean of 1:  4.942924
+epochs: 391
+acc:  0.89
+mean of 0:  -4.4997573
+mean of 1:  4.562813
+epochs: 392
+acc:  0.88
+mean of 0:  -5.046577
+mean of 1:  5.144558
+epochs: 393
+acc:  0.89
+mean of 0:  -5.027731
+mean of 1:  5.0281234
+epochs: 394
+acc:  0.89
+mean of 0:  -4.6304255
+mean of 1:  4.6638885
+epochs: 395
+acc:  0.93
+mean of 0:  -5.399736
+mean of 1:  5.626519
+epochs: 396
+acc:  0.87
+mean of 0:  -5.3001537
+mean of 1:  5.4324703
+epochs: 397
+acc:  0.9
+mean of 0:  -5.062549
+mean of 1:  5.2675757
+epochs: 398
+acc:  0.89
+mean of 0:  -4.9675364
+mean of 1:  5.0091453
+epochs: 399
+acc:  0.83
+mean of 0:  -5.08216
+mean of 1:  5.237665
+epochs: 400
+acc:  0.87
+mean of 0:  -5.591894
+mean of 1:  5.540123
+epochs: 401
+acc:  0.88
+mean of 0:  -5.256411
+mean of 1:  5.3093743
+epochs: 402
+acc:  0.88
+mean of 0:  -4.603041
+mean of 1:  4.8213787
+epochs: 403
+acc:  0.87
+mean of 0:  -5.2194605
+mean of 1:  5.3656716
+epochs: 404
+acc:  0.88
+mean of 0:  -4.7269173
+mean of 1:  4.866288
+epochs: 405
+acc:  0.88
+mean of 0:  -4.7859397
+mean of 1:  4.949892
+epochs: 406
+acc:  0.87
+mean of 0:  -5.345279
+mean of 1:  5.5697227
+epochs: 407
+acc:  0.86
+mean of 0:  -5.3955464
+mean of 1:  5.4964314
+epochs: 408
+acc:  0.94
+mean of 0:  -5.67888
+mean of 1:  5.505835
+epochs: 409
+acc:  0.87
+mean of 0:  -5.708724
+mean of 1:  5.595242
+epochs: 410
+acc:  0.91
+mean of 0:  -5.672265
+mean of 1:  5.864827
+epochs: 411
+acc:  0.91
+mean of 0:  -5.746918
+mean of 1:  5.6615
+epochs: 412
+acc:  0.94
+mean of 0:  -5.5636544
+mean of 1:  5.6820874
+epochs: 413
+acc:  0.91
+mean of 0:  -5.882821
+mean of 1:  5.9446716
+epochs: 414
+acc:  0.95
+mean of 0:  -5.8855076
+mean of 1:  5.939195
+epochs: 415
+acc:  0.9
+mean of 0:  -5.2426715
+mean of 1:  5.4578724
+epochs: 416
+acc:  0.9
+mean of 0:  -5.504183
+mean of 1:  5.5360556
+epochs: 417
+acc:  0.92
+mean of 0:  -5.363136
+mean of 1:  5.4840612
+epochs: 418
+acc:  0.88
+mean of 0:  -5.873316
+mean of 1:  5.8900366
+epochs: 419
+acc:  0.9
+mean of 0:  -4.8125567
+mean of 1:  5.105123
+epochs: 420
+acc:  0.9
+mean of 0:  -5.3902082
+mean of 1:  5.412587
+epochs: 421
+acc:  0.88
+mean of 0:  -5.3010907
+mean of 1:  5.2832303
+epochs: 422
+acc:  0.9
+mean of 0:  -5.54118
+mean of 1:  5.731918
+epochs: 423
+acc:  0.91
+mean of 0:  -5.7552633
+mean of 1:  5.703213
+epochs: 424
+acc:  0.89
+mean of 0:  -5.7036414
+mean of 1:  5.787835
+epochs: 425
+acc:  0.91
+mean of 0:  -5.8041134
+mean of 1:  5.928847
+epochs: 426
+acc:  0.88
+mean of 0:  -5.893709
+mean of 1:  5.9885726
+epochs: 427
+acc:  0.88
+mean of 0:  -4.737259
+mean of 1:  4.83205
+epochs: 428
+acc:  0.9
+mean of 0:  -5.3176746
+mean of 1:  5.4940166
+epochs: 429
+acc:  0.89
+mean of 0:  -5.673249
+mean of 1:  5.4052134
+epochs: 430
+acc:  0.87
+mean of 0:  -5.352937
+mean of 1:  5.3178434
+epochs: 431
+acc:  0.85
+mean of 0:  -5.4952703
+mean of 1:  5.5895276
+epochs: 432
+acc:  0.88
+mean of 0:  -5.732648
+mean of 1:  5.616389
+epochs: 433
+acc:  0.91
+mean of 0:  -5.5521827
+mean of 1:  5.5611444
+epochs: 434
+acc:  0.93
+mean of 0:  -5.775095
+mean of 1:  5.760316
+epochs: 435
+acc:  0.87
+mean of 0:  -5.4834104
+mean of 1:  5.55888
+epochs: 436
+acc:  0.86
+mean of 0:  -5.72972
+mean of 1:  5.677165
+epochs: 437
+acc:  0.9
+mean of 0:  -5.2650642
+mean of 1:  5.2768435
+epochs: 438
+acc:  0.88
+mean of 0:  -5.3294864
+mean of 1:  5.1930933
+epochs: 439
+acc:  0.87
+mean of 0:  -6.174884
+mean of 1:  5.8542233
+epochs: 440
+acc:  0.86
+mean of 0:  -5.5938377
+mean of 1:  5.4657507
+epochs: 441
+acc:  0.91
+mean of 0:  -5.0826607
+mean of 1:  5.22044
+epochs: 442
+acc:  0.91
+mean of 0:  -5.9553065
+mean of 1:  5.9846387
+epochs: 443
+acc:  0.9
+mean of 0:  -5.635574
+mean of 1:  5.6159773
+epochs: 444
+acc:  0.88
+mean of 0:  -5.659587
+mean of 1:  5.6642947
+epochs: 445
+acc:  0.85
+mean of 0:  -5.171665
+mean of 1:  5.174331
+epochs: 446
+acc:  0.89
+mean of 0:  -5.1947722
+mean of 1:  5.409823
+epochs: 447
+acc:  0.94
+mean of 0:  -4.8444605
+mean of 1:  4.8828125
+epochs: 448
+acc:  0.9
+mean of 0:  -5.4434295
+mean of 1:  5.5928707
+epochs: 449
+acc:  0.87
+mean of 0:  -5.4194303
+mean of 1:  5.421173
+epochs: 450
+acc:  0.87
+mean of 0:  -4.8135586
+mean of 1:  4.8237348
+epochs: 451
+acc:  0.93
+mean of 0:  -5.7227597
+mean of 1:  5.7835584
+epochs: 452
+acc:  0.92
+mean of 0:  -6.1484284
+mean of 1:  6.22998
+epochs: 453
+acc:  0.91
+mean of 0:  -5.343995
+mean of 1:  5.344913
+epochs: 454
+acc:  0.9
+mean of 0:  -5.2837057
+mean of 1:  5.339223
+epochs: 455
+acc:  0.91
+mean of 0:  -5.2524595
+mean of 1:  5.363407
+epochs: 456
+acc:  0.89
+mean of 0:  -5.401092
+mean of 1:  5.359817
+epochs: 457
+acc:  0.92
+mean of 0:  -5.6632185
+mean of 1:  5.7121367
+epochs: 458
+acc:  0.89
+mean of 0:  -5.2262497
+mean of 1:  5.4027247
+epochs: 459
+acc:  0.89
+mean of 0:  -5.4011183
+mean of 1:  5.5540433
+epochs: 460
+acc:  0.93
+mean of 0:  -5.342902
+mean of 1:  5.3294077
+epochs: 461
+acc:  0.92
+mean of 0:  -5.753768
+mean of 1:  5.619784
+epochs: 462
+acc:  0.87
+mean of 0:  -5.008833
+mean of 1:  5.037763
+epochs: 463
+acc:  0.92
+mean of 0:  -5.6195397
+mean of 1:  5.629387
+epochs: 464
+acc:  0.92
+mean of 0:  -5.3971543
+mean of 1:  5.425439
+epochs: 465
+acc:  0.84
+mean of 0:  -5.1653323
+mean of 1:  5.1338315
+epochs: 466
+acc:  0.89
+mean of 0:  -5.133235
+mean of 1:  5.072807
+epochs: 467
+acc:  0.93
+mean of 0:  -5.2765293
+mean of 1:  5.164028
+epochs: 468
+acc:  0.87
+mean of 0:  -4.937068
+mean of 1:  4.916839
+epochs: 469
+acc:  0.92
+mean of 0:  -5.3960176
+mean of 1:  5.5539193
+epochs: 470
+acc:  0.87
+mean of 0:  -5.1542983
+mean of 1:  5.3223104
+epochs: 471
+acc:  0.93
+mean of 0:  -5.4806266
+mean of 1:  5.2731605
+epochs: 472
+acc:  0.94
+mean of 0:  -6.013584
+mean of 1:  5.8688097
+epochs: 473
+acc:  0.9
+mean of 0:  -5.39832
+mean of 1:  5.4640245
+epochs: 474
+acc:  0.93
+mean of 0:  -5.197466
+mean of 1:  5.249243
+epochs: 475
+acc:  0.9
+mean of 0:  -5.4313903
+mean of 1:  5.6220984
+epochs: 476
+acc:  0.91
+mean of 0:  -5.492196
+mean of 1:  5.0856485
+epochs: 477
+acc:  0.91
+mean of 0:  -6.0486937
+mean of 1:  5.95199
+epochs: 478
+acc:  0.88
+mean of 0:  -5.494527
+mean of 1:  5.507732
+epochs: 479
+acc:  0.9
+mean of 0:  -5.2058973
+mean of 1:  5.2490077
+epochs: 480
+acc:  0.82
+mean of 0:  -4.6871915
+mean of 1:  4.4329596
+epochs: 481
+acc:  0.88
+mean of 0:  -5.1929393
+mean of 1:  5.037476
+epochs: 482
+acc:  0.84
+mean of 0:  -5.5599494
+mean of 1:  5.5720797
+epochs: 483
+acc:  0.83
+mean of 0:  -5.2770653
+mean of 1:  5.106418
+epochs: 484
+acc:  0.9
+mean of 0:  -5.23629
+mean of 1:  5.238825
+epochs: 485
+acc:  0.89
+mean of 0:  -5.08876
+mean of 1:  4.8867087
+epochs: 486
+acc:  0.91
+mean of 0:  -5.462609
+mean of 1:  5.5191393
+epochs: 487
+acc:  0.96
+mean of 0:  -5.6353507
+mean of 1:  5.7342353
+epochs: 488
+acc:  0.93
+mean of 0:  -5.4609056
+mean of 1:  5.2542863
+epochs: 489
+acc:  0.89
+mean of 0:  -5.572548
+mean of 1:  5.410852
+epochs: 490
+acc:  0.87
+mean of 0:  -5.20926
+mean of 1:  5.2732773
+epochs: 491
+acc:  0.94
+mean of 0:  -5.847744
+mean of 1:  5.8249226
+epochs: 492
+acc:  0.89
+mean of 0:  -5.548896
+mean of 1:  5.2593846
+epochs: 493
+acc:  0.84
+mean of 0:  -5.9209995
+mean of 1:  5.913829
+epochs: 494
+acc:  0.91
+mean of 0:  -5.9531517
+mean of 1:  5.8332596
+epochs: 495
+acc:  0.94
+mean of 0:  -5.5524163
+mean of 1:  5.596721
+epochs: 496
+acc:  0.9
+mean of 0:  -5.506521
+mean of 1:  5.6157107
+epochs: 497
+acc:  0.88
+mean of 0:  -5.597046
+mean of 1:  5.6345496
+epochs: 498
+acc:  0.84
+mean of 0:  -5.207449
+mean of 1:  5.1739745
+epochs: 499
+acc:  0.93
+mean of 0:  -5.8845353
+mean of 1:  5.8447514
+
+
+
+mean of 0:  0.32062766
+mean of 1:  1.2774668
+# predict Counter({1.0: 26452, 0.0: 24012})
+# test Counter({0.0: 25232, 1.0: 25232})
+seq_length: 3, # predicts: 50464, # corrects: 26564, acc: 0.526395
+(array([0.52773613, 0.52517768]), array([0.5022194, 0.5505707]), array([0.51466168, 0.53757449]), array([25232, 25232]))
+work time: 7774.19682884 sec
+
+
+
+learning_rate: 0.010000, batch_size 100, epochs 500
+features are loaded
+size of learn_Y: 117416
+Counter({1.0: 68006, 0.0: 49410})
+Counter({0.0: 49410, 1.0: 49410})
+Data loading Complete learn:98820, test:50464
+epochs: 0
+acc:  0.47
+mean of 0:  1.3559117
+mean of 1:  0.4088086
+epochs: 1
+acc:  0.5
+mean of 0:  0.19459613
+mean of 1:  0.18983327
+epochs: 2
+acc:  0.64
+mean of 0:  0.023929693
+mean of 1:  0.25640267
+epochs: 3
+acc:  0.57
+mean of 0:  -0.0815207
+mean of 1:  0.26452607
+epochs: 4
+acc:  0.55
+mean of 0:  -0.021268087
+mean of 1:  0.17993778
+epochs: 5
+acc:  0.6
+mean of 0:  -0.14930151
+mean of 1:  0.22218254
+epochs: 6
+acc:  0.63
+mean of 0:  -0.19837722
+mean of 1:  0.15801717
+epochs: 7
+acc:  0.63
+mean of 0:  -0.29069105
+mean of 1:  0.21425214
+epochs: 8
+acc:  0.63
+mean of 0:  -0.266876
+mean of 1:  0.20716214
+epochs: 9
+acc:  0.57
+mean of 0:  -0.21897568
+mean of 1:  0.20902704
+epochs: 10
+acc:  0.61
+mean of 0:  -0.17764619
+mean of 1:  0.24189785
+epochs: 11
+acc:  0.61
+mean of 0:  -0.159503
+mean of 1:  0.26669738
+epochs: 12
+acc:  0.61
+mean of 0:  -0.18383221
+mean of 1:  0.27849963
+epochs: 13
+acc:  0.61
+mean of 0:  -0.16958286
+mean of 1:  0.25060457
+epochs: 14
+acc:  0.61
+mean of 0:  -0.20828061
+mean of 1:  0.23863672
+epochs: 15
+acc:  0.62
+mean of 0:  -0.22324923
+mean of 1:  0.24897976
+epochs: 16
+acc:  0.6
+mean of 0:  -0.22467232
+mean of 1:  0.22723822
+epochs: 17
+acc:  0.63
+mean of 0:  -0.23627865
+mean of 1:  0.23938319
+epochs: 18
+acc:  0.6
+mean of 0:  -0.2490853
+mean of 1:  0.26109776
+epochs: 19
+acc:  0.57
+mean of 0:  -0.24777624
+mean of 1:  0.25985995
+epochs: 20
+acc:  0.6
+mean of 0:  -0.22166276
+mean of 1:  0.25421774
+epochs: 21
+acc:  0.56
+mean of 0:  -0.22096746
+mean of 1:  0.28029993
+epochs: 22
+acc:  0.58
+mean of 0:  -0.24183217
+mean of 1:  0.24563937
+epochs: 23
+acc:  0.59
+mean of 0:  -0.22361232
+mean of 1:  0.23301464
+epochs: 24
+acc:  0.58
+mean of 0:  -0.24884924
+mean of 1:  0.24521586
+epochs: 25
+acc:  0.59
+mean of 0:  -0.2279014
+mean of 1:  0.2643122
+epochs: 26
+acc:  0.61
+mean of 0:  -0.21609464
+mean of 1:  0.29160503
+epochs: 27
+acc:  0.59
+mean of 0:  -0.23377919
+mean of 1:  0.30716005
+epochs: 28
+acc:  0.62
+mean of 0:  -0.23265867
+mean of 1:  0.2873971
+epochs: 29
+acc:  0.62
+mean of 0:  -0.25513446
+mean of 1:  0.35688066
+epochs: 30
+acc:  0.61
+mean of 0:  -0.24821444
+mean of 1:  0.32986826
+epochs: 31
+acc:  0.61
+mean of 0:  -0.23365295
+mean of 1:  0.32511646
+epochs: 32
+acc:  0.61
+mean of 0:  -0.23153248
+mean of 1:  0.3142418
+epochs: 33
+acc:  0.64
+mean of 0:  -0.25795406
+mean of 1:  0.30349416
+epochs: 34
+acc:  0.65
+mean of 0:  -0.32962555
+mean of 1:  0.34379074
+epochs: 35
+acc:  0.66
+mean of 0:  -0.3160842
+mean of 1:  0.3588332
+epochs: 36
+acc:  0.68
+mean of 0:  -0.35956988
+mean of 1:  0.414467
+epochs: 37
+acc:  0.67
+mean of 0:  -0.36038148
+mean of 1:  0.35436904
+epochs: 38
+acc:  0.67
+mean of 0:  -0.3817942
+mean of 1:  0.442491
+epochs: 39
+acc:  0.66
+mean of 0:  -0.36640012
+mean of 1:  0.4448282
+epochs: 40
+acc:  0.64
+mean of 0:  -0.40548941
+mean of 1:  0.47611165
+epochs: 41
+acc:  0.62
+mean of 0:  -0.43362865
+mean of 1:  0.44352078
+epochs: 42
+acc:  0.59
+mean of 0:  -0.37580323
+mean of 1:  0.4762181
+epochs: 43
+acc:  0.62
+mean of 0:  -0.44942182
+mean of 1:  0.4899353
+epochs: 44
+acc:  0.62
+mean of 0:  -0.44125602
+mean of 1:  0.52880985
+epochs: 45
+acc:  0.64
+mean of 0:  -0.5322284
+mean of 1:  0.5985365
+epochs: 46
+acc:  0.59
+mean of 0:  -0.5351408
+mean of 1:  0.6164506
+epochs: 47
+acc:  0.59
+mean of 0:  -0.470451
+mean of 1:  0.52669257
+epochs: 48
+acc:  0.66
+mean of 0:  -0.56959444
+mean of 1:  0.6773529
+epochs: 49
+acc:  0.62
+mean of 0:  -0.5775996
+mean of 1:  0.67313063
+epochs: 50
+acc:  0.67
+mean of 0:  -0.5801336
+mean of 1:  0.7511278
+epochs: 51
+acc:  0.65
+mean of 0:  -0.64664334
+mean of 1:  0.86516076
+epochs: 52
+acc:  0.63
+mean of 0:  -0.5480967
+mean of 1:  0.71234226
+epochs: 53
+acc:  0.66
+mean of 0:  -0.67550385
+mean of 1:  0.86195445
+epochs: 54
+acc:  0.66
+mean of 0:  -0.6673613
+mean of 1:  0.9291143
+epochs: 55
+acc:  0.64
+mean of 0:  -0.5706756
+mean of 1:  0.7657352
+epochs: 56
+acc:  0.65
+mean of 0:  -0.70003444
+mean of 1:  0.8626641
+epochs: 57
+acc:  0.64
+mean of 0:  -0.6944787
+mean of 1:  0.8605998
+epochs: 58
+acc:  0.66
+mean of 0:  -0.70379734
+mean of 1:  0.8437416
+epochs: 59
+acc:  0.65
+mean of 0:  -0.8021137
+mean of 1:  1.0187515
+epochs: 60
+acc:  0.69
+mean of 0:  -0.92386675
+mean of 1:  1.1246767
+epochs: 61
+acc:  0.69
+mean of 0:  -0.8527112
+mean of 1:  0.9816489
+epochs: 62
+acc:  0.65
+mean of 0:  -0.93829614
+mean of 1:  1.1114385
+epochs: 63
+acc:  0.65
+mean of 0:  -0.7551799
+mean of 1:  0.9967944
+epochs: 64
+acc:  0.64
+mean of 0:  -0.87966424
+mean of 1:  1.0567446
+epochs: 65
+acc:  0.69
+mean of 0:  -1.0745322
+mean of 1:  1.1861889
+epochs: 66
+acc:  0.66
+mean of 0:  -0.9813324
+mean of 1:  1.2804506
+epochs: 67
+acc:  0.67
+mean of 0:  -0.92537177
+mean of 1:  1.1223538
+epochs: 68
+acc:  0.68
+mean of 0:  -1.0416921
+mean of 1:  1.1916925
+epochs: 69
+acc:  0.66
+mean of 0:  -0.95738715
+mean of 1:  1.149389
+epochs: 70
+acc:  0.65
+mean of 0:  -1.1431938
+mean of 1:  1.4325742
+epochs: 71
+acc:  0.71
+mean of 0:  -1.2829531
+mean of 1:  1.6739345
+epochs: 72
+acc:  0.65
+mean of 0:  -1.3351215
+mean of 1:  1.5289347
+epochs: 73
+acc:  0.68
+mean of 0:  -1.1445664
+mean of 1:  1.388981
+epochs: 74
+acc:  0.71
+mean of 0:  -0.9644511
+mean of 1:  1.1534984
+epochs: 75
+acc:  0.7
+mean of 0:  -1.3228105
+mean of 1:  1.5689336
+epochs: 76
+acc:  0.7
+mean of 0:  -1.3030958
+mean of 1:  1.5395977
+epochs: 77
+acc:  0.67
+mean of 0:  -1.3480477
+mean of 1:  1.6125448
+epochs: 78
+acc:  0.74
+mean of 0:  -1.4241956
+mean of 1:  1.7156615
+epochs: 79
+acc:  0.73
+mean of 0:  -1.426227
+mean of 1:  1.7451608
+epochs: 80
+acc:  0.68
+mean of 0:  -1.246215
+mean of 1:  1.5646801
+epochs: 81
+acc:  0.75
+mean of 0:  -1.5080875
+mean of 1:  1.8379588
+epochs: 82
+acc:  0.72
+mean of 0:  -1.5546476
+mean of 1:  1.8641669
+epochs: 83
+acc:  0.69
+mean of 0:  -1.4446486
+mean of 1:  1.7635726
+epochs: 84
+acc:  0.76
+mean of 0:  -1.4622369
+mean of 1:  1.8712413
+epochs: 85
+acc:  0.69
+mean of 0:  -1.4396987
+mean of 1:  1.7977002
+epochs: 86
+acc:  0.69
+mean of 0:  -1.511623
+mean of 1:  1.847398
+epochs: 87
+acc:  0.74
+mean of 0:  -1.7062949
+mean of 1:  2.1511846
+epochs: 88
+acc:  0.68
+mean of 0:  -1.7736584
+mean of 1:  2.1489165
+epochs: 89
+acc:  0.74
+mean of 0:  -1.8340724
+mean of 1:  2.1828556
+epochs: 90
+acc:  0.74
+mean of 0:  -1.7614994
+mean of 1:  2.0894651
+epochs: 91
+acc:  0.76
+mean of 0:  -1.8145733
+mean of 1:  2.2063954
+epochs: 92
+acc:  0.73
+mean of 0:  -1.8578154
+mean of 1:  2.1474335
+epochs: 93
+acc:  0.74
+mean of 0:  -1.957108
+mean of 1:  2.340563
+epochs: 94
+acc:  0.75
+mean of 0:  -1.7392164
+mean of 1:  2.174176
+epochs: 95
+acc:  0.75
+mean of 0:  -2.0213919
+mean of 1:  2.5171165
+epochs: 96
+acc:  0.73
+mean of 0:  -1.8931421
+mean of 1:  2.1672814
+epochs: 97
+acc:  0.69
+mean of 0:  -1.8691007
+mean of 1:  2.2292476
+epochs: 98
+acc:  0.74
+mean of 0:  -2.1796935
+mean of 1:  2.6911287
+epochs: 99
+acc:  0.7
+mean of 0:  -1.988688
+mean of 1:  2.3791869
+epochs: 100
+acc:  0.72
+mean of 0:  -1.8672901
+mean of 1:  2.3520713
+epochs: 101
+acc:  0.74
+mean of 0:  -2.1087055
+mean of 1:  2.4839628
+epochs: 102
+acc:  0.71
+mean of 0:  -1.8000535
+mean of 1:  2.356912
+epochs: 103
+acc:  0.63
+mean of 0:  -1.6238341
+mean of 1:  1.9720478
+epochs: 104
+acc:  0.68
+mean of 0:  -2.0406847
+mean of 1:  2.445381
+epochs: 105
+acc:  0.71
+mean of 0:  -1.6658126
+mean of 1:  2.1274474
+epochs: 106
+acc:  0.74
+mean of 0:  -1.7434841
+mean of 1:  2.2889073
+epochs: 107
+acc:  0.72
+mean of 0:  -1.5311502
+mean of 1:  2.1837835
+epochs: 108
+acc:  0.71
+mean of 0:  -2.0579271
+mean of 1:  2.4390006
+epochs: 109
+acc:  0.73
+mean of 0:  -2.0908022
+mean of 1:  2.5607567
+epochs: 110
+acc:  0.76
+mean of 0:  -2.135916
+mean of 1:  2.6145306
+epochs: 111
+acc:  0.73
+mean of 0:  -2.1617541
+mean of 1:  2.5893524
+epochs: 112
+acc:  0.82
+mean of 0:  -2.1517148
+mean of 1:  2.502357
+epochs: 113
+acc:  0.77
+mean of 0:  -1.8531818
+mean of 1:  2.1399174
+epochs: 114
+acc:  0.72
+mean of 0:  -2.1118152
+mean of 1:  2.4991055
+epochs: 115
+acc:  0.8
+mean of 0:  -2.3360624
+mean of 1:  2.8013196
+epochs: 116
+acc:  0.74
+mean of 0:  -2.0540798
+mean of 1:  2.5981371
+epochs: 117
+acc:  0.76
+mean of 0:  -2.0455267
+mean of 1:  2.4173107
+epochs: 118
+acc:  0.74
+mean of 0:  -2.0864344
+mean of 1:  2.4558537
+epochs: 119
+acc:  0.72
+mean of 0:  -1.8423585
+mean of 1:  2.2836688
+epochs: 120
+acc:  0.79
+mean of 0:  -2.175887
+mean of 1:  2.541282
+epochs: 121
+acc:  0.78
+mean of 0:  -1.8742788
+mean of 1:  2.2198093
+epochs: 122
+acc:  0.74
+mean of 0:  -2.150129
+mean of 1:  2.6891413
+epochs: 123
+acc:  0.77
+mean of 0:  -2.2646532
+mean of 1:  2.6947088
+epochs: 124
+acc:  0.77
+mean of 0:  -2.4287965
+mean of 1:  2.9780102
+epochs: 125
+acc:  0.73
+mean of 0:  -1.9828986
+mean of 1:  2.5004888
+epochs: 126
+acc:  0.75
+mean of 0:  -2.5073152
+mean of 1:  2.957707
+epochs: 127
+acc:  0.75
+mean of 0:  -2.2389824
+mean of 1:  2.7214983
+epochs: 128
+acc:  0.78
+mean of 0:  -2.331915
+mean of 1:  2.8459837
+epochs: 129
+acc:  0.75
+mean of 0:  -2.3755069
+mean of 1:  2.7950776
+epochs: 130
+acc:  0.78
+mean of 0:  -2.28289
+mean of 1:  2.8844516
+epochs: 131
+acc:  0.79
+mean of 0:  -2.4090798
+mean of 1:  2.919946
+epochs: 132
+acc:  0.74
+mean of 0:  -2.211892
+mean of 1:  2.7723331
+epochs: 133
+acc:  0.72
+mean of 0:  -2.3128908
+mean of 1:  2.8117998
+epochs: 134
+acc:  0.74
+mean of 0:  -2.6237302
+mean of 1:  2.8951356
+epochs: 135
+acc:  0.78
+mean of 0:  -2.3768568
+mean of 1:  2.98124
+epochs: 136
+acc:  0.77
+mean of 0:  -2.4509356
+mean of 1:  3.1684852
+epochs: 137
+acc:  0.78
+mean of 0:  -2.5149682
+mean of 1:  3.1241846
+epochs: 138
+acc:  0.77
+mean of 0:  -2.6362734
+mean of 1:  3.171955
+epochs: 139
+acc:  0.76
+mean of 0:  -2.650522
+mean of 1:  3.192737
+epochs: 140
+acc:  0.78
+mean of 0:  -2.637598
+mean of 1:  3.1667523
+epochs: 141
+acc:  0.78
+mean of 0:  -2.5775332
+mean of 1:  3.1620834
+epochs: 142
+acc:  0.79
+mean of 0:  -2.7804189
+mean of 1:  3.4213016
+epochs: 143
+acc:  0.86
+mean of 0:  -2.8106763
+mean of 1:  3.5684855
+epochs: 144
+acc:  0.82
+mean of 0:  -2.7877557
+mean of 1:  3.261334
+epochs: 145
+acc:  0.83
+mean of 0:  -2.8234234
+mean of 1:  3.4399118
+epochs: 146
+acc:  0.75
+mean of 0:  -2.838164
+mean of 1:  3.423293
+epochs: 147
+acc:  0.75
+mean of 0:  -2.841482
+mean of 1:  3.234264
+epochs: 148
+acc:  0.82
+mean of 0:  -2.7540078
+mean of 1:  3.2466164
+epochs: 149
+acc:  0.82
+mean of 0:  -2.984105
+mean of 1:  3.5572908
+epochs: 150
+acc:  0.83
+mean of 0:  -3.029698
+mean of 1:  3.5194118
+epochs: 151
+acc:  0.82
+mean of 0:  -2.8790047
+mean of 1:  3.4076383
+epochs: 152
+acc:  0.79
+mean of 0:  -2.7885113
+mean of 1:  3.3626842
+epochs: 153
+acc:  0.85
+mean of 0:  -2.6321285
+mean of 1:  3.2119224
+epochs: 154
+acc:  0.87
+mean of 0:  -2.8908918
+mean of 1:  3.5615776
+epochs: 155
+acc:  0.8
+mean of 0:  -3.0538168
+mean of 1:  3.537107
+epochs: 156
+acc:  0.78
+mean of 0:  -3.0526521
+mean of 1:  3.4929702
+epochs: 157
+acc:  0.81
+mean of 0:  -2.4469106
+mean of 1:  2.9027424
+epochs: 158
+acc:  0.81
+mean of 0:  -2.9735918
+mean of 1:  3.5246744
+epochs: 159
+acc:  0.79
+mean of 0:  -2.6753926
+mean of 1:  3.262209
+epochs: 160
+acc:  0.77
+mean of 0:  -2.8141468
+mean of 1:  3.4459844
+epochs: 161
+acc:  0.75
+mean of 0:  -3.03232
+mean of 1:  3.6717362
+epochs: 162
+acc:  0.82
+mean of 0:  -2.9535286
+mean of 1:  3.5822856
+epochs: 163
+acc:  0.77
+mean of 0:  -2.9352994
+mean of 1:  3.5619626
+epochs: 164
+acc:  0.78
+mean of 0:  -2.5625417
+mean of 1:  3.2963867
+epochs: 165
+acc:  0.82
+mean of 0:  -3.1397133
+mean of 1:  3.8165874
+epochs: 166
+acc:  0.77
+mean of 0:  -3.0891116
+mean of 1:  3.7634609
+epochs: 167
+acc:  0.77
+mean of 0:  -3.0248747
+mean of 1:  3.4941473
+epochs: 168
+acc:  0.75
+mean of 0:  -3.0134547
+mean of 1:  3.6935241
+epochs: 169
+acc:  0.75
+mean of 0:  -3.2008593
+mean of 1:  3.9353232
+epochs: 170
+acc:  0.77
+mean of 0:  -3.1136081
+mean of 1:  3.5844142
+epochs: 171
+acc:  0.73
+mean of 0:  -2.8454928
+mean of 1:  3.6069074
+epochs: 172
+acc:  0.76
+mean of 0:  -3.18772
+mean of 1:  3.6604264
+epochs: 173
+acc:  0.72
+mean of 0:  -2.7968192
+mean of 1:  3.3903186
+epochs: 174
+acc:  0.8
+mean of 0:  -2.6395235
+mean of 1:  3.0912042
+epochs: 175
+acc:  0.78
+mean of 0:  -2.950051
+mean of 1:  3.496679
+epochs: 176
+acc:  0.75
+mean of 0:  -3.0375943
+mean of 1:  3.6113946
+epochs: 177
+acc:  0.76
+mean of 0:  -3.0078466
+mean of 1:  3.4994206
+epochs: 178
+acc:  0.76
+mean of 0:  -3.0658388
+mean of 1:  3.8090427
+epochs: 179
+acc:  0.75
+mean of 0:  -2.9961596
+mean of 1:  3.5505247
+epochs: 180
+acc:  0.73
+mean of 0:  -2.7182417
+mean of 1:  3.646674
+epochs: 181
+acc:  0.76
+mean of 0:  -3.0575838
+mean of 1:  3.617649
+epochs: 182
+acc:  0.79
+mean of 0:  -3.2569592
+mean of 1:  3.9183972
+epochs: 183
+acc:  0.79
+mean of 0:  -2.8865545
+mean of 1:  3.5899658
+epochs: 184
+acc:  0.79
+mean of 0:  -2.7620447
+mean of 1:  3.497701
+epochs: 185
+acc:  0.8
+mean of 0:  -2.8411157
+mean of 1:  3.706468
+epochs: 186
+acc:  0.78
+mean of 0:  -2.766719
+mean of 1:  3.5110056
+epochs: 187
+acc:  0.81
+mean of 0:  -2.924951
+mean of 1:  3.7964551
+epochs: 188
+acc:  0.78
+mean of 0:  -2.8271105
+mean of 1:  3.705461
+epochs: 189
+acc:  0.74
+mean of 0:  -2.705469
+mean of 1:  3.6195645
+epochs: 190
+acc:  0.8
+mean of 0:  -3.2756178
+mean of 1:  4.0299625
+epochs: 191
+acc:  0.74
+mean of 0:  -2.8919806
+mean of 1:  3.5797784
+epochs: 192
+acc:  0.77
+mean of 0:  -3.0714128
+mean of 1:  3.6893504
+epochs: 193
+acc:  0.78
+mean of 0:  -3.0980883
+mean of 1:  3.8909895
+epochs: 194
+acc:  0.81
+mean of 0:  -2.9168959
+mean of 1:  3.6851587
+epochs: 195
+acc:  0.8
+mean of 0:  -3.2084217
+mean of 1:  4.014513
+epochs: 196
+acc:  0.81
+mean of 0:  -3.3110027
+mean of 1:  3.9735394
+epochs: 197
+acc:  0.83
+mean of 0:  -3.6032546
+mean of 1:  4.43748
+epochs: 198
+acc:  0.82
+mean of 0:  -3.2815685
+mean of 1:  3.6683602
+epochs: 199
+acc:  0.82
+mean of 0:  -3.5242321
+mean of 1:  4.176109
+epochs: 200
+acc:  0.8
+mean of 0:  -3.1101532
+mean of 1:  3.718797
+epochs: 201
+acc:  0.81
+mean of 0:  -3.1894758
+mean of 1:  3.9866467
+epochs: 202
+acc:  0.81
+mean of 0:  -3.1092644
+mean of 1:  3.8914602
+epochs: 203
+acc:  0.83
+mean of 0:  -3.0422468
+mean of 1:  3.9227602
+epochs: 204
+acc:  0.8
+mean of 0:  -3.0336878
+mean of 1:  3.545375
+epochs: 205
+acc:  0.8
+mean of 0:  -3.0363197
+mean of 1:  3.528734
+epochs: 206
+acc:  0.79
+mean of 0:  -3.1385114
+mean of 1:  3.7056067
+epochs: 207
+acc:  0.78
+mean of 0:  -3.2901034
+mean of 1:  3.756873
+epochs: 208
+acc:  0.78
+mean of 0:  -3.2341273
+mean of 1:  3.6830816
+epochs: 209
+acc:  0.8
+mean of 0:  -3.2962189
+mean of 1:  3.809074
+epochs: 210
+acc:  0.83
+mean of 0:  -3.4187157
+mean of 1:  3.8159475
+epochs: 211
+acc:  0.78
+mean of 0:  -3.0268512
+mean of 1:  3.3606749
+epochs: 212
+acc:  0.83
+mean of 0:  -3.5005188
+mean of 1:  3.9127667
+epochs: 213
+acc:  0.83
+mean of 0:  -3.3950758
+mean of 1:  3.7223408
+epochs: 214
+acc:  0.84
+mean of 0:  -3.4103055
+mean of 1:  3.8173852
+epochs: 215
+acc:  0.8
+mean of 0:  -3.269104
+mean of 1:  3.5375283
+epochs: 216
+acc:  0.8
+mean of 0:  -3.4070659
+mean of 1:  3.8437505
+epochs: 217
+acc:  0.83
+mean of 0:  -3.7034671
+mean of 1:  4.0476294
+epochs: 218
+acc:  0.75
+mean of 0:  -2.8206291
+mean of 1:  3.138158
+epochs: 219
+acc:  0.8
+mean of 0:  -3.4660232
+mean of 1:  3.7871106
+epochs: 220
+acc:  0.81
+mean of 0:  -3.6519036
+mean of 1:  3.8796153
+epochs: 221
+acc:  0.77
+mean of 0:  -3.6358945
+mean of 1:  3.8666904
+epochs: 222
+acc:  0.81
+mean of 0:  -3.7810218
+mean of 1:  4.134522
+epochs: 223
+acc:  0.8
+mean of 0:  -3.5406666
+mean of 1:  3.9633765
+epochs: 224
+acc:  0.83
+mean of 0:  -3.8969126
+mean of 1:  4.003644
+epochs: 225
+acc:  0.8
+mean of 0:  -3.8119025
+mean of 1:  4.0495076
+epochs: 226
+acc:  0.84
+mean of 0:  -3.7625349
+mean of 1:  4.0222726
+epochs: 227
+acc:  0.8
+mean of 0:  -3.952452
+mean of 1:  4.211773
+epochs: 228
+acc:  0.84
+mean of 0:  -4.2244954
+mean of 1:  4.552534
+epochs: 229
+acc:  0.81
+mean of 0:  -3.8986547
+mean of 1:  4.231862
+epochs: 230
+acc:  0.82
+mean of 0:  -4.2231164
+mean of 1:  4.425549
+epochs: 231
+acc:  0.82
+mean of 0:  -4.060681
+mean of 1:  4.3899546
+epochs: 232
+acc:  0.82
+mean of 0:  -3.9501712
+mean of 1:  4.1356926
+epochs: 233
+acc:  0.84
+mean of 0:  -4.074301
+mean of 1:  4.327531
+epochs: 234
+acc:  0.79
+mean of 0:  -3.903109
+mean of 1:  4.13543
+epochs: 235
+acc:  0.87
+mean of 0:  -4.417163
+mean of 1:  4.7860093
+epochs: 236
+acc:  0.85
+mean of 0:  -3.7949688
+mean of 1:  4.1427402
+epochs: 237
+acc:  0.82
+mean of 0:  -3.5040445
+mean of 1:  3.8101168
+epochs: 238
+acc:  0.83
+mean of 0:  -4.0542517
+mean of 1:  4.4993486
+epochs: 239
+acc:  0.83
+mean of 0:  -3.825254
+mean of 1:  4.2437963
+epochs: 240
+acc:  0.84
+mean of 0:  -4.1307883
+mean of 1:  4.5728154
+epochs: 241
+acc:  0.86
+mean of 0:  -4.497791
+mean of 1:  4.710243
+epochs: 242
+acc:  0.82
+mean of 0:  -4.240311
+mean of 1:  4.695075
+epochs: 243
+acc:  0.84
+mean of 0:  -4.091654
+mean of 1:  4.42924
+epochs: 244
+acc:  0.82
+mean of 0:  -4.0753374
+mean of 1:  4.3636713
+epochs: 245
+acc:  0.82
+mean of 0:  -3.9936714
+mean of 1:  4.3377166
+epochs: 246
+acc:  0.87
+mean of 0:  -4.28971
+mean of 1:  4.585519
+epochs: 247
+acc:  0.82
+mean of 0:  -3.8885777
+mean of 1:  4.3537602
+epochs: 248
+acc:  0.79
+mean of 0:  -3.8320584
+mean of 1:  4.408064
+epochs: 249
+acc:  0.84
+mean of 0:  -4.498163
+mean of 1:  5.258164
+epochs: 250
+acc:  0.84
+mean of 0:  -3.955169
+mean of 1:  4.5230155
+epochs: 251
+acc:  0.8
+mean of 0:  -4.1029773
+mean of 1:  4.540774
+epochs: 252
+acc:  0.84
+mean of 0:  -3.6926925
+mean of 1:  4.296575
+epochs: 253
+acc:  0.84
+mean of 0:  -4.1215024
+mean of 1:  4.6799407
+epochs: 254
+acc:  0.84
+mean of 0:  -3.9424522
+mean of 1:  4.422834
+epochs: 255
+acc:  0.81
+mean of 0:  -3.588792
+mean of 1:  4.1352677
+epochs: 256
+acc:  0.84
+mean of 0:  -3.9427066
+mean of 1:  4.559221
+epochs: 257
+acc:  0.81
+mean of 0:  -3.8507216
+mean of 1:  4.499342
+epochs: 258
+acc:  0.83
+mean of 0:  -4.226538
+mean of 1:  4.846388
+epochs: 259
+acc:  0.81
+mean of 0:  -4.041715
+mean of 1:  4.665479
+epochs: 260
+acc:  0.8
+mean of 0:  -3.8496256
+mean of 1:  4.360356
+epochs: 261
+acc:  0.84
+mean of 0:  -4.2325096
+mean of 1:  4.8268805
+epochs: 262
+acc:  0.84
+mean of 0:  -4.142339
+mean of 1:  4.6265726
+epochs: 263
+acc:  0.84
+mean of 0:  -3.9763687
+mean of 1:  4.4578753
+epochs: 264
+acc:  0.83
+mean of 0:  -3.5007246
+mean of 1:  3.9372022
+epochs: 265
+acc:  0.83
+mean of 0:  -3.8442004
+mean of 1:  4.316738
+epochs: 266
+acc:  0.83
+mean of 0:  -3.79916
+mean of 1:  4.2253647
+epochs: 267
+acc:  0.79
+mean of 0:  -3.8848438
+mean of 1:  4.460003
+epochs: 268
+acc:  0.83
+mean of 0:  -3.7899034
+mean of 1:  4.3302135
+epochs: 269
+acc:  0.8
+mean of 0:  -3.700659
+mean of 1:  4.1953235
+epochs: 270
+acc:  0.8
+mean of 0:  -3.4524384
+mean of 1:  3.9002578
+epochs: 271
+acc:  0.82
+mean of 0:  -3.638575
+mean of 1:  4.0277743
+epochs: 272
+acc:  0.82
+mean of 0:  -3.5745516
+mean of 1:  4.208686
+epochs: 273
+acc:  0.76
+mean of 0:  -3.5094566
+mean of 1:  4.306075
+epochs: 274
+acc:  0.82
+mean of 0:  -3.2306519
+mean of 1:  3.9692566
+epochs: 275
+acc:  0.77
+mean of 0:  -3.6461802
+mean of 1:  4.2954054
+epochs: 276
+acc:  0.82
+mean of 0:  -3.7355897
+mean of 1:  4.283167
+epochs: 277
+acc:  0.82
+mean of 0:  -3.8898942
+mean of 1:  4.5696263
+epochs: 278
+acc:  0.82
+mean of 0:  -3.7865639
+mean of 1:  4.5205846
+epochs: 279
+acc:  0.85
+mean of 0:  -3.9230223
+mean of 1:  4.640214
+epochs: 280
+acc:  0.83
+mean of 0:  -4.1696496
+mean of 1:  4.899126
+epochs: 281
+acc:  0.79
+mean of 0:  -3.7401822
+mean of 1:  4.452898
+epochs: 282
+acc:  0.85
+mean of 0:  -3.7868867
+mean of 1:  4.3291264
+epochs: 283
+acc:  0.79
+mean of 0:  -3.7898962
+mean of 1:  4.3567405
+epochs: 284
+acc:  0.8
+mean of 0:  -4.238374
+mean of 1:  4.81926
+epochs: 285
+acc:  0.84
+mean of 0:  -4.292179
+mean of 1:  4.9132504
+epochs: 286
+acc:  0.78
+mean of 0:  -3.6937573
+mean of 1:  4.435742
+epochs: 287
+acc:  0.84
+mean of 0:  -4.0617404
+mean of 1:  4.951704
+epochs: 288
+acc:  0.84
+mean of 0:  -4.0517483
+mean of 1:  4.791297
+epochs: 289
+acc:  0.87
+mean of 0:  -4.0534353
+mean of 1:  4.707702
+epochs: 290
+acc:  0.79
+mean of 0:  -3.7310147
+mean of 1:  4.3423448
+epochs: 291
+acc:  0.84
+mean of 0:  -3.617333
+mean of 1:  4.2752905
+epochs: 292
+acc:  0.85
+mean of 0:  -3.6012194
+mean of 1:  4.0173836
+epochs: 293
+acc:  0.81
+mean of 0:  -3.845768
+mean of 1:  4.3655887
+epochs: 294
+acc:  0.76
+mean of 0:  -3.9592652
+mean of 1:  4.4696693
+epochs: 295
+acc:  0.81
+mean of 0:  -4.4673977
+mean of 1:  4.8310847
+epochs: 296
+acc:  0.78
+mean of 0:  -3.8744419
+mean of 1:  4.449207
+epochs: 297
+acc:  0.88
+mean of 0:  -4.169431
+mean of 1:  4.726984
+epochs: 298
+acc:  0.83
+mean of 0:  -4.5339756
+mean of 1:  5.1736393
+epochs: 299
+acc:  0.8
+mean of 0:  -4.2539406
+mean of 1:  4.753348
+epochs: 300
+acc:  0.82
+mean of 0:  -4.3060393
+mean of 1:  4.6804943
+epochs: 301
+acc:  0.8
+mean of 0:  -4.1253047
+mean of 1:  4.602219
+epochs: 302
+acc:  0.86
+mean of 0:  -4.1965604
+mean of 1:  4.7253847
+epochs: 303
+acc:  0.83
+mean of 0:  -4.218466
+mean of 1:  4.758774
+epochs: 304
+acc:  0.79
+mean of 0:  -4.1481547
+mean of 1:  4.6389327
+epochs: 305
+acc:  0.85
+mean of 0:  -4.786688
+mean of 1:  5.2136555
+epochs: 306
+acc:  0.85
+mean of 0:  -4.455958
+mean of 1:  4.8151617
+epochs: 307
+acc:  0.83
+mean of 0:  -4.0142913
+mean of 1:  4.3792
+epochs: 308
+acc:  0.81
+mean of 0:  -4.3412523
+mean of 1:  4.8412623
+epochs: 309
+acc:  0.82
+mean of 0:  -4.536322
+mean of 1:  4.8945756
+epochs: 310
+acc:  0.8
+mean of 0:  -4.5294843
+mean of 1:  4.695365
+epochs: 311
+acc:  0.79
+mean of 0:  -4.748447
+mean of 1:  5.4654126
+epochs: 312
+acc:  0.82
+mean of 0:  -4.3662286
+mean of 1:  4.8842874
+epochs: 313
+acc:  0.85
+mean of 0:  -4.741054
+mean of 1:  5.251943
+epochs: 314
+acc:  0.87
+mean of 0:  -5.1945386
+mean of 1:  5.60118
+epochs: 315
+acc:  0.83
+mean of 0:  -4.479145
+mean of 1:  4.8174477
+epochs: 316
+acc:  0.85
+mean of 0:  -4.6057377
+mean of 1:  4.859193
+epochs: 317
+acc:  0.82
+mean of 0:  -4.437765
+mean of 1:  4.5578117
+epochs: 318
+acc:  0.83
+mean of 0:  -4.3016777
+mean of 1:  4.6267586
+epochs: 319
+acc:  0.85
+mean of 0:  -4.262538
+mean of 1:  4.5568666
+epochs: 320
+acc:  0.85
+mean of 0:  -4.7341833
+mean of 1:  5.12659
+epochs: 321
+acc:  0.84
+mean of 0:  -4.326428
+mean of 1:  4.5959044
+epochs: 322
+acc:  0.81
+mean of 0:  -4.367161
+mean of 1:  4.729346
+epochs: 323
+acc:  0.83
+mean of 0:  -4.68752
+mean of 1:  5.1130114
+epochs: 324
+acc:  0.86
+mean of 0:  -4.6736836
+mean of 1:  5.0029235
+epochs: 325
+acc:  0.87
+mean of 0:  -4.9120364
+mean of 1:  5.3275504
+epochs: 326
+acc:  0.79
+mean of 0:  -4.8282394
+mean of 1:  5.0044003
+epochs: 327
+acc:  0.8
+mean of 0:  -4.7071652
+mean of 1:  5.116826
+epochs: 328
+acc:  0.88
+mean of 0:  -5.15179
+mean of 1:  5.5213017
+epochs: 329
+acc:  0.85
+mean of 0:  -5.2607064
+mean of 1:  5.5993347
+epochs: 330
+acc:  0.85
+mean of 0:  -4.9304233
+mean of 1:  5.3091393
+epochs: 331
+acc:  0.84
+mean of 0:  -4.440598
+mean of 1:  4.88071
+epochs: 332
+acc:  0.83
+mean of 0:  -4.585049
+mean of 1:  5.012234
+epochs: 333
+acc:  0.82
+mean of 0:  -4.2125163
+mean of 1:  4.596562
+epochs: 334
+acc:  0.81
+mean of 0:  -4.182712
+mean of 1:  4.6270504
+epochs: 335
+acc:  0.86
+mean of 0:  -4.5490503
+mean of 1:  5.1039896
+epochs: 336
+acc:  0.85
+mean of 0:  -4.630978
+mean of 1:  5.072372
+epochs: 337
+acc:  0.81
+mean of 0:  -4.862876
+mean of 1:  5.3175907
+epochs: 338
+acc:  0.81
+mean of 0:  -4.4057984
+mean of 1:  4.60457
+epochs: 339
+acc:  0.82
+mean of 0:  -4.755755
+mean of 1:  5.025372
+epochs: 340
+acc:  0.85
+mean of 0:  -4.8158236
+mean of 1:  5.25477
+epochs: 341
+acc:  0.84
+mean of 0:  -4.528873
+mean of 1:  5.107313
+epochs: 342
+acc:  0.83
+mean of 0:  -4.596256
+mean of 1:  4.9906197
+epochs: 343
+acc:  0.84
+mean of 0:  -4.7587023
+mean of 1:  4.8834996
+epochs: 344
+acc:  0.86
+mean of 0:  -4.250133
+mean of 1:  4.6589584
+epochs: 345
+acc:  0.85
+mean of 0:  -4.588163
+mean of 1:  5.250297
+epochs: 346
+acc:  0.81
+mean of 0:  -4.21977
+mean of 1:  4.6594954
+epochs: 347
+acc:  0.84
+mean of 0:  -4.42048
+mean of 1:  4.959662
+epochs: 348
+acc:  0.82
+mean of 0:  -3.7928915
+mean of 1:  4.091397
+epochs: 349
+acc:  0.83
+mean of 0:  -4.116654
+mean of 1:  4.39771
+epochs: 350
+acc:  0.82
+mean of 0:  -4.3262334
+mean of 1:  4.7160645
+epochs: 351
+acc:  0.85
+mean of 0:  -4.8340535
+mean of 1:  5.01368
+epochs: 352
+acc:  0.82
+mean of 0:  -4.528083
+mean of 1:  4.695031
+epochs: 353
+acc:  0.8
+mean of 0:  -4.3763657
+mean of 1:  4.5773163
+epochs: 354
+acc:  0.83
+mean of 0:  -4.1580105
+mean of 1:  4.6035566
+epochs: 355
+acc:  0.87
+mean of 0:  -4.358597
+mean of 1:  4.8660884
+epochs: 356
+acc:  0.84
+mean of 0:  -4.3862963
+mean of 1:  4.775186
+epochs: 357
+acc:  0.84
+mean of 0:  -4.5544977
+mean of 1:  4.8625717
+epochs: 358
+acc:  0.86
+mean of 0:  -4.451357
+mean of 1:  4.6481757
+epochs: 359
+acc:  0.8
+mean of 0:  -4.515243
+mean of 1:  4.9965773
+epochs: 360
+acc:  0.81
+mean of 0:  -3.9116113
+mean of 1:  4.3502035
+epochs: 361
+acc:  0.83
+mean of 0:  -4.414228
+mean of 1:  4.614425
+epochs: 362
+acc:  0.82
+mean of 0:  -4.8328176
+mean of 1:  5.2314553
+epochs: 363
+acc:  0.82
+mean of 0:  -4.3829303
+mean of 1:  4.827675
+epochs: 364
+acc:  0.86
+mean of 0:  -4.5265536
+mean of 1:  5.0209217
+epochs: 365
+acc:  0.87
+mean of 0:  -4.772096
+mean of 1:  5.1595154
+epochs: 366
+acc:  0.81
+mean of 0:  -4.3557663
+mean of 1:  4.8790765
+epochs: 367
+acc:  0.88
+mean of 0:  -4.32685
+mean of 1:  4.7262893
+epochs: 368
+acc:  0.83
+mean of 0:  -4.598733
+mean of 1:  5.0652833
+epochs: 369
+acc:  0.81
+mean of 0:  -4.7064805
+mean of 1:  4.8502088
+epochs: 370
+acc:  0.89
+mean of 0:  -4.789233
+mean of 1:  5.1840606
+epochs: 371
+acc:  0.82
+mean of 0:  -4.388096
+mean of 1:  4.6903243
+epochs: 372
+acc:  0.8
+mean of 0:  -4.5144434
+mean of 1:  4.9336677
+epochs: 373
+acc:  0.89
+mean of 0:  -4.554411
+mean of 1:  4.781636
+epochs: 374
+acc:  0.84
+mean of 0:  -4.601468
+mean of 1:  4.7501764
+epochs: 375
+acc:  0.84
+mean of 0:  -4.5919857
+mean of 1:  5.037894
+epochs: 376
+acc:  0.85
+mean of 0:  -5.0829725
+mean of 1:  5.242892
+epochs: 377
+acc:  0.85
+mean of 0:  -4.7721033
+mean of 1:  5.068562
+epochs: 378
+acc:  0.88
+mean of 0:  -5.4617667
+mean of 1:  5.637654
+epochs: 379
+acc:  0.8
+mean of 0:  -4.6262403
+mean of 1:  5.0566387
+epochs: 380
+acc:  0.89
+mean of 0:  -5.145306
+mean of 1:  5.516645
+epochs: 381
+acc:  0.86
+mean of 0:  -5.1068854
+mean of 1:  5.6587405
+epochs: 382
+acc:  0.88
+mean of 0:  -4.865207
+mean of 1:  5.074365
+epochs: 383
+acc:  0.86
+mean of 0:  -5.3220634
+mean of 1:  5.856695
+epochs: 384
+acc:  0.82
+mean of 0:  -5.128773
+mean of 1:  5.539498
+epochs: 385
+acc:  0.85
+mean of 0:  -4.9727464
+mean of 1:  5.416779
+epochs: 386
+acc:  0.88
+mean of 0:  -5.1750746
+mean of 1:  5.5466537
+epochs: 387
+acc:  0.85
+mean of 0:  -4.8849783
+mean of 1:  5.071304
+epochs: 388
+acc:  0.88
+mean of 0:  -5.3327208
+mean of 1:  5.4515696
+epochs: 389
+acc:  0.87
+mean of 0:  -5.2195034
+mean of 1:  5.5958424
+epochs: 390
+acc:  0.87
+mean of 0:  -5.059285
+mean of 1:  5.4670115
+epochs: 391
+acc:  0.87
+mean of 0:  -5.2647934
+mean of 1:  5.574219
+epochs: 392
+acc:  0.88
+mean of 0:  -5.038829
+mean of 1:  5.443486
+epochs: 393
+acc:  0.84
+mean of 0:  -4.8837566
+mean of 1:  5.337299
+epochs: 394
+acc:  0.88
+mean of 0:  -5.0771766
+mean of 1:  5.5046186
+epochs: 395
+acc:  0.9
+mean of 0:  -5.4952135
+mean of 1:  5.9649343
+epochs: 396
+acc:  0.84
+mean of 0:  -5.1819897
+mean of 1:  5.3758526
+epochs: 397
+acc:  0.87
+mean of 0:  -4.9198284
+mean of 1:  5.3125525
+epochs: 398
+acc:  0.87
+mean of 0:  -5.2072744
+mean of 1:  5.595877
+epochs: 399
+acc:  0.84
+mean of 0:  -5.540235
+mean of 1:  5.842562
+epochs: 400
+acc:  0.86
+mean of 0:  -4.6570563
+mean of 1:  4.839728
+epochs: 401
+acc:  0.82
+mean of 0:  -5.2214665
+mean of 1:  5.6776037
+epochs: 402
+acc:  0.85
+mean of 0:  -4.928618
+mean of 1:  5.522457
+epochs: 403
+acc:  0.84
+mean of 0:  -5.120337
+mean of 1:  5.6888986
+epochs: 404
+acc:  0.88
+mean of 0:  -5.51444
+mean of 1:  6.0322547
+epochs: 405
+acc:  0.88
+mean of 0:  -5.7080545
+mean of 1:  6.263269
+epochs: 406
+acc:  0.88
+mean of 0:  -4.928713
+mean of 1:  5.5330343
+epochs: 407
+acc:  0.83
+mean of 0:  -5.3657866
+mean of 1:  5.5664015
+epochs: 408
+acc:  0.85
+mean of 0:  -5.718858
+mean of 1:  6.0017996
+epochs: 409
+acc:  0.88
+mean of 0:  -4.858651
+mean of 1:  5.1396146
+epochs: 410
+acc:  0.88
+mean of 0:  -5.1218257
+mean of 1:  5.7511206
+epochs: 411
+acc:  0.83
+mean of 0:  -5.2545404
+mean of 1:  5.545489
+epochs: 412
+acc:  0.83
+mean of 0:  -5.3266025
+mean of 1:  5.631794
+epochs: 413
+acc:  0.9
+mean of 0:  -5.5211535
+mean of 1:  5.89378
+epochs: 414
+acc:  0.86
+mean of 0:  -5.2630644
+mean of 1:  5.5690055
+epochs: 415
+acc:  0.88
+mean of 0:  -5.1005373
+mean of 1:  5.3006268
+epochs: 416
+acc:  0.88
+mean of 0:  -5.6834517
+mean of 1:  5.993306
+epochs: 417
+acc:  0.87
+mean of 0:  -5.7057886
+mean of 1:  6.070863
+epochs: 418
+acc:  0.85
+mean of 0:  -5.3102827
+mean of 1:  5.7346754
+epochs: 419
+acc:  0.85
+mean of 0:  -5.6918426
+mean of 1:  6.0475516
+epochs: 420
+acc:  0.87
+mean of 0:  -5.3775296
+mean of 1:  5.549597
+epochs: 421
+acc:  0.85
+mean of 0:  -5.821261
+mean of 1:  5.9515886
+epochs: 422
+acc:  0.87
+mean of 0:  -5.520099
+mean of 1:  5.986627
+epochs: 423
+acc:  0.85
+mean of 0:  -5.4962134
+mean of 1:  5.8976803
+epochs: 424
+acc:  0.89
+mean of 0:  -6.1808434
+mean of 1:  6.763015
+epochs: 425
+acc:  0.85
+mean of 0:  -6.306434
+mean of 1:  6.8766456
+epochs: 426
+acc:  0.89
+mean of 0:  -5.347258
+mean of 1:  5.8450904
+epochs: 427
+acc:  0.9
+mean of 0:  -6.3336816
+mean of 1:  6.9707537
+epochs: 428
+acc:  0.85
+mean of 0:  -5.308661
+mean of 1:  5.809642
+epochs: 429
+acc:  0.85
+mean of 0:  -5.157236
+mean of 1:  5.729497
+epochs: 430
+acc:  0.92
+mean of 0:  -6.030454
+mean of 1:  6.2783446
+epochs: 431
+acc:  0.87
+mean of 0:  -5.6050124
+mean of 1:  5.838638
+epochs: 432
+acc:  0.88
+mean of 0:  -5.664149
+mean of 1:  5.8176675
+epochs: 433
+acc:  0.88
+mean of 0:  -5.574314
+mean of 1:  5.611827
+epochs: 434
+acc:  0.89
+mean of 0:  -5.852311
+mean of 1:  5.9473495
+epochs: 435
+acc:  0.91
+mean of 0:  -5.9004154
+mean of 1:  5.8763514
+epochs: 436
+acc:  0.91
+mean of 0:  -5.162272
+mean of 1:  5.548261
+epochs: 437
+acc:  0.89
+mean of 0:  -5.8265886
+mean of 1:  6.3341117
+epochs: 438
+acc:  0.9
+mean of 0:  -6.191352
+mean of 1:  6.5813103
+epochs: 439
+acc:  0.9
+mean of 0:  -5.660811
+mean of 1:  6.068833
+epochs: 440
+acc:  0.9
+mean of 0:  -5.9978476
+mean of 1:  6.750269
+epochs: 441
+acc:  0.88
+mean of 0:  -5.1430087
+mean of 1:  5.743872
+epochs: 442
+acc:  0.87
+mean of 0:  -5.4723525
+mean of 1:  6.0945473
+epochs: 443
+acc:  0.87
+mean of 0:  -5.591284
+mean of 1:  5.912196
+epochs: 444
+acc:  0.88
+mean of 0:  -5.1752734
+mean of 1:  5.6456404
+epochs: 445
+acc:  0.86
+mean of 0:  -5.4409685
+mean of 1:  6.0820174
+epochs: 446
+acc:  0.86
+mean of 0:  -5.071408
+mean of 1:  5.507189
+epochs: 447
+acc:  0.86
+mean of 0:  -4.9179797
+mean of 1:  5.5254264
+epochs: 448
+acc:  0.87
+mean of 0:  -5.5332217
+mean of 1:  6.0399094
+epochs: 449
+acc:  0.91
+mean of 0:  -5.502518
+mean of 1:  6.1124163
+epochs: 450
+acc:  0.87
+mean of 0:  -5.3386254
+mean of 1:  5.731004
+epochs: 451
+acc:  0.85
+mean of 0:  -5.2453938
+mean of 1:  5.567712
+epochs: 452
+acc:  0.85
+mean of 0:  -5.1066194
+mean of 1:  5.59654
+epochs: 453
+acc:  0.89
+mean of 0:  -5.852986
+mean of 1:  6.395335
+epochs: 454
+acc:  0.89
+mean of 0:  -5.74455
+mean of 1:  6.296949
+epochs: 455
+acc:  0.91
+mean of 0:  -6.3731327
+mean of 1:  6.8131304
+epochs: 456
+acc:  0.89
+mean of 0:  -5.830085
+mean of 1:  6.1783366
+epochs: 457
+acc:  0.91
+mean of 0:  -5.8226066
+mean of 1:  6.227139
+epochs: 458
+acc:  0.89
+mean of 0:  -5.9926996
+mean of 1:  6.270399
+epochs: 459
+acc:  0.91
+mean of 0:  -6.136587
+mean of 1:  6.465043
+epochs: 460
+acc:  0.9
+mean of 0:  -6.5096154
+mean of 1:  6.8619714
+epochs: 461
+acc:  0.91
+mean of 0:  -6.2831025
+mean of 1:  6.58897
+epochs: 462
+acc:  0.9
+mean of 0:  -6.5665503
+mean of 1:  6.84888
+epochs: 463
+acc:  0.9
+mean of 0:  -6.167436
+mean of 1:  6.490805
+epochs: 464
+acc:  0.88
+mean of 0:  -6.0402327
+mean of 1:  6.405403
+epochs: 465
+acc:  0.88
+mean of 0:  -5.8551316
+mean of 1:  6.1855516
+epochs: 466
+acc:  0.85
+mean of 0:  -5.755736
+mean of 1:  6.16097
+epochs: 467
+acc:  0.86
+mean of 0:  -5.855221
+mean of 1:  6.1750655
+epochs: 468
+acc:  0.89
+mean of 0:  -6.1533594
+mean of 1:  6.569438
+epochs: 469
+acc:  0.91
+mean of 0:  -5.9770546
+mean of 1:  6.0918875
+epochs: 470
+acc:  0.86
+mean of 0:  -5.3709283
+mean of 1:  5.6839924
+epochs: 471
+acc:  0.88
+mean of 0:  -6.00878
+mean of 1:  6.347354
+epochs: 472
+acc:  0.89
+mean of 0:  -5.7637506
+mean of 1:  6.1683064
+epochs: 473
+acc:  0.87
+mean of 0:  -5.4387813
+mean of 1:  5.8293586
+epochs: 474
+acc:  0.9
+mean of 0:  -5.48404
+mean of 1:  5.9562173
+epochs: 475
+acc:  0.88
+mean of 0:  -6.172315
+mean of 1:  6.5628834
+epochs: 476
+acc:  0.88
+mean of 0:  -6.171139
+mean of 1:  6.313086
+epochs: 477
+acc:  0.88
+mean of 0:  -5.8279476
+mean of 1:  6.1500244
+epochs: 478
+acc:  0.9
+mean of 0:  -5.4688554
+mean of 1:  6.0587773
+epochs: 479
+acc:  0.89
+mean of 0:  -5.041366
+mean of 1:  5.6274414
+epochs: 480
+acc:  0.91
+mean of 0:  -6.21794
+mean of 1:  6.5000105
+epochs: 481
+acc:  0.9
+mean of 0:  -5.183083
+mean of 1:  5.3539534
+epochs: 482
+acc:  0.9
+mean of 0:  -5.830694
+mean of 1:  6.289673
+epochs: 483
+acc:  0.88
+mean of 0:  -5.503397
+mean of 1:  5.882149
+epochs: 484
+acc:  0.86
+mean of 0:  -5.928567
+mean of 1:  6.384347
+epochs: 485
+acc:  0.9
+mean of 0:  -5.7771263
+mean of 1:  6.255157
+epochs: 486
+acc:  0.87
+mean of 0:  -4.9804835
+mean of 1:  5.3692193
+epochs: 487
+acc:  0.92
+mean of 0:  -5.6047797
+mean of 1:  6.3108954
+epochs: 488
+acc:  0.89
+mean of 0:  -5.550379
+mean of 1:  5.7607985
+epochs: 489
+acc:  0.88
+mean of 0:  -6.2863054
+mean of 1:  6.644603
+epochs: 490
+acc:  0.9
+mean of 0:  -6.0501895
+mean of 1:  6.408115
+epochs: 491
+acc:  0.87
+mean of 0:  -5.5604677
+mean of 1:  6.0975747
+epochs: 492
+acc:  0.9
+mean of 0:  -5.692304
+mean of 1:  6.1228547
+epochs: 493
+acc:  0.89
+mean of 0:  -5.76346
+mean of 1:  5.932607
+epochs: 494
+acc:  0.88
+mean of 0:  -5.6112742
+mean of 1:  6.1456
+epochs: 495
+acc:  0.91
+mean of 0:  -6.2879224
+mean of 1:  6.7187343
+epochs: 496
+acc:  0.93
+mean of 0:  -5.9801693
+mean of 1:  6.4301953
+epochs: 497
+acc:  0.86
+mean of 0:  -6.0400195
+mean of 1:  6.5460296
+epochs: 498
+acc:  0.9
+mean of 0:  -6.0601506
+mean of 1:  6.5739684
+epochs: 499
+acc:  0.9
+mean of 0:  -5.502129
+mean of 1:  6.177891
+
+
+
+mean of 0:  -1.4748188
+mean of 1:  -0.045405842
+# predict Counter({0.0: 30350, 1.0: 20114})
+# test Counter({0.0: 25232, 1.0: 25232})
+seq_length: 3, # predicts: 50464, # corrects: 26788, acc: 0.530834
+(array([0.52563427, 0.53867953]), array([0.63225269, 0.42941503]), array([0.57403476, 0.47788118]), array([25232, 25232]))
+work time: 7566.15667391 sec
+
+
+
+learning_rate: 0.010000, batch_size 100, epochs 500
+features are loaded
+size of learn_Y: 117416
+Counter({1.0: 68006, 0.0: 49410})
+Counter({0.0: 49410, 1.0: 49410})
+Data loading Complete learn:98820, test:50464
+epochs: 0
+acc:  0.53
+mean of 0:  -1.6040417
+mean of 1:  1.129572
+epochs: 1
+acc:  0.46
+mean of 0:  0.070631
+mean of 1:  0.07685472
+epochs: 2
+acc:  0.55
+mean of 0:  0.01133274
+mean of 1:  0.07323365
+epochs: 3
+acc:  0.53
+mean of 0:  0.09827124
+mean of 1:  0.12811908
+epochs: 4
+acc:  0.57
+mean of 0:  0.014320292
+mean of 1:  0.31553528
+epochs: 5
+acc:  0.62
+mean of 0:  0.020333882
+mean of 1:  0.30042446
+epochs: 6
+acc:  0.6
+mean of 0:  -0.03166026
+mean of 1:  0.25085765
+epochs: 7
+acc:  0.6
+mean of 0:  -0.13417251
+mean of 1:  0.20829202
+epochs: 8
+acc:  0.6
+mean of 0:  -0.13681237
+mean of 1:  0.15501115
+epochs: 9
+acc:  0.64
+mean of 0:  -0.17213713
+mean of 1:  0.14386475
+epochs: 10
+acc:  0.62
+mean of 0:  -0.21310472
+mean of 1:  0.14302792
+epochs: 11
+acc:  0.62
+mean of 0:  -0.26081687
+mean of 1:  0.08276626
+epochs: 12
+acc:  0.62
+mean of 0:  -0.23391561
+mean of 1:  0.07608048
+epochs: 13
+acc:  0.63
+mean of 0:  -0.24987382
+mean of 1:  0.06702808
+epochs: 14
+acc:  0.64
+mean of 0:  -0.2766889
+mean of 1:  0.07503844
+epochs: 15
+acc:  0.62
+mean of 0:  -0.22560434
+mean of 1:  0.1676361
+epochs: 16
+acc:  0.63
+mean of 0:  -0.32482818
+mean of 1:  0.14483884
+epochs: 17
+acc:  0.66
+mean of 0:  -0.24305952
+mean of 1:  0.2310207
+epochs: 18
+acc:  0.65
+mean of 0:  -0.33837166
+mean of 1:  0.19121212
+epochs: 19
+acc:  0.64
+mean of 0:  -0.3446773
+mean of 1:  0.22862498
+epochs: 20
+acc:  0.71
+mean of 0:  -0.3575165
+mean of 1:  0.2392125
+epochs: 21
+acc:  0.69
+mean of 0:  -0.35503507
+mean of 1:  0.24281564
+epochs: 22
+acc:  0.66
+mean of 0:  -0.34552422
+mean of 1:  0.24925174
+epochs: 23
+acc:  0.68
+mean of 0:  -0.3811753
+mean of 1:  0.28650963
+epochs: 24
+acc:  0.68
+mean of 0:  -0.40108004
+mean of 1:  0.34286675
+epochs: 25
+acc:  0.7
+mean of 0:  -0.41624546
+mean of 1:  0.32653347
+epochs: 26
+acc:  0.77
+mean of 0:  -0.3904172
+mean of 1:  0.37399432
+epochs: 27
+acc:  0.73
+mean of 0:  -0.41732797
+mean of 1:  0.34273654
+epochs: 28
+acc:  0.75
+mean of 0:  -0.4218814
+mean of 1:  0.36350334
+epochs: 29
+acc:  0.73
+mean of 0:  -0.41545728
+mean of 1:  0.3625583
+epochs: 30
+acc:  0.76
+mean of 0:  -0.4544352
+mean of 1:  0.4343185
+epochs: 31
+acc:  0.75
+mean of 0:  -0.46908402
+mean of 1:  0.43988708
+epochs: 32
+acc:  0.75
+mean of 0:  -0.5134643
+mean of 1:  0.47097665
+epochs: 33
+acc:  0.75
+mean of 0:  -0.5191346
+mean of 1:  0.48335046
+epochs: 34
+acc:  0.77
+mean of 0:  -0.5496624
+mean of 1:  0.46980667
+epochs: 35
+acc:  0.73
+mean of 0:  -0.49905935
+mean of 1:  0.50587183
+epochs: 36
+acc:  0.74
+mean of 0:  -0.54805845
+mean of 1:  0.4859669
+epochs: 37
+acc:  0.77
+mean of 0:  -0.60402864
+mean of 1:  0.5864995
+epochs: 38
+acc:  0.71
+mean of 0:  -0.6111884
+mean of 1:  0.55887115
+epochs: 39
+acc:  0.76
+mean of 0:  -0.6158103
+mean of 1:  0.5124988
+epochs: 40
+acc:  0.71
+mean of 0:  -0.6253311
+mean of 1:  0.5790752
+epochs: 41
+acc:  0.75
+mean of 0:  -0.6771972
+mean of 1:  0.6059843
+epochs: 42
+acc:  0.75
+mean of 0:  -0.816092
+mean of 1:  0.7322732
+epochs: 43
+acc:  0.78
+mean of 0:  -0.800606
+mean of 1:  0.7288996
+epochs: 44
+acc:  0.72
+mean of 0:  -0.7716076
+mean of 1:  0.718002
+epochs: 45
+acc:  0.78
+mean of 0:  -0.74361753
+mean of 1:  0.70269203
+epochs: 46
+acc:  0.77
+mean of 0:  -0.8495037
+mean of 1:  0.83184946
+epochs: 47
+acc:  0.8
+mean of 0:  -0.7999196
+mean of 1:  0.69165397
+epochs: 48
+acc:  0.77
+mean of 0:  -0.81459755
+mean of 1:  0.81329674
+epochs: 49
+acc:  0.78
+mean of 0:  -0.7936556
+mean of 1:  0.73292136
+epochs: 50
+acc:  0.8
+mean of 0:  -0.9040804
+mean of 1:  0.78599465
+epochs: 51
+acc:  0.79
+mean of 0:  -1.0034047
+mean of 1:  0.85803246
+epochs: 52
+acc:  0.75
+mean of 0:  -0.88199204
+mean of 1:  0.834745
+epochs: 53
+acc:  0.82
+mean of 0:  -0.93732834
+mean of 1:  0.8411744
+epochs: 54
+acc:  0.75
+mean of 0:  -1.0202041
+mean of 1:  0.9132217
+epochs: 55
+acc:  0.74
+mean of 0:  -0.9462476
+mean of 1:  0.91456467
+epochs: 56
+acc:  0.75
+mean of 0:  -0.8524232
+mean of 1:  0.8369638
+epochs: 57
+acc:  0.75
+m

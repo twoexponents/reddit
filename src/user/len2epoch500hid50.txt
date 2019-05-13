@@ -1,0 +1,128 @@
+learning_rate: 0.010000, batch_size 100, epochs 500
+features are loaded
+size of learn_Y: 106875
+Counter({1.0: 73754, 0.0: 33121})
+Counter({0.0: 33121, 1.0: 33121})
+Data loading Complete learn:66242, test:50936
+mean of 0:  2.0498
+mean of 1:  2.4263246
+# predict Counter({1.0: 29647, 0.0: 21289})
+# test Counter({1.0: 34127, 0.0: 16809})
+seq_length: 2, # predicts: 50936, # corrects: 29574
+(array([0.39306684, 0.71528317]), array([0.49782854, 0.62138483]), array([0.43928815, 0.66503591]), array([16809, 34127]))
+work time: 3357.56720901 sec
+
+
+
+learning_rate: 0.010000, batch_size 100, epochs 500
+features are loaded
+size of learn_Y: 106875
+Counter({1.0: 73754, 0.0: 33121})
+Counter({0.0: 33121, 1.0: 33121})
+Data loading Complete learn:66242, test:50936
+mean of 0:  0.1279964
+mean of 1:  0.39573932
+# predict Counter({1.0: 32941, 0.0: 17995})
+# test Counter({1.0: 34127, 0.0: 16809})
+seq_length: 2, # predicts: 50936, # corrects: 30314
+(array([0.3940539 , 0.70498771]), array([0.42185734, 0.68048759]), array([0.4074819 , 0.69252102]), array([16809, 34127]))
+work time: 3334.31227398 sec
+
+
+
+learning_rate: 0.010000, batch_size 100, epochs 500
+features are loaded
+size of learn_Y: 106875
+Counter({1.0: 73754, 0.0: 33121})
+Counter({0.0: 33121, 1.0: 33121})
+Data loading Complete learn:66242, test:50936
+mean of 0:  1.0919001
+mean of 1:  1.2596742
+# predict Counter({0.0: 25573, 1.0: 25363})
+# test Counter({1.0: 34127, 0.0: 16809})
+seq_length: 2, # predicts: 50936, # corrects: 28072
+(array([0.38161342, 0.72203604]), array([0.58058183, 0.53661324]), array([0.46052569, 0.6156665 ]), array([16809, 34127]))
+work time: 2798.6002171 sec
+
+
+
+learning_rate: 0.010000, batch_size 100, epochs 500
+features are loaded
+size of learn_Y: 106875
+Counter({1.0: 73754, 0.0: 33121})
+Counter({0.0: 33121, 1.0: 33121})
+Data loading Complete learn:66242, test:50936
+mean of 0:  -0.4549136
+mean of 1:  -0.22955562
+# predict Counter({1.0: 25940, 0.0: 24996})
+# test Counter({1.0: 34127, 0.0: 16809})
+seq_length: 2, # predicts: 50936, # corrects: 28435
+(array([0.38614178, 0.72409406]), array([0.57421619, 0.55038533]), array([0.46176295, 0.62540163]), array([16809, 34127]))
+work time: 2820.82545304 sec
+
+
+
+learning_rate: 0.010000, batch_size 100, epochs 500
+features are loaded
+size of learn_Y: 106875
+Counter({1.0: 73754, 0.0: 33121})
+Counter({0.0: 33121, 1.0: 33121})
+Data loading Complete learn:66242, test:50936
+mean of 0:  0.16765252
+mean of 1:  4.9991827
+# predict Counter({1.0: 29732, 0.0: 21204})
+# test Counter({1.0: 34127, 0.0: 16809})
+seq_length: 2, # predicts: 50936, # corrects: 29587
+(array([0.39294473, 0.71488632]), array([0.49568683, 0.62282064]), array([0.43837634, 0.66568534]), array([16809, 34127]))
+work time: 2797.36435819 sec
+
+
+
+learning_rate: 0.010000, batch_size 100, epochs 500
+features are loaded
+size of learn_Y: 106875
+Counter({1.0: 73754, 0.0: 33121})
+Counter({0.0: 33121, 1.0: 33121})
+Data loading Complete learn:66242, test:50936
+mean of 0:  0.11669932
+mean of 1:  0.5344498
+# predict Counter({1.0: 27654, 0.0: 23282})
+# test Counter({1.0: 34127, 0.0: 16809})
+seq_length: 2, # predicts: 50936, # corrects: 28653
+(array([0.38244137, 0.71414624]), array([0.52971622, 0.57869136]), array([0.44418947, 0.63932277]), array([16809, 34127]))
+work time: 2795.95722008 sec
+
+
+
+learning_rate: 0.010000, batch_size 100, epochs 500
+features are loaded
+size of learn_Y: 106875
+Counter({1.0: 73754, 0.0: 33121})
+Counter({0.0: 33121, 1.0: 33121})
+Data loading Complete learn:66242, test:50936
+mean of 0:  0.14850426
+mean of 1:  0.7171357
+# predict Counter({1.0: 30296, 0.0: 20640})
+# test Counter({1.0: 34127, 0.0: 16809})
+seq_length: 2, # predicts: 50936, # corrects: 29815
+(array([0.39554264, 0.7146488 ]), array([0.48569219, 0.63442436]), array([0.4360063 , 0.67215125]), array([16809, 34127]))
+work time: 2820.39157009 sec
+
+
+
+learning_rate: 0.010000, batch_size 100, epochs 500
+features are loaded
+size of learn_Y: 106875
+Counter({1.0: 73754, 0.0: 33121})
+Counter({0.0: 33121, 1.0: 33121})
+Data loading Complete learn:66242, test:50936
+mean of 0:  -0.5059708
+mean of 1:  0.041313883
+# predict Counter({0.0: 25716, 1.0: 25220})
+# test Counter({1.0: 34127, 0.0: 16809})
+seq_length: 2, # predicts: 50936, # corrects: 28489
+(array([0.39037953, 0.73156225]), array([0.59723957, 0.54062766]), array([0.4721458, 0.6217669]), array([16809, 34127]))
+work time: 2827.04512405 sec
+
+
+
