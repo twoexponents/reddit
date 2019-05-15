@@ -51,14 +51,14 @@ def main(argv):
 
     # 1.1 load feature dataset
     d_features = pickle.load(open('../data/contentfeatures.others.p', 'r'))
-    #d_w2vfeatures = pickle.load(open('../data/contentfeatures.googlenews.posts.p', 'r'))
-    d_w2vfeatures = pickle.load(open('../data/contentfeatures.googlenews.p', 'r'))
+    d_w2vfeatures = pickle.load(open('../data/contentfeatures.googlenews.posts.p', 'r'))
+    #d_w2vfeatures = pickle.load(open('../data/contentfeatures.googlenews.p', 'r'))
     d_userfeatures = pickle.load(open('../data/userfeatures.activity.p', 'r'))
 
     print 'features are loaded'
 
     #for seq_length in xrange(input_length, input_length+1):
-    for _ in range(5):
+    for _ in range(2):
         seq_length = input_length
         f = open('../data/seq.learn.%d.csv'%(seq_length), 'r')
         learn_instances = map(lambda x:x.replace('\n', '').split(','), f.readlines())
@@ -80,7 +80,8 @@ def main(argv):
                     if d_features.has_key(element):
                         cont_features = d_features[element]['cont']
                         liwc_features = d_features[element]['liwc']
-                        w2v_features = d_w2vfeatures[element]['google.tfidf'][0]
+                        #w2v_features = d_w2vfeatures[element]['google.tfidf'][0] # googlenews.p dependent
+                        w2v_features = d_w2vfeatures[element]['glove.tfidf'][0]
                         user_features = d_userfeatures[element]['user']
                         if len(cont_features) < len(cont_features_fields):
                             cont_features += [0.0]*(len(cont_features_fields) - len(cont_features))
@@ -136,7 +137,8 @@ def main(argv):
                     if d_features.has_key(element):
                         cont_features = d_features[element]['cont']
                         liwc_features = d_features[element]['liwc']
-                        w2v_features = d_w2vfeatures[element]['google.tfidf'][0]
+                        #w2v_features = d_w2vfeatures[element]['google.tfidf'][0]
+                        w2v_features = d_w2vfeatures[element]['glove.tfidf'][0]
                         user_features = d_userfeatures[element]['user']
                         if len(cont_features) < len(cont_features_fields):
                             cont_features += [0.0]*(len(cont_features_fields) - len(cont_features))
@@ -158,6 +160,9 @@ def main(argv):
         test_X, test_Y = sample_model.fit_sample(test_X_reshape, test_Y)
         test_X = np.reshape(test_X, [-1, seq_length, input_dim])
         test_Y = map(lambda x:[x], test_Y)
+
+        test_X = learn_X
+        test_Y = learn_Y
         
         print 'Data loading Complete learn:%d, test:%d'%(len(learn_Y), len(test_Y))
         tf.reset_default_graph()

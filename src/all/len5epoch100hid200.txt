@@ -1380,4 +1380,708 @@ acc:  0.61
 mean of 0:  0.03306088
 mean of 1:  0.035616834
 epochs: 31
-acc: 
+acc:  0.6
+mean of 0:  0.067161575
+mean of 1:  0.06425562
+epochs: 32
+acc:  0.6
+mean of 0:  0.045705155
+mean of 1:  0.049008504
+epochs: 33
+acc:  0.53
+mean of 0:  0.0876652
+mean of 1:  0.07382174
+epochs: 34
+acc:  0.59
+mean of 0:  0.069071
+mean of 1:  0.06192748
+epochs: 35
+acc:  0.51
+mean of 0:  0.10169068
+mean of 1:  0.07605646
+epochs: 36
+acc:  0.62
+mean of 0:  0.04826863
+mean of 1:  0.06526887
+epochs: 37
+acc:  0.59
+mean of 0:  0.093497336
+mean of 1:  0.08742079
+epochs: 38
+acc:  0.59
+mean of 0:  0.06358677
+mean of 1:  0.064060144
+epochs: 39
+acc:  0.61
+mean of 0:  0.057715252
+mean of 1:  0.07662384
+epochs: 40
+acc:  0.52
+mean of 0:  0.06292782
+mean of 1:  0.05689653
+epochs: 41
+acc:  0.58
+mean of 0:  0.05301546
+mean of 1:  0.0522273
+epochs: 42
+acc:  0.55
+mean of 0:  0.047223516
+mean of 1:  0.048164375
+epochs: 43
+acc:  0.59
+mean of 0:  0.05439703
+mean of 1:  0.05608601
+epochs: 44
+acc:  0.57
+mean of 0:  0.05510189
+mean of 1:  0.05378422
+epochs: 45
+acc:  0.59
+mean of 0:  0.08627757
+mean of 1:  0.08477166
+epochs: 46
+acc:  0.56
+mean of 0:  0.051243998
+mean of 1:  0.054384295
+epochs: 47
+acc:  0.56
+mean of 0:  0.09492526
+mean of 1:  0.072691955
+epochs: 48
+acc:  0.58
+mean of 0:  0.056214605
+mean of 1:  0.058074955
+epochs: 49
+acc:  0.5
+mean of 0:  0.07506115
+mean of 1:  0.05099731
+epochs: 50
+acc:  0.52
+mean of 0:  0.058059216
+mean of 1:  0.05374595
+epochs: 51
+acc:  0.61
+mean of 0:  0.05048872
+mean of 1:  0.06103967
+epochs: 52
+acc:  0.61
+mean of 0:  0.05751554
+mean of 1:  0.06375853
+epochs: 53
+acc:  0.53
+mean of 0:  0.062847376
+mean of 1:  0.051348582
+epochs: 54
+acc:  0.56
+mean of 0:  0.08854311
+mean of 1:  0.08682092
+epochs: 55
+acc:  0.6
+mean of 0:  0.054810163
+mean of 1:  0.06902145
+epochs: 56
+acc:  0.55
+mean of 0:  0.06739697
+mean of 1:  0.05612618
+epochs: 57
+acc:  0.6
+mean of 0:  0.06299376
+mean of 1:  0.070889845
+epochs: 58
+acc:  0.58
+mean of 0:  0.0988947
+mean of 1:  0.08829224
+epochs: 59
+acc:  0.56
+mean of 0:  0.05129253
+mean of 1:  0.049817093
+epochs: 60
+acc:  0.59
+mean of 0:  0.04923946
+mean of 1:  0.059364118
+epochs: 61
+acc:  0.59
+mean of 0:  0.06309972
+mean of 1:  0.06731395
+epochs: 62
+acc:  0.58
+mean of 0:  0.075705305
+mean of 1:  0.090348706
+epochs: 63
+acc:  0.59
+mean of 0:  0.063142896
+mean of 1:  0.05338133
+epochs: 64
+acc:  0.59
+mean of 0:  0.042801425
+mean of 1:  0.06214438
+epochs: 65
+acc:  0.59
+mean of 0:  0.081404336
+mean of 1:  0.084452145
+epochs: 66
+acc:  0.63
+mean of 0:  0.067441165
+mean of 1:  0.07563793
+epochs: 67
+acc:  0.63
+mean of 0:  0.04633764
+mean of 1:  0.0595506
+epochs: 68
+acc:  0.59
+mean of 0:  0.07730248
+mean of 1:  0.081513636
+epochs: 69
+acc:  0.57
+mean of 0:  0.051659007
+mean of 1:  0.07033009
+epochs: 70
+acc:  0.57
+mean of 0:  0.08059111
+mean of 1:  0.08018589
+epochs: 71
+acc:  0.54
+mean of 0:  0.08135816
+mean of 1:  0.08624379
+epochs: 72
+acc:  0.58
+mean of 0:  0.054618526
+mean of 1:  0.062908724
+epochs: 73
+acc:  0.56
+mean of 0:  0.06881163
+mean of 1:  0.06065056
+epochs: 74
+acc:  0.54
+mean of 0:  0.050163902
+mean of 1:  0.052396826
+epochs: 75
+acc:  0.57
+mean of 0:  0.056934036
+mean of 1:  0.051507358
+epochs: 76
+acc:  0.59
+mean of 0:  0.04921777
+mean of 1:  0.046363484
+epochs: 77
+acc:  0.59
+mean of 0:  0.08908272
+mean of 1:  0.08393726
+epochs: 78
+acc:  0.59
+mean of 0:  0.05831259
+mean of 1:  0.057672527
+epochs: 79
+acc:  0.53
+mean of 0:  0.09661567
+mean of 1:  0.099303365
+epochs: 80
+acc:  0.51
+mean of 0:  0.07603204
+mean of 1:  0.049506076
+epochs: 81
+acc:  0.6
+mean of 0:  0.056690477
+mean of 1:  0.06502509
+epochs: 82
+acc:  0.58
+mean of 0:  0.052295465
+mean of 1:  0.06383296
+epochs: 83
+acc:  0.59
+mean of 0:  0.087429926
+mean of 1:  0.10112117
+epochs: 84
+acc:  0.59
+mean of 0:  0.04758849
+mean of 1:  0.04641239
+epochs: 85
+acc:  0.59
+mean of 0:  0.06841347
+mean of 1:  0.06291549
+epochs: 86
+acc:  0.57
+mean of 0:  0.04298974
+mean of 1:  0.047151968
+epochs: 87
+acc:  0.59
+mean of 0:  0.043371134
+mean of 1:  0.044491995
+epochs: 88
+acc:  0.57
+mean of 0:  0.06996753
+mean of 1:  0.06351192
+epochs: 89
+acc:  0.52
+mean of 0:  0.06140746
+mean of 1:  0.05222507
+epochs: 90
+acc:  0.57
+mean of 0:  0.05978941
+mean of 1:  0.05588974
+epochs: 91
+acc:  0.59
+mean of 0:  0.050107617
+mean of 1:  0.061044123
+epochs: 92
+acc:  0.6
+mean of 0:  0.042109985
+mean of 1:  0.057738584
+epochs: 93
+acc:  0.6
+mean of 0:  0.08538049
+mean of 1:  0.092920296
+epochs: 94
+acc:  0.59
+mean of 0:  0.07703206
+mean of 1:  0.07577174
+epochs: 95
+acc:  0.58
+mean of 0:  0.089565374
+mean of 1:  0.07175652
+epochs: 96
+acc:  0.56
+mean of 0:  0.10238817
+mean of 1:  0.08511656
+epochs: 97
+acc:  0.58
+mean of 0:  0.06619332
+mean of 1:  0.0656712
+epochs: 98
+acc:  0.56
+mean of 0:  0.05973733
+mean of 1:  0.069676876
+epochs: 99
+acc:  0.59
+mean of 0:  0.072669305
+mean of 1:  0.07572467
+
+
+
+mean of 0:  -0.0050394367
+mean of 1:  -0.005036992
+# predict Counter({0.0: 25904})
+# test Counter({0.0: 12952, 1.0: 12952})
+seq_length: 5, # predicts: 25904, # corrects: 12952, acc: 0.500000
+(array([0.5, 0. ]), array([1., 0.]), array([0.66666667, 0.        ]), array([12952, 12952]))
+work time: 15191.6486781 sec
+
+
+
+size of learn_Y: 54727
+Counter({0.0: 28206, 1.0: 26521})
+Counter({0.0: 26521, 1.0: 26521})
+Data loading Complete learn:53042, test:25904
+epochs: 0
+acc:  0.45
+mean of 0:  0.72790766
+mean of 1:  -0.6176338
+epochs: 1
+acc:  0.46
+mean of 0:  -0.099696
+mean of 1:  -0.14062363
+epochs: 2
+acc:  0.48
+mean of 0:  -0.07968127
+mean of 1:  -0.05526176
+epochs: 3
+acc:  0.51
+mean of 0:  0.023729496
+mean of 1:  -6.66482e-05
+epochs: 4
+acc:  0.5
+mean of 0:  0.14777526
+mean of 1:  0.050747093
+epochs: 5
+acc:  0.49
+mean of 0:  -0.13510597
+mean of 1:  -0.14494525
+epochs: 6
+acc:  0.53
+mean of 0:  -0.20898804
+mean of 1:  -0.05116222
+epochs: 7
+acc:  0.46
+mean of 0:  -0.16054945
+mean of 1:  -0.13781746
+epochs: 8
+acc:  0.49
+mean of 0:  -0.27534938
+mean of 1:  -0.13893515
+epochs: 9
+acc:  0.45
+mean of 0:  -0.24014065
+mean of 1:  -0.23736326
+epochs: 10
+acc:  0.47
+mean of 0:  -0.2088709
+mean of 1:  -0.24456011
+epochs: 11
+acc:  0.46
+mean of 0:  -0.19926989
+mean of 1:  -0.22131751
+epochs: 12
+acc:  0.47
+mean of 0:  -0.19616804
+mean of 1:  -0.17272943
+epochs: 13
+acc:  0.46
+mean of 0:  -0.20184994
+mean of 1:  -0.17651202
+epochs: 14
+acc:  0.46
+mean of 0:  -0.15430775
+mean of 1:  -0.18955277
+epochs: 15
+acc:  0.46
+mean of 0:  -0.14337856
+mean of 1:  -0.17078082
+epochs: 16
+acc:  0.46
+mean of 0:  -0.16974479
+mean of 1:  -0.19482626
+epochs: 17
+acc:  0.46
+mean of 0:  -0.1553765
+mean of 1:  -0.1601693
+epochs: 18
+acc:  0.46
+mean of 0:  -0.15239404
+mean of 1:  -0.14992549
+epochs: 19
+acc:  0.45
+mean of 0:  -0.11572907
+mean of 1:  -0.11664844
+epochs: 20
+acc:  0.46
+mean of 0:  -0.1634452
+mean of 1:  -0.14610189
+epochs: 21
+acc:  0.45
+mean of 0:  -0.15704556
+mean of 1:  -0.1614322
+epochs: 22
+acc:  0.47
+mean of 0:  -0.13673155
+mean of 1:  -0.13729523
+epochs: 23
+acc:  0.46
+mean of 0:  -0.1139116
+mean of 1:  -0.074369736
+epochs: 24
+acc:  0.46
+mean of 0:  -0.15350284
+mean of 1:  -0.15376148
+epochs: 25
+acc:  0.46
+mean of 0:  -0.09680102
+mean of 1:  -0.09622564
+epochs: 26
+acc:  0.47
+mean of 0:  -0.11152344
+mean of 1:  -0.12770866
+epochs: 27
+acc:  0.46
+mean of 0:  -0.12516361
+mean of 1:  -0.12594375
+epochs: 28
+acc:  0.45
+mean of 0:  -0.08349775
+mean of 1:  -0.079271756
+epochs: 29
+acc:  0.46
+mean of 0:  -0.114468895
+mean of 1:  -0.115955174
+epochs: 30
+acc:  0.47
+mean of 0:  -0.09985587
+mean of 1:  -0.09735435
+epochs: 31
+acc:  0.48
+mean of 0:  -0.097112015
+mean of 1:  -0.1058802
+epochs: 32
+acc:  0.46
+mean of 0:  -0.16670851
+mean of 1:  -0.17496549
+epochs: 33
+acc:  0.46
+mean of 0:  -0.051459327
+mean of 1:  -0.05410318
+epochs: 34
+acc:  0.49
+mean of 0:  -0.15371563
+mean of 1:  -0.134197
+epochs: 35
+acc:  0.45
+mean of 0:  -0.19256316
+mean of 1:  -0.15826188
+epochs: 36
+acc:  0.47
+mean of 0:  -0.17022024
+mean of 1:  -0.16006336
+epochs: 37
+acc:  0.46
+mean of 0:  -0.118796214
+mean of 1:  -0.120426714
+epochs: 38
+acc:  0.49
+mean of 0:  -0.10952679
+mean of 1:  -0.10942546
+epochs: 39
+acc:  0.44
+mean of 0:  -0.08721022
+mean of 1:  -0.08250991
+epochs: 40
+acc:  0.42
+mean of 0:  -0.09007356
+mean of 1:  -0.11931763
+epochs: 41
+acc:  0.49
+mean of 0:  -0.21543328
+mean of 1:  -0.16743208
+epochs: 42
+acc:  0.44
+mean of 0:  -0.090623096
+mean of 1:  -0.107564725
+epochs: 43
+acc:  0.45
+mean of 0:  -0.15802258
+mean of 1:  -0.1866815
+epochs: 44
+acc:  0.47
+mean of 0:  -0.15286388
+mean of 1:  -0.15345627
+epochs: 45
+acc:  0.47
+mean of 0:  -0.13624814
+mean of 1:  -0.14354797
+epochs: 46
+acc:  0.46
+mean of 0:  -0.08183555
+mean of 1:  -0.07955438
+epochs: 47
+acc:  0.46
+mean of 0:  -0.13865356
+mean of 1:  -0.12536123
+epochs: 48
+acc:  0.47
+mean of 0:  -0.1443201
+mean of 1:  -0.13665225
+epochs: 49
+acc:  0.48
+mean of 0:  -0.121535644
+mean of 1:  -0.11669943
+epochs: 50
+acc:  0.46
+mean of 0:  -0.1364902
+mean of 1:  -0.13046597
+epochs: 51
+acc:  0.46
+mean of 0:  -0.09141556
+mean of 1:  -0.10045386
+epochs: 52
+acc:  0.46
+mean of 0:  -0.16531892
+mean of 1:  -0.17577115
+epochs: 53
+acc:  0.44
+mean of 0:  -0.097958185
+mean of 1:  -0.0926393
+epochs: 54
+acc:  0.46
+mean of 0:  -0.11369729
+mean of 1:  -0.09839264
+epochs: 55
+acc:  0.47
+mean of 0:  -0.18604963
+mean of 1:  -0.17185892
+epochs: 56
+acc:  0.48
+mean of 0:  -0.1560367
+mean of 1:  -0.14692353
+epochs: 57
+acc:  0.49
+mean of 0:  -0.1511838
+mean of 1:  -0.14228894
+epochs: 58
+acc:  0.46
+mean of 0:  -0.12641303
+mean of 1:  -0.12316468
+epochs: 59
+acc:  0.48
+mean of 0:  -0.1097725
+mean of 1:  -0.11131722
+epochs: 60
+acc:  0.44
+mean of 0:  -0.10470407
+mean of 1:  -0.121347755
+epochs: 61
+acc:  0.46
+mean of 0:  -0.08625079
+mean of 1:  -0.09105573
+epochs: 62
+acc:  0.47
+mean of 0:  -0.11477165
+mean of 1:  -0.13725807
+epochs: 63
+acc:  0.45
+mean of 0:  -0.13549782
+mean of 1:  -0.1465428
+epochs: 64
+acc:  0.47
+mean of 0:  -0.15459858
+mean of 1:  -0.15200824
+epochs: 65
+acc:  0.45
+mean of 0:  -0.11925836
+mean of 1:  -0.12238087
+epochs: 66
+acc:  0.47
+mean of 0:  -0.15420072
+mean of 1:  -0.13506596
+epochs: 67
+acc:  0.45
+mean of 0:  -0.15692778
+mean of 1:  -0.13805173
+epochs: 68
+acc:  0.46
+mean of 0:  -0.1636398
+mean of 1:  -0.1678789
+epochs: 69
+acc:  0.45
+mean of 0:  -0.15911113
+mean of 1:  -0.17585573
+epochs: 70
+acc:  0.45
+mean of 0:  -0.029802216
+mean of 1:  -0.031648822
+epochs: 71
+acc:  0.47
+mean of 0:  -0.14469397
+mean of 1:  -0.15476657
+epochs: 72
+acc:  0.45
+mean of 0:  -0.13818733
+mean of 1:  -0.15865375
+epochs: 73
+acc:  0.46
+mean of 0:  -0.13511758
+mean of 1:  -0.124532275
+epochs: 74
+acc:  0.46
+mean of 0:  -0.14725494
+mean of 1:  -0.16017045
+epochs: 75
+acc:  0.45
+mean of 0:  -0.12214735
+mean of 1:  -0.11588485
+epochs: 76
+acc:  0.46
+mean of 0:  -0.13463727
+mean of 1:  -0.12864672
+epochs: 77
+acc:  0.45
+mean of 0:  -0.1213027
+mean of 1:  -0.12983443
+epochs: 78
+acc:  0.46
+mean of 0:  -0.15502839
+mean of 1:  -0.1563227
+epochs: 79
+acc:  0.47
+mean of 0:  -0.14560941
+mean of 1:  -0.12498038
+epochs: 80
+acc:  0.47
+mean of 0:  -0.107147105
+mean of 1:  -0.11152783
+epochs: 81
+acc:  0.43
+mean of 0:  -0.14375818
+mean of 1:  -0.18745907
+epochs: 82
+acc:  0.48
+mean of 0:  -0.14581326
+mean of 1:  -0.12714759
+epochs: 83
+acc:  0.46
+mean of 0:  -0.11462655
+mean of 1:  -0.11767506
+epochs: 84
+acc:  0.44
+mean of 0:  -0.14342868
+mean of 1:  -0.17603962
+epochs: 85
+acc:  0.44
+mean of 0:  -0.1607877
+mean of 1:  -0.18258871
+epochs: 86
+acc:  0.48
+mean of 0:  -0.10840332
+mean of 1:  -0.11645566
+epochs: 87
+acc:  0.47
+mean of 0:  -0.150021
+mean of 1:  -0.14860569
+epochs: 88
+acc:  0.45
+mean of 0:  -0.14071736
+mean of 1:  -0.13339235
+epochs: 89
+acc:  0.46
+mean of 0:  -0.10404444
+mean of 1:  -0.117693454
+epochs: 90
+acc:  0.46
+mean of 0:  -0.1394011
+mean of 1:  -0.13427074
+epochs: 91
+acc:  0.43
+mean of 0:  -0.07328104
+mean of 1:  -0.087506466
+epochs: 92
+acc:  0.46
+mean of 0:  -0.12518819
+mean of 1:  -0.12547976
+epochs: 93
+acc:  0.48
+mean of 0:  -0.111370385
+mean of 1:  -0.1085113
+epochs: 94
+acc:  0.46
+mean of 0:  -0.1106293
+mean of 1:  -0.123345174
+epochs: 95
+acc:  0.5
+mean of 0:  -0.17185132
+mean of 1:  -0.14843436
+epochs: 96
+acc:  0.47
+mean of 0:  -0.1401682
+mean of 1:  -0.13858077
+epochs: 97
+acc:  0.48
+mean of 0:  -0.13808869
+mean of 1:  -0.13512307
+epochs: 98
+acc:  0.46
+mean of 0:  -0.13817231
+mean of 1:  -0.1444337
+epochs: 99
+acc:  0.5
+mean of 0:  -0.09827458
+mean of 1:  -0.081482634
+
+
+
+mean of 0:  0.037738346
+mean of 1:  0.037433647
+# predict Counter({1.0: 25904})
+# test Counter({0.0: 12952, 1.0: 12952})
+seq_length: 5, # predicts: 25904, # corrects: 12952, acc: 0.500000
+(array([0. , 0.5]), array([0., 1.]), array([0.        , 0.66666667]), array([12952, 12952]))
+work time: 18610.025584 sec
+
+
+

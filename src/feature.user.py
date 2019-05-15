@@ -37,7 +37,7 @@ output_dim = 1 # (range 0 to 1)
 hidden_size = 100
 learning_rate = 0.01
 batch_size = 100
-epochs = 500
+epochs = 100
 
 def main(argv):
     start_time = time.time()
@@ -177,8 +177,8 @@ def main(argv):
 
         #print "test_Y: ", test_Y
         #### For test
-        #test_X = learn_X
-        #test_Y = learn_Y
+        test_X = learn_X
+        test_Y = learn_Y
 
         # 2. Run RNN
         X = tf.placeholder(tf.float32, [None, seq_length, input_dim])

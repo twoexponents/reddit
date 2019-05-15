@@ -98,7 +98,6 @@ def main(argv):
                     '''
                     if d_w2vfeatures.has_key(element):
                         w2v_features = d_w2vfeatures[element]['google.tfidf'][0]
-                        print 'len: ', len(w2v_features.tolist())
                     else:
                         continue
                     # append each element's features of seq to the sub_x
