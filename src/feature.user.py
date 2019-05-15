@@ -175,10 +175,6 @@ def main(argv):
         print 'Data loading Complete learn:%d, test:%d'%(len(learn_Y), len(test_Y))
         tf.reset_default_graph()
 
-        #print "test_Y: ", test_Y
-        #### For test
-        test_X = learn_X
-        test_Y = learn_Y
 
         # 2. Run RNN
         X = tf.placeholder(tf.float32, [None, seq_length, input_dim])

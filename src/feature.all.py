@@ -58,7 +58,7 @@ def main(argv):
     print 'features are loaded'
 
     #for seq_length in xrange(input_length, input_length+1):
-    for _ in range(2):
+    for _ in range(5):
         seq_length = input_length
         f = open('../data/seq.learn.%d.csv'%(seq_length), 'r')
         learn_instances = map(lambda x:x.replace('\n', '').split(','), f.readlines())
@@ -161,9 +161,6 @@ def main(argv):
         test_X = np.reshape(test_X, [-1, seq_length, input_dim])
         test_Y = map(lambda x:[x], test_Y)
 
-        test_X = learn_X
-        test_Y = learn_Y
-        
         print 'Data loading Complete learn:%d, test:%d'%(len(learn_Y), len(test_Y))
         tf.reset_default_graph()
 
