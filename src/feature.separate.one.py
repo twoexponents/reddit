@@ -6,7 +6,7 @@ import cPickle as pickle
 import time
 
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import precision_recall_fscore_support
+from sklearn.metrics import precision_recall_fscore_support, roc_curve, auc
 
 from imblearn.over_sampling import SMOTE
 from imblearn.under_sampling import RandomUnderSampler
@@ -37,10 +37,10 @@ input_dim_w2v = len_w2v_features
 input_dim_user = len(user_features_fields)
 
 output_dim = 1 # (range 0 to 1)
-hidden_size = 200
+hidden_size = 100
 learning_rate = 0.01
 batch_size = 100
-epochs = 500
+epochs = 200
 
 def main(argv):
     start_time = time.time()
@@ -116,10 +116,10 @@ def main(argv):
         learn_Y = map(lambda x:[x], map(itemgetter(1), matrix))
 
         learn_X = np.array(learn_X)
-        learn_X_cont = learn_X[0::, 0::, 0:len(cont_features_fields)]
-        learn_X_liwc = learn_X[0::, 0::, len(cont_features_fields):len(cont_features_fields)+len_liwc_features]
-        learn_X_w2v = learn_X[0::, 0::, len(cont_features_fields)+len_liwc_features:len(cont_features_fields)+len_liwc_features+len_w2v_features]
-        learn_X_user = learn_X[0::, 0::, len(cont_features_fields)+len_liwc_features+len_w2v_features::]
+        learn_X_cont = learn_X[:, :, :len(cont_features_fields)]
+        learn_X_liwc = learn_X[:, :, len(cont_features_fields):len(cont_features_fields)+len_liwc_features]
+        learn_X_w2v = learn_X[:, :, len(cont_features_fields)+len_liwc_features:len(cont_features_fields)+len_liwc_features+len_w2v_features]
+        learn_X_user = learn_X[:, :, len(cont_features_fields)+len_liwc_features+len_w2v_features::]
 
         print Counter(map(lambda x:x[0], learn_Y))
 
@@ -161,21 +161,18 @@ def main(argv):
             except Exception, e:
                 continue        
         
-        test_X_reshape = np.reshape(np.array(test_X), [-1, seq_length*input_dim]) # row num = file's row num
-        sample_model = RandomUnderSampler(random_state=40) # random_state = seed. undersampling: diminish majority class
-        test_X, test_Y = sample_model.fit_sample(test_X_reshape, test_Y)
-        test_X = np.reshape(test_X, [-1, seq_length, input_dim])
+        #test_X_reshape = np.reshape(np.array(test_X), [-1, seq_length*input_dim]) # row num = file's row num
+        #sample_model = RandomUnderSampler(random_state=40) # random_state = seed. undersampling: diminish majority class
+        #test_X, test_Y = sample_model.fit_sample(test_X_reshape, test_Y)
+        #test_X = np.reshape(test_X, [-1, seq_length, input_dim])
         test_Y = map(lambda x:[x], test_Y)
 
         test_X = np.array(test_X)
-        # For test
-        #test_X = learn_X
-        #test_Y = learn_Y
 
-        test_X_cont = test_X[0::, 0::, 0:len(cont_features_fields)]
-        test_X_liwc = test_X[0::, 0::, len(cont_features_fields):len(cont_features_fields)+len_liwc_features]
-        test_X_w2v = test_X[0::, 0::, len(cont_features_fields)+len_liwc_features:len(cont_features_fields)+len_liwc_features+len_w2v_features]
-        test_X_user = test_X[0::, 0::, len(cont_features_fields)+len_liwc_features+len_w2v_features::]
+        test_X_cont = test_X[:, :, :len(cont_features_fields)]
+        test_X_liwc = test_X[:, :, len(cont_features_fields):len(cont_features_fields)+len_liwc_features]
+        test_X_w2v = test_X[:, :, len(cont_features_fields)+len_liwc_features:len(cont_features_fields)+len_liwc_features+len_w2v_features]
+        test_X_user = test_X[:, :, len(cont_features_fields)+len_liwc_features+len_w2v_features::]
         
         
         print 'Data loading Complete learn:%d, test:%d'%(len(learn_Y), len(test_Y))
@@ -198,7 +195,7 @@ def main(argv):
 
         cells_1 = []; cells_2 = []; cells_3 = []; cells_4 = []
         cells_cont = []; cells_liwc = []; cells_w2v = []; cells_user = []
-        for _ in range(2):
+        for _ in range(1):
             cell_1 = tf.contrib.rnn.LayerNormBasicLSTMCell(num_units=hidden_size,
                                                         activation=tf.nn.relu,
                                                         dropout_keep_prob=keep_prob) # Layer Normalization. num_units: ouput size
@@ -280,7 +277,6 @@ def main(argv):
 
         correct_pred = tf.equal(tf.round(hypothesis), Y)
         accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
-        #pred.append(tf.argmax(tf.nn.softmax(logits), 1))
 
         with tf.Session() as sess:
             sess.run(tf.global_variables_initializer())
@@ -303,8 +299,6 @@ def main(argv):
                             feed_dict={X_cont: X_train_batch_cont, X_liwc: X_train_batch_liwc, X_w2v: X_train_batch_w2v, X_user: X_train_batch_user, Y: Y_train_batch, keep_prob:0.01, is_training:True})
                     
                     #print 'iteration : %d, cost: %.8f'%(count, c)
-                    #print 'logits: '
-                    #print l
                     if i == 0:
                         print 'acc: ', acc
                         list_a = filter(lambda (x,y):y[0]==0, zip(l, Y_train_batch))
@@ -322,8 +316,6 @@ def main(argv):
 
             list_a = filter(lambda (x,y):y[0]==0.0, zip(l, test_Y))
             list_b = filter(lambda (x,y):y[0]==1.0, zip(l, test_Y))
-            #print 'len 0: ', len(list_a)
-            #print 'len 1: ', len(list_b)
             print '\n\n'
             print 'mean of 0: ', np.mean(map(lambda (p, q): p[0], list_a))
             print 'mean of 1: ', np.mean(map(lambda (p, q): p[0], list_b))
@@ -332,7 +324,6 @@ def main(argv):
 
             out = out[0]
 
-            #temp = map(lambda x:x[0], out.tolist())
             print '# predict', Counter(out)
             print '# test', Counter(map(lambda x:x[0], test_Y))
 
@@ -347,8 +338,9 @@ def main(argv):
                 if v1 == int(v2):
                     decision = True
                 predicts.append(decision)
-
-            print 'seq_length: %d, # predicts: %d, # corrects: %d, acc: %f' %(seq_length, len(predicts), len(filter(lambda x:x, predicts)), (len(filter(lambda x:x, predicts))/len(predicts)))
+            
+            fpr, tpr, thresholds = roc_curve(map(int, test_Y), out)
+            print 'seq_length: %d, # predicts: %d, # corrects: %d, acc: %f, auc: %f' %(seq_length, len(predicts), len(filter(lambda x:x, predicts)), (len(filter(lambda x:x, predicts))/len(predicts)), auc(fpr, tpr))
             print precision_recall_fscore_support(map(int, test_Y), out)
             print 'work time: %s sec'%(time.time()-start_time)
             print '\n\n'

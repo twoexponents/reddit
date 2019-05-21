@@ -6,7 +6,7 @@ import cPickle as pickle
 import time
 
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import precision_recall_fscore_support
+from sklearn.metrics import precision_recall_fscore_support, roc_curve, auc
 
 from imblearn.over_sampling import SMOTE
 from imblearn.under_sampling import RandomUnderSampler
@@ -77,7 +77,6 @@ def main(argv):
                     #w2v_features = [0.0]*len_w2v_features
                     #user_features = [0.0]*len(user_features_fields)
 
-                    # if the features of element ID exist, bring it.
                     '''
                     if d_features.has_key(element):
                         cont_features = d_features[element]['cont']
@@ -105,8 +104,6 @@ def main(argv):
                 if (len(sub_x) == seq_length):
                     learn_X.append(np.array(sub_x)) # feature list
                     learn_Y.append(float(seq[-1]))
-#                else:
-#                   print len(sub_x)
 
             except Exception, e:
                 # print e
@@ -177,11 +174,11 @@ def main(argv):
             except Exception, e:
                 continue
 
-        test_X_reshape = np.reshape(np.array(test_X), [-1, seq_length*input_dim])
-        sample_model = RandomUnderSampler(random_state=40)
-
-        test_X, test_Y = sample_model.fit_sample(test_X_reshape, test_Y)
-        test_X = np.reshape(test_X, [-1, seq_length, input_dim])
+        #test_X_reshape = np.reshape(np.array(test_X), [-1, seq_length*input_dim])
+        #sample_model = RandomUnderSampler(random_state=40)
+        #test_X, test_Y = sample_model.fit_sample(test_X_reshape, test_Y)
+        #test_X = np.reshape(test_X, [-1, seq_length, input_dim])
+        
         test_Y = map(lambda x:[x], test_Y)
 
         print 'Data loading Complete learn:%d, test:%d'%(len(learn_Y), len(test_Y))
@@ -193,7 +190,6 @@ def main(argv):
 
         is_training = tf.placeholder(tf.bool)
 
-        # sequence_length = seq_length
         keep_prob = tf.placeholder(tf.float32)
 
         weights = {}
@@ -250,33 +246,21 @@ def main(argv):
         #l2_output = tf.nn.relu(tf.matmul(l1_bn_output, weights['fc_l2']) + biases['fc_l2']
         l2_bn_output = tf.contrib.layers.batch_norm(l2_output, center=True, scale=True, is_training=is_training)
 
-        #logits = tf.matmul(l2_bn_output, weights['fc_l3']) + biases['fc_l3']
-        #labels = tf.one_hot(Y, depth=output_dim) # output_dim: 2
-        
         logits = tf.matmul(l2_bn_output, weights['fc_l3']) + biases['fc_l3']
         labels = Y
 
-        #logits = tf.contrib.layers.batch_norm(logits, center=True, scale=True, is_training=is_training)
-        #labels = tf.one_hot(Y, depth=output_dim)
-
-        #loss = tf.nn.softmax_cross_entropy_with_logits_v2(labels=labels, logits=logits)
-        #cost = tf.reduce_mean(loss)
-        #optimizers = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(cost)
-        #hypothesis = tf.sigmoid(logits)
         loss = tf.nn.sigmoid_cross_entropy_with_logits(labels=labels, logits=logits)
         cost = tf.reduce_mean(loss)
 
         update_ops=tf.get_collection(tf.GraphKeys.UPDATE_OPS)
         with tf.control_dependencies(update_ops):
             optimizers = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(cost)
-        #optimizers = tf.train.GradientDescentOptimizer(learning_rate=0.01).minimize(cost)
 
         hypothesis = tf.sigmoid(logits)
         pred.append(tf.cast(hypothesis > 0.5, dtype=tf.float32))
 
         correct_pred = tf.equal(tf.round(hypothesis), Y)
         accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
-        #pred.append(tf.argmax(tf.nn.softmax(logits), 1))
 
         with tf.Session() as sess:
             sess.run(tf.global_variables_initializer())
@@ -296,9 +280,6 @@ def main(argv):
                             feed_dict={X: X_train_batch, Y: Y_train_batch, keep_prob:0.01, is_training:True})
                     
                     #print 'iteration : %d, cost: %.8f'%(count, c)
-                    #print 'logits: '
-                    #print l
-                    #print 'acc: ', acc
 
                     if i == 0:
                         print 'acc: ', acc
@@ -313,21 +294,9 @@ def main(argv):
 
             # TEST
             rst, c, h, l = sess.run([pred, cost, hypothesis, logits], feed_dict={X: test_X, Y: test_Y, keep_prob:1.0, is_training:False})
-            #print '[RESULT]'
-            #print 'cost: %.8f'%(c)
-            #print 'hypothesis : '
-            #print h
-            #print 'logits : '
-            #print l
-            #print 'Y : '
-            #print 'logtis, Y:'
-            #for i, j in zip(l, test_Y):
-            #    print i, j
 
             list_a = filter(lambda (x,y):y[0]==0.0, zip(l, test_Y))
             list_b = filter(lambda (x,y):y[0]==1.0, zip(l, test_Y))
-            #print 'len 0: ', len(list_a)
-            #print 'len 1: ', len(list_b)
             print '\n\n'
             print 'mean of 0: ', np.mean(map(lambda (p, q): p[0], list_a))
             print 'mean of 1: ', np.mean(map(lambda (p, q): p[0], list_b))
@@ -336,7 +305,6 @@ def main(argv):
 
             out = out[0]
 
-            #temp = map(lambda x:x[0], out.tolist())
             print '# predict', Counter(out)
             print '# test', Counter(map(lambda x:x[0], test_Y))
 
@@ -352,7 +320,8 @@ def main(argv):
                     decision = True
                 predicts.append(decision)
 
-            print 'seq_length: %d, # predicts: %d, # corrects: %d, acc: %f' %(seq_length, len(predicts), len(filter(lambda x:x, predicts)), (len(filter(lambda x:x, predicts))/len(predicts)))
+            fpr, tpr, thresholds = roc_curve(map(int, test_Y), out) 
+            print 'seq_length: %d, # predicts: %d, # corrects: %d, acc: %f, auc: %f' %(seq_length, len(predicts), len(filter(lambda x:x, predicts)), (len(filter(lambda x:x, predicts))/len(predicts)), auc(fpr,tpr))
             print precision_recall_fscore_support(map(int, test_Y), out)
             print 'work time: %s sec'%(time.time()-start_time)
             print '\n\n'
