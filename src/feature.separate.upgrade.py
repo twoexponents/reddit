@@ -116,10 +116,10 @@ def main(argv):
         learn_Y = map(lambda x:[x], map(itemgetter(1), matrix))
 
         learn_X = np.array(learn_X)
-        learn_X_cont = learn_X[0::, 0::, 0:len(cont_features_fields)]
-        learn_X_liwc = learn_X[0::, 0::, len(cont_features_fields):len(cont_features_fields)+len_liwc_features]
-        learn_X_w2v = learn_X[0::, 0::, len(cont_features_fields)+len_liwc_features:len(cont_features_fields)+len_liwc_features+len_w2v_features]
-        learn_X_user = learn_X[0::, 0::, len(cont_features_fields)+len_liwc_features+len_w2v_features::]
+        learn_X_cont = learn_X[:, :, :len(cont_features_fields)]
+        learn_X_liwc = learn_X[:, :, len(cont_features_fields):len(cont_features_fields)+len_liwc_features]
+        learn_X_w2v = learn_X[:, :, len(cont_features_fields)+len_liwc_features:len(cont_features_fields)+len_liwc_features+len_w2v_features]
+        learn_X_user = learn_X[:, :, len(cont_features_fields)+len_liwc_features+len_w2v_features::]
 
         print Counter(map(lambda x:x[0], learn_Y))
 
@@ -169,10 +169,10 @@ def main(argv):
         test_Y = map(lambda x:[x], test_Y)
 
         test_X = np.array(test_X)        
-        test_X_cont = test_X[0::, 0::, 0:len(cont_features_fields)]
-        test_X_liwc = test_X[0::, 0::, len(cont_features_fields):len(cont_features_fields)+len_liwc_features]
-        test_X_w2v = test_X[0::, 0::, len(cont_features_fields)+len_liwc_features:len(cont_features_fields)+len_liwc_features+len_w2v_features]
-        test_X_user = test_X[0::, 0::, len(cont_features_fields)+len_liwc_features+len_w2v_features::]
+        test_X_cont = test_X[:, :, :len(cont_features_fields)]
+        test_X_liwc = test_X[:, :, len(cont_features_fields):len(cont_features_fields)+len_liwc_features]
+        test_X_w2v = test_X[:, :, len(cont_features_fields)+len_liwc_features:len(cont_features_fields)+len_liwc_features+len_w2v_features]
+        test_X_user = test_X[:, :, len(cont_features_fields)+len_liwc_features+len_w2v_features::]
         
         
         print 'Data loading Complete learn:%d, test:%d'%(len(learn_Y), len(test_Y))
@@ -218,16 +218,16 @@ def main(argv):
         cells_w2v = tf.nn.rnn_cell.MultiRNNCell(cells_3) # stackedRNN
         cells_user = tf.nn.rnn_cell.MultiRNNCell(cells_4) # stackedRNN
 
-        with tf.variable_scope('scope1', reuse = tf.AUTO_REUSE):
+        with tf.variable_scope('scope1', reuse = False): #reuse = tf.AUTO_REUSE
             outputs_cont, states_cont = tf.nn.dynamic_rnn(cells_cont, X_cont,
                 dtype=tf.float32) # called RNN driver
-        with tf.variable_scope('scope2', reuse = tf.AUTO_REUSE):
+        with tf.variable_scope('scope2', reuse = False):
             outputs_liwc, states_liwc = tf.nn.dynamic_rnn(cells_liwc, X_liwc,
                 dtype=tf.float32) # called RNN driver
-        with tf.variable_scope('scope3', reuse = tf.AUTO_REUSE):
+        with tf.variable_scope('scope3', reuse = False):
             outputs_w2v, states_w2v = tf.nn.dynamic_rnn(cells_w2v, X_w2v,
                 dtype=tf.float32) # called RNN driver
-        with tf.variable_scope('scope4', reuse = tf.AUTO_REUSE):
+        with tf.variable_scope('scope4', reuse = False):
             outputs_user, states_user = tf.nn.dynamic_rnn(cells_user, X_user,
                 dtype=tf.float32) # called RNN driver
 
@@ -237,12 +237,9 @@ def main(argv):
         outputs_user = outputs_user[:, -1]
 
         # It needs to be changed to fine the dimension
-        print (X_cont)
-        print (outputs_cont)
-        outputs_all = outputs_cont + outputs_liwc + outputs_w2v + outputs_user
-        print (outputs_all)
+        outputs_all = tf.concat([outputs_cont, outputs_liwc, outputs_w2v, outputs_user], 1)
         cells = []
-        for _ in range(2):
+        for _ in range(1):
             cell = tf.contrib.rnn.LayerNormBasicLSTMCell(num_units=hidden_size,
                                                         activation=tf.nn.relu,
                                                         dropout_keep_prob=keep_prob)
@@ -258,15 +255,15 @@ def main(argv):
 
         # three-level MLP
         key = 'fc_l1'
-        weights[key] = tf.Variable(tf.random_normal([hidden_size, hidden_size]))
-        biases[key] = tf.Variable(tf.random_normal([hidden_size]))
+        weights[key] = tf.Variable(tf.random_normal([hidden_size*4, hidden_size*4]))
+        biases[key] = tf.Variable(tf.random_normal([hidden_size*4]))
 
         key = 'fc_l2'
-        weights[key] = tf.Variable(tf.random_normal([hidden_size, hidden_size]))
-        biases[key] = tf.Variable(tf.random_normal([hidden_size]))
+        weights[key] = tf.Variable(tf.random_normal([hidden_size*4, hidden_size*4]))
+        biases[key] = tf.Variable(tf.random_normal([hidden_size*4]))
 
         key = 'fc_l3'
-        weights[key] = tf.Variable(tf.random_normal([hidden_size, 1]))
+        weights[key] = tf.Variable(tf.random_normal([hidden_size*4, 1]))
         biases[key] = tf.Variable(tf.random_normal([1]))
         
         optimizers = {}

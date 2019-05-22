@@ -40,7 +40,7 @@ output_dim = 1 # (range 0 to 1)
 hidden_size = 100
 learning_rate = 0.01
 batch_size = 100
-epochs = 200
+epochs = 500
 
 def main(argv):
     start_time = time.time()
@@ -236,21 +236,23 @@ def main(argv):
         outputs_w2v = outputs_w2v[:, -1]
         outputs_user = outputs_user[:, -1]
 
-        outputs = outputs_cont + outputs_liwc + outputs_w2v + outputs_user
+        #outputs = outputs_cont + outputs_liwc + outputs_w2v + outputs_user
+        #outputs = np.concatenate((outputs_cont, outputs_liwc, outputs_w2v, outputs_user), axis=1)
+        outputs = tf.concat([outputs_cont, outputs_liwc, outputs_w2v, outputs_user], 1)
 
         bn_output = tf.contrib.layers.batch_norm(outputs, center=True, scale=True, is_training=is_training)
 
         # three-level MLP
         key = 'fc_l1'
-        weights[key] = tf.Variable(tf.random_normal([hidden_size, hidden_size]))
-        biases[key] = tf.Variable(tf.random_normal([hidden_size]))
+        weights[key] = tf.Variable(tf.random_normal([hidden_size*4, hidden_size*4]))
+        biases[key] = tf.Variable(tf.random_normal([hidden_size*4]))
 
         key = 'fc_l2'
-        weights[key] = tf.Variable(tf.random_normal([hidden_size, hidden_size]))
-        biases[key] = tf.Variable(tf.random_normal([hidden_size]))
+        weights[key] = tf.Variable(tf.random_normal([hidden_size*4, hidden_size*4]))
+        biases[key] = tf.Variable(tf.random_normal([hidden_size*4]))
 
         key = 'fc_l3'
-        weights[key] = tf.Variable(tf.random_normal([hidden_size, 1]))
+        weights[key] = tf.Variable(tf.random_normal([hidden_size*4, 1]))
         biases[key] = tf.Variable(tf.random_normal([1]))
         
         optimizers = {}

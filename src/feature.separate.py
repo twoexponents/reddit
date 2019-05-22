@@ -30,17 +30,18 @@ cont_features_fields = common_features_fields + post_features_fields
 len_liwc_features = 93
 len_w2v_features = 300
 
-input_dim = len(cont_features_fields) + len(user_features_fields) + len_liwc_features + len_w2v_features
+#input_dim = len(cont_features_fields) + len(user_features_fields) + len_liwc_features + len_w2v_features
+input_dim = len(cont_features_fields) + len(user_features_fields) + len_liwc_features
 input_dim_cont = len(cont_features_fields)
 input_dim_liwc = len_liwc_features
 input_dim_w2v = len_w2v_features
 input_dim_user = len(user_features_fields)
 
 output_dim = 1 # (range 0 to 1)
-hidden_size = 100
+hidden_size = 50
 learning_rate = 0.01
 batch_size = 100
-epochs = 200
+epochs = 50
 
 def main(argv):
     start_time = time.time()
@@ -55,7 +56,7 @@ def main(argv):
     # 1.1 load feature dataset
     d_features = pickle.load(open('../data/contentfeatures.others.p', 'r'))
     #d_w2vfeatures = pickle.load(open('../data/contentfeatures.googlenews.posts.p', 'r'))
-    d_w2vfeatures = pickle.load(open('../data/contentfeatures.googlenews.p', 'r'))
+    #d_w2vfeatures = pickle.load(open('../data/contentfeatures.googlenews.p', 'r'))
     d_userfeatures = pickle.load(open('../data/userfeatures.activity.p', 'r'))
 
     print 'features are loaded'
@@ -75,13 +76,13 @@ def main(argv):
                 for element in seq[:-1]: # seq[-1] : Y. element: 't3_7dfvv'
                     cont_features = [0.0]*len(cont_features_fields)
                     liwc_features = [0.0]*len_liwc_features
-                    w2v_features = [0.0]*len_w2v_features
+                    #w2v_features = [0.0]*len_w2v_features
                     user_features = [0.0]*len(user_features_fields)
 
                     if d_features.has_key(element):
                         cont_features = d_features[element]['cont']
                         liwc_features = d_features[element]['liwc']
-                        w2v_features = d_w2vfeatures[element]['google.tfidf'][0] # googlenews.p dependent
+                        #w2v_features = d_w2vfeatures[element]['google.tfidf'][0] # googlenews.p dependent
                         #w2v_features = d_w2vfeatures[element]['glove.tfidf'][0] # googlenews.post.p dependent
                         user_features = d_userfeatures[element]['user']
                         
@@ -89,7 +90,8 @@ def main(argv):
                             cont_features += [0.0]*(len(cont_features_fields) - len(cont_features))
                     else:
                         continue
-                    sub_x.append(np.array(cont_features+liwc_features+w2v_features.tolist()+user_features))
+                    #sub_x.append(np.array(cont_features+liwc_features+w2v_features.tolist()+user_features))
+                    sub_x.append(np.array(cont_features+liwc_features+user_features))
 
                 if (len(sub_x) == seq_length):
                     learn_X.append(np.array(sub_x))
@@ -116,10 +118,10 @@ def main(argv):
         learn_Y = map(lambda x:[x], map(itemgetter(1), matrix))
 
         learn_X = np.array(learn_X)
-        learn_X_cont = learn_X[0::, 0::, 0:len(cont_features_fields)]
-        learn_X_liwc = learn_X[0::, 0::, len(cont_features_fields):len(cont_features_fields)+len_liwc_features]
-        learn_X_w2v = learn_X[0::, 0::, len(cont_features_fields)+len_liwc_features:len(cont_features_fields)+len_liwc_features+len_w2v_features]
-        learn_X_user = learn_X[0::, 0::, len(cont_features_fields)+len_liwc_features+len_w2v_features::]
+        learn_X_cont = learn_X[:, :, :len(cont_features_fields)]
+        learn_X_liwc = learn_X[:, :, len(cont_features_fields):len(cont_features_fields)+len_liwc_features]
+        #learn_X_w2v = learn_X[:, :, len(cont_features_fields)+len_liwc_features:len(cont_features_fields)+len_liwc_features+len_w2v_features]
+        learn_X_user = learn_X[:, :, len(cont_features_fields)+len_liwc_features::]
 
         print Counter(map(lambda x:x[0], learn_Y))
 
@@ -138,13 +140,13 @@ def main(argv):
                 for element in seq[:-1]:
                     cont_features = [0.0]*len(cont_features_fields)
                     liwc_features = [0.0]*len_liwc_features
-                    w2v_features = [0.0]*len_w2v_features
+                    #w2v_features = [0.0]*len_w2v_features
                     user_features = [0.0]*len(user_features_fields)
                     
                     if d_features.has_key(element):
                         cont_features = d_features[element]['cont']
                         liwc_features = d_features[element]['liwc']
-                        w2v_features = d_w2vfeatures[element]['google.tfidf'][0]
+                        #w2v_features = d_w2vfeatures[element]['google.tfidf'][0]
                         #w2v_features = d_w2vfeatures[element]['glove.tfidf'][0]
                         user_features = d_userfeatures[element]['user']
                         if len(cont_features) < len(cont_features_fields):
@@ -152,7 +154,8 @@ def main(argv):
                     else:
                         continue
 
-                    sub_x.append(np.array(cont_features+liwc_features+w2v_features.tolist()+user_features))
+                    #sub_x.append(np.array(cont_features+liwc_features+w2v_features.tolist()+user_features))
+                    sub_x.append(np.array(cont_features+liwc_features+user_features))
 
                 if (len(sub_x) == seq_length):
                     test_X.append(np.array(sub_x))
@@ -170,10 +173,10 @@ def main(argv):
 
         test_X = np.array(test_X)
 
-        test_X_cont = test_X[0::, 0::, 0:len(cont_features_fields)]
-        test_X_liwc = test_X[0::, 0::, len(cont_features_fields):len(cont_features_fields)+len_liwc_features]
-        test_X_w2v = test_X[0::, 0::, len(cont_features_fields)+len_liwc_features:len(cont_features_fields)+len_liwc_features+len_w2v_features]
-        test_X_user = test_X[0::, 0::, len(cont_features_fields)+len_liwc_features+len_w2v_features::]
+        test_X_cont = test_X[:, :, :len(cont_features_fields)]
+        test_X_liwc = test_X[:, :, len(cont_features_fields):len(cont_features_fields)+len_liwc_features]
+        #test_X_w2v = test_X[:, :, len(cont_features_fields)+len_liwc_features:len(cont_features_fields)+len_liwc_features+len_w2v_features]
+        test_X_user = test_X[:, :, len(cont_features_fields)+len_liwc_features::]
         
         
         print 'Data loading Complete learn:%d, test:%d'%(len(learn_Y), len(test_Y))
@@ -182,7 +185,7 @@ def main(argv):
         # 2. Run RNN
         X_cont = tf.placeholder(tf.float32, [None, seq_length, input_dim_cont])
         X_liwc = tf.placeholder(tf.float32, [None, seq_length, input_dim_liwc])
-        X_w2v = tf.placeholder(tf.float32, [None, seq_length, input_dim_w2v])
+        #X_w2v = tf.placeholder(tf.float32, [None, seq_length, input_dim_w2v])
         X_user = tf.placeholder(tf.float32, [None, seq_length, input_dim_user])
         Y = tf.placeholder(tf.float32, [None, 1])
 
@@ -206,52 +209,54 @@ def main(argv):
             cell_3 = tf.contrib.rnn.LayerNormBasicLSTMCell(num_units=hidden_size,
                                                         activation=tf.nn.relu,
                                                         dropout_keep_prob=keep_prob) # Layer Normalization. num_units: ouput size
-            cell_4 = tf.contrib.rnn.LayerNormBasicLSTMCell(num_units=hidden_size,
-                                                        activation=tf.nn.relu,
-                                                        dropout_keep_prob=keep_prob) # Layer Normalization. num_units: ouput size
+            #cell_4 = tf.contrib.rnn.LayerNormBasicLSTMCell(num_units=hidden_size,
+            #                                            activation=tf.nn.relu,
+            #                                            dropout_keep_prob=keep_prob) # Layer Normalization. num_units: ouput size
             cells_1.append(cell_1)
             cells_2.append(cell_2)
             cells_3.append(cell_3)
-            cells_4.append(cell_4)
+            #cells_4.append(cell_4)
 
         cells_cont = tf.nn.rnn_cell.MultiRNNCell(cells_1) # stackedRNN
         cells_liwc = tf.nn.rnn_cell.MultiRNNCell(cells_2) # stackedRNN
-        cells_w2v = tf.nn.rnn_cell.MultiRNNCell(cells_3) # stackedRNN
-        cells_user = tf.nn.rnn_cell.MultiRNNCell(cells_4) # stackedRNN
+        #cells_w2v = tf.nn.rnn_cell.MultiRNNCell(cells_3) # stackedRNN
+        cells_user = tf.nn.rnn_cell.MultiRNNCell(cells_3) # stackedRNN
 
-        with tf.variable_scope('scope1', reuse = tf.AUTO_REUSE):
+        with tf.variable_scope('scope1', reuse = False):
             outputs_cont, states_cont = tf.nn.dynamic_rnn(cells_cont, X_cont,
                 dtype=tf.float32) # called RNN driver
-        with tf.variable_scope('scope2', reuse = tf.AUTO_REUSE):
+        with tf.variable_scope('scope2', reuse = False):
             outputs_liwc, states_liwc = tf.nn.dynamic_rnn(cells_liwc, X_liwc,
                 dtype=tf.float32) # called RNN driver
-        with tf.variable_scope('scope3', reuse = tf.AUTO_REUSE):
-            outputs_w2v, states_w2v = tf.nn.dynamic_rnn(cells_w2v, X_w2v,
-                dtype=tf.float32) # called RNN driver
-        with tf.variable_scope('scope4', reuse = tf.AUTO_REUSE):
+        #with tf.variable_scope('scope3', reuse = False):
+        #    outputs_w2v, states_w2v = tf.nn.dynamic_rnn(cells_w2v, X_w2v,
+        #        dtype=tf.float32) # called RNN driver
+        with tf.variable_scope('scope4', reuse = False):
             outputs_user, states_user = tf.nn.dynamic_rnn(cells_user, X_user,
                 dtype=tf.float32) # called RNN driver
 
         outputs_cont = outputs_cont[:, -1]
         outputs_liwc = outputs_liwc[:, -1]
-        outputs_w2v = outputs_w2v[:, -1]
+        #outputs_w2v = outputs_w2v[:, -1]
         outputs_user = outputs_user[:, -1]
 
-        outputs = outputs_cont + outputs_liwc + outputs_w2v + outputs_user
+        #outputs = outputs_cont + outputs_liwc + outputs_w2v + outputs_user
+        #outputs = tf.concat([outputs_cont, outputs_liwc, outputs_w2v, outputs_user], 1)
+        outputs = tf.concat([outputs_cont, outputs_liwc, outputs_user], 1)
 
         bn_output = tf.contrib.layers.batch_norm(outputs, center=True, scale=True, is_training=is_training)
 
         # three-level MLP
         key = 'fc_l1'
-        weights[key] = tf.Variable(tf.random_normal([hidden_size, hidden_size]))
-        biases[key] = tf.Variable(tf.random_normal([hidden_size]))
+        weights[key] = tf.Variable(tf.random_normal([hidden_size*3, hidden_size*3]))
+        biases[key] = tf.Variable(tf.random_normal([hidden_size*3]))
 
         key = 'fc_l2'
-        weights[key] = tf.Variable(tf.random_normal([hidden_size, hidden_size]))
-        biases[key] = tf.Variable(tf.random_normal([hidden_size]))
+        weights[key] = tf.Variable(tf.random_normal([hidden_size*3, hidden_size*3]))
+        biases[key] = tf.Variable(tf.random_normal([hidden_size*3]))
 
         key = 'fc_l3'
-        weights[key] = tf.Variable(tf.random_normal([hidden_size, 1]))
+        weights[key] = tf.Variable(tf.random_normal([hidden_size*3, 1]))
         biases[key] = tf.Variable(tf.random_normal([1]))
         
         optimizers = {}
@@ -292,12 +297,12 @@ def main(argv):
                 for i in range(int(len(learn_X_cont)/batch_size)):
                     X_train_batch_cont = learn_X_cont[batch_index_start:batch_index_end]
                     X_train_batch_liwc = learn_X_liwc[batch_index_start:batch_index_end]
-                    X_train_batch_w2v = learn_X_w2v[batch_index_start:batch_index_end]
+                    #X_train_batch_w2v = learn_X_w2v[batch_index_start:batch_index_end]
                     X_train_batch_user = learn_X_user[batch_index_start:batch_index_end]
                     Y_train_batch = learn_Y[batch_index_start:batch_index_end]
 
                     opt, c, o, l, acc = sess.run([optimizers, cost, outputs, logits, accuracy],
-                            feed_dict={X_cont: X_train_batch_cont, X_liwc: X_train_batch_liwc, X_w2v: X_train_batch_w2v, X_user: X_train_batch_user, Y: Y_train_batch, keep_prob:0.01, is_training:True})
+                            feed_dict={X_cont: X_train_batch_cont, X_liwc: X_train_batch_liwc, X_user: X_train_batch_user, Y: Y_train_batch, keep_prob:0.01, is_training:True})
                     
                     #print 'iteration : %d, cost: %.8f'%(count, c)
                     if i == 0:
@@ -313,7 +318,7 @@ def main(argv):
                     count += 1
 
             # TEST
-            rst, c, h, l = sess.run([pred, cost, hypothesis, logits], feed_dict={X_cont: test_X_cont, X_liwc: test_X_liwc, X_w2v: test_X_w2v, X_user: test_X_user, Y: test_Y, keep_prob:1.0, is_training:False})
+            rst, c, h, l = sess.run([pred, cost, hypothesis, logits], feed_dict={X_cont: test_X_cont, X_liwc: test_X_liwc, X_user: test_X_user, Y: test_Y, keep_prob:1.0, is_training:False})
 
             list_a = filter(lambda (x,y):y[0]==0.0, zip(l, test_Y))
             list_b = filter(lambda (x,y):y[0]==1.0, zip(l, test_Y))

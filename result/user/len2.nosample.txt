@@ -1,0 +1,38 @@
+learning_rate: 0.010000, batch_size 100, epochs 500
+features are loaded
+size of learn_Y: 106875
+Counter({1.0: 73754, 0.0: 33121})
+Counter({0.0: 33121, 1.0: 33121})
+Data loading Complete learn:66242, test:50936
+
+
+
+mean of 0:  0.110040285
+mean of 1:  0.36366513
+# predict Counter({1.0: 25869, 0.0: 25067})
+# test Counter({1.0: 34127, 0.0: 16809})
+seq_length: 2, # predicts: 50936, # corrects: 26504, acc: 0.520339, auc: 0.519971
+(array([0.3479475 , 0.68738645]), array([0.51888869, 0.52105371]), array([0.41656319, 0.59277285]), array([16809, 34127]))
+work time: 3966.30181003 sec
+
+
+
+learning_rate: 0.010000, batch_size 100, epochs 500
+features are loaded
+size of learn_Y: 106875
+Counter({1.0: 73754, 0.0: 33121})
+Counter({0.0: 33121, 1.0: 33121})
+Data loading Complete learn:66242, test:50936
+
+
+
+mean of 0:  3.3186255
+mean of 1:  3.7012103
+# predict Counter({1.0: 31277, 0.0: 19659})
+# test Counter({1.0: 34127, 0.0: 16809})
+seq_length: 2, # predicts: 50936, # corrects: 28272, acc: 0.555049, auc: 0.518402
+(array([0.35108602, 0.68324967]), array([0.41061336, 0.62619041]), array([0.37852364, 0.65347685]), array([16809, 34127]))
+work time: 3810.67229986 sec
+
+
+
