@@ -1,8 +1,0 @@
-learning_rate: 0.010000, batch_size 100, epochs 500
-features are loaded
-size of learn_Y: 106815
-Counter({1.0: 73706, 0.0: 33109})
-learning_rate: 0.010000, batch_size 100, epochs 500
-learning_rate: 0.010000, batch_size 100, epochs 500
-learning_rate: 0.010000, batch_size 100, epochs 500
-learning_rate: 0.010000, batch_size 100, epochs 500

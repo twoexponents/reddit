@@ -41,7 +41,7 @@ output_dim = 1 # (range 0 to 1)
 hidden_size = 50
 learning_rate = 0.01
 batch_size = 100
-epochs = 50
+epochs = 100
 
 def main(argv):
     start_time = time.time()

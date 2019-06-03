@@ -34,7 +34,7 @@ len_w2v_features = 300
 input_dim = len_liwc_features
 
 output_dim = 1 # (range 0 to 1)
-hidden_size = 100
+hidden_size = 50
 learning_rate = 0.01
 batch_size = 100
 epochs = 500
@@ -159,6 +159,7 @@ def main(argv):
         
         test_Y = map(lambda x:[x], test_Y)
         
+        
         print 'Data loading Complete learn:%d, test:%d'%(len(learn_Y), len(test_Y))
         tf.reset_default_graph()
 
@@ -244,7 +245,7 @@ def main(argv):
             sess.run(tf.global_variables_initializer())
             count = 0
             for e in range(epochs):
-                #print 'epochs: %d'%(e)
+                print 'epochs: %d'%(e)
 
                 # train batch by batch
                 batch_index_start = 0
@@ -259,11 +260,11 @@ def main(argv):
                     
                     #print 'iteration : %d, cost: %.8f'%(count, c)
                     if i == 0:
-                        #print 'acc: ', acc
+                        print 'acc: ', acc
                         list_a = filter(lambda (x,y):y[0]==0, zip(l, Y_train_batch))
                         list_b = filter(lambda (x,y):y[0]==1, zip(l, Y_train_batch))
-                        #print 'mean of 0: ', np.mean(map(lambda (p, q): p[0], list_a))
-                        #print 'mean of 1: ', np.mean(map(lambda (p, q): p[0], list_b))
+                        print 'mean of 0: ', np.mean(map(lambda (p, q): p[0], list_a))
+                        print 'mean of 1: ', np.mean(map(lambda (p, q): p[0], list_b))
 
 
                     batch_index_start += batch_size

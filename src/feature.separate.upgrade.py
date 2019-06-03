@@ -37,10 +37,10 @@ input_dim_w2v = len_w2v_features
 input_dim_user = len(user_features_fields)
 
 output_dim = 1 # (range 0 to 1)
-hidden_size = 200
+hidden_size = 100
 learning_rate = 0.01
 batch_size = 100
-epochs = 10
+epochs = 50
 
 def main(argv):
     start_time = time.time()
@@ -230,12 +230,12 @@ def main(argv):
         with tf.variable_scope('scope4', reuse = False):
             outputs_user, states_user = tf.nn.dynamic_rnn(cells_user, X_user,
                 dtype=tf.float32) # called RNN driver
-
+'''
         outputs_cont = outputs_cont[:, -1]
         outputs_liwc = outputs_liwc[:, -1]
         outputs_w2v = outputs_w2v[:, -1]
         outputs_user = outputs_user[:, -1]
-
+'''
         # It needs to be changed to fine the dimension
         outputs_all = tf.concat([outputs_cont, outputs_liwc, outputs_w2v, outputs_user], 1)
         cells = []
@@ -308,7 +308,7 @@ def main(argv):
                     X_train_batch_user = learn_X_user[batch_index_start:batch_index_end]
                     Y_train_batch = learn_Y[batch_index_start:batch_index_end]
 
-                    opt, c, o, h, l, acc = sess.run([optimizers, cost, outputs, hypothesis, logits, accuracy],
+                    opt, c, o, l, acc = sess.run([optimizers, cost, outputs, logits, accuracy],
                             feed_dict={X_cont: X_train_batch_cont, X_liwc: X_train_batch_liwc, X_w2v: X_train_batch_w2v, X_user: X_train_batch_user, Y: Y_train_batch, keep_prob:0.01, is_training:True})
                     
                     #print 'iteration : %d, cost: %.8f'%(count, c)

@@ -167,6 +167,10 @@ def main(argv):
         
         test_Y = map(lambda x:[x], test_Y)
         
+        # For test
+        test_X = learn_X
+        test_Y = learn_Y
+        
         print 'Data loading Complete learn:%d, test:%d'%(len(learn_Y), len(test_Y))
         tf.reset_default_graph()
 
