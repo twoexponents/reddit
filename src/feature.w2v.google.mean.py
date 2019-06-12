@@ -6,7 +6,7 @@ import cPickle as pickle
 import time
 
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import precision_recall_fscore_support
+from sklearn.metrics import precision_recall_fscore_support, roc_curve, auc
 
 from imblearn.over_sampling import SMOTE
 from imblearn.under_sampling import RandomUnderSampler
@@ -37,7 +37,7 @@ output_dim = 1 # (range 0 to 1)
 hidden_size = 100
 learning_rate = 0.01
 batch_size = 100
-epochs = 100
+epochs = 30
 
 def main(argv):
     start_time = time.time()
@@ -60,7 +60,7 @@ def main(argv):
 
     #for seq_length in xrange(input_length, input_length+1):
     #for multiple test
-    for _ in range(5):
+    for _ in range(1):
         seq_length = input_length
         f = open('../data/seq.learn.%d.csv'%(seq_length), 'r')
         learn_instances = map(lambda x:x.replace('\n', '').split(','), f.readlines())
@@ -171,10 +171,11 @@ def main(argv):
                 continue
 
         
-        test_X_reshape = np.reshape(np.array(test_X), [-1, seq_length*input_dim]) # row num = file's row num
-        sample_model = RandomUnderSampler(random_state=40) # random_state = seed. undersampling: diminish majority class
-        test_X, test_Y = sample_model.fit_sample(test_X_reshape, test_Y)
-        test_X = np.reshape(test_X, [-1, seq_length, input_dim])
+        #test_X_reshape = np.reshape(np.array(test_X), [-1, seq_length*input_dim]) # row num = file's row num
+        #sample_model = RandomUnderSampler(random_state=40) # random_state = seed. undersampling: diminish majority class
+        #test_X, test_Y = sample_model.fit_sample(test_X_reshape, test_Y)
+        #test_X = np.reshape(test_X, [-1, seq_length, input_dim])
+        
         test_Y = map(lambda x:[x], test_Y)
         
         print 'Data loading Complete learn:%d, test:%d'%(len(learn_Y), len(test_Y))
@@ -298,11 +299,6 @@ def main(argv):
                     #print l
                     if i == 0:
                         print 'acc: ', acc
-                        list_a = filter(lambda (x,y):y[0]==0, zip(l, Y_train_batch))
-                        list_b = filter(lambda (x,y):y[0]==1, zip(l, Y_train_batch))
-                        print 'mean of 0: ', np.mean(map(lambda (p, q): p[0], list_a))
-                        print 'mean of 1: ', np.mean(map(lambda (p, q): p[0], list_b))
-
 
                     batch_index_start += batch_size
                     batch_index_end += batch_size
@@ -310,30 +306,10 @@ def main(argv):
 
             # TEST
             rst, c, h, l = sess.run([pred, cost, hypothesis, logits], feed_dict={X: test_X, Y: test_Y, keep_prob:1.0, is_training:False})
-            #print '[RESULT]'
-            #print 'cost: %.8f'%(c)
-            #print 'hypothesis : '
-            #print h
-            #print 'logits : '
-            #print l
-            #print 'Y : '
-            #print 'logtis, Y:'
-            #for i, j in zip(l, test_Y):
-            #    print i, j
-
-            list_a = filter(lambda (x,y):y[0]==0.0, zip(l, test_Y))
-            list_b = filter(lambda (x,y):y[0]==1.0, zip(l, test_Y))
-            #print 'len 0: ', len(list_a)
-            #print 'len 1: ', len(list_b)
-            print '\n\n'
-            print 'mean of 0: ', np.mean(map(lambda (p, q): p[0], list_a))
-            print 'mean of 1: ', np.mean(map(lambda (p, q): p[0], list_b))
 
             out = np.vstack(rst).T
-
             out = out[0]
 
-            #temp = map(lambda x:x[0], out.tolist())
             print '# predict', Counter(out)
             print '# test', Counter(map(lambda x:x[0], test_Y))
 
@@ -349,7 +325,8 @@ def main(argv):
                     decision = True
                 predicts.append(decision)
 
-            print 'seq_length: %d, # predicts: %d, # corrects: %d, acc: %f' %(seq_length, len(predicts), len(filter(lambda x:x, predicts)), (len(filter(lambda x:x, predicts))/len(predicts)))
+            fpr, tpr, thresholds = roc_curve(map(int, test_Y), out)
+            print 'seq_length: %d, # predicts: %d, # corrects: %d, acc: %f, auc: %f' %(seq_length, len(predicts), len(filter(lambda x:x, predicts)), (len(filter(lambda x:x, predicts))/len(predicts)), auc(fpr,tpr))
             print precision_recall_fscore_support(map(int, test_Y), out)
             print 'work time: %s sec'%(time.time()-start_time)
             print '\n\n'

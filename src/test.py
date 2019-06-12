@@ -25,20 +25,23 @@ post_features_fields = ['pub_1h', 'pub_hd', 'pub_1d', 'max_similarity_1h',
 comment_features_fields = ['similarity_post', 'similarity_parent', 'inter_comment_time', 'prev_comments']
 user_features_fields = ['posts', 'comments', 'convs', 'entropy_conv']
 
-#cont_features_fields = common_features_fields + post_features_fields
-cont_features_fields = common_features_fields
+cont_features_fields = common_features_fields + post_features_fields
 
 len_liwc_features = 93
 len_w2v_features = 300
 
 input_dim = len(cont_features_fields) + len(user_features_fields) + len_liwc_features + len_w2v_features
-#input_dim = len(user_features_fields)
+#input_dim = len(cont_features_fields) + len(user_features_fields) + len_liwc_features
+input_dim_cont = len(cont_features_fields)
+input_dim_liwc = len_liwc_features
+input_dim_w2v = len_w2v_features
+input_dim_user = len(user_features_fields)
 
 output_dim = 1 # (range 0 to 1)
 hidden_size = 100
 learning_rate = 0.01
-batch_size = 1000
-epochs = 20
+batch_size = 100
+epochs = 50
 
 def main(argv):
     start_time = time.time()
@@ -58,9 +61,7 @@ def main(argv):
 
     print 'features are loaded'
 
-    #for seq_length in xrange(input_length, input_length+1):
-    for _ in range(1): #for multiple test with objects
-        seq_length = input_length
+    for seq_length in xrange(input_length, input_length+1):
         f = open('../data/seq.learn.%d.csv'%(seq_length), 'r')
         learn_instances = map(lambda x:x.replace('\n', '').split(','), f.readlines())
         f.close()
@@ -79,20 +80,21 @@ def main(argv):
                     user_features = [0.0]*len(user_features_fields)
 
                     if d_features.has_key(element):
-                        cont_features = d_features[element]['cont'][:len(common_features_fields)]
+                        cont_features = d_features[element]['cont']
                         liwc_features = d_features[element]['liwc']
                         w2v_features = d_w2vfeatures[element]['google.tfidf'][0] # googlenews.p dependent
-                        #w2v_features = d_w2vfeatures[element]['glove.tfidf'][0]
+                        #w2v_features = d_w2vfeatures[element]['glove.tfidf'][0] # googlenews.post.p dependent
                         user_features = d_userfeatures[element]['user']
-                        #if len(cont_features) < len(cont_features_fields):
-                        #    cont_features += [0.0]*(len(cont_features_fields) - len(cont_features))
+                        
+                        if len(cont_features) < len(cont_features_fields):
+                            cont_features += [0.0]*(len(cont_features_fields) - len(cont_features))
                     else:
                         continue
-                    # append each element's features of seq to the sub_x
                     sub_x.append(np.array(cont_features+liwc_features+w2v_features.tolist()+user_features))
+                    #sub_x.append(np.array(cont_features+liwc_features+user_features))
 
                 if (len(sub_x) == seq_length):
-                    learn_X.append(np.array(sub_x)) # feature list
+                    learn_X.append(np.array(sub_x))
                     learn_Y.append(float(seq[-1]))
 
             except Exception, e:
@@ -102,8 +104,8 @@ def main(argv):
 
         print Counter(learn_Y) # shows the number of '0' and '1'
 
-        learn_X_reshape = np.reshape(np.array(learn_X), [-1, seq_length*input_dim]) # row num = file's row num
-        sample_model = RandomUnderSampler(random_state=42) # random_state = seed. undersampling: diminish majority class
+        learn_X_reshape = np.reshape(np.array(learn_X), [-1, seq_length*input_dim])
+        sample_model = RandomUnderSampler(random_state=42)
         learn_X, learn_Y = sample_model.fit_sample(learn_X_reshape, learn_Y)
         learn_X = np.reshape(learn_X, [-1, seq_length, input_dim])
 
@@ -114,6 +116,12 @@ def main(argv):
         np.random.shuffle(matrix)
         learn_X = map(itemgetter(0), matrix)
         learn_Y = map(lambda x:[x], map(itemgetter(1), matrix))
+
+        learn_X = np.array(learn_X)
+        learn_X_cont = learn_X[:, :, :len(cont_features_fields)]
+        learn_X_liwc = learn_X[:, :, len(cont_features_fields):len(cont_features_fields)+len_liwc_features]
+        learn_X_w2v = learn_X[:, :, len(cont_features_fields)+len_liwc_features:len(cont_features_fields)+len_liwc_features+len_w2v_features]
+        learn_X_user = learn_X[:, :, len(cont_features_fields)+len_liwc_features+len_w2v_features::]
 
         print Counter(map(lambda x:x[0], learn_Y))
 
@@ -136,25 +144,25 @@ def main(argv):
                     user_features = [0.0]*len(user_features_fields)
                     
                     if d_features.has_key(element):
-                        cont_features = d_features[element]['cont'][:len(common_features_fields)]
+                        cont_features = d_features[element]['cont']
                         liwc_features = d_features[element]['liwc']
                         w2v_features = d_w2vfeatures[element]['google.tfidf'][0]
                         #w2v_features = d_w2vfeatures[element]['glove.tfidf'][0]
                         user_features = d_userfeatures[element]['user']
-                        #if len(cont_features) < len(cont_features_fields):
-                        #    cont_features += [0.0]*(len(cont_features_fields) - len(cont_features))
+                        if len(cont_features) < len(cont_features_fields):
+                            cont_features += [0.0]*(len(cont_features_fields) - len(cont_features))
                     else:
                         continue
 
                     sub_x.append(np.array(cont_features+liwc_features+w2v_features.tolist()+user_features))
+                    #sub_x.append(np.array(cont_features+liwc_features+user_features))
 
                 if (len(sub_x) == seq_length):
                     test_X.append(np.array(sub_x))
                     test_Y.append(float(seq[-1]))
 
             except Exception, e:
-                continue
-
+                continue        
         
         #test_X_reshape = np.reshape(np.array(test_X), [-1, seq_length*input_dim]) # row num = file's row num
         #sample_model = RandomUnderSampler(random_state=40) # random_state = seed. undersampling: diminish majority class
@@ -163,11 +171,22 @@ def main(argv):
         
         test_Y = map(lambda x:[x], test_Y)
 
+        test_X = np.array(test_X)
+
+        test_X_cont = test_X[:, :, :len(cont_features_fields)]
+        test_X_liwc = test_X[:, :, len(cont_features_fields):len(cont_features_fields)+len_liwc_features]
+        test_X_w2v = test_X[:, :, len(cont_features_fields)+len_liwc_features:len(cont_features_fields)+len_liwc_features+len_w2v_features]
+        test_X_user = test_X[:, :, len(cont_features_fields)+len_liwc_features+len_w2v_features::]
+        
+        
         print 'Data loading Complete learn:%d, test:%d'%(len(learn_Y), len(test_Y))
         tf.reset_default_graph()
 
         # 2. Run RNN
-        X = tf.placeholder(tf.float32, [None, seq_length, input_dim])
+        X_cont = tf.placeholder(tf.float32, [None, seq_length, input_dim_cont])
+        X_liwc = tf.placeholder(tf.float32, [None, seq_length, input_dim_liwc])
+        X_w2v = tf.placeholder(tf.float32, [None, seq_length, input_dim_w2v])
+        X_user = tf.placeholder(tf.float32, [None, seq_length, input_dim_user])
         Y = tf.placeholder(tf.float32, [None, 1])
 
         is_training = tf.placeholder(tf.bool)
@@ -178,57 +197,76 @@ def main(argv):
         weights = {}
         biases = {}
 
-        cells = []
-        for _ in range(3):
-            #cell = tf.contrib.rnn.BasicLSTMCell(num_units=hidden_size,
-            #                                       state_is_tuple=True,
-            #                                       activation=tf.nn.relu)
-            cell = tf.contrib.rnn.LayerNormBasicLSTMCell(num_units=hidden_size,
+        cells_1 = []; cells_2 = []; cells_3 = []; cells_4 = []
+        cells_cont = []; cells_liwc = []; cells_w2v = []; cells_user = []
+        for _ in range(2):
+            cell_1 = tf.contrib.rnn.LayerNormBasicLSTMCell(num_units=hidden_size,
                                                         activation=tf.nn.relu,
                                                         dropout_keep_prob=keep_prob) # Layer Normalization. num_units: ouput size
+            cell_2 = tf.contrib.rnn.LayerNormBasicLSTMCell(num_units=hidden_size,
+                                                        activation=tf.nn.relu,
+                                                        dropout_keep_prob=keep_prob) # Layer Normalization. num_units: ouput size
+            cell_3 = tf.contrib.rnn.LayerNormBasicLSTMCell(num_units=hidden_size,
+                                                        activation=tf.nn.relu,
+                                                        dropout_keep_prob=keep_prob) # Layer Normalization. num_units: ouput size
+            cell_4 = tf.contrib.rnn.LayerNormBasicLSTMCell(num_units=hidden_size,
+                                                        activation=tf.nn.relu,
+                                                        dropout_keep_prob=keep_prob) # Layer Normalization. num_units: ouput size
+            cells_1.append(cell_1)
+            cells_2.append(cell_2)
+            cells_3.append(cell_3)
+            cells_4.append(cell_4)
 
-            cells.append(cell)
+        cells_cont = tf.nn.rnn_cell.MultiRNNCell(cells_1) # stackedRNN
+        cells_liwc = tf.nn.rnn_cell.MultiRNNCell(cells_2) # stackedRNN
+        cells_w2v = tf.nn.rnn_cell.MultiRNNCell(cells_3) # stackedRNN
+        cells_user = tf.nn.rnn_cell.MultiRNNCell(cells_4) # stackedRNN
 
-        cells = tf.nn.rnn_cell.MultiRNNCell(cells) # stackedRNN
-
-        outputs, states = tf.nn.dynamic_rnn(cells, X,
+        with tf.variable_scope('scope1', reuse = False):
+            outputs_cont, states_cont = tf.nn.dynamic_rnn(cells_cont, X_cont,
+                dtype=tf.float32) # called RNN driver
+        with tf.variable_scope('scope2', reuse = False):
+            outputs_liwc, states_liwc = tf.nn.dynamic_rnn(cells_liwc, X_liwc,
+                dtype=tf.float32) # called RNN driver
+        with tf.variable_scope('scope3', reuse = False):
+            outputs_w2v, states_w2v = tf.nn.dynamic_rnn(cells_w2v, X_w2v,
+                dtype=tf.float32) # called RNN driver
+        with tf.variable_scope('scope4', reuse = False):
+            outputs_user, states_user = tf.nn.dynamic_rnn(cells_user, X_user,
                 dtype=tf.float32) # called RNN driver
 
-        outputs = outputs[:, -1]
+        outputs_cont = outputs_cont[:, -1]
+        outputs_liwc = outputs_liwc[:, -1]
+        outputs_w2v = outputs_w2v[:, -1]
+        outputs_user = outputs_user[:, -1]
+
+        outputs = tf.concat([outputs_cont, outputs_liwc, outputs_w2v, outputs_user], 1)
+        #outputs = tf.concat([outputs_cont, outputs_liwc, outputs_user], 1)
 
         bn_output = tf.contrib.layers.batch_norm(outputs, center=True, scale=True, is_training=is_training)
 
         # three-level MLP
         key = 'fc_l1'
-        weights[key] = tf.Variable(tf.random_normal([hidden_size, hidden_size]))
-        biases[key] = tf.Variable(tf.random_normal([hidden_size]))
+        weights[key] = tf.Variable(tf.random_normal([hidden_size*4, hidden_size*4]))
+        biases[key] = tf.Variable(tf.random_normal([hidden_size*4]))
 
         key = 'fc_l2'
-        weights[key] = tf.Variable(tf.random_normal([hidden_size, hidden_size]))
-        biases[key] = tf.Variable(tf.random_normal([hidden_size]))
+        weights[key] = tf.Variable(tf.random_normal([hidden_size*4, hidden_size*4]))
+        biases[key] = tf.Variable(tf.random_normal([hidden_size*4]))
 
         key = 'fc_l3'
-        weights[key] = tf.Variable(tf.random_normal([hidden_size, 1]))
+        weights[key] = tf.Variable(tf.random_normal([hidden_size*4, 1]))
         biases[key] = tf.Variable(tf.random_normal([1]))
         
         optimizers = {}
         pred = []
 
-        # Using dropout -> Fail
-        # Using only batch normalization (w/ Relu) -> Fail
-        # Using only batch normalization (w/o relu) -> better
-
-        #10_dropout = tf.layers.dropout(outputs, rate=1-keep_prob, training=is_training)
-
         l1_output = tf.matmul(bn_output, weights['fc_l1']) + biases['fc_l1']
-        #l1_output = tf.nn.relu(tf.matmul(outputs, weights['fc_l1']) + biases['fc_l1']) # might move relu layer to the behind of bn
         l1_bn_output = tf.contrib.layers.batch_norm(l1_output, center=True, scale=True, is_training=is_training)
-        #l1_dropout = tf.layers.dropout(l1_output, rate=1-keep_prob, training=is_training)
 
         l2_output = tf.matmul(l1_bn_output, weights['fc_l2']) + biases['fc_l2']
-        #l2_output = tf.nn.relu(tf.matmul(l1_bn_output, weights['fc_l2']) + biases['fc_l2']
         l2_bn_output = tf.contrib.layers.batch_norm(l2_output, center=True, scale=True, is_training=is_training)
-
+        
         logits = tf.matmul(l2_bn_output, weights['fc_l3']) + biases['fc_l3']
         labels = Y
 
@@ -255,41 +293,35 @@ def main(argv):
                 batch_index_start = 0
                 batch_index_end = batch_size
 
-                for i in range(int(len(learn_X)/batch_size)):
-                    X_train_batch = learn_X[batch_index_start:batch_index_end]
+                for i in range(int(len(learn_X_cont)/batch_size)):
+                    X_train_batch_cont = learn_X_cont[batch_index_start:batch_index_end]
+                    X_train_batch_liwc = learn_X_liwc[batch_index_start:batch_index_end]
+                    X_train_batch_w2v = learn_X_w2v[batch_index_start:batch_index_end]
+                    X_train_batch_user = learn_X_user[batch_index_start:batch_index_end]
                     Y_train_batch = learn_Y[batch_index_start:batch_index_end]
 
                     opt, c, o, l, acc = sess.run([optimizers, cost, outputs, logits, accuracy],
-                            feed_dict={X: X_train_batch, Y: Y_train_batch, keep_prob:0.01, is_training:True})
+                            feed_dict={X_cont: X_train_batch_cont, X_liwc: X_train_batch_liwc, X_w2v: X_train_batch_w2v, X_user: X_train_batch_user, Y: Y_train_batch, keep_prob:0.01, is_training:True})
                     
                     #print 'iteration : %d, cost: %.8f'%(count, c)
                     #if i == 0:
-                        #print 'acc: ', acc
-                        #list_a = filter(lambda (x,y):y[0]==0, zip(l, Y_train_batch))
-                        #list_b = filter(lambda (x,y):y[0]==1, zip(l, Y_train_batch))
-                        #print 'mean of 0: ', np.mean(map(lambda (p, q): p[0], list_a))
-                        #print 'mean of 1: ', np.mean(map(lambda (p, q): p[0], list_b))
+                    #    print 'acc: ', acc
+                    #    list_a = filter(lambda (x,y):y[0]==0, zip(l, Y_train_batch))
+                    #    list_b = filter(lambda (x,y):y[0]==1, zip(l, Y_train_batch))
+                    #    print 'mean of 0: ', np.mean(map(lambda (p, q): p[0], list_a))
+                    #    print 'mean of 1: ', np.mean(map(lambda (p, q): p[0], list_b))
 
 
                     batch_index_start += batch_size
                     batch_index_end += batch_size
                     count += 1
 
-                if (e != 0):
-                    print 'epochs: %d'%(e)
+                if (e % 10 == 0 and e != 0):
+                    print 'epochs: %d, time: %d sec'%(e, time.time() - start_time)
                     # TEST
-                    rst, c, h, l = sess.run([pred, cost, hypothesis, logits], feed_dict={X: test_X, Y: test_Y, keep_prob:1.0, is_training:False})
-
-                    #list_a = filter(lambda (x,y):y[0]==0.0, zip(l, test_Y))
-                    #list_b = filter(lambda (x,y):y[0]==1.0, zip(l, test_Y))
-                    #print 'len 0: ', len(list_a)
-                    #print 'len 1: ', len(list_b)
-                    #print '\n\n'
-                    #print 'mean of 0: ', np.mean(map(lambda (p, q): p[0], list_a))
-                    #print 'mean of 1: ', np.mean(map(lambda (p, q): p[0], list_b))
+                    rst, c, h, l = sess.run([pred, cost, hypothesis, logits], feed_dict={X_cont: test_X_cont, X_liwc: test_X_liwc, X_w2v: X_train_batch_w2v, X_user: test_X_user, Y: test_Y, keep_prob:1.0, is_training:False})
 
                     out = np.vstack(rst).T
-
                     out = out[0]
 
                     #print '# predict', Counter(out)
@@ -307,13 +339,12 @@ def main(argv):
                             decision = True
                         predicts.append(decision)
 
-                    fpr, tpr, thresholds = roc_curve(map(int, test_Y), out) 
+                    fpr, tpr, thresholds = roc_curve(map(int, test_Y), out)
                     print 'seq_length: %d, # predicts: %d, # corrects: %d, acc: %f, auc: %f' %(seq_length, len(predicts), len(filter(lambda x:x, predicts)), (len(filter(lambda x:x, predicts))/len(predicts)), auc(fpr,tpr))
                     print precision_recall_fscore_support(map(int, test_Y), out)
                     test_Y = map(lambda x:[x], test_Y)
                     #print 'work time: %s sec'%(time.time()-start_time)
                     #print '\n\n'
-
                     #f.close()
 
 

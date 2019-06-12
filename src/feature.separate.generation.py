@@ -40,8 +40,8 @@ input_dim_user = len(user_features_fields)
 output_dim = 1 # (range 0 to 1)
 hidden_size = 100
 learning_rate = 0.01
-batch_size = 200
-epochs = 310
+batch_size = 100
+epochs = 50
 
 def main(argv):
     start_time = time.time()
@@ -318,7 +318,7 @@ def main(argv):
                     count += 1
 
                 if (e % 10 == 0 and e != 0):
-                    print 'epochs: %d'%(e)
+                    print 'epochs: %d, time: %d sec'%(e, time.time() - start_time)
                     # TEST
                     rst, c, h, l = sess.run([pred, cost, hypothesis, logits], feed_dict={X_cont: test_X_cont, X_liwc: test_X_liwc, X_user: test_X_user, Y: test_Y, keep_prob:1.0, is_training:False})
 
