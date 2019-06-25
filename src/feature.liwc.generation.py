@@ -34,10 +34,10 @@ len_w2v_features = 300
 input_dim = len_liwc_features
 
 output_dim = 1 # (range 0 to 1)
-hidden_size = 100
+hidden_size = 50
 learning_rate = 0.01
 batch_size = 100
-epochs = 210
+epochs = 200
 
 def main(argv):
     start_time = time.time()
@@ -50,7 +50,8 @@ def main(argv):
     print 'learning_rate: %f, batch_size %d, epochs %d' %(learning_rate, batch_size, epochs)
 
     # 1.1 load feature dataset
-    d_features = pickle.load(open('../data/contentfeatures.others.p', 'r'))
+    #d_features = pickle.load(open('../data/contentfeatures.others.p', 'r'))
+    d_features = pickle.load(open('/home/jhlim/data/contentfeatures.others.p', 'r'))
     #d_w2vfeatures = pickle.load(open('../data/contentfeatures.googlenews.posts.p', 'r'))
     #d_userfeatures = pickle.load(open('../data/userfeatures.activity.p', 'r'))
 
@@ -71,20 +72,11 @@ def main(argv):
                 for element in seq[:-1]: # seq[-1] : Y. element: 't3_7dfvv'
                     liwc_features = []
 
-                    '''
-                    if d_features.has_key(element):
-                        cont_features = d_features[element]['cont']
-                        liwc_features = d_features[element]['liwc']
-                        w2v_features = d_w2vfeatures[element]['glove.mean'][0]
-                        user_features = d_userfeatures[element]['user']
-                    else:
-                        print 'It does not have the element.'
-                    '''
                     if d_features.has_key(element):
                         liwc_features = d_features[element]['liwc']
                     else:
                         continue
-                    #sub_x.append(np.array(cont_features+liwc_features+w2v_features.tolist()+user_features))
+                    
                     if liwc_features != []:
                         sub_x.append(np.array(liwc_features))
 
@@ -129,10 +121,6 @@ def main(argv):
             try:
                 for element in seq[:-1]:
                     liwc_features = []
-                    #cont_features = [0.0]*len(cont_features_fields)
-                    #liwc_features = [0.0]*len_liwc_features
-                    #w2v_features = [0.0]*len_w2v_features
-                    #user_features = [0.0]*len(user_features_fields)
                     
                     if d_features.has_key(element):
                         liwc_features = d_features[element]['liwc']
@@ -140,7 +128,6 @@ def main(argv):
                         #print 'It does not contain the element'
                         continue
 
-                    #sub_x.append(np.array(cont_features+liwc_features+w2v_features.tolist()+user_features))
                     if liwc_features != []:
                         sub_x.append(np.array(liwc_features))
 
@@ -151,12 +138,6 @@ def main(argv):
             except Exception, e:
                 continue
 
-        
-        #test_X_reshape = np.reshape(np.array(test_X), [-1, seq_length*input_dim]) # row num = file's row num
-        #sample_model = RandomUnderSampler(random_state=40) # random_state = seed. undersampling: diminish majority class
-        #test_X, test_Y = sample_model.fit_sample(test_X_reshape, test_Y)
-        #test_X = np.reshape(test_X, [-1, seq_length, input_dim])
-        
         test_Y = map(lambda x:[x], test_Y)
         
         
@@ -175,13 +156,13 @@ def main(argv):
         biases = {}
 
         cells = []
-        for _ in range(2):
-            #cell = tf.contrib.rnn.BasicLSTMCell(num_units=hidden_size,
-            #                                       state_is_tuple=True,
-            #                                       activation=tf.nn.relu)
-            cell = tf.contrib.rnn.LayerNormBasicLSTMCell(num_units=hidden_size,
-                                                        activation=tf.nn.relu,
-                                                        dropout_keep_prob=keep_prob) # Layer Normalization. num_units: ouput size
+        for _ in range(1):
+            cell = tf.contrib.rnn.BasicLSTMCell(num_units=hidden_size,
+                                                   state_is_tuple=True,
+                                                   activation=tf.nn.relu)
+            #cell = tf.contrib.rnn.LayerNormBasicLSTMCell(num_units=hidden_size,
+            #                                            activation=tf.nn.relu,
+            #                                            dropout_keep_prob=keep_prob) # Layer Normalization. num_units: ouput size
 
             cells.append(cell)
 
@@ -259,31 +240,18 @@ def main(argv):
                             feed_dict={X: X_train_batch, Y: Y_train_batch, keep_prob:0.01, is_training:True})
                     
                     #print 'iteration : %d, cost: %.8f'%(count, c)
-                    #if i == 0:
-                        #print 'acc: ', acc
-                        #list_a = filter(lambda (x,y):y[0]==0, zip(l, Y_train_batch))
-                        #list_b = filter(lambda (x,y):y[0]==1, zip(l, Y_train_batch))
-                        #print 'mean of 0: ', np.mean(map(lambda (p, q): p[0], list_a))
-                        #print 'mean of 1: ', np.mean(map(lambda (p, q): p[0], list_b))
-
 
                     batch_index_start += batch_size
                     batch_index_end += batch_size
                     count += 1
 
-                if (e % 10 == 0 and e != 0):
-                    print 'epochs: %d'%(e)
+                if (e % 5 == 0 and e != 0):
+                    print 'epochs : %d, cost: %.8f'%(e, c)
                     # TEST
                     rst, c, h, l = sess.run([pred, cost, hypothesis, logits], feed_dict={X: test_X, Y: test_Y, keep_prob:1.0, is_training:False})
 
-                    #list_a = filter(lambda (x,y):y[0]==0.0, zip(l, test_Y))
-                    #list_b = filter(lambda (x,y):y[0]==1.0, zip(l, test_Y))
-                    #print '\n\n'
-                    #print 'mean of 0: ', np.mean(map(lambda (p, q): p[0], list_a))
-                    #print 'mean of 1: ', np.mean(map(lambda (p, q): p[0], list_b))
 
                     out = np.vstack(rst).T
-
                     out = out[0]
 
                     #print '# predict', Counter(out)

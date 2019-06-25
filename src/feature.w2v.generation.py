@@ -36,8 +36,8 @@ input_dim = len_w2v_features
 output_dim = 1 # (range 0 to 1)
 hidden_size = 100
 learning_rate = 0.01
-batch_size = 500
-epochs = 30
+batch_size = 100
+epochs = 200
 
 def main(argv):
     start_time = time.time()
@@ -97,14 +97,13 @@ def main(argv):
                         print 'It does not have the element.'
                     '''
                     if d_w2vfeatures.has_key(element):
-                        #print 'len(w2v_features): ', len(w2v_features)
                         w2v_features = d_w2vfeatures[element]['google.mean'][0]
                     else:
                         continue
                     # append each element's features of seq to the sub_x
                     #sub_x.append(np.array(cont_features+liwc_features+w2v_features.tolist()+user_features))
                     if w2v_features != []:
-                        sub_x.append(np.array(w2v_features.tolist()))
+                        sub_x.append(np.array(w2v_features))
                     #sub_x.append(np.array(cont_features+liwc_features+user_features))
 
                 if (len(sub_x) == seq_length):
@@ -161,7 +160,7 @@ def main(argv):
 
                     #sub_x.append(np.array(cont_features+liwc_features+w2v_features.tolist()+user_features))
                     if w2v_features != []:
-                        sub_x.append(np.array(w2v_features.tolist()))
+                        sub_x.append(np.array(w2v_features))
 
                 if (len(sub_x) == seq_length):
                     test_X.append(np.array(sub_x))
@@ -200,12 +199,12 @@ def main(argv):
 
         cells = []
         for _ in range(2):
-            #cell = tf.contrib.rnn.BasicLSTMCell(num_units=hidden_size,
-            #                                       state_is_tuple=True,
-            #                                       activation=tf.nn.relu)
-            cell = tf.contrib.rnn.LayerNormBasicLSTMCell(num_units=hidden_size,
-                                                        activation=tf.nn.relu,
-                                                        dropout_keep_prob=keep_prob) # Layer Normalization. num_units: ouput size
+            cell = tf.contrib.rnn.BasicLSTMCell(num_units=hidden_size,
+                                                   state_is_tuple=True,
+                                                   activation=tf.nn.relu)
+            #cell = tf.contrib.rnn.LayerNormBasicLSTMCell(num_units=hidden_size,
+            #                                            activation=tf.nn.relu,
+            #                                            dropout_keep_prob=keep_prob) # Layer Normalization. num_units: ouput size
 
             cells.append(cell)
 
