@@ -1,0 +1,36 @@
+learning_rate: 0.010000, batch_size 100, epochs 100
+features are loaded
+size of learn_Y: 77837
+Counter({1.0: 43499, 0.0: 34338})
+Counter({0.0: 34338, 1.0: 34338})
+Data loading Complete learn:68676, test:39549
+epochs: 10
+seq_length: 3, # predicts: 39549, # corrects: 21898, acc: 0.553693, auc: 0.500000
+/usr/local/lib/python2.7/dist-packages/sklearn/metrics/classification.py:1135: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples.
+  'precision', 'predicted', average, warn_for)
+  (array([0.        , 0.55369289]), array([0., 1.]), array([0.        , 0.71274432]), array([17651, 21898]))
+  epochs: 20
+  seq_length: 3, # predicts: 39549, # corrects: 21912, acc: 0.554047, auc: 0.500473
+  (array([0.66666667, 0.55392715]), array([0.00158631, 0.99936067]), array([0.00316509, 0.71277583]), array([17651, 21898]))
+  epochs: 30
+  seq_length: 3, # predicts: 39549, # corrects: 21907, acc: 0.553920, auc: 0.500442
+  (array([0.55844156, 0.55391163]), array([0.00243612, 0.99844735]), array([0.00485108, 0.71253055]), array([17651, 21898]))
+  epochs: 40
+  seq_length: 3, # predicts: 39549, # corrects: 22578, acc: 0.570887, auc: 0.547809
+  (array([0.53070809, 0.58650841]), array([0.33289899, 0.76271806]), array([0.40914946, 0.6631067 ]), array([17651, 21898]))
+  epochs: 50
+  seq_length: 3, # predicts: 39549, # corrects: 22125, acc: 0.559433, auc: 0.527192
+  (array([0.51457932, 0.57042564]), array([0.22695598, 0.82742716]), array([0.31498663, 0.67530096]), array([17651, 21898]))
+  epochs: 60
+  seq_length: 3, # predicts: 39549, # corrects: 21803, acc: 0.551291, auc: 0.532629
+  (array([0.4962783 , 0.57750317]), array([0.35884652, 0.70641154]), array([0.41651871, 0.63548599]), array([17651, 21898]))
+  epochs: 70
+  seq_length: 3, # predicts: 39549, # corrects: 21935, acc: 0.554628, auc: 0.519612
+  (array([0.50272259, 0.56539659]), array([0.19353011, 0.84569367]), array([0.27947312, 0.67770621]), array([17651, 21898]))
+  epochs: 80
+  seq_length: 3, # predicts: 39549, # corrects: 21497, acc: 0.543554, auc: 0.532235
+  (array([0.48703859, 0.5798588 ]), array([0.42683134, 0.63763814]), array([0.45495169, 0.60737744]), array([17651, 21898]))
+  epochs: 90
+  seq_length: 3, # predicts: 39549, # corrects: 21198, acc: 0.535993, auc: 0.540302
+  (array([0.48348277, 0.59660112]), array([0.58042037, 0.50018267]), array([0.52753534, 0.54415381]), array([17651, 21898]))
+

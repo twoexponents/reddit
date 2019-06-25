@@ -1,0 +1,61 @@
+learning_rate: 0.010000, batch_size 100, epochs 200
+features are loaded
+size of learn_Y: 117416
+Counter({1.0: 68006, 0.0: 49410})
+Counter({0.0: 49410, 1.0: 49410})
+Data loading Complete learn:98820, test:59414
+epochs: 10
+seq_length: 3, # predicts: 59414, # corrects: 32985, acc: 0.555172, auc: 0.560282
+(array([0.48080685, 0.63731359]), array([0.59420577, 0.5263589 ]), array([0.5315253 , 0.57654655]), array([25232, 34182]))
+epochs: 20
+seq_length: 3, # predicts: 59414, # corrects: 31533, acc: 0.530733, auc: 0.564768
+(array([0.46887265, 0.68682915]), array([0.79070228, 0.3388333 ]), array([0.58867268, 0.45379567]), array([25232, 34182]))
+epochs: 30
+seq_length: 3, # predicts: 59414, # corrects: 31513, acc: 0.530397, auc: 0.563920
+(array([0.46849399, 0.68411796]), array([0.78646164, 0.3413785 ]), array([0.58719614, 0.45547337]), array([25232, 34182]))
+epochs: 40
+seq_length: 3, # predicts: 59414, # corrects: 31408, acc: 0.528630, auc: 0.564024
+(array([0.46781454, 0.68921569]), array([0.79898542, 0.32906208]), array([0.59011211, 0.44544771]), array([25232, 34182]))
+epochs: 50
+seq_length: 3, # predicts: 59414, # corrects: 31364, acc: 0.527889, auc: 0.562249
+(array([0.46700389, 0.68346099]), array([0.79034559, 0.33415248]), array([0.58709924, 0.44885448]), array([25232, 34182]))
+epochs: 60
+seq_length: 3, # predicts: 59414, # corrects: 30733, acc: 0.517269, auc: 0.558763
+(array([0.46213801, 0.6983486 ]), array([0.83421845, 0.283307  ]), array([0.59478094, 0.40308851]), array([25232, 34182]))
+epochs: 70
+seq_length: 3, # predicts: 59414, # corrects: 32602, acc: 0.548726, auc: 0.559868
+(array([0.47646428, 0.64256422]), array([0.63383798, 0.48589901]), array([0.5439981 , 0.55335666]), array([25232, 34182]))
+epochs: 80
+seq_length: 3, # predicts: 59414, # corrects: 31864, acc: 0.536305, auc: 0.554993
+(array([0.46832122, 0.64526021]), array([0.67905834, 0.43092856]), array([0.55433692, 0.51675145]), array([25232, 34182]))
+epochs: 90
+seq_length: 3, # predicts: 59414, # corrects: 30976, acc: 0.521359, auc: 0.559313
+(array([0.46368867, 0.68810584]), array([0.8112714 , 0.30735475]), array([0.59010061, 0.42491405]), array([25232, 34182]))
+epochs: 100
+seq_length: 3, # predicts: 59414, # corrects: 31415, acc: 0.528747, auc: 0.558943
+(array([0.46632919, 0.66870396]), array([0.75939283, 0.35849277]), array([0.57782603, 0.46675681]), array([25232, 34182]))
+epochs: 110
+seq_length: 3, # predicts: 59414, # corrects: 31777, acc: 0.534840, auc: 0.557820
+(array([0.46856456, 0.6546477 ]), array([0.71036779, 0.40527178]), array([0.56466882, 0.50062339]), array([25232, 34182]))
+epochs: 120
+seq_length: 3, # predicts: 59414, # corrects: 32114, acc: 0.540512, auc: 0.550919
+(array([0.46900108, 0.63205158]), array([0.62000634, 0.48183254]), array([0.53403427, 0.54681275]), array([25232, 34182]))
+epochs: 130
+seq_length: 3, # predicts: 59414, # corrects: 32385, acc: 0.545074, auc: 0.546276
+(array([0.46981557, 0.62063615]), array([0.5542565 , 0.53829501]), array([0.5085547 , 0.57654044]), array([25232, 34182]))
+epochs: 140
+seq_length: 3, # predicts: 59414, # corrects: 31430, acc: 0.529000, auc: 0.549475
+(array([0.46314944, 0.64039141]), array([0.68539949, 0.41355099]), array([0.55277121, 0.50255973]), array([25232, 34182]))
+epochs: 150
+seq_length: 3, # predicts: 59414, # corrects: 31317, acc: 0.527098, auc: 0.552487
+(array([0.46350411, 0.6508952 ]), array([0.72102885, 0.38394477]), array([0.56427275, 0.48298832]), array([25232, 34182]))
+epochs: 160
+seq_length: 3, # predicts: 59414, # corrects: 31825, acc: 0.535648, auc: 0.544933
+(array([0.46425213, 0.62464552]), array([0.60657102, 0.4832953 ]), array([0.52595405, 0.54495374]), array([25232, 34182]))
+epochs: 170
+seq_length: 3, # predicts: 59414, # corrects: 31573, acc: 0.531407, auc: 0.549891
+(array([0.46431014, 0.63867384]), array([0.67259829, 0.4271839 ]), array([0.54937442, 0.51194671]), array([25232, 34182]))
+epochs: 180
+seq_length: 3, # predicts: 59414, # corrects: 31336, acc: 0.527418, auc: 0.552443
+(array([0.46361358, 0.6503004 ]), array([0.71857166, 0.38631443]), array([0.56359963, 0.48469388]), array([25232, 34182]))
+

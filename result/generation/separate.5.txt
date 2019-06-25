@@ -1,0 +1,91 @@
+seq_length: 5, # predicts: 27093, # corrects: 12997, acc: 0.479718, auc: 0.500000
+/usr/local/lib/python2.7/dist-packages/sklearn/metrics/classification.py:1135: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples.
+  'precision', 'predicted', average, warn_for)
+  (array([0.        , 0.47971801]), array([0., 1.]), array([0.        , 0.64839112]), array([14096, 12997]))
+epochs: 20
+seq_length: 5, # predicts: 27093, # corrects: 13304, acc: 0.491049, auc: 0.507710
+(array([0.56324681, 0.48394551]), array([0.09697787, 0.91844272]), array([0.16546632, 0.63388471]), array([14096, 12997]))
+epochs: 30
+seq_length: 5, # predicts: 27093, # corrects: 13606, acc: 0.502196, auc: 0.516923
+(array([0.58165728, 0.48951378]), array([0.15387344, 0.8799723 ]), array([0.24336606, 0.62908061]), array([14096, 12997]))
+epochs: 40
+seq_length: 5, # predicts: 27093, # corrects: 14828, acc: 0.547300, auc: 0.554819
+(array([0.60663949, 0.51977523]), array([0.36946652, 0.74017081]), array([0.45923901, 0.61069671]), array([14096, 12997]))
+epochs: 50
+seq_length: 5, # predicts: 27093, # corrects: 15126, acc: 0.558299, auc: 0.560167
+(array([0.58608977, 0.53496741]), array([0.51411748, 0.60621682]), array([0.54774952, 0.5683679 ]), array([14096, 12997]))
+epochs: 60
+seq_length: 5, # predicts: 27093, # corrects: 14702, acc: 0.542649, auc: 0.545607
+(array([0.57335857, 0.51958376]), array([0.47268729, 0.61852735]), array([0.51817864, 0.56475465]), array([14096, 12997]))
+epochs: 70
+seq_length: 5, # predicts: 27093, # corrects: 14599, acc: 0.538848, auc: 0.545166
+(array([0.58543089, 0.51419541]), array([0.38940125, 0.70093098]), array([0.4677062 , 0.59321482]), array([14096, 12997]))
+epochs: 80
+seq_length: 5, # predicts: 27093, # corrects: 13675, acc: 0.504743, auc: 0.519640
+(array([0.59369818, 0.49103301]), array([0.15238365, 0.88689698]), array([0.24252004, 0.63210134]), array([14096, 12997]))
+epochs: 90
+seq_length: 5, # predicts: 27093, # corrects: 14401, acc: 0.531540, auc: 0.537870
+(array([0.575     , 0.50859979]), array([0.38181044, 0.69392937]), array([0.45890177, 0.5869834 ]), array([14096, 12997]))
+epochs: 100
+seq_length: 5, # predicts: 27093, # corrects: 14630, acc: 0.539992, auc: 0.540120
+(array([0.56045909, 0.51964969]), array([0.53696084, 0.54327922]), array([0.54845839, 0.53120181]), array([14096, 12997]))
+epochs: 110
+seq_length: 5, # predicts: 27093, # corrects: 14393, acc: 0.531244, auc: 0.533774
+(array([0.55868505, 0.50977038]), array([0.47141033, 0.59613757]), array([0.51135052, 0.5495815 ]), array([14096, 12997]))
+epochs: 120
+seq_length: 5, # predicts: 27093, # corrects: 14656, acc: 0.540952, auc: 0.539204
+(array([0.55621061, 0.5226978 ]), array([0.58229285, 0.49611449]), array([0.56895297, 0.50905933]), array([14096, 12997]))
+epochs: 130
+seq_length: 5, # predicts: 27093, # corrects: 14000, acc: 0.516739, auc: 0.524825
+(array([0.56136058, 0.497463  ]), array([0.32548241, 0.72416712]), array([0.41205263, 0.58977974]), array([14096, 12997]))
+epochs: 140
+seq_length: 5, # predicts: 27093, # corrects: 13842, acc: 0.510907, auc: 0.519127
+(array([0.55230903, 0.49332141]), array([0.31647276, 0.72178195]), array([0.40238127, 0.58607441]), array([14096, 12997]))
+epochs: 150
+seq_length: 5, # predicts: 27093, # corrects: 14180, acc: 0.523382, auc: 0.527355
+(array([0.55415179, 0.5025974 ]), array([0.4294126 , 0.62529815]), array([0.48387226, 0.55727363]), array([14096, 12997]))
+epochs: 160
+seq_length: 5, # predicts: 27093, # corrects: 14212, acc: 0.524564, auc: 0.529198
+(array([0.55795097, 0.50349187]), array([0.41494041, 0.64345618]), array([0.47593474, 0.56493397]), array([14096, 12997]))
+epochs: 170
+seq_length: 5, # predicts: 27093, # corrects: 13978, acc: 0.515927, auc: 0.519776
+(array([0.54460307, 0.49633449]), array([0.4248723 , 0.61468031]), array([0.47734428, 0.54920428]), array([14096, 12997]))
+epochs: 180
+seq_length: 5, # predicts: 27093, # corrects: 14161, acc: 0.522681, auc: 0.526277
+(array([0.5520852 , 0.50204159]), array([0.43764188, 0.61491113]), array([0.48824693, 0.55277355]), array([14096, 12997]))
+epochs: 190
+seq_length: 5, # predicts: 27093, # corrects: 14101, acc: 0.520467, auc: 0.523758
+(array([0.54853174, 0.50015904]), array([0.44260783, 0.60490883]), array([0.4899097, 0.5475693]), array([14096, 12997]))
+epochs: 200
+seq_length: 5, # predicts: 27093, # corrects: 14077, acc: 0.519581, auc: 0.523768
+(array([0.55011136, 0.49941779]), array([0.42054484, 0.62699084]), array([0.4766806 , 0.55598008]), array([14096, 12997]))
+epochs: 210
+seq_length: 5, # predicts: 27093, # corrects: 14007, acc: 0.516997, auc: 0.521993
+(array([0.54934532, 0.49736046]), array([0.39883655, 0.64514888]), array([0.4621455 , 0.56169614]), array([14096, 12997]))
+epochs: 220
+seq_length: 5, # predicts: 27093, # corrects: 14039, acc: 0.518178, auc: 0.520926
+(array([0.54440089, 0.49814441]), array([0.45317821, 0.58867431]), array([0.49461866, 0.53963888]), array([14096, 12997]))
+epochs: 230
+seq_length: 5, # predicts: 27093, # corrects: 14333, acc: 0.529030, auc: 0.530974
+(array([0.55438854, 0.50800081]), array([0.48304484, 0.57890282]), array([0.51626355, 0.54113924]), array([14096, 12997]))
+epochs: 240
+seq_length: 5, # predicts: 27093, # corrects: 14202, acc: 0.524194, auc: 0.524560
+(array([0.54520219, 0.50385062]), array([0.51553632, 0.53358467]), array([0.52995442, 0.51829154]), array([14096, 12997]))
+epochs: 250
+seq_length: 5, # predicts: 27093, # corrects: 14378, acc: 0.530691, auc: 0.532810
+(array([0.55675187, 0.5094466 ]), array([0.48056186, 0.58505809]), array([0.51585881, 0.54464062]), array([14096, 12997]))
+epochs: 260
+seq_length: 5, # predicts: 27093, # corrects: 14194, acc: 0.523899, auc: 0.528548
+(array([0.55714695, 0.50294826]), array([0.41394722, 0.64314842]), array([0.47498881, 0.56447311]), array([14096, 12997]))
+epochs: 270
+seq_length: 5, # predicts: 27093, # corrects: 14141, acc: 0.521943, auc: 0.522316
+(array([0.5429365 , 0.50163387]), array([0.51312429, 0.53150727]), array([0.5276096 , 0.51613867]), array([14096, 12997]))
+epochs: 280
+seq_length: 5, # predicts: 27093, # corrects: 14159, acc: 0.522607, auc: 0.522570
+(array([0.54273316, 0.50233385]), array([0.52348184, 0.52165884]), array([0.5329337, 0.511814 ]), array([14096, 12997]))
+epochs: 290
+seq_length: 5, # predicts: 27093, # corrects: 14184, acc: 0.523530, auc: 0.522797
+(array([0.54220895, 0.5033763 ]), array([0.54086266, 0.50473186]), array([0.54153496, 0.50405317]), array([14096, 12997]))
+epochs: 300
+seq_length: 5, # predicts: 27093, # corrects: 14470, acc: 0.534086, auc: 0.532108
+(array([0.54941958, 0.51534044]), array([0.58087401, 0.48334231]), array([0.56470913, 0.49882876]), array([14096, 12997]))
