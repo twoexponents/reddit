@@ -34,7 +34,7 @@ len_w2v_features = 300
 input_dim = len_liwc_features
 
 output_dim = 1 # (range 0 to 1)
-hidden_size = 50
+hidden_size = 200
 learning_rate = 0.01
 batch_size = 100
 epochs = 200
@@ -139,7 +139,7 @@ def main(argv):
                 continue
 
         test_Y = map(lambda x:[x], test_Y)
-        
+
         
         print 'Data loading Complete learn:%d, test:%d'%(len(learn_Y), len(test_Y))
         tf.reset_default_graph()

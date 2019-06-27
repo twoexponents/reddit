@@ -35,9 +35,9 @@ len_w2v_features = 300
 input_dim = len_liwc_features
 
 output_dim = 2 # (range 0 to 1)
-hidden_size = 500
+hidden_size = 100
 learning_rate = 0.01
-batch_size = 100
+batch_size = 1000
 epochs = 200
 
 def main(argv):

@@ -9,13 +9,13 @@ def main(argv):
         input_length = int(sys.argv[1])
 
     # 1.1 load feature dataset
-    d_features = pickle.load(open('../data/contentfeatures.others.p', 'r'))
+    d_features = pickle.load(open('/home/jhlim/reddit/data/contentfeatures.others.p', 'r'))
     d_commentbodyfeatures = pickle.load(open('/home/jhlim/data/commentbodyfeatures.p', 'r'))
 
     print 'features are loaded'
 
     for seq_length in xrange(input_length, input_length+1):
-        f = open('../data/seq.test.%d.csv'%(seq_length), 'r')
+        f = open('/home/jhlim/reddit/data/seq.test.%d.csv'%(seq_length), 'r')
         test_instances = map(lambda x:x.replace('\n', '').split(','), f.readlines())
         f.close()
 

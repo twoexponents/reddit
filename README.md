@@ -1,5 +1,6 @@
-Predicting Evolution of Conversations of Reddit
+# Predicting Evolution of Conversations of Reddit
 
+## Code Explanation
 src/  
  -feature.all.py: Using all features  
  -feature.content/user/liwc/w2v.py: Using each feature only  
@@ -9,6 +10,7 @@ src/
  -feature.-.case.py: Making list of sequences which are predicted well  
  -model.validation.py: Validate our RNN model with simple sequence and mnist  
 
-TODO(6/25):  
- -increase the model's performance (How?)
+## TODO
+ -Make w2v features only with the top words
+ -training set & test set tunning
 

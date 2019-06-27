@@ -50,7 +50,8 @@ def main(argv):
     print 'learning_rate: %f, batch_size %d, epochs %d' %(learning_rate, batch_size, epochs)
 
     # 1.1 load feature dataset
-    d_features = pickle.load(open('../data/contentfeatures.others.p', 'r'))
+    d_features = pickle.load(open('/home/jhlim/data/contentfeatures.others.p', 'r'))
+    #d_features = pickle.load(open('../data/contentfeatures.others.p', 'r'))
     #d_w2vfeatures = pickle.load(open('../data/contentfeatures.googlenews.posts.p', 'r'))
 
     #d_userfeatures = pickle.load(open('../data/userfeatures.activity.p', 'r'))
@@ -270,13 +271,6 @@ def main(argv):
                             feed_dict={X: X_train_batch, Y: Y_train_batch, keep_prob:0.01, is_training:True})
                     
                     #print 'iteration : %d, cost: %.8f'%(count, c)
-                    #if i == 0:
-                        #print 'acc: ', acc
-                        #list_a = filter(lambda (x,y):y[0]==0, zip(l, Y_train_batch))
-                        #list_b = filter(lambda (x,y):y[0]==1, zip(l, Y_train_batch))
-                        #print 'mean of 0: ', np.mean(map(lambda (p, q): p[0], list_a))
-                        #print 'mean of 1: ', np.mean(map(lambda (p, q): p[0], list_b))
-
 
                     batch_index_start += batch_size
                     batch_index_end += batch_size
