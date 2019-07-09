@@ -70,7 +70,8 @@ def main(argv):
 
             try:
                 for element in seq[:-1]: # seq[-1] : Y. element: 't3_7dfvv'
-                    cont_features = [0.0]*len(cont_features_fields)
+                    cont_features = []
+                    #cont_features = [0.0]*len(cont_features_fields)
                     #cont_features = [0.0]*len(cont_features_fields)
                     #liwc_features = [0.0]*len_liwc_features
                     #w2v_features = [0.0]*len_w2v_features
@@ -86,19 +87,18 @@ def main(argv):
                         print 'It does not have the element.'
                     '''
                     if d_features.has_key(element):
-                        cont_features = d_features[element]['cont'][:len(common_features_fields)]
-                        #if len(cont_features) < len(cont_features_fields):
-                        #    cont_features += [0.0]*(len(cont_features_fields) - len(cont_features))
-                    #else:
-                    #    continue
+                        cont_features = d_features[element]['cont'][:len(cont_features_fields)]
+                    else:
+                        continue
+                    
                     # append each element's features of seq to the sub_x
                     #sub_x.append(np.array(cont_features+liwc_features+w2v_features.tolist()+user_features))
-                    #if cont_features != []:
-                    sub_x.append(np.array(cont_features))
+                    if cont_features != []:
+                        sub_x.append(np.array(cont_features))
 
-                #if (len(sub_x) == seq_length):
-                learn_X.append(np.array(sub_x)) # feature list
-                learn_Y.append(float(seq[-1]))
+                if (len(sub_x) == seq_length):
+                    learn_X.append(np.array(sub_x)) # feature list
+                    learn_Y.append(float(seq[-1]))
 
             except Exception, e:
                 # print e
@@ -143,19 +143,17 @@ def main(argv):
                     #user_features = [0.0]*len(user_features_fields)
                     
                     if d_features.has_key(element):
-                        cont_features = d_features[element]['cont'][:len(common_features_fields)]
-                        #if len(cont_features) < 33:
-                        #    cont_features += [0.0]*(len(cont_features_fields) - len(cont_features))
-                    #else:
-                    #    continue
+                        cont_features = d_features[element]['cont'][:len(cont_features_fields)]
+                    else:
+                        continue
 
                     #sub_x.append(np.array(cont_features+liwc_features+w2v_features.tolist()+user_features))
-                    #if cont_features != []:
-                    sub_x.append(np.array(cont_features))
+                    if cont_features != []:
+                        sub_x.append(np.array(cont_features))
 
-                #if (len(sub_x) == seq_length):
-                test_X.append(np.array(sub_x))
-                test_Y.append(float(seq[-1]))
+                if (len(sub_x) == seq_length):
+                    test_X.append(np.array(sub_x))
+                    test_Y.append(float(seq[-1]))
 
             except Exception, e:
                 continue
@@ -185,12 +183,12 @@ def main(argv):
 
         cells = []
         for _ in range(2):
-            #cell = tf.contrib.rnn.BasicLSTMCell(num_units=hidden_size,
-            #                                       state_is_tuple=True,
-            #                                       activation=tf.nn.relu)
-            cell = tf.contrib.rnn.LayerNormBasicLSTMCell(num_units=hidden_size,
-                                                        activation=tf.nn.relu,
-                                                        dropout_keep_prob=keep_prob) # Layer Normalization. num_units: ouput size
+            cell = tf.contrib.rnn.BasicLSTMCell(num_units=hidden_size,
+                                                   state_is_tuple=True,
+                                                   activation=tf.nn.relu)
+            #cell = tf.contrib.rnn.LayerNormBasicLSTMCell(num_units=hidden_size,
+            #                                            activation=tf.nn.relu,
+            #                                            dropout_keep_prob=keep_prob) # Layer Normalization. num_units: ouput size
 
             cells.append(cell)
 
@@ -303,9 +301,7 @@ def main(argv):
                     predicts = []
                     test_Y = map(lambda x:x[0], test_Y)
 
-                    #f = open('../result/result.rnn.%d.tsv'%(seq_length), 'w')
                     for v1, v2 in zip(out, test_Y):
-                        #f.write('%d,%s\n'%(v1, v2))
                         decision = False
 
                         if v1 == int(v2):
@@ -316,10 +312,9 @@ def main(argv):
                     print 'seq_length: %d, # predicts: %d, # corrects: %d, acc: %f, auc: %f' %(seq_length, len(predicts), len(filter(lambda x:x, predicts)), (len(filter(lambda x:x, predicts))/len(predicts)), auc(fpr,tpr))
                     print precision_recall_fscore_support(map(int, test_Y), out)
                     test_Y = map(lambda x:[x], test_Y)
-                    #print 'work time: %s sec'%(time.time()-start_time)
-                    #print '\n\n'
+            print 'work time: %s sec'%(time.time()-start_time)
+            print '\n\n'
 
-                    f.close()
 
 
 if __name__ == '__main__':

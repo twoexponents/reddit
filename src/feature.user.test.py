@@ -25,7 +25,7 @@ output_dim = 1 # (range 0 to 1)
 hidden_size = 100
 learning_rate = 0.005
 batch_size = 100
-epochs = 200
+epochs = 500
 
 def main(argv):
     start_time = time.time()
@@ -43,8 +43,7 @@ def main(argv):
     print 'features are loaded'
 
     for seq_length in xrange(input_length, input_length+1):
-        #f = open('../data/seq.learn.%d.csv'%(seq_length), 'r')
-        f = open('/home/jhlim/data/seq.learn.%d.csv'%(seq_length), 'r')
+        f = open('../data/seq.learn.%d.csv'%(seq_length), 'r')
         learn_instances = map(lambda x:x.replace('\n', '').split(','), f.readlines())
         f.close()
 
@@ -90,8 +89,7 @@ def main(argv):
 
         print Counter(map(lambda x:x[0], learn_Y))
 
-        #f = open('../data/seq.test.%d.csv'%(seq_length), 'r')
-        f = open('/home/jhlim/data/seq.test.%d.csv'%(seq_length), 'r')
+        f = open('../data/seq.test.%d.csv'%(seq_length), 'r')
         test_instances = map(lambda x:x.replace('\n', '').split(','), f.readlines())
         f.close()
 
@@ -220,6 +218,12 @@ def main(argv):
                     predicts = []
                     test_Y = map(lambda x:x[0], test_Y)
 
+                    
+                    pred_end_post = []; pred_end_comment = []
+                    pred_cont_post = []; pred_cont_comment = []
+                    label_end_post = []; label_end_comment = []
+                    label_cont_post = []; label_cont_comment = []
+
                     for v1, v2 in zip(out, test_Y):
                         decision = False
 
@@ -227,9 +231,29 @@ def main(argv):
                             decision = True
                         predicts.append(decision)
 
+                    for i, v in enumerate(out):
+                        if v == 1:
+                            pred_cont_post.append(test_X[i][0][0])
+                            pred_cont_comment.append(test_X[i][0][1])
+                        else:
+                            pred_end_post.append(test_X[i][0][0])
+                            pred_end_comment.append(test_X[i][0][1])
+
+                    for i, v in enumerate(test_Y):
+                        if v == 1:
+                            label_cont_post.append(test_X[i][0][0])
+                            label_cont_comment.append(test_X[i][0][1])
+                        else:
+                            label_end_post.append(test_X[i][0][0])
+                            label_end_comment.append(test_X[i][0][1])
+
                     fpr, tpr, thresholds = roc_curve(map(int, test_Y), out)
                     print 'seq_length: %d, # predicts: %d, # corrects: %d, acc: %f, auc: %f' %(seq_length, len(predicts), len(filter(lambda x:x, predicts)), (len(filter(lambda x:x, predicts))/len(predicts)), auc(fpr,tpr))
                     print precision_recall_fscore_support(map(int, test_Y), out)
+                    print 'mean_pred_cont post: %f, comment: %f'%(sum(pred_cont_post)/float(len(pred_cont_post)), sum(pred_cont_comment)/float(len(pred_cont_comment)))
+                    print 'mean_pred_end post: %f, comment: %f'%(sum(pred_end_post)/float(len(pred_end_post)), sum(pred_end_comment)/float(len(pred_end_comment)))
+                    print 'mean_label_cont post: %f, comment: %f'%(sum(label_cont_post)/float(len(label_cont_post)), sum(label_cont_comment)/float(len(label_cont_comment)))
+                    print 'mean_label_end post: %f, comment: %f'%(sum(label_end_post)/float(len(label_end_post)), sum(label_end_comment)/float(len(label_end_comment)))
                     test_Y = map(lambda x:[x], test_Y)
             
             print 'work time: %s sec'%(time.time()-start_time)

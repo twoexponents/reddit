@@ -25,15 +25,10 @@ output_dim = 1 # (range 0 to 1)
 hidden_size = 100
 learning_rate = 0.005
 batch_size = 100
-epochs = 200
+epochs = 50
 
 def main(argv):
     start_time = time.time()
-    if len(sys.argv) <= 1:
-        print "sequence len: 1"
-        input_length = 1
-    else:
-        input_length = int(sys.argv[1])
 
     print 'learning_rate: %f, batch_size %d, epochs %d' %(learning_rate, batch_size, epochs)
 
@@ -42,7 +37,7 @@ def main(argv):
 
     print 'features are loaded'
 
-    for seq_length in xrange(input_length, input_length+1):
+    for seq_length in xrange(1, 11):
         #f = open('../data/seq.learn.%d.csv'%(seq_length), 'r')
         f = open('/home/jhlim/data/seq.learn.%d.csv'%(seq_length), 'r')
         learn_instances = map(lambda x:x.replace('\n', '').split(','), f.readlines())
@@ -209,31 +204,28 @@ def main(argv):
                     batch_index_start += batch_size
                     batch_index_end += batch_size
                 
-                if (e % 10 == 0 and e != 0):
-                    print 'epochs: %d, cost: %.8f'%(e, c)
-                    # TEST
-                    rst, c, h, l = sess.run([pred, cost, hypothesis, logits], feed_dict={X: test_X, Y: test_Y, keep_prob:1.0, is_training:False})
+            # TEST
+            rst, c, h, l = sess.run([pred, cost, hypothesis, logits], feed_dict={X: test_X, Y: test_Y, keep_prob:1.0, is_training:False})
 
-                    out = np.vstack(rst).T
-                    out = out[0]
+            out = np.vstack(rst).T
+            out = out[0]
 
-                    predicts = []
-                    test_Y = map(lambda x:x[0], test_Y)
+            predicts = []
+            test_Y = map(lambda x:x[0], test_Y)
 
-                    for v1, v2 in zip(out, test_Y):
-                        decision = False
+            for v1, v2 in zip(out, test_Y):
+                decision = False
 
-                        if v1 == int(v2):
-                            decision = True
-                        predicts.append(decision)
+                if v1 == int(v2):
+                    decision = True
+                predicts.append(decision)
 
-                    fpr, tpr, thresholds = roc_curve(map(int, test_Y), out)
-                    print 'seq_length: %d, # predicts: %d, # corrects: %d, acc: %f, auc: %f' %(seq_length, len(predicts), len(filter(lambda x:x, predicts)), (len(filter(lambda x:x, predicts))/len(predicts)), auc(fpr,tpr))
-                    print precision_recall_fscore_support(map(int, test_Y), out)
-                    test_Y = map(lambda x:[x], test_Y)
+            fpr, tpr, thresholds = roc_curve(map(int, test_Y), out)
+            print 'seq_length: %d, # predicts: %d, # corrects: %d, acc: %f, auc: %f' %(seq_length, len(predicts), len(filter(lambda x:x, predicts)), (len(filter(lambda x:x, predicts))/len(predicts)), auc(fpr,tpr))
+            print precision_recall_fscore_support(map(int, test_Y), out)
             
-            print 'work time: %s sec'%(time.time()-start_time)
-            print '\n\n'
+    print 'work time: %s sec'%(time.time()-start_time)
+    print '\n\n'
 
 if __name__ == '__main__':
     tf.app.run(main=main, argv=[sys.argv])

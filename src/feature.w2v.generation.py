@@ -52,7 +52,8 @@ def main(argv):
     # 1.1 load feature dataset
     #d_features = pickle.load(open('../data/contentfeatures.others.p', 'r'))
     #d_w2vfeatures = pickle.load(open('../data/contentfeatures.googlenews.posts.p', 'r'))
-    d_w2vfeatures = pickle.load(open('../data/contentfeatures.googlenews.p', 'r'))
+    #d_w2vfeatures = pickle.load(open('../data/contentfeatures.googlenews.p', 'r'))
+    d_w2vfeatures = pickle.load(open('/home/jhlim/data/top5w2vnostop.p', 'r'))
 
     #d_userfeatures = pickle.load(open('../data/userfeatures.activity.p', 'r'))
 
@@ -62,7 +63,8 @@ def main(argv):
     #for multiple test
     for _ in range(1):
         seq_length = input_length
-        f = open('../data/seq.learn.%d.csv'%(seq_length), 'r')
+        #f = open('../data/seq.learn.%d.csv'%(seq_length), 'r')
+        f = open('/home/jhlim/data/seq.learn.%d.csv'%(seq_length), 'r')
         learn_instances = map(lambda x:x.replace('\n', '').split(','), f.readlines())
         f.close()
 
@@ -133,7 +135,8 @@ def main(argv):
 
         print Counter(map(lambda x:x[0], learn_Y))
 
-        f = open('../data/seq.test.%d.csv'%(seq_length), 'r')
+        #f = open('../data/seq.test.%d.csv'%(seq_length), 'r')
+        f = open('/home/jhlim/data/seq.test.%d.csv'%(seq_length), 'r')
         test_instances = map(lambda x:x.replace('\n', '').split(','), f.readlines())
         f.close()
 
@@ -180,10 +183,6 @@ def main(argv):
         print 'Data loading Complete learn:%d, test:%d'%(len(learn_Y), len(test_Y))
         tf.reset_default_graph()
 
-        #print "test_Y: ", test_Y
-        #### For test
-        #test_X = learn_X
-        #test_Y = learn_Y
 
         # 2. Run RNN
         X = tf.placeholder(tf.float32, [None, seq_length, input_dim])
@@ -317,9 +316,7 @@ def main(argv):
                     predicts = []
                     test_Y = map(lambda x:x[0], test_Y)
 
-                    #f = open('../result/result.rnn.%d.tsv'%(seq_length), 'w')
                     for v1, v2 in zip(out, test_Y):
-                        #f.write('%d,%s\n'%(v1, v2))
                         decision = False
 
                         if v1 == int(v2):
@@ -330,10 +327,9 @@ def main(argv):
                     print 'seq_length: %d, # predicts: %d, # corrects: %d, acc: %f, auc: %f' %(seq_length, len(predicts), len(filter(lambda x:x, predicts)), (len(filter(lambda x:x, predicts))/len(predicts)), auc(fpr,tpr))
                     print precision_recall_fscore_support(map(int, test_Y), out)
                     test_Y = map(lambda x:[x], test_Y)
-                    #print 'work time: %s sec'%(time.time()-start_time)
-                    #print '\n\n'
+            print 'work time: %s sec'%(time.time()-start_time)
+            print '\n\n'
 
-                    f.close()
 
             print 'work time: %s sec'%(time.time()-start_time)
 

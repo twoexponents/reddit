@@ -83,15 +83,6 @@ def main(argv):
                     #if (cnt%1000 == 0):
                     #    print cnt, " ", element
                     #cnt+=1;
-                    '''
-                    if d_features.has_key(element):
-                        cont_features = d_features[element]['cont']
-                        liwc_features = d_features[element]['liwc']
-                        w2v_features = d_w2vfeatures[element]['glove.mean'][0]
-                        user_features = d_userfeatures[element]['user']
-                    else:
-                        print 'It does not have the element.'
-                    '''
                     if d_features.has_key(element):
                         liwc_features = d_features[element]['liwc']
                         #cont_features = d_features[element]['cont'][:len(common_features_fields)]
@@ -262,9 +253,6 @@ def main(argv):
             sess.run(tf.global_variables_initializer())
             count = 0
             for e in range(epochs):
-                #print 'epochs: %d'%(e)
-
-                # train batch by batch
                 batch_index_start = 0
                 batch_index_end = batch_size
 
@@ -275,14 +263,6 @@ def main(argv):
                     opt, c, o, l, acc = sess.run([optimizers, cost, outputs, logits, accuracy],
                             feed_dict={X: X_train_batch, Y: Y_train_batch, keep_prob:0.01, is_training:True})
                     
-                    #print 'iteration : %d, cost: %.8f'%(count, c)
-                    #if i == 0:
-                    #    print 'acc: ', acc
-                    #    list_a = filter(lambda (x,y):y[0]==0, zip(l, Y_train_batch))
-                    #    list_b = filter(lambda (x,y):y[0]==1, zip(l, Y_train_batch))
-                    #    print 'mean of 0: ', np.mean(map(lambda (p, q): p[0], list_a))
-                    #    print 'mean of 1: ', np.mean(map(lambda (p, q): p[0], list_b))
-
 
                     batch_index_start += batch_size
                     batch_index_end += batch_size
@@ -296,15 +276,10 @@ def main(argv):
                     out = np.vstack(rst).T
                     out = out[0]
 
-                    #print '# predict', Counter(out)
-                    #print '# test', Counter(map(lambda x:x[0], test_Y))
-
                     predicts = []
                     test_Y = map(lambda x:x[0], test_Y)
 
-                    #f = open('../result/result.rnn.%d.tsv'%(seq_length), 'w')
                     for v1, v2 in zip(out, test_Y):
-                        #f.write('%d,%s\n'%(v1, v2))
                         decision = False
 
                         if v1 == int(v2):
@@ -315,10 +290,8 @@ def main(argv):
                     print 'seq_length: %d, # predicts: %d, # corrects: %d, acc: %f, auc: %f' %(seq_length, len(predicts), len(filter(lambda x:x, predicts)), (len(filter(lambda x:x, predicts))/len(predicts)), auc(fpr,tpr))
                     print precision_recall_fscore_support(map(int, test_Y), out)
                     test_Y = map(lambda x:[x], test_Y)
-                    #print 'work time: %s sec'%(time.time()-start_time)
-                    #print '\n\n'
-
-                    #f.close()
+            print 'work time: %s sec'%(time.time()-start_time)
+            print '\n\n'
 
 
 if __name__ == '__main__':

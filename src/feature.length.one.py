@@ -270,57 +270,65 @@ def main(argv):
                             feed_dict={X: X_train_batch, Y: Y_train_batch, keep_prob:0.01, is_training:True})
                     
                     #print 'iteration : %d, cost: %.8f'%(count, c)
-                    #if i == 0:
-                        #print 'acc: ', acc
-                        #list_a = filter(lambda (x,y):y[0]==0, zip(l, Y_train_batch))
-                        #list_b = filter(lambda (x,y):y[0]==1, zip(l, Y_train_batch))
-                        #print 'mean of 0: ', np.mean(map(lambda (p, q): p[0], list_a))
-                        #print 'mean of 1: ', np.mean(map(lambda (p, q): p[0], list_b))
-
 
                     batch_index_start += batch_size
                     batch_index_end += batch_size
                     count += 1
                 
                 if (e != 0):
-                    print 'epochs: %d'%(e)
-                    print 'cost: %.8f'%(c)
+                    print 'epochs: %d, cost: %.8f'%(e, c)
                     # TEST
                     rst, c, h, l = sess.run([pred, cost, hypothesis, logits], feed_dict={X: test_X, Y: test_Y, keep_prob:1.0, is_training:False})
 
-                    list_a = filter(lambda (x,y):y[0]==0.0, zip(l, test_Y))
-                    list_b = filter(lambda (x,y):y[0]==1.0, zip(l, test_Y))
-                    #print '\n\n'
-                    #print 'mean of 0: ', np.mean(map(lambda (p, q): p[0], list_a))
-                    #print 'mean of 1: ', np.mean(map(lambda (p, q): p[0], list_b))
-
                     out = np.vstack(rst).T
-
                     out = out[0]
-
-                    #print '# predict', Counter(out)
-                    #print '# test', Counter(map(lambda x:x[0], test_Y))
 
                     predicts = []
                     test_Y = map(lambda x:x[0], test_Y)
+                    
+                    pred_end_length = []
+                    pred_cont_length = []
+                    label_end_length = []
+                    label_cont_length = []
 
-                    #f = open('../result/result.rnn.%d.tsv'%(seq_length), 'w')
                     for v1, v2 in zip(out, test_Y):
-                        #f.write('%d,%s\n'%(v1, v2))
                         decision = False
 
                         if v1 == int(v2):
                             decision = True
                         predicts.append(decision)
 
+                    for it, v in enumerate(out):
+                        if v == 1:
+                            pred_cont_length.append(test_X[it][0])
+                        else:
+                            pred_end_length.append(test_X[it][0])
+                    for it, v in enumerate(test_Y):
+                        if v == 1:
+                            label_cont_length.append(test_X[it][0])
+                        else:
+                            label_end_length.append(test_X[it][0])
+
                     fpr, tpr, thresholds = roc_curve(map(int, test_Y), out)
                     print 'seq_length: %d, # predicts: %d, # corrects: %d, acc: %f, auc: %f' %(seq_length, len(predicts), len(filter(lambda x:x, predicts)), (len(filter(lambda x:x, predicts))/len(predicts)), auc(fpr,tpr))
                     print precision_recall_fscore_support(map(int, test_Y), out)
+                    
+                    print 'mean_predict_cont_length: %.2f, stdev: %.2f'%(div(sum(pred_cont_length), len(pred_cont_length)), np.std(np.array(pred_cont_length)))
+                    print 'mean_predict_end_length: %.2f, stdev: %.2f'%(div(sum(pred_end_length), len(pred_end_length)), np.std(np.array(pred_end_length)))
+                    print 'mean_label_cont_length: %.2f, stdev: %.2f'%(div(sum(label_cont_length), len(label_cont_length)), np.std(np.array(label_cont_length)))
+                    print 'mean_label_end_length: %.2f, stdev: %.2f'%(div(sum(label_end_length), len(label_end_length)), np.std(np.array(label_end_length), ddof=1))
+                    
                     test_Y = map(lambda x:[x], test_Y)
-                    #print 'work time: %s sec'%(time.time()-start_time)
-                    #print '\n\n'
+            
+            print 'work time: %s sec'%(time.time()-start_time)
+            print '\n\n'
 
-                    #f.close()
+def div(a, b):
+    if b == 0:
+        print 'division by zero'
+        return -1
+    else:
+        return a/float(b)
 
 if __name__ == '__main__':
     tf.app.run(main=main, argv=[sys.argv])

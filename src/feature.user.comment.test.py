@@ -15,9 +15,9 @@ from collections import Counter
 from operator import itemgetter
 
 #user_features_fields = ['posts', 'comments', 'convs', 'entropy_conv']
-user_features_fields = ['posts', 'comments']
+#user_features_fields = ['posts', 'comments']
 #user_features_fields = ['posts']
-#user_features_fields = ['comments']
+user_features_fields = ['comments']
 
 input_dim = len(user_features_fields)
 
@@ -25,7 +25,7 @@ output_dim = 1 # (range 0 to 1)
 hidden_size = 100
 learning_rate = 0.005
 batch_size = 100
-epochs = 200
+epochs = 500
 
 def main(argv):
     start_time = time.time()
@@ -43,8 +43,7 @@ def main(argv):
     print 'features are loaded'
 
     for seq_length in xrange(input_length, input_length+1):
-        #f = open('../data/seq.learn.%d.csv'%(seq_length), 'r')
-        f = open('/home/jhlim/data/seq.learn.%d.csv'%(seq_length), 'r')
+        f = open('../data/seq.learn.%d.csv'%(seq_length), 'r')
         learn_instances = map(lambda x:x.replace('\n', '').split(','), f.readlines())
         f.close()
 
@@ -58,7 +57,7 @@ def main(argv):
                 for element in seq[:-1]: # seq[-1] : Y. element: 't3_7dfvv'
                     user_features = []
                     if d_userfeatures.has_key(element):
-                        user_features = d_userfeatures[element]['user'][0:2]
+                        user_features = d_userfeatures[element]['user'][1:2]
                     else:
                         continue
                     
@@ -90,8 +89,7 @@ def main(argv):
 
         print Counter(map(lambda x:x[0], learn_Y))
 
-        #f = open('../data/seq.test.%d.csv'%(seq_length), 'r')
-        f = open('/home/jhlim/data/seq.test.%d.csv'%(seq_length), 'r')
+        f = open('../data/seq.test.%d.csv'%(seq_length), 'r')
         test_instances = map(lambda x:x.replace('\n', '').split(','), f.readlines())
         f.close()
 
@@ -107,7 +105,7 @@ def main(argv):
                     user_features = []
                     
                     if d_userfeatures.has_key(element):
-                        user_features = d_userfeatures[element]['user'][0:2]
+                        user_features = d_userfeatures[element]['user'][1:2]
                     else:
                         continue
 
@@ -220,6 +218,12 @@ def main(argv):
                     predicts = []
                     test_Y = map(lambda x:x[0], test_Y)
 
+                    
+                    predict_end_comment = []
+                    predict_cont_comment = []
+                    label_end_comment = []
+                    label_cont_comment = []
+
                     for v1, v2 in zip(out, test_Y):
                         decision = False
 
@@ -227,9 +231,25 @@ def main(argv):
                             decision = True
                         predicts.append(decision)
 
+                    for i, v in enumerate(out):
+                        if v == 1:
+                            predict_cont_comment.append(test_X[i])
+                        else:
+                            predict_end_comment.append(test_X[i])
+
+                    for i, v in enumerate(test_Y):
+                        if v == 1:
+                            label_cont_comment.append(test_X[i])
+                        else:
+                            label_end_comment.append(test_X[i])
+
                     fpr, tpr, thresholds = roc_curve(map(int, test_Y), out)
                     print 'seq_length: %d, # predicts: %d, # corrects: %d, acc: %f, auc: %f' %(seq_length, len(predicts), len(filter(lambda x:x, predicts)), (len(filter(lambda x:x, predicts))/len(predicts)), auc(fpr,tpr))
                     print precision_recall_fscore_support(map(int, test_Y), out)
+                    print 'mean_predict_cont_comment: %f'%(sum(predict_cont_comment)/len(predict_cont_comment))
+                    print 'mean_predict_end_comment: %f'%(sum(predict_end_comment)/len(predict_end_comment))
+                    print 'mean_label_cont_comment: %f'%(sum(label_cont_comment)/len(label_cont_comment))
+                    print 'mean_label_end_comment: %f'%(sum(label_end_comment)/len(label_end_comment))
                     test_Y = map(lambda x:[x], test_Y)
             
             print 'work time: %s sec'%(time.time()-start_time)

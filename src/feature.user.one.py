@@ -4,6 +4,7 @@ import numpy as np
 import sys
 import cPickle as pickle
 import time
+import mydiv
 
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import precision_recall_fscore_support, roc_curve, auc
@@ -23,7 +24,8 @@ post_features_fields = ['pub_1h', 'pub_hd', 'pub_1d', 'max_similarity_1h',
         'pub_time_17', 'pub_time_18', 'pub_time_19', 'pub_time_20', 'pub_time_21',
         'pub_time_22', 'pub_time_23']
 comment_features_fields = ['similarity_post', 'similarity_parent', 'inter_comment_time', 'prev_comments']
-user_features_fields = ['posts', 'comments', 'convs', 'entropy_conv']
+#user_features_fields = ['posts', 'comments', 'convs', 'entropy_conv']
+user_features_fields = ['posts', 'comments']
 
 #cont_features_fields = common_features_fields + post_features_fields
 cont_features_fields = common_features_fields
@@ -92,7 +94,7 @@ def main(argv):
                         print 'It does not have the element.'
                     '''
                     if d_userfeatures.has_key(element):
-                        user_features = d_userfeatures[element]['user']
+                        user_features = d_userfeatures[element]['user'][0:2]
                     else:
                         continue
                     # append each element's features of seq to the sub_x
@@ -148,7 +150,7 @@ def main(argv):
                     #user_features = [0.0]*len(user_features_fields)
                     
                     if d_userfeatures.has_key(element):
-                        user_features = d_userfeatures[element]['user']
+                        user_features = d_userfeatures[element]['user'][0:2]
                     else:
                         continue
 
@@ -259,9 +261,7 @@ def main(argv):
             sess.run(tf.global_variables_initializer())
             count = 0
             for e in range(epochs):
-                #print 'epochs: %d'%(e)
 
-                # train batch by batch
                 batch_index_start = 0
                 batch_index_end = batch_size
 
@@ -272,14 +272,6 @@ def main(argv):
                     opt, c, o, l, acc = sess.run([optimizers, cost, outputs, logits, accuracy],
                             feed_dict={X: X_train_batch, Y: Y_train_batch, keep_prob:0.01, is_training:True})
                     
-                    #print 'iteration : %d, cost: %.8f'%(count, c)
-                    #if i == 0:
-                    #    print 'acc: ', acc
-                    #    list_a = filter(lambda (x,y):y[0]==0, zip(l, Y_train_batch))
-                    #    list_b = filter(lambda (x,y):y[0]==1, zip(l, Y_train_batch))
-                    #    print 'mean of 0: ', np.mean(map(lambda (p, q): p[0], list_a))
-                    #    print 'mean of 1: ', np.mean(map(lambda (p, q): p[0], list_b))
-
 
                     batch_index_start += batch_size
                     batch_index_end += batch_size
@@ -290,38 +282,54 @@ def main(argv):
                     # TEST
                     rst, c, h, l = sess.run([pred, cost, hypothesis, logits], feed_dict={X: test_X, Y: test_Y, keep_prob:1.0, is_training:False})
 
-                    #list_a = filter(lambda (x,y):y[0]==0.0, zip(l, test_Y))
-                    #list_b = filter(lambda (x,y):y[0]==1.0, zip(l, test_Y))
-                    #print '\n\n'
-                    #print 'mean of 0: ', np.mean(map(lambda (p, q): p[0], list_a))
-                    #print 'mean of 1: ', np.mean(map(lambda (p, q): p[0], list_b))
 
                     out = np.vstack(rst).T
                     out = out[0]
 
-                    #print '# predict', Counter(out)
-                    #print '# test', Counter(map(lambda x:x[0], test_Y))
 
                     predicts = []
                     test_Y = map(lambda x:x[0], test_Y)
 
-                    #f = open('../result/result.rnn.%d.tsv'%(seq_length), 'w')
+                    pred_end_post = []; pred_cont_post = []
+                    label_end_post = []; label_cont_post = []
+                    pred_end_comment = []; pred_cont_comment = []
+                    label_end_comment = []; label_cont_comment = []
+
                     for v1, v2 in zip(out, test_Y):
-                        #f.write('%d,%s\n'%(v1, v2))
                         decision = False
 
                         if v1 == int(v2):
                             decision = True
                         predicts.append(decision)
 
+                    for i, v in enumerate(out):
+                        if v == 1:
+                            pred_cont_post.append(test_X[i][0][0])
+                            pred_cont_comment.append(test_X[i][0][1])
+                        else:
+                            pred_end_post.append(test_X[i][0][0])
+                            pred_end_comment.append(test_X[i][0][1])
+
+                    for i, v in enumerate(test_Y):
+                        if v == 1:
+                            label_cont_post.append(test_X[i][0][0])
+                            label_cont_comment.append(test_X[i][0][1])
+                        else:
+                            label_end_post.append(test_X[i][0][0])
+                            label_end_comment.append(test_X[i][0][1])
+
                     fpr, tpr, thresholds = roc_curve(map(int, test_Y), out)
                     print 'seq_length: %d, # predicts: %d, # corrects: %d, acc: %f, auc: %f' %(seq_length, len(predicts), len(filter(lambda x:x, predicts)), (len(filter(lambda x:x, predicts))/len(predicts)), auc(fpr,tpr))
                     print precision_recall_fscore_support(map(int, test_Y), out)
-                    test_Y = map(lambda x:[x], test_Y)
-                    #print 'work time: %s sec'%(time.time()-start_time)
-                    #print '\n\n'
+                    print '>>post'
+                    mydiv.stats(pred_cont_post, pred_end_post, label_cont_post, label_end_post)
+                    print '>>comment'
+                    mydiv.stats(pred_cont_comment, pred_end_comment, label_cont_comment, label_end_comment)
+                    print '\n\n'
 
-                    #f.close()
+                    test_Y = map(lambda x:[x], test_Y)
+            print 'work time: %s sec'%(time.time()-start_time)
+            print '\n\n'
 
 
 if __name__ == '__main__':

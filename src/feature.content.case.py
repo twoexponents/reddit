@@ -129,6 +129,7 @@ def main(argv):
         np.random.shuffle(test_instances)
 
         test_X = []; test_Y = []
+        valid_instances = []
 
         for seq in test_instances:
             sub_x = []
@@ -155,6 +156,7 @@ def main(argv):
                 if (len(sub_x) == seq_length):
                     test_X.append(np.array(sub_x))
                     test_Y.append(float(seq[-1]))
+                    valid_instances.append(element)
 
             except Exception, e:
                 continue
@@ -267,14 +269,6 @@ def main(argv):
                     opt, c, o, h, l, acc = sess.run([optimizers, cost, outputs, hypothesis, logits, accuracy],
                             feed_dict={X: X_train_batch, Y: Y_train_batch, keep_prob:0.01, is_training:True})
                     
-                    #print 'iteration : %d, cost: %.8f'%(count, c)
-                    #if i == 0:
-                        #print 'acc: ', acc
-                        #list_a = filter(lambda (x,y):y[0]==0, zip(l, Y_train_batch))
-                        #list_b = filter(lambda (x,y):y[0]==1, zip(l, Y_train_batch))
-                        #print 'mean of 0: ', np.mean(map(lambda (p, q): p[0], list_a))
-                        #print 'mean of 1: ', np.mean(map(lambda (p, q): p[0], list_b))
-
 
                     batch_index_start += batch_size
                     batch_index_end += batch_size
@@ -283,16 +277,7 @@ def main(argv):
             # TEST
             rst, c, h, l = sess.run([pred, cost, hypothesis, logits], feed_dict={X: test_X, Y: test_Y, keep_prob:1.0, is_training:False})
 
-            #list_a = filter(lambda (x,y):y[0]==0.0, zip(l, test_Y))
-            #list_b = filter(lambda (x,y):y[0]==1.0, zip(l, test_Y))
-            #print 'len 0: ', len(list_a)
-            #print 'len 1: ', len(list_b)
-            #print '\n\n'
-            #print 'mean of 0: ', np.mean(map(lambda (p, q): p[0], list_a))
-            #print 'mean of 1: ', np.mean(map(lambda (p, q): p[0], list_b))
-
             out = np.vstack(rst).T
-
             out = out[0]
 
             print '# predict', Counter(out)
@@ -309,7 +294,7 @@ def main(argv):
 
                 if v1 == int(v2):
                     decision = True
-                    f.write('%s\n'%(test_instances[i]))
+                    f.write('%s\n'%(valid_instances[i]))
                 predicts.append(decision)
                 i += 1
 
