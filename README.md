@@ -10,11 +10,11 @@ src/
  -feature.-.case.py: Making list of sequences which are predicted well  
  -model.validation.py: Validate our RNN model with simple sequence and mnist  
 
-extract/ 
- : data extraction codes 
- -extract.convtree.py: Calculate each tree's tfidf and get top words of each sequence 
- -extract.sequences.innertree.py: separate training and test sequences by inner tree 
- -extract.sequences.outertree.py: separate training and test sequences by outer tree  
+extract/  
+ : data extraction codes  
+ -extract.convtree.py: Calculate each tree's tfidf and get top words of each sequence  
+ -extract.sequences.innertree.py: separate training and test sequences by inner tree  
+ -extract.sequences.outertree.py: separate training and test sequences by outer tree   
 
 result/
  : no meaning yet  
