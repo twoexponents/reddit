@@ -127,7 +127,9 @@ validation_dataloader = DataLoader(validation_data, sampler=validation_sampler, 
 model = BertForSequenceClassification.from_pretrained("bert-base-uncased", num_labels=2)
 
 # Load model parameters to GPU Buffer
-#model.cuda() 
+
+if torch.cuda.is_available():
+    model.cuda()
 
 param_optimizer = list(model.named_parameters())
 no_decay = ['bias', 'gamma', 'beta']
