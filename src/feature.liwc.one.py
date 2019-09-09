@@ -2,7 +2,7 @@ from __future__ import division
 import tensorflow as tf
 import numpy as np
 import sys
-import cPickle as pickle
+import pickle
 import time
 
 from sklearn.model_selection import train_test_split
@@ -59,7 +59,7 @@ def main(argv):
 
     print 'features are loaded'
 
-    for _ in xrange(input_length, input_length+1):
+    for _ in range(input_length, input_length+1):
         seq_length = 1
         f = open('../data/seq.learn.%d.csv'%(input_length), 'r')
         learn_instances = map(lambda x:x.replace('\n', '').split(','), f.readlines())
@@ -100,7 +100,7 @@ def main(argv):
                     learn_X.append(np.array(sub_x)) # feature list
                     learn_Y.append(float(seq[-1]))
 
-            except Exception, e:
+            except Exception as e:
                 continue
 
         print 'size of learn_Y: %d' % len(learn_Y)
@@ -155,7 +155,7 @@ def main(argv):
                     test_X.append(np.array(sub_x))
                     test_Y.append(float(seq[-1]))
 
-            except Exception, e:
+            except Exception as e:
                 continue
 
         

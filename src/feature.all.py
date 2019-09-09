@@ -2,7 +2,7 @@ from __future__ import division
 import tensorflow as tf
 import numpy as np
 import sys
-import cPickle as pickle
+import pickle
 import time
 
 from sklearn.model_selection import train_test_split
@@ -25,8 +25,8 @@ post_features_fields = ['pub_1h', 'pub_hd', 'pub_1d', 'max_similarity_1h',
 comment_features_fields = ['similarity_post', 'similarity_parent', 'inter_comment_time', 'prev_comments']
 user_features_fields = ['posts', 'comments', 'convs', 'entropy_conv']
 
-#cont_features_fields = common_features_fields + post_features_fields
-cont_features_fields = common_features_fields
+cont_features_fields = common_features_fields + post_features_fields
+#cont_features_fields = common_features_fields
 
 len_liwc_features = 93
 len_w2v_features = 300
@@ -53,9 +53,9 @@ def main(argv):
 
     print 'features are loaded'
 
-    #for seq_length in xrange(input_length, input_length+1):
+    #for seq_length in range(input_length, input_length+1):
     for seq_length in range(1, 11): 
-        f = open('/home/jhlim/data/seq.learn.%d.csv'%(seq_length), 'r')
+        f = open('../data/seq.learn.%d.csv'%(seq_length), 'r')
         learn_instances = map(lambda x:x.replace('\n', '').split(','), f.readlines())
         f.close()
 
@@ -73,12 +73,12 @@ def main(argv):
                     user_features = [0.0]*len(user_features_fields)
 
                     if d_features.has_key(element):
-                        cont_features = d_features[element]['cont'][:len(common_features_fields)]
+                        cont_features = d_features[element]['cont']
                         liwc_features = d_features[element]['liwc']
                         w2v_features = d_w2vfeatures[element]['google.mean'][0] # googlenews.p dependent
                         user_features = d_userfeatures[element]['user']
-                        #if len(cont_features) < len(cont_features_fields):
-                        #    cont_features += [0.0]*(len(cont_features_fields) - len(cont_features))
+                        if len(cont_features) < len(cont_features_fields):
+                            cont_features += [0.0]*(len(cont_features_fields) - len(cont_features))
                     else:
                         continue
                     # append each element's features of seq to the sub_x
@@ -88,7 +88,7 @@ def main(argv):
                     learn_X.append(np.array(sub_x)) # feature list
                     learn_Y.append(float(seq[-1]))
 
-            except Exception, e:
+            except Exception as e:
                 continue
 
         print 'size of learn_Y: %d' % len(learn_Y)
@@ -110,7 +110,7 @@ def main(argv):
 
         print Counter(map(lambda x:x[0], learn_Y))
 
-        f = open('/home/jhlim/data/seq.test.%d.csv'%(seq_length), 'r')
+        f = open('../data/seq.test.%d.csv'%(seq_length), 'r')
         test_instances = map(lambda x:x.replace('\n', '').split(','), f.readlines())
         f.close()
 
@@ -129,10 +129,12 @@ def main(argv):
                     user_features = [0.0]*len(user_features_fields)
                     
                     if d_features.has_key(element):
-                        cont_features = d_features[element]['cont'][:len(common_features_fields)]
+                        cont_features = d_features[element]['cont']
                         liwc_features = d_features[element]['liwc']
                         w2v_features = d_w2vfeatures[element]['google.mean'][0]
                         user_features = d_userfeatures[element]['user']
+                        if len(cont_features) < len(cont_features_fields):
+                            cont_features += [0.0]*(len(cont_features_fields) - len(cont_features))
                     else:
                         continue
 
@@ -142,7 +144,7 @@ def main(argv):
                     test_X.append(np.array(sub_x))
                     test_Y.append(float(seq[-1]))
 
-            except Exception, e:
+            except Exception as e:
                 continue
         
         test_Y = map(lambda x:[x], test_Y)

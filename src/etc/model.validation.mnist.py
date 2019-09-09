@@ -2,7 +2,7 @@ from __future__ import division
 import tensorflow as tf
 import numpy as np
 import sys
-import cPickle as pickle
+import pickle
 import time
 
 from sklearn.model_selection import train_test_split

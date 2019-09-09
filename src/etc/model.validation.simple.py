@@ -33,7 +33,7 @@ def main(argv):
     print 'learning_rate: %f, batch_size %d, epochs %d' %(learning_rate, batch_size, epochs)
     print 'features are loaded'
 
-    for seq_length in xrange(input_length, input_length+1):
+    for seq_length in range(input_length, input_length+1):
         data = get_simple_sequence(10)
         learn_instances = []
         for i in range(5):

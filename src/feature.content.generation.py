@@ -1,8 +1,9 @@
 from __future__ import division
+import mydiv
 import tensorflow as tf
 import numpy as np
 import sys
-import cPickle as pickle
+import pickle
 import time
 
 from sklearn.model_selection import train_test_split
@@ -15,6 +16,7 @@ from collections import Counter
 from operator import itemgetter
 
 common_features_fields = ['vader_score', 'vader', 'difficulty']
+#common_features_fields = ['vader_score', 'vader']
 post_features_fields = ['pub_1h', 'pub_hd', 'pub_1d', 'max_similarity_1h',
 	'max_similarity_hd', 'max_similarity_1d', 'pub_time_0', 'pub_time_1',
 	'pub_time_2', 'pub_time_3', 'pub_time_4', 'pub_time_5', 'pub_time_6',
@@ -32,13 +34,14 @@ len_liwc_features = 93
 len_w2v_features = 300
 
 #input_dim = len(cont_features_fields) + len(user_features_fields) + len_liwc_features + len_w2v_features
-input_dim = len(cont_features_fields)
+input_dim = len(cont_features_fields) 
+#input_dim = 1
 
 output_dim = 1 # (range 0 to 1)
 hidden_size = 100
 learning_rate = 0.01
 batch_size = 100
-epochs = 200
+epochs = 100
 
 def main(argv):
     start_time = time.time()
@@ -57,7 +60,7 @@ def main(argv):
 
     print 'features are loaded'
 
-    for seq_length in xrange(input_length, input_length+1):
+    for seq_length in range(input_length, input_length+1):
         f = open('../data/seq.learn.%d.csv'%(seq_length), 'r')
         learn_instances = map(lambda x:x.replace('\n', '').split(','), f.readlines())
         f.close()
@@ -88,6 +91,8 @@ def main(argv):
                     '''
                     if d_features.has_key(element):
                         cont_features = d_features[element]['cont'][:len(cont_features_fields)]
+                        #cont_features = d_features[element]['cont'][2:]
+                        
                     else:
                         continue
                     
@@ -100,7 +105,7 @@ def main(argv):
                     learn_X.append(np.array(sub_x)) # feature list
                     learn_Y.append(float(seq[-1]))
 
-            except Exception, e:
+            except Exception as e:
                 # print e
                 continue
 
@@ -144,6 +149,7 @@ def main(argv):
                     
                     if d_features.has_key(element):
                         cont_features = d_features[element]['cont'][:len(cont_features_fields)]
+                        #cont_features = d_features[element]['cont'][2:]
                     else:
                         continue
 
@@ -155,7 +161,7 @@ def main(argv):
                     test_X.append(np.array(sub_x))
                     test_Y.append(float(seq[-1]))
 
-            except Exception, e:
+            except Exception as e:
                 continue
 
         
@@ -266,15 +272,6 @@ def main(argv):
                     opt, c, o, h, l, acc = sess.run([optimizers, cost, outputs, hypothesis, logits, accuracy],
                             feed_dict={X: X_train_batch, Y: Y_train_batch, keep_prob:0.01, is_training:True})
                     
-                    #print 'iteration : %d, cost: %.8f'%(count, c)
-                    #if i == 0:
-                        #print 'acc: ', acc
-                        #list_a = filter(lambda (x,y):y[0]==0, zip(l, Y_train_batch))
-                        #list_b = filter(lambda (x,y):y[0]==1, zip(l, Y_train_batch))
-                        #print 'mean of 0: ', np.mean(map(lambda (p, q): p[0], list_a))
-                        #print 'mean of 1: ', np.mean(map(lambda (p, q): p[0], list_b))
-
-
                     batch_index_start += batch_size
                     batch_index_end += batch_size
                     count += 1
@@ -284,19 +281,8 @@ def main(argv):
                     # TEST
                     rst, c, h, l = sess.run([pred, cost, hypothesis, logits], feed_dict={X: test_X, Y: test_Y, keep_prob:1.0, is_training:False})
 
-                    #list_a = filter(lambda (x,y):y[0]==0.0, zip(l, test_Y))
-                    #list_b = filter(lambda (x,y):y[0]==1.0, zip(l, test_Y))
-                    #print 'len 0: ', len(list_a)
-                    #print 'len 1: ', len(list_b)
-                    #print '\n\n'
-                    #print 'mean of 0: ', np.mean(map(lambda (p, q): p[0], list_a))
-                    #print 'mean of 1: ', np.mean(map(lambda (p, q): p[0], list_b))
-
                     out = np.vstack(rst).T
                     out = out[0]
-
-                    #print '# predict', Counter(out)
-                    #print '# test', Counter(map(lambda x:x[0], test_Y))
 
                     predicts = []
                     test_Y = map(lambda x:x[0], test_Y)
@@ -308,9 +294,33 @@ def main(argv):
                             decision = True
                         predicts.append(decision)
 
+                    pred_end = []; pred_cont = [];
+                    pred_end_2 = []; pred_cont_2 = [];
+                    label_end = []; label_cont = [];
+                    label_end_2 = []; label_cont_2 = [];
+                    for i, v in enumerate(out):
+                        if v == 1:
+                            pred_end.append(test_X[i][1][1])
+                            pred_end_2.append(test_X[i][1][2])
+                        else:
+                            pred_cont.append(test_X[i][1][1])
+                            pred_cont_2.append(test_X[i][1][2])
+                    for i, v in enumerate(test_Y):
+                        if v == 1:
+                            label_end.append(test_X[i][1][1])
+                            label_end_2.append(test_X[i][1][2])
+                        else:
+                            label_cont.append(test_X[i][1][1])
+                            label_cont_2.append(test_X[i][1][2])
+
+
                     fpr, tpr, thresholds = roc_curve(map(int, test_Y), out)
                     print 'seq_length: %d, # predicts: %d, # corrects: %d, acc: %f, auc: %f' %(seq_length, len(predicts), len(filter(lambda x:x, predicts)), (len(filter(lambda x:x, predicts))/len(predicts)), auc(fpr,tpr))
                     print precision_recall_fscore_support(map(int, test_Y), out)
+                    print '>> vader'
+                    mydiv.stats(pred_cont, pred_end, label_cont, label_end)
+                    print '>> difi'
+                    mydiv.stats(pred_cont_2, pred_end_2, label_cont_2, label_end_2)
                     test_Y = map(lambda x:[x], test_Y)
             print 'work time: %s sec'%(time.time()-start_time)
             print '\n\n'

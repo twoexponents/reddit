@@ -1,8 +1,9 @@
 from __future__ import division
+import mydiv
 import tensorflow as tf
 import numpy as np
 import sys
-import cPickle as pickle
+import pickle
 import time
 
 from sklearn.model_selection import train_test_split
@@ -37,7 +38,7 @@ output_dim = 1 # (range 0 to 1)
 hidden_size = 200
 learning_rate = 0.01
 batch_size = 100
-epochs = 200
+epochs = 100
 
 def main(argv):
     start_time = time.time()
@@ -57,7 +58,7 @@ def main(argv):
 
     print 'features are loaded'
 
-    for seq_length in xrange(input_length, input_length+1):
+    for seq_length in range(input_length, input_length+1):
         f = open('../data/seq.learn.%d.csv'%(seq_length), 'r')
         learn_instances = map(lambda x:x.replace('\n', '').split(','), f.readlines())
         f.close()
@@ -84,7 +85,7 @@ def main(argv):
                     learn_X.append(np.array(sub_x)) # feature list
                     learn_Y.append(float(seq[-1]))
 
-            except Exception, e:
+            except Exception as e:
                 # print e
                 continue
 
@@ -135,7 +136,7 @@ def main(argv):
                     test_X.append(np.array(sub_x))
                     test_Y.append(float(seq[-1]))
 
-            except Exception, e:
+            except Exception as e:
                 continue
 
         test_Y = map(lambda x:[x], test_Y)
@@ -269,14 +270,61 @@ def main(argv):
                             decision = True
                         predicts.append(decision)
 
+                    pred_end1 = []; pred_cont1 = [];
+                    pred_end2 = []; pred_cont2 = [];
+                    pred_end3 = []; pred_cont3 = [];
+                    pred_end4 = []; pred_cont4 = [];
+                    pred_end5 = []; pred_cont5 = [];
+                    label_end1 = []; label_cont1 = [];
+                    label_end2 = []; label_cont2 = [];
+                    label_end3 = []; label_cont3 = [];
+                    label_end4 = []; label_cont4 = [];
+                    label_end5 = []; label_cont5 = [];
+                    for i, v in enumerate(out):
+                        if v == 1:
+                            pred_end1.append(test_X[i][1][0])
+                            pred_end2.append(test_X[i][1][1])
+                            pred_end3.append(test_X[i][1][2])
+                            pred_end4.append(test_X[i][1][3])
+                            pred_end5.append(test_X[i][1][4])
+                        else:
+                            pred_cont1.append(test_X[i][1][0])
+                            pred_cont2.append(test_X[i][1][1])
+                            pred_cont3.append(test_X[i][1][2])
+                            pred_cont4.append(test_X[i][1][3])
+                            pred_cont5.append(test_X[i][1][4])
+                    for i, v in enumerate(test_Y):
+                        if v == 1:
+                            label_end1.append(test_X[i][1][0])
+                            label_end2.append(test_X[i][1][1])
+                            label_end3.append(test_X[i][1][2])
+                            label_end4.append(test_X[i][1][3])
+                            label_end5.append(test_X[i][1][4])
+                        else:
+                            label_cont1.append(test_X[i][1][0])
+                            label_cont2.append(test_X[i][1][1])
+                            label_cont3.append(test_X[i][1][2])
+                            label_cont4.append(test_X[i][1][3])
+                            label_cont5.append(test_X[i][1][4])
+
+
                     fpr, tpr, thresholds = roc_curve(map(int, test_Y), out)
                     print 'seq_length: %d, # predicts: %d, # corrects: %d, acc: %f, auc: %f' %(seq_length, len(predicts), len(filter(lambda x:x, predicts)), (len(filter(lambda x:x, predicts))/len(predicts)), auc(fpr,tpr))
                     print precision_recall_fscore_support(map(int, test_Y), out)
+                    print '>> I, My, Me, Mine'
+                    mydiv.stats(pred_cont1, pred_end1, label_cont1, label_end1)
+                    print '>> Social words'
+                    mydiv.stats(pred_cont2, pred_end2, label_cont2, label_end2)
+                    print '>> Positive'
+                    mydiv.stats(pred_cont3, pred_end3, label_cont3, label_end3)
+                    print '>> Negative'
+                    mydiv.stats(pred_cont4, pred_end4, label_cont4, label_end4)
+                    print '>> Cognitive'
+                    mydiv.stats(pred_cont5, pred_end5, label_cont5, label_end5)
                     test_Y = map(lambda x:[x], test_Y)
-                    #print 'work time: %s sec'%(time.time()-start_time)
-                    #print '\n\n'
+            print 'work time: %s sec'%(time.time()-start_time)
+            print '\n\n'
 
-                    #f.close()
 
 
 if __name__ == '__main__':

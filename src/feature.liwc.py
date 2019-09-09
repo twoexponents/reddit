@@ -2,7 +2,7 @@ from __future__ import division
 import tensorflow as tf
 import numpy as np
 import sys
-import cPickle as pickle
+import pickle
 import time
 
 from sklearn.model_selection import train_test_split
@@ -37,7 +37,7 @@ output_dim = 1 # (range 0 to 1)
 hidden_size = 200
 learning_rate = 0.01
 batch_size = 100
-epochs = 100
+epochs = 50
 
 def main(argv):
     start_time = time.time()
@@ -45,15 +45,15 @@ def main(argv):
     print 'learning_rate: %f, batch_size %d, epochs %d' %(learning_rate, batch_size, epochs)
 
     # 1.1 load feature dataset
-    #d_features = pickle.load(open('../data/contentfeatures.others.p', 'r'))
     d_features = pickle.load(open('../data/contentfeatures.others.p', 'r'))
+    #d_features = pickle.load(open('/home/jhlim/data/contentfeatures.others.p', 'r'))
     #d_w2vfeatures = pickle.load(open('../data/contentfeatures.googlenews.posts.p', 'r'))
     #d_userfeatures = pickle.load(open('../data/userfeatures.activity.p', 'r'))
 
     print 'features are loaded'
 
-    for seq_length in xrange(1, 11):
-        f = open('/home/jhlim/data/seq.learn.%d.csv'%(seq_length), 'r')
+    for seq_length in range(1, 11):
+        f = open('../data/seq.learn.%d.csv'%(seq_length), 'r')
         learn_instances = map(lambda x:x.replace('\n', '').split(','), f.readlines())
         f.close()
 
@@ -79,7 +79,7 @@ def main(argv):
                     learn_X.append(np.array(sub_x)) # feature list
                     learn_Y.append(float(seq[-1]))
 
-            except Exception, e:
+            except Exception as e:
                 # print e
                 continue
 
@@ -102,7 +102,7 @@ def main(argv):
 
         print Counter(map(lambda x:x[0], learn_Y))
 
-        f = open('/home/jhlim/data/seq.test.%d.csv'%(seq_length), 'r')
+        f = open('../data/seq.test.%d.csv'%(seq_length), 'r')
         test_instances = map(lambda x:x.replace('\n', '').split(','), f.readlines())
         f.close()
 
@@ -130,7 +130,7 @@ def main(argv):
                     test_X.append(np.array(sub_x))
                     test_Y.append(float(seq[-1]))
 
-            except Exception, e:
+            except Exception as e:
                 continue
 
         test_Y = map(lambda x:[x], test_Y)
@@ -151,7 +151,7 @@ def main(argv):
         biases = {}
 
         cells = []
-        for _ in range(2):
+        for _ in range(1):
             cell = tf.contrib.rnn.BasicLSTMCell(num_units=hidden_size,
                                                    state_is_tuple=True,
                                                    activation=tf.nn.relu)
@@ -221,6 +221,8 @@ def main(argv):
             sess.run(tf.global_variables_initializer())
             count = 0
             for e in range(epochs):
+                if e % 5 == 0:
+                    print 'epochs: %d'%(e)
                 batch_index_start = 0
                 batch_index_end = batch_size
 
@@ -254,7 +256,6 @@ def main(argv):
             fpr, tpr, thresholds = roc_curve(map(int, test_Y), out)
             print 'seq_length: %d, # predicts: %d, # corrects: %d, acc: %f, auc: %f' %(seq_length, len(predicts), len(filter(lambda x:x, predicts)), (len(filter(lambda x:x, predicts))/len(predicts)), auc(fpr,tpr))
             print precision_recall_fscore_support(map(int, test_Y), out)
-            test_Y = map(lambda x:[x], test_Y)
     
     print 'work time: %s sec'%(time.time()-start_time)
     print '\n\n'
