@@ -76,7 +76,7 @@ sentences = df.sentence.values
 sentences = ["[CLS] " + str(sentence) + " [SEP]" for sentence in sentences]
 labels = df.label.values
 
-tokenizer = BertTokenizer.from_pretrained('bert-large-uncased', do_lower_case=True)
+tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=True)
 tokenized_texts = [tokenizer.tokenize(sent) for sent in sentences]
 #print ("Tokenize the first sentence:")
 #print (tokenized_texts[0])
@@ -131,7 +131,7 @@ validation_sampler = SequentialSampler(validation_data)
 validation_dataloader = DataLoader(validation_data, sampler=validation_sampler, batch_size=batch_size)
 
 # Load BertForSequenceClassification, the pretrained BERT model with a single linear classification layer on top. 
-model = BertForSequenceClassification.from_pretrained("bert-large-uncased", num_labels=2)
+model = BertForSequenceClassification.from_pretrained("bert-base-uncased", num_labels=2)
 
 # Load model parameters to GPU Buffer
 
