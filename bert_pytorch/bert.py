@@ -11,10 +11,15 @@ import pandas as pd
 import io
 import numpy as np
 import matplotlib.pyplot as plt
+import sys
 
 from sklearn.utils import resample
 from sklearn.metrics import precision_recall_fscore_support, roc_curve, auc
 #% matplotlib inline
+
+seq_length = sys.argv[1]
+train_set = "data/seq.learn." + seq_length + ".sample.tsv"
+test_set = "data/seq.test." + seq_length + ".sample.tsv"
 
 if torch.cuda.is_available():
     print ('cuda is available. use gpu.')
@@ -31,7 +36,7 @@ else:
 
 # jhlim
 #df = pd.read_csv("in_domain_train.tsv", delimiter='\t', header=None, names=['sentence_source', 'label', 'label_notes', 'sentence'])
-df = pd.read_csv("data/seq.learn.2.sample.tsv", delimiter='\t', header=None, engine='python', names=['sentence_source', 'label', 'label_notes', 'sentence'])
+df = pd.read_csv(train_set, delimiter='\t', header=None, engine='python', names=['sentence_source', 'label', 'label_notes', 'sentence'])
 
 df =df.fillna(0)
 
@@ -228,7 +233,7 @@ for _ in trange(epochs, desc="Epoch"):
 
 # jhlim
 #df = pd.read_csv("out_of_domain_dev.tsv", delimiter='\t', header=None, names=['sentence_source', 'label', 'label_notes', 'sentence'])
-df = pd.read_csv("data/seq.test.2.tsv", delimiter='\t', header=None, names=['sentence_source', 'label', 'label_notes', 'sentence'], engine='python')
+df = pd.read_csv(test_set, delimiter='\t', header=None, names=['sentence_source', 'label', 'label_notes', 'sentence'], engine='python')
 
 df = df.fillna(0)
 
