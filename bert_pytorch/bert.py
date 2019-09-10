@@ -45,8 +45,7 @@ df.label = df.label.astype(int)
 print (df.shape)
 print (df.sample(10))
 
-# jhlim: undersampling dataframe
-
+# jhlim: undersampling training set using dataframe
 df_class1 = df[df.label == 0]
 df_class2 = df[df.label == 1]
 
@@ -77,7 +76,7 @@ sentences = df.sentence.values
 sentences = ["[CLS] " + str(sentence) + " [SEP]" for sentence in sentences]
 labels = df.label.values
 
-tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=True)
+tokenizer = BertTokenizer.from_pretrained('bert-large-uncased', do_lower_case=True)
 tokenized_texts = [tokenizer.tokenize(sent) for sent in sentences]
 #print ("Tokenize the first sentence:")
 #print (tokenized_texts[0])
@@ -88,8 +87,9 @@ tokenized_texts = [tokenizer.tokenize(sent) for sent in sentences]
 MAX_LEN = 128
 
 # Pad our input tokens
-input_ids = pad_sequences([tokenizer.convert_tokens_to_ids(txt) for txt in tokenized_texts],
-                          maxlen=MAX_LEN, dtype="long", truncating="post", padding="post")
+#input_ids = pad_sequences([tokenizer.convert_tokens_to_ids(txt) for txt in tokenized_texts],
+#                          maxlen=MAX_LEN, dtype="long", truncating="post", padding="post")
+
 # Use the BERT tokenizer to convert the tokens to their index numbers in the BERT vocabulary
 input_ids = [tokenizer.convert_tokens_to_ids(x) for x in tokenized_texts]
 input_ids = pad_sequences(input_ids, maxlen=MAX_LEN, dtype="long", truncating="post", padding="post")
@@ -131,7 +131,7 @@ validation_sampler = SequentialSampler(validation_data)
 validation_dataloader = DataLoader(validation_data, sampler=validation_sampler, batch_size=batch_size)
 
 # Load BertForSequenceClassification, the pretrained BERT model with a single linear classification layer on top. 
-model = BertForSequenceClassification.from_pretrained("bert-base-uncased", num_labels=2)
+model = BertForSequenceClassification.from_pretrained("bert-large-uncased", num_labels=2)
 
 # Load model parameters to GPU Buffer
 
