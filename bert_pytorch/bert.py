@@ -17,10 +17,12 @@ from sklearn.metrics import precision_recall_fscore_support, roc_curve, auc
 #% matplotlib inline
 
 if torch.cuda.is_available():
+    print ('cuda is available. use gpu.')
     device = torch.device("cuda")
     n_gpu = torch.cuda.device_count()
     torch.cuda.get_device_name(0)
 else:
+    print ('cuda is not available. use cpu.')
     device = torch.device("cpu")
 
 #device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
