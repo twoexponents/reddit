@@ -9,7 +9,7 @@ with open('/home/jhlim/data/commentbodyfeatures.p', 'rb') as f:
 
 print ('Start converting')
 filename = sys.argv[1]
-f = open(filename, 'r')
+f = open('/home/jhlim/data/%s'%filename, 'r')
 seq_length = int(filename.split('.')[2])
 print ('seq_length: ', seq_length)
 
