@@ -248,9 +248,9 @@ for seq_length in range(1, 6):
 
     df.label = df.label.astype(float)
 
-    df.loc[df.label <= -0.05, 'label'] = 0
-    df.loc[(df.label > -0.05) & (df.label < 0.05), 'label'] = 1
     df.loc[df.label >= 0.05, 'label'] = 2
+    df.loc[(df.label > -0.05) & (df.label < 0.05), 'label'] = 1
+    df.loc[df.label <= -0.05, 'label'] = 0
 
     df.label = df.label.astype(int)
 
@@ -258,7 +258,7 @@ for seq_length in range(1, 6):
     df_class1 = df[df.label == 1]
     df_class2 = df[df.label == 2]
 
-    print ("test dataset [%d]: %d, [%d]: %d"%(df_class1.label.values[0], len(df_class1), df_class2.label.values[0], len(df_class2)))
+    print ("test dataset [%d]: %d, [%d]: %d, [%d]: %d"%(df_class0.label.values[0], len(df_class0), df_class1.label.values[0], len(df_class1), df_class2.label.values[0], len(df_class2)))
     # Create sentence and label lists
     sentences = df.sentence.values
 
@@ -348,8 +348,8 @@ for seq_length in range(1, 6):
     num_predicts = len(predicts)
     num_corrects = len(list(filter(lambda x:x, predicts)))
 
-    fpr, tpr, thresholds = roc_curve(list(map(int, flat_true_labels)), flat_predictions)
-    print ('# predicts: %d, # corrects: %d, # 0: %d, # 1: %d, # 2: %d, acc: %f, auc: %f'%
-        (num_predicts, num_corrects, len(list(filter(lambda x:x == 0, flat_predictions))), len(list(filter(lambda x:x == 1, flat_predictions))), len(list(filter(lambda x:x == 2, flat_predictions))), num_corrects/num_predicts, auc(fpr,tpr)))
+    #fpr, tpr, thresholds = roc_curve(list(map(int, flat_true_labels)), flat_predictions)
+    print ('# predicts: %d, # corrects: %d, # 0: %d, # 1: %d, # 2: %d, acc: %f'%
+        (num_predicts, num_corrects, len(list(filter(lambda x:x == 0, flat_predictions))), len(list(filter(lambda x:x == 1, flat_predictions))), len(list(filter(lambda x:x == 2, flat_predictions))), num_corrects/num_predicts))
 
 
