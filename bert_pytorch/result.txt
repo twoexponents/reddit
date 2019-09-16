@@ -1,0 +1,46 @@
+cuda is available. use gpu.
+seq_length: 1
+shape: (35818, 4)
+train dataset [0]: 24293, [1]: 11525
+train dataset [0]: 11525, [1]: 11525
+Train loss: 0.6327804619983092
+Validation Accuracy: 0.6592465753424658
+Train loss: 0.5072669280787646
+Validation Accuracy: 0.6639554794520548
+Train loss: 0.33658522506386546
+Validation Accuracy: 0.6553938356164384
+Train loss: 0.19985528906752772
+Validation Accuracy: 0.6408390410958904
+test dataset [0]: 6152, [1]: 2864
+0.2749774347845349
+# predicts: 9016, # corrects: 5702, # 0: 4618, # 1: 4398, acc: 0.632431, auc: 0.647614
+seq_length: 2
+shape: (92244, 4)
+train dataset [1]: 64580, [0]: 27664
+train dataset [1]: 27664, [0]: 27664
+Train loss: 0.6654564833212296
+Validation Accuracy: 0.6110848116404226
+Train loss: 0.6226482500268927
+Validation Accuracy: 0.6016356886585609
+Train loss: 0.5121328509918144
+Validation Accuracy: 0.5996860673709388
+Train loss: 0.33181466201922033
+Validation Accuracy: 0.5823637133745266
+test dataset [0]: 5482, [1]: 21967
+0.10488067888068375
+# predicts: 27449, # corrects: 14501, # 0: 14346, # 1: 13103, acc: 0.528289, auc: 0.565518
+seq_length: 3
+shape: (74135, 4)
+train dataset [1]: 43233, [0]: 30902
+train dataset [1]: 30902, [0]: 30902
+Train loss: 0.673392195685147
+Validation Accuracy: 0.5945876288659794
+Train loss: 0.6377743735712379
+Validation Accuracy: 0.58034793814433
+Train loss: 0.5203701687688592
+Validation Accuracy: 0.5703608247422681
+Train loss: 0.31326107654234264
+Validation Accuracy: 0.5606958762886598
+test dataset [0]: 6213, [1]: 15073
+0.108893275995455
+# predicts: 21286, # corrects: 10983, # 0: 12326, # 1: 8960, acc: 0.515973, auc: 0.559127

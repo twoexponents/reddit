@@ -32,6 +32,8 @@ else:
     print ('cuda is not available. use cpu.')
     device = torch.device("cpu")
 
+
+# Start
 for seq_length in range(1, 6):
     print ('seq_length: %d'%(seq_length))
     train_set = "data/vader/seq.learn." + str(seq_length) + ".tsv"
@@ -42,19 +44,18 @@ for seq_length in range(1, 6):
     df = df.fillna(0)
     df.label = df.label.astype(float)
 
-    df.loc[df.label >= 0.05, 'label'] = 2
-    df.loc[(df.label > -0.05) & (df.label < 0.05), 'label'] = 1
-    df.loc[df.label <= -0.05, 'label'] = 0
+    df.loc[df.label >= 0.05, 'label'] = 2 # positive
+    df.loc[(df.label > -0.05) & (df.label < 0.05), 'label'] = 1 # neutral
+    df.loc[df.label <= -0.05, 'label'] = 0 # negative
     
     df.label = df.label.astype(int)
 
-    print ('shape:', df.shape)
-    print (df.sample(10))
+    #print (df.sample(10))
 
     # jhlim: undersampling training set using dataframe
-    df_class0 = df[df.label == 0]
-    df_class1 = df[df.label == 1]
-    df_class2 = df[df.label == 2]
+    df_class0 = df[df.label == 0] # negative
+    df_class1 = df[df.label == 1] # neutral
+    df_class2 = df[df.label == 2] # positive
 
     if len(df_class1) > len(df_class2) and len(df_class0) > len(df_class2):
         df_majority1 = df_class1
@@ -338,11 +339,14 @@ for seq_length in range(1, 6):
 
 
     predicts = []
+    num_corrects_index = {}
+
     for v1, v2 in zip(flat_true_labels, flat_predictions):
         decision = False
 
         if v1 == v2:
             decision = True
+            num_corrects_index[v1] += 1
         predicts.append(decision)
 
     num_predicts = len(predicts)
@@ -351,5 +355,8 @@ for seq_length in range(1, 6):
     #fpr, tpr, thresholds = roc_curve(list(map(int, flat_true_labels)), flat_predictions)
     print ('# predicts: %d, # corrects: %d, # 0: %d, # 1: %d, # 2: %d, acc: %f'%
         (num_predicts, num_corrects, len(list(filter(lambda x:x == 0, flat_predictions))), len(list(filter(lambda x:x == 1, flat_predictions))), len(list(filter(lambda x:x == 2, flat_predictions))), num_corrects/num_predicts))
+
+    print ('# corrects [0: %d, 1: %d, 2: %d]'%(num_corrects_index[0], num_corrects_index[1], num_corrects_index[2]))
+
 
 
