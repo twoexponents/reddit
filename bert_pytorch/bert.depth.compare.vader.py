@@ -34,7 +34,7 @@ else:
 
 
 # Start
-for seq_length in range(6, 11):
+for seq_length in range(1, 6):
     print ('seq_length: %d'%(seq_length))
     train_set = "data/vader/seq.learn." + str(seq_length) + ".tsv"
     test_set = "data/vader/seq.test." + str(seq_length) + ".tsv"
