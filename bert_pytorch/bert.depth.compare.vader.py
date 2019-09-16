@@ -34,7 +34,7 @@ else:
 
 
 # Start
-for seq_length in range(1, 6):
+for seq_length in range(6, 11):
     print ('seq_length: %d'%(seq_length))
     train_set = "data/vader/seq.learn." + str(seq_length) + ".tsv"
     test_set = "data/vader/seq.test." + str(seq_length) + ".tsv"
@@ -346,7 +346,10 @@ for seq_length in range(1, 6):
 
         if v1 == v2:
             decision = True
-            num_corrects_index[v1] += 1
+            if v1 in num_corrects_index:
+                num_corrects_index[v1] += 1
+            else:
+                num_corrects_index[v1] = 1
         predicts.append(decision)
 
     num_predicts = len(predicts)

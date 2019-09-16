@@ -5,6 +5,7 @@ import sys
 import cPickle as pickle
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import *
+import pandas as pd
 from pandas import DataFrame, Series
 
 #from imblearn.under_sampling import RandomUnderSampler
@@ -112,10 +113,10 @@ def main(argv):
 
     learn_X_reshape = np.reshape(np.array(learn_X), [-1, input_length*input_dim])
     df = DataFrame(learn_X_reshape)
-    df2 = DataFrame2(learn_Y)
+    df2 = DataFrame(learn_Y)
 
-    df_class1 = df[df.label == '0']
-    df_class2 = df[df.label == '1']
+    df_class1 = df[df.iloc[:, -1] == '0']
+    df_class2 = df[df.iloc[:, -1] == '1']
 
     if len(df_class1) > len(df_class2):
       df_majority = df_class1
@@ -133,7 +134,7 @@ def main(argv):
     df = df_downsampled
 
     learn_X = df.iloc[:, :-1].as_matrix()
-    learn_Y = df['label'].as_matrix()
+    learn_Y = df.iloc[:, -1].as_matrix()
     
     #sample_model = RandomUnderSampler(random_state=42)
     #learn_X, learn_Y = sample_model.fit_sample(learn_X_reshape, learn_Y)
