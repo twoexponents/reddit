@@ -12,7 +12,7 @@ from pandas import DataFrame, Series
 
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.utils import resample
+from sklearn.utils import resample, shuffle
 
 
 from collections import Counter
@@ -54,7 +54,7 @@ def main(argv):
 
   print 'features are loaded'
 
-  for seq_length in xrange(1, 6):
+  for seq_length in xrange(1, 11):
     input_length = 1
     f = open('/home/jhlim/data/seq.learn.%d.csv'%(seq_length), 'r')
     learn_instances = map(lambda x:x.replace('\n', '').split(','), f.readlines())
@@ -110,8 +110,44 @@ def main(argv):
         continue
 
     print Counter(learn_Y)
+    
+    learn_X = np.reshape(np.array(learn_X), [-1, input_length*input_dim])
+    ''' 
+    learn_Y = np.array([[i] for i in learn_Y])
+    print learn_X.shape
+    print learn_Y.shape
+    learn_X = np.concatenate((learn_X, learn_Y), axis=1)
 
+    df_class1 = []; df_class2 = []
+    for item in learn_X:
+        if item[-1] == '0':
+            df_class1.append(item)
+        else:
+            df_class2.append(item)
+
+    print 'len 0: %d, len 1: %d'%(len(df_class1), len(df_class2))
+
+    if len(df_class1) > len(df_class2):
+        df_majority = df_class1
+        df_minority = df_class2
+    else:
+        df_majority = df_class2
+        df_minority = df_class1
+
+    df_majority_downsampled = resample(df_majority,
+                                    replace=False,
+                                    n_samples=len(df_minority),
+                                    random_state=123)
+    df_downsampled = np.concatenate((df_majority_downsampled, df_minority))
+    df_downsampled = shuffle(df_downsampled)
+
+    print learn_X.shape
+    learn_X = df_downsampled[:, :-1]
+    learn_Y = df_downsampled[:, -1]
+    '''
+    '''
     learn_X_reshape = np.reshape(np.array(learn_X), [-1, input_length*input_dim])
+    
     df = DataFrame(learn_X_reshape)
     df2 = DataFrame(learn_Y)
 
@@ -135,7 +171,7 @@ def main(argv):
 
     learn_X = df.iloc[:, :-1].as_matrix()
     learn_Y = df.iloc[:, -1].as_matrix()
-    
+    '''
     #sample_model = RandomUnderSampler(random_state=42)
     #learn_X, learn_Y = sample_model.fit_sample(learn_X_reshape, learn_Y)
     #learn_X = np.reshape(learn_X, [-1, seq_length, input_dim])
@@ -160,7 +196,7 @@ def main(argv):
           w2v_features = [0.0]*len_w2v_features
           #user_features = [0.0]*len(user_features_fields)
 
-          if d_features.has_key(element):
+          if d_w2vfeatures.has_key(element):
           #if d_userfeatures.has_key(element):
             #cont_features = d_features[element]['cont']
             #cont_features = d_features[element]['cont'][:len(common_features_fields)]
