@@ -32,7 +32,7 @@ for instance in learn_instances:
     sentence = str(sub_x[0])
     flag = False;
     for element in sub_x[1:]:
-        if len(str(element)) > 50:
+        if len(str(element)) > 100:
             flag = True;
             break;
         sentence = sentence + ". " + str(element)

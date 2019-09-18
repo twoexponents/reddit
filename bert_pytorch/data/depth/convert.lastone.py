@@ -26,7 +26,7 @@ for instance in learn_instances:
         sentence = sentencefile[element].replace('\n', ' ')
     if len(sentence) < 1:
         continue
-    if len(sentence) > 100:
+    if len(sentence) > 200:
         continue
 
     f.write(element + '\t' + label + '\t' + '*' + '\t' + sentence + '\n')

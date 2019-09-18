@@ -18,8 +18,8 @@ from sklearn.metrics import precision_recall_fscore_support, roc_curve, auc
 #% matplotlib inline
 
 seq_length = sys.argv[1]
-train_set = "data/seq.learn." + seq_length + ".sample.tsv"
-test_set = "data/seq.test." + seq_length + ".sample.tsv"
+train_set = "data/seq.learn." + seq_length + ".tsv"
+test_set = "data/seq.test." + seq_length + ".tsv"
 
 if torch.cuda.is_available():
     print ('cuda is available. use gpu.')
@@ -176,7 +176,7 @@ for _ in trange(epochs, desc="Epoch"):
     nb_tr_examples, nb_tr_steps = 0, 0
 
     # Train the data for one epoch
-    for step, batch in enumerate(train_dataloader):
+    for step, batch in enumerate(train_dataloader): # train batch by batch
         # Add batch to GPU
         batch = tuple(t.to(device) for t in batch)
         # Unpack the inputs from our dataloader
@@ -231,7 +231,16 @@ for _ in trange(epochs, desc="Epoch"):
 
     print("Validation Accuracy: {}".format(eval_accuracy/nb_eval_steps))
 
-# jhlim
+
+plt.figure(figsize=(15,8))
+plt.title("Training loss")
+plt.xlabel("Batch")
+plt.ylabel("Loss")
+plt.plot(train_loss_set)
+plt.show()
+
+
+# Test
 #df = pd.read_csv("out_of_domain_dev.tsv", delimiter='\t', header=None, names=['sentence_source', 'label', 'label_notes', 'sentence'])
 df = pd.read_csv(test_set, delimiter='\t', header=None, names=['sentence_source', 'label', 'label_notes', 'sentence'], engine='python')
 
