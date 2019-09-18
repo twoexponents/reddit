@@ -32,7 +32,7 @@ else:
     print ('cuda is not available. use cpu.')
     device = torch.device("cpu")
 
-for seq_length in range(4, 11):
+for seq_length in range(10, 16):
     print ('seq_length: %d'%(seq_length))
     train_set = "data/depth/seq.learn." + str(seq_length) + ".tsv"
     test_set = "data/depth/seq.test." + str(seq_length) + ".tsv"
