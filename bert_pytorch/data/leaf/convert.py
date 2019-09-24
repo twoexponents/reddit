@@ -19,7 +19,7 @@ for seq_length in range(1, 10):
         filename = filename.replace('csv', 'tsv')
         f = open(filename, 'w')
         for instance in learn_instances:
-            id = instance[0]
+            id = instance[-2]
             label = instance[seq_length]
             sub_x = []
             for element in instance[:-1]:

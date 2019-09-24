@@ -195,10 +195,10 @@ for seq_length in range(10, 11):
             # Clear out the gradients (by default they accumulate)
             optimizer.zero_grad()
             # Forward pass
-            #loss = model(b_input_ids, token_type_ids=None, attention_mask=b_input_mask, labels=b_labels)
+            outputs = model(b_input_ids, token_type_ids=None, attention_mask=b_input_mask, labels=b_labels)
             #train_loss_set.append(loss.item()) 
             #outputs = model(b_input_ids, token_type_ids=None, attention_mask=b_input_mask, labels=b_labels)
-            outputs = model.forward(b_input_ids, token_type_ids=None, attention_mask=b_input_mask, labels=b_labels)
+            #outputs = model.forward(b_input_ids, token_type_ids=None, attention_mask=b_input_mask, labels=b_labels)
             loss, logits = outputs[:2]
 
             train_loss_set.append(loss.item()) 

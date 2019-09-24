@@ -1,5 +1,5 @@
-import tensorflow as tf
 
+import tensorflow as tf
 import torch
 from pytorch_transformers import *
 from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler
@@ -15,14 +15,16 @@ import matplotlib.pyplot as plt
 import sys
 import pickle
 
+from twoLayerNet import TwoLayerNet
+
 from sklearn.utils import resample
 from sklearn.metrics import precision_recall_fscore_support, roc_curve, auc
 #% matplotlib inline
 
 user_features_fields = ['posts', 'comments']
 input_dim = len(user_features_fields)
-#with open('/home/jhlim/SequencePrediction/data/userfeatures.activity.p', 'rb') as f:
-#    d_userfeatures = pickle.load(f)
+with open('/home/jhlim/SequencePrediction/data/userfeatures.activity.p', 'rb') as f:
+    d_userfeatures = pickle.load(f)
 
 # Function to calculate the accuracy of our predictions vs labels
 def flat_accuracy(preds, labels):
@@ -69,17 +71,9 @@ for seq_length in range(10, 11):
 
     length_minority = 30000 if len(df_minority) > 30000 else len(df_minority)
     
-    df_majority_downsampled = resample(df_majority,
-                                    replace=False,
-                                    n_samples=length_minority,
-                                    random_state=123)
-    df_minority_downsampled = resample(df_minority,
-                                    replace=False,
-                                    n_samples=length_minority,
-                                    random_state=123)
-
+    df_majority_downsampled = resample(df_majority, replace=False, n_samples=length_minority, random_state=123)
+    df_minority_downsampled = resample(df_minority, replace=False, n_samples=length_minority, random_state=123)
     df_downsampled = pd.concat([df_majority_downsampled, df_minority_downsampled])
-
     df = df_downsampled
 
     print ("train dataset [%d]: %d, [%d]: %d"%(df_majority_downsampled.label.values[0], len(df_majority_downsampled), df_minority_downsampled.label.values[0], len(df_minority_downsampled)))
@@ -118,9 +112,18 @@ for seq_length in range(10, 11):
         seq_mask = [float(i>0) for i in seq]
         attention_masks.append(seq_mask)
 
+    # jhlim: additional features dataset
+    element_list = df.sentence_source.values
+    extra_features = []
+    for element in element_list:
+        user_features = [0.0]*len(user_features_fields)
+        if element in d_userfeatures:
+            user_features = d_userfeatures[element]['user'][0:2]
+
+        extra_features.append(user_features)
+
     # Use train_test_split to split our data into train and validation sets for training
-    train_inputs, validation_inputs, train_labels, validation_labels = train_test_split(input_ids, labels, 
-                                                                random_state=2018, test_size=0.1)
+    train_inputs, validation_inputs, train_labels, validation_labels, train_extras, validation_extras = train_test_split(input_ids, labels, extra_features, random_state=2018, test_size=0.1)
     train_masks, validation_masks, _, _ = train_test_split(attention_masks, input_ids,
                                                  random_state=2018, test_size=0.1)
 
@@ -131,6 +134,8 @@ for seq_length in range(10, 11):
     validation_labels = torch.tensor(validation_labels)
     train_masks = torch.tensor(train_masks)
     validation_masks = torch.tensor(validation_masks)
+    train_extras = torch.tensor(train_extras)
+    validation_extras = torch.tensor(validation_extras)
 
     # Select a batch size for training. For fine-tuning BERT on a specific task, the authors recommend a batch size of 16 or 32
     batch_size = 32
@@ -138,11 +143,11 @@ for seq_length in range(10, 11):
     # Create an iterator of our data with torch DataLoader. This helps save on memory during training because, unlike a for loop, 
     # with an iterator the entire dataset does not need to be loaded into memory
 
-    train_data = TensorDataset(train_inputs, train_masks, train_labels)
+    train_data = TensorDataset(train_inputs, train_masks, train_labels, train_extras)
     train_sampler = RandomSampler(train_data)
     train_dataloader = DataLoader(train_data, sampler=train_sampler, batch_size=batch_size)
 
-    validation_data = TensorDataset(validation_inputs, validation_masks, validation_labels)
+    validation_data = TensorDataset(validation_inputs, validation_masks, validation_labels, validation_extras)
     validation_sampler = SequentialSampler(validation_data)
     validation_dataloader = DataLoader(validation_data, sampler=validation_sampler, batch_size=batch_size)
 
@@ -181,18 +186,26 @@ for seq_length in range(10, 11):
         # Training
       
         # Set our model to training mode (as opposed to evaluation mode)
-        model.train()
+        #model.train()
       
         # Tracking variables
         tr_loss = 0
-        nb_tr_examples, nb_tr_steps = 0, 0
+        nb_tr_steps = 0
+
+        # TwoLayerNet
+        N, D_in, H, D_out = 32, 770, 50, 2
+        model2 = TwoLayerNet(D_in, H, D_out)
+        if torch.cuda.is_available():
+            model2.cuda()
+
+        model2.train()
 
         # Train the data for one epoch
         for step, batch in enumerate(train_dataloader):
             # Add batch to GPU
             batch = tuple(t.to(device) for t in batch)
             # Unpack the inputs from our dataloader
-            b_input_ids, b_input_mask, b_labels = batch
+            b_input_ids, b_input_mask, b_labels, b_extras = batch
             # Clear out the gradients (by default they accumulate)
             optimizer.zero_grad()
             # Forward pass
@@ -200,31 +213,23 @@ for seq_length in range(10, 11):
             #train_loss_set.append(loss.item()) 
             outputs = model(b_input_ids)
             last_hidden_states = outputs[0]
-            if (step % 100 == 0):
-                print (last_hidden_states.size()) # [32, 128, 768]
-                mean_hidden_states = torch.mean(last_hidden_states, 1, keepdim=False)
-                print (mean_hidden_states.size())
+            mean_hidden_states = torch.mean(last_hidden_states, 1, keepdim=False)
+            input = torch.cat((mean_hidden_states, b_extras), dim=1)
+
+            predicts = model2(input)
+            loss = torch.nn.CrossEntropyLoss()
+            output = loss(predicts, b_labels)
+            output.backward()
+            optimizer.step()
+            scheduler.step()
 
             #mean_hidden_states = mean_hidden_states.detach().cpu().numpy()
-            del last_hidden_states, outputs
-
-
-            #train_loss_set.append(loss.item()) 
-
-            # Backward pass
-            #loss.backward()
-            # Update parameters and take a step using the computed gradient
-            #optimizer.step()
-            #scheduler.step()
-
 
             # Update tracking variables
-            #tr_loss += loss.item()
-            #nb_tr_examples += b_input_ids.size(0)
-            #nb_tr_steps += 1
+            tr_loss += output.item()
+            nb_tr_steps += 1
 
         print("Train loss: {}".format(tr_loss/nb_tr_steps))
-
 
         # Validation
 
@@ -240,19 +245,22 @@ for seq_length in range(10, 11):
             # Add batch to GPU
             batch = tuple(t.to(device) for t in batch)
             # Unpack the inputs from our dataloader
-            b_input_ids, b_input_mask, b_labels = batch
+            b_input_ids, b_input_mask, b_labels, b_extras = batch
             # Telling the model not to compute or store gradients, saving memory and speeding up validation
             with torch.no_grad():
                 # Forward pass, calculate logit predictions
-                logits = model(b_input_ids, token_type_ids=None, attention_mask=b_input_mask)
-                logits = logits[0]
-                #loss, logits = outputs[:2]
+                logits = model(b_input_ids)
+                last_hidden_states = logits[0]
+                mean_hidden_states = torch.mean(last_hidden_states, 1, keepdim=False)
+                input = torch.cat((mean_hidden_states, b_extras), dim=1)
+                
+                predicts = model2(input)
 
             # Move logits and labels to CPU
-            logits = logits.detach().cpu().numpy()
+            predicts = predicts.detach().cpu().numpy()
             label_ids = b_labels.to('cpu').numpy()
 
-            tmp_eval_accuracy = flat_accuracy(logits, label_ids)
+            tmp_eval_accuracy = flat_accuracy(predicts, label_ids)
 
             eval_accuracy += tmp_eval_accuracy
             nb_eval_steps += 1
@@ -292,21 +300,31 @@ for seq_length in range(10, 11):
       seq_mask = [float(i>0) for i in seq]
       attention_masks.append(seq_mask) 
 
+    # jhlim: additional features dataset
+    element_list = df.sentence_source.values
+    extra_features = []
+    for element in element_list:
+        user_features = [0.0]*len(user_features_fields)
+        if element in d_userfeatures:
+            user_features = d_userfeatures[element]['user'][0:2]
+
+        extra_features.append(user_features)
+
     prediction_inputs = torch.tensor(input_ids)
     prediction_masks = torch.tensor(attention_masks)
     prediction_labels = torch.tensor(labels)
+    prediction_extras = torch.tensor(extra_features)
       
     batch_size = 32  
 
-
-    prediction_data = TensorDataset(prediction_inputs, prediction_masks, prediction_labels)
+    prediction_data = TensorDataset(prediction_inputs, prediction_masks, prediction_labels, prediction_extras)
     prediction_sampler = SequentialSampler(prediction_data)
     prediction_dataloader = DataLoader(prediction_data, sampler=prediction_sampler, batch_size=batch_size)
 
     # Prediction on test set
 
     # Put model in evaluation mode
-    model.eval()
+    model2.eval()
 
     # Tracking variables
     predictions , true_labels = [], []
@@ -316,21 +334,26 @@ for seq_length in range(10, 11):
       # Add batch to GPU
       batch = tuple(t.to(device) for t in batch)
       # Unpack the inputs from our dataloader
-      b_input_ids, b_input_mask, b_labels = batch
+      b_input_ids, b_input_mask, b_labels, b_extras = batch
       # Telling the model not to compute or store gradients, saving memory and speeding up prediction
       with torch.no_grad():
         # Forward pass, calculate logit predictions
-        logits = model(b_input_ids, token_type_ids=None, attention_mask=b_input_mask)
-        logits = logits[0]
+        logits = model(b_input_ids)
+        last_hidden_states = logits[0]
+        mean_hidden_states = torch.mean(last_hidden_states, 1, keepdim=False)
+        input = torch.cat((mean_hidden_states, b_extras), dim=1)
+
+        predicts = model2(input)
 
       # Move logits and labels to CPU
-      logits = logits.detach().cpu().numpy()
+      predicts = predicts.detach().cpu().numpy()
       label_ids = b_labels.to('cpu').numpy()
       
       # Store predictions and true labels
-      predictions.append(logits)
+      predictions.append(predicts)
       true_labels.append(label_ids)
 
+    '''
     from sklearn.metrics import matthews_corrcoef
     matthews_set = []
 
@@ -339,11 +362,12 @@ for seq_length in range(10, 11):
                     np.argmax(predictions[i], axis=1).flatten())
         matthews_set.append(matthews)
 
+    print (matthews_corrcoef(flat_true_labels, flat_predictions))
+    '''
+
     flat_predictions = [item for sublist in predictions for item in sublist]
     flat_predictions = np.argmax(flat_predictions, axis=1).flatten()
     flat_true_labels = [item for sublist in true_labels for item in sublist]
-
-    print (matthews_corrcoef(flat_true_labels, flat_predictions))
 
 
     predicts = []
