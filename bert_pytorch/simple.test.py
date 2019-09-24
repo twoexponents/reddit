@@ -40,7 +40,7 @@ else:
     device = torch.device("cpu")
 
 # START
-for seq_length in range(2, 5):
+for seq_length in range(10, 11):
     print ('seq_length: %d'%(seq_length))
     train_set = "data/leaf_depth/seq.learn." + str(seq_length) + ".tsv"
     test_set = "data/leaf_depth/seq.test." + str(seq_length) + ".tsv"
@@ -147,7 +147,8 @@ for seq_length in range(2, 5):
     validation_dataloader = DataLoader(validation_data, sampler=validation_sampler, batch_size=batch_size)
 
     # Load BertForSequenceClassification, the pretrained BERT model with a single linear classification layer on top. 
-    model = BertForSequenceClassification.from_pretrained("bert-base-uncased", num_labels=2)
+    #model = BertForSequenceClassification.from_pretrained("bert-base-uncased", num_labels=2)
+    model = BertModel.from_pretrained("bert-base-uncased")
 
     # Load model parameters to GPU Buffer
 
@@ -197,23 +198,30 @@ for seq_length in range(2, 5):
             # Forward pass
             #loss = model(b_input_ids, token_type_ids=None, attention_mask=b_input_mask, labels=b_labels)
             #train_loss_set.append(loss.item()) 
-            #outputs = model(b_input_ids, token_type_ids=None, attention_mask=b_input_mask, labels=b_labels)
-            outputs = model.forward(b_input_ids, token_type_ids=None, attention_mask=b_input_mask, labels=b_labels)
-            loss, logits = outputs[:2]
+            outputs = model(b_input_ids)
+            last_hidden_states = outputs[0]
+            if (step % 100 == 0):
+                print (last_hidden_states.size()) # [32, 128, 768]
+                mean_hidden_states = torch.mean(last_hidden_states, 1, keepdim=False)
+                print (mean_hidden_states.size())
 
-            train_loss_set.append(loss.item()) 
+            #mean_hidden_states = mean_hidden_states.detach().cpu().numpy()
+            del last_hidden_states, outputs
+
+
+            #train_loss_set.append(loss.item()) 
 
             # Backward pass
-            loss.backward()
+            #loss.backward()
             # Update parameters and take a step using the computed gradient
-            optimizer.step()
-            scheduler.step()
+            #optimizer.step()
+            #scheduler.step()
 
 
             # Update tracking variables
-            tr_loss += loss.item()
-            nb_tr_examples += b_input_ids.size(0)
-            nb_tr_steps += 1
+            #tr_loss += loss.item()
+            #nb_tr_examples += b_input_ids.size(0)
+            #nb_tr_steps += 1
 
         print("Train loss: {}".format(tr_loss/nb_tr_steps))
 
@@ -221,7 +229,7 @@ for seq_length in range(2, 5):
         # Validation
 
         # Put model in evaluation mode to evaluate loss on the validation set
-        model.eval()
+        #model.eval()
 
         # Tracking variables 
         eval_loss, eval_accuracy = 0, 0
@@ -253,7 +261,7 @@ for seq_length in range(2, 5):
 
     df = pd.read_csv(test_set, delimiter='\t', header=None, names=['sentence_source', 'label', 'label_notes', 'sentence'], engine='python')
 
-    df = df.fillna(0)
+    df = df.dropna()
     df.label = df.label.astype(int)
     df_class1 = df[df.label == 0]
     df_class2 = df[df.label == 1]
