@@ -66,11 +66,18 @@ for seq_length in range(1, 5):
 
     print ("train dataset [%d]: %d, [%d]: %d"%(df_majority.label.values[0], len(df_majority), df_minority.label.values[0], len(df_minority)))
 
+    length_minority = 30000 if len(df_minority) > 30000 else len(df_minority)
+    
     df_majority_downsampled = resample(df_majority,
                                     replace=False,
-                                    n_samples=len(df_minority),
+                                    n_samples=length_minority,
                                     random_state=123)
-    df_downsampled = pd.concat([df_majority_downsampled, df_minority])
+    df_minority_downsampled = resample(df_minority,
+                                    replace=False,
+                                    n_samples=length_minority,
+                                    random_state=123)
+
+    df_downsampled = pd.concat([df_majority_downsampled, df_minority_downsampled])
 
     df = df_downsampled
 
