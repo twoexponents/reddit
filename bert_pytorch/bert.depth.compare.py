@@ -34,8 +34,8 @@ else:
 
 for seq_length in range(10, 16):
     print ('seq_length: %d'%(seq_length))
-    train_set = "data/depth/seq.learn." + str(seq_length) + ".tsv"
-    test_set = "data/depth/seq.test." + str(seq_length) + ".tsv"
+    train_set = "data/leaf_depth/seq.learn." + str(seq_length) + ".tsv"
+    test_set = "data/leaf_depth/seq.test." + str(seq_length) + ".tsv"
 
     df = pd.read_csv(train_set, delimiter='\t', header=None, engine='python', names=['sentence_source', 'label', 'label_notes', 'sentence'])
 

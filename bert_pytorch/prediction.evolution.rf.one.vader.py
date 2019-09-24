@@ -17,26 +17,28 @@ from sklearn.utils import resample, shuffle
 
 from collections import Counter
 
-#common_features_fields = ['vader_score', 'vader', 'difficulty']
+common_features_fields = ['vader_score', 'vader', 'difficulty']
+
+user_features_fields = ['posts', 'comments']
 
 #cont_features_fields = common_features_fields + post_features_fields
 #cont_features_fields = post_features_fields
-#cont_features_fields = common_features_fields
+cont_features_fields = common_features_fields
 
 len_w2v_features = 300
+len_liwc_features = 93
 
-
-#input_dim = len(cont_features_fields) + len(user_features_fields) + len_liwc_fetures + len_w2v_features
-#input_dim = len(cont_features_fields) + len_liwc_fetures + len_w2v_features# number of features
-#input_dim = len(cont_features_fields) + len_liwc_fetures
+#input_dim = len(cont_features_fields) + len(user_features_fields) + len_liwc_features + len_w2v_features
+#input_dim = len(cont_features_fields) + len_liwc_features + len_w2v_features# number of features
+#input_dim = len(cont_features_fields) + len_liwc_features
 #input_dim = len(cont_features_fields) + len_w2v_features
-input_dim = len_w2v_features
-#input_dim = len_liwc_fetures
+#input_dim = len_w2v_features
+#input_dim = len_liwc_features
 #input_dim = len(cont_features_fields)
-#input_dim = len(user_features_fields)
-#input_dim = len(user_features_fields) + len_liwc_fetures
-#input_dim = len(cont_features_fields) + len_liwc_fetures + len(user_features_fields)
-#input_dim = len(cont_features_fields) + len_liwc_fetures + len_w2v_features + len(user_features_fields)
+input_dim = len(user_features_fields)
+#input_dim = len(user_features_fields) + len_liwc_features
+#input_dim = len(cont_features_fields) + len_liwc_features + len(user_features_fields)
+#input_dim = len(cont_features_fields) + len_liwc_features + len_w2v_features + len(user_features_fields)
 #input_dim = len(cont_features_fields) + len(user_features_fields)
 
 output_dim = 3 # (0, 1, 2)
@@ -48,9 +50,9 @@ epochs = 1
 
 def main(argv):
   # 1.1 load feature dataset
-  #d_features = pickle.load(open('../data/contentfeatures.others.p', 'r'))
-  d_w2vfeatures = pickle.load(open('/home/jhlim/data/contentfeatures.googlenews.nozero.p', 'r'))
-  #d_userfeatures = pickle.load(open('../data/userfeatures.activity.p', 'r'))
+  #d_features = pickle.load(open('/home/jhlim/SequencePrediction/data/contentfeatures.others.p', 'r'))
+  #d_w2vfeatures = pickle.load(open('/home/jhlim/data/contentfeatures.googlenews.nozero.p', 'r'))
+  d_userfeatures = pickle.load(open('/home/jhlim/SequencePrediction/data/userfeatures.activity.p', 'r'))
 
   print 'features are loaded'
 
@@ -60,13 +62,16 @@ def main(argv):
     learn_instances = map(lambda x:x.replace('\n', '').split(','), f.readlines())
     f.close()
 
+    lst = []
     for element in learn_instances:
-        if int(learn_instances[element][-1]) > 0.05:
-            learn_instances[element][-1] = '2'
-        elif int(learn_instances[element][-1]) > -0.05:
-            learn_instances[element][-1] = '1'
+        if float(element[-1]) > 0.05:
+            element[-1] = '2'
+        elif float(element[-1]) > -0.05:
+            element[-1] = '1'
         else:
-            learn_instances[element][-1] = '0'
+            element[-1] = '0'
+        lst.append(element)
+    learn_instances = lst
 
     np.random.shuffle(learn_instances)
 
@@ -78,18 +83,19 @@ def main(argv):
       try:
         for element in seq[seq_length-1:-1]:
           #cont_features = [0.0]*len(cont_features_fields)
-          #liwc_features = [0.0]*len_liwc_fetures
-          w2v_features = [0.0]*len_w2v_features
-          #user_features = [0.0]*len(user_features_fields)
+          #liwc_features = [0.0]*len_liwc_features
+          #w2v_features = [0.0]*len_w2v_features
+          user_features = [0.0]*len(user_features_fields)
 
-          if d_w2vfeatures.has_key(element):
-          #if d_userfeatures.has_key(element):
+          #if d_w2vfeatures.has_key(element):
+          if d_userfeatures.has_key(element):
+          #if d_features.has_key(element):
             #cont_features = d_features[element]['cont']
             #cont_features = d_features[element]['cont'][:len(common_features_fields)]
             #cont_features = d_features[element]['cont'][len(common_features_fields):]
             #liwc_features = d_features[element]['liwc']
-            w2v_features = d_w2vfeatures[element]['google.mean']
-            #user_features = d_userfeatures[element]['user'][0:2]
+            #w2v_features = d_w2vfeatures[element]['google.mean']
+            user_features = d_userfeatures[element]['user'][0:2]
 
             #if len(cont_features) < len(cont_features_fields):
             #    cont_features += [0.0]*(len(cont_features_fields) - len(cont_features))
@@ -97,14 +103,15 @@ def main(argv):
               continue
 
           #sub_x.append(np.array(cont_features))
-          sub_x.append(np.array(w2v_features))
+          #sub_x.append(np.array(w2v_features))
           #sub_x.append(np.array(cont_features+liwc_features+w2v_features.tolist()))
           #sub_x.append(np.array(cont_features+w2v_features.tolist()+user_features))
           #sub_x.append(np.array(cont_features+liwc_features+w2v_features.tolist()+user_features))
           #sub_x.append(np.array(w2v_features.tolist()))
           #sub_x.append(np.array(cont_features+liwc_features))
           #sub_x.append(np.array(user_features+liwc_features))
-          #sub_x.append(np.array(user_features))
+          #sub_x.append(np.array(liwc_features))
+          sub_x.append(np.array(user_features))
           #sub_x.append(np.array(cont_features+liwc_features+user_features))
           #sub_x.append(np.array(cont_features+liwc_features+w2v_features.tolist()+user_features))
           #sub_x.append(np.array(cont_features+user_features))
@@ -131,14 +138,17 @@ def main(argv):
     test_instances = map(lambda x:x.replace('\n', '').split(','), f.readlines())
     f.close()
 
+    lst = []
     for element in test_instances:
-        if int(test_instances[element][-1]) > 0.05:
-            test_instances[element][-1] = '2'
-        elif int(test_instances[element][-1]) > -0.05:
-            test_instances[element][-1] = '1'
+        if float(element[-1]) > 0.05:
+            element[-1] = '2'
+        elif float(element[-1]) > -0.05:
+            element[-1] = '1'
         else:
-            test_instances[element][-1] = '0'
-
+            element[-1] = '0'
+        lst.append(element)
+    test_instances = lst
+    
     np.random.shuffle(test_instances)
 
     test_X = []; test_Y = []
@@ -149,18 +159,19 @@ def main(argv):
       try:
         for element in seq[seq_length-1:-1]:
           #cont_features = [0.0]*len(cont_features_fields)
-          #liwc_features = [0.0]*len_liwc_fetures
-          w2v_features = [0.0]*len_w2v_features
-          #user_features = [0.0]*len(user_features_fields)
+          #liwc_features = [0.0]*len_liwc_features
+          #w2v_features = [0.0]*len_w2v_features
+          user_features = [0.0]*len(user_features_fields)
 
-          if d_w2vfeatures.has_key(element):
-          #if d_userfeatures.has_key(element):
+          #if d_w2vfeatures.has_key(element):
+          if d_userfeatures.has_key(element):
+          #if d_features.has_key(element):
             #cont_features = d_features[element]['cont']
             #cont_features = d_features[element]['cont'][:len(common_features_fields)]
             #cont_features = d_features[element]['cont'][len(common_features_fields):]
             #liwc_features = d_features[element]['liwc']
-            w2v_features = d_w2vfeatures[element]['google.mean']
-            #user_features = d_userfeatures[element]['user'][0:2]
+            #w2v_features = d_w2vfeatures[element]['google.mean']
+            user_features = d_userfeatures[element]['user'][0:2]
 
             #if len(cont_features) < len(cont_features_fields):
             #    cont_features += [0.0]*(len(cont_features_fields) - len(cont_features))
@@ -168,7 +179,7 @@ def main(argv):
               continue
 
           #sub_x.append(np.array(cont_features))
-          sub_x.append(np.array(w2v_features))
+          #sub_x.append(np.array(w2v_features))
           #sub_x.append(np.array(cont_features+liwc_features+w2v_features.tolist()))
           #sub_x.append(np.array(cont_features+liwc_features))
           #sub_x.append(np.array(cont_features+w2v_features.tolist()+user_features))
@@ -176,7 +187,8 @@ def main(argv):
           #sub_x.append(np.array(w2v_features.tolist()))
           #sub_x.append(np.array(cont_features+liwc_features))
           #sub_x.append(np.array(user_features+liwc_features))
-          #sub_x.append(np.array(user_features))
+          #sub_x.append(np.array(liwc_features))
+          sub_x.append(np.array(user_features))
           #sub_x.append(np.array(cont_features+liwc_features+user_features))
           #sub_x.append(np.array(cont_features+liwc_features+w2v_features.tolist()+user_features))
           #sub_x.append(np.array(cont_features+user_features))

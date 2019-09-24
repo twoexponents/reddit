@@ -23,17 +23,17 @@ from collections import Counter
 #cont_features_fields = post_features_fields
 #cont_features_fields = common_features_fields
 
-len_w2v_features = 300
+#len_w2v_features = 300
 
 
 #input_dim = len(cont_features_fields) + len(user_features_fields) + len_liwc_fetures + len_w2v_features
 #input_dim = len(cont_features_fields) + len_liwc_fetures + len_w2v_features# number of features
 #input_dim = len(cont_features_fields) + len_liwc_fetures
 #input_dim = len(cont_features_fields) + len_w2v_features
-input_dim = len_w2v_features
+#input_dim = len_w2v_features
 #input_dim = len_liwc_fetures
 #input_dim = len(cont_features_fields)
-#input_dim = len(user_features_fields)
+input_dim = len(user_features_fields)
 #input_dim = len(user_features_fields) + len_liwc_fetures
 #input_dim = len(cont_features_fields) + len_liwc_fetures + len(user_features_fields)
 #input_dim = len(cont_features_fields) + len_liwc_fetures + len_w2v_features + len(user_features_fields)
