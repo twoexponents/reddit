@@ -33,7 +33,7 @@ else:
     device = torch.device("cpu")
 
 #seq_length = sys.argv[1]
-for seq_length in range(6, 10):
+for seq_length in range(1, 2):
     print ('seq_length: %d'%(seq_length))
     train_set = "data/leaf/seq.learn." + str(seq_length) + ".tsv"
     test_set = "data/leaf/seq.test." + str(seq_length) + ".tsv"

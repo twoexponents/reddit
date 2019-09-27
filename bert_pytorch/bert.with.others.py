@@ -40,7 +40,7 @@ else:
     device = torch.device("cpu")
 
 # START
-for seq_length in range(10, 11):
+for seq_length in range(1, 10):
     print ('seq_length: %d'%(seq_length))
     train_set = "data/leaf_depth/seq.learn." + str(seq_length) + ".tsv"
     test_set = "data/leaf_depth/seq.test." + str(seq_length) + ".tsv"
@@ -67,7 +67,7 @@ for seq_length in range(10, 11):
 
     print ("train dataset [%d]: %d, [%d]: %d"%(df_majority.label.values[0], len(df_majority), df_minority.label.values[0], len(df_minority)))
 
-    length_minority = 30000 if len(df_minority) > 30000 else len(df_minority)
+    length_minority = 20000 if len(df_minority) > 20000 else len(df_minority)
     
     df_majority_downsampled = resample(df_majority,
                                     replace=False,
@@ -269,7 +269,6 @@ for seq_length in range(10, 11):
     tokenized_texts = [tokenizer.tokenize(sent) for sent in sentences]
 
 
-    MAX_LEN = 128
     # Pad our input tokens
     input_ids = pad_sequences([tokenizer.convert_tokens_to_ids(txt) for txt in tokenized_texts],
                               maxlen=MAX_LEN, dtype="long", truncating="post", padding="post")
@@ -288,9 +287,6 @@ for seq_length in range(10, 11):
     prediction_masks = torch.tensor(attention_masks)
     prediction_labels = torch.tensor(labels)
       
-    batch_size = 32  
-
-
     prediction_data = TensorDataset(prediction_inputs, prediction_masks, prediction_labels)
     prediction_sampler = SequentialSampler(prediction_data)
     prediction_dataloader = DataLoader(prediction_data, sampler=prediction_sampler, batch_size=batch_size)
