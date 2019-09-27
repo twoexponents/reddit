@@ -253,7 +253,7 @@ for seq_length in range(1, 10):
 
     df = pd.read_csv(test_set, delimiter='\t', header=None, names=['sentence_source', 'label', 'label_notes', 'sentence'], engine='python')
 
-    df = df.fillna(0)
+    df = df.dropna()
     df.label = df.label.astype(int)
     df_class1 = df[df.label == 0]
     df_class2 = df[df.label == 1]
