@@ -48,7 +48,7 @@ for seq_length in range(1, 10):
     df = pd.read_csv(train_set, delimiter='\t', header=None, engine='python', names=['sentence_source', 'label', 'label_notes', 'sentence'])
 
     #df = df.fillna(0)
-    df.dropna()
+    df = df.dropna()
     df.label = df.label.astype(int)
 
     print ('shape:', df.shape)
