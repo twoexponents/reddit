@@ -139,7 +139,7 @@ for seq_length in range(1, 6):
             predicts = predicts.detach().cpu().numpy()
             label_ids = b_labels.to('cpu').numpy()
 
-            tmp_eval_accuracy = flat_accuracy(predicts, label_ids)
+            tmp_eval_accuracy = mylib.flat_accuracy(predicts, label_ids)
 
             eval_accuracy += tmp_eval_accuracy
             nb_eval_steps += 1
@@ -211,6 +211,6 @@ for seq_length in range(1, 6):
         predicts.append(decision)
 
     print ('# predicts: %d, # corrects: %d, # 0: %d, # 1: %d, acc: %f, auc: %f'%
-        (len(predicts), len(list(filter(lambda x:x, predicts))), len(list(filter(lambda x:x == 0, flat_predictions))), len(list(filter(lambda x:x == 1, flat_predictions))), accuracy_score(flat_true_labels, flat_predictions), roc_auc_score(flat_ture_labels, flat_predictions)))
+        (len(predicts), len(list(filter(lambda x:x, predicts))), len(list(filter(lambda x:x == 0, flat_predictions))), len(list(filter(lambda x:x == 1, flat_predictions))), accuracy_score(flat_true_labels, flat_predictions), roc_auc_score(flat_true_labels, flat_predictions)))
 
 
