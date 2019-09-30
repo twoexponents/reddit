@@ -1,12 +1,13 @@
 import pandas as pd
 import numpy as np
+from pytorch_transformers import *
 from keras.preprocessing.sequence import pad_sequences
 from sklearn.utils import resample
 
 def processDataFrame(file):
-   df = pd.read_csv(train_set, delimiter='\t', header=None, engine='python', names=['sentence_source', 'label', 'label_notes', 'sentence'])
+   df = pd.read_csv(file, delimiter='\t', header=None, engine='python', names=['sentence_source', 'label', 'label_notes', 'sentence'])
    df = df.dropna()
-   df.label = df.labelastype(int)
+   df.label = df.label.astype(int)
 
    df_class1, df_class2 = df[df.label == 0], df[df.label == 1]
 
