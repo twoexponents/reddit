@@ -13,9 +13,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import sys
 import pickle
-
 from twoLayerNet import TwoLayerNet
-
 from sklearn.utils import resample
 from sklearn.metrics import precision_recall_fscore_support, accuracy_score, roc_auc_score
 #% matplotlib inline
@@ -33,27 +31,22 @@ def flat_accuracy(preds, labels):
 if torch.cuda.is_available():
     print ('cuda is available. use gpu.')
     device = torch.device("cuda")
-    n_gpu = torch.cuda.device_count()
-    torch.cuda.get_device_name(0)
 else:
     print ('cuda is not available. use cpu.')
     device = torch.device("cpu")
+
 # START
-for seq_length in range(1, 3):
+for seq_length in range(10, 11):
     print ('seq_length: %d'%(seq_length))
     train_set = "data/leaf_depth/seq.learn." + str(seq_length) + ".tsv"
     test_set = "data/leaf_depth/seq.test." + str(seq_length) + ".tsv"
 
     df = pd.read_csv(train_set, delimiter='\t', header=None, engine='python', names=['sentence_source', 'label', 'label_notes', 'sentence'])
-    #df = df.fillna(0)
     df = df.dropna()
     df.label = df.label.astype(int)
 
-    #print (df.sample(10))
-
     # jhlim: undersampling training set using dataframe
-    df_class1 = df[df.label == 0]
-    df_class2 = df[df.label == 1]
+    df_class1, df_class2 = df[df.label == 0], df[df.label == 1]
 
     (df_majority, df_minority) = (df_class1, df_class2) if len(df_class1) > len(df_class2) else (df_class2, df_class1)
 
@@ -79,10 +72,9 @@ for seq_length in range(1, 3):
     tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=True)
     tokenized_texts = [tokenizer.tokenize(sent) for sent in sentences]
 
-
     # Set the maximum sequence length. The longest sequence in our training set is 47, but we'll leave room on the end anyway. 
     # In the original paper, the authors used a length of 512.
-    MAX_LEN = 128
+    MAX_LEN = 64
 
     # Pad our input tokens
     #input_ids = pad_sequences([tokenizer.convert_tokens_to_ids(txt) for txt in tokenized_texts],
@@ -141,16 +133,15 @@ for seq_length in range(1, 3):
     validation_dataloader = DataLoader(validation_data, sampler=validation_sampler, batch_size=batch_size)
 
     # Load BertForSequenceClassification, the pretrained BERT model with a single linear classification layer on top. 
-    #model = BertForSequenceClassification.from_pretrained("bert-base-uncased", num_labels=2)
-    model = BertModel.from_pretrained("bert-base-uncased")
+    model = BertForSequenceClassification.from_pretrained("bert-base-uncased", num_labels=2)
+    #model = BertModel.from_pretrained("bert-base-uncased")
 
     # Load model parameters to GPU Buffer
 
     if torch.cuda.is_available():
         model.cuda()
-        print ("1: ", torch.cuda.memory_allocated())
 
-    '''
+    
     param_optimizer = list(model.named_parameters())
     no_decay = ['bias', 'gamma', 'beta']
     optimizer_grouped_parameters = [
@@ -160,68 +151,83 @@ for seq_length in range(1, 3):
          'weight_decay_rate': 0.0}
     ]
     
-
     # This variable contains all of the hyperparemeter information our training loop needs
     optimizer = AdamW(optimizer_grouped_parameters,
                          lr=2e-5,
                          correct_bias=False)
-    '''
+    scheduler = WarmupLinearSchedule(optimizer, warmup_steps=100, t_total=1000)
+    
     # TwoLayerNet
-    N, D_in, H, D_out = batch_size, 768, 100, 2
+    N, D_in, H, D_out = batch_size, 2, 100, 2
     model2 = TwoLayerNet(D_in, H, D_out)
-    optimizer = AdamW(model2.parameters(), lr=0.005)
-    #scheduler = WarmupLinearSchedule(optimizer, warmup_steps=100, t_total=1000)
+    optimizer2 = AdamW(model2.parameters(), lr=0.005)
+    scheduler2 = WarmupLinearSchedule(optimizer2, warmup_steps=100, t_total=1000)
 
     # Store our loss and accuracy for plotting
-    train_loss_set = []
 
     # Number of training epochs (authors recommend between 2 and 4)
-    epochs = 10
+    epochs = 4
 
-    # trange is a tqdm wrapper around the normal python range
+    # 1. Model1 BertForSequenceClassification Training
+    print ('Start model 1 BertForSequenceClassification Training')
+    for _ in trange(epochs, desc="Epoch"):
+        model.train()
+        
+        for step, batch in enumerate(train_dataloader):
+            batch = tuple(t.to(device) for t in batch)
+            b_input_ids, b_input_mask, b_labels, b_extras = batch
+            optimizer.zero_grad()
+            outputs = model(b_input_ids, token_type_ids=None, attention_mask=b_input_mask, labels=b_labels)
+
+            loss, logits = outputs[:2]
+
+            loss.backward()
+            optimizer.step()
+            scheduler.step()
+    
+    model.eval()
+    model = model.to('cpu')
+
+    if torch.cuda.is_available():
+        model2.cuda()
+
+    model2.train()
+    # 2. Model2 TwoLayerNet Training
+    print ('Start model 2 TwoLayerNet Training')
     for _ in trange(epochs, desc="Epoch"):
         try:
-            # Training
-          
-            # Set our model to training mode (as opposed to evaluation mode)
-            #model.train()
-          
-            # Tracking variables
-            tr_loss = 0
-            nb_tr_steps = 0
-
-            if torch.cuda.is_available():
-                model2.cuda()
-
-            model2.train()
+            tr_loss = 0; nb_tr_steps = 0
 
             # Train the data for one epoch
             for step, batch in enumerate(train_dataloader):
-                # Add batch to GPU
-                batch = tuple(t.to(device) for t in batch)
+                #batch = tuple(t.to(device) for t in batch)
                 b_input_ids, b_input_mask, b_labels, b_extras = batch
                 # Clear out the gradients (by default they accumulate)
-                optimizer.zero_grad()
-                # Forward pass
+                optimizer2.zero_grad()
+                outputs = model(b_input_ids, token_type_ids=None, attention_mask=b_input_mask, labels=b_labels)
+
+                loss, logits = outputs[:2]
+                logits = logits.to(device)
+                
                 #loss = model(b_input_ids, token_type_ids=None, attention_mask=b_input_mask, labels=b_labels)
-                #train_loss_set.append(loss.item()) 
-                outputs = model(b_input_ids)
-                last_hidden_states = outputs[0]
-                mean_hidden_states = torch.mean(last_hidden_states, 1, keepdim=False)
+                predicts = model2(logits)
+                #last_hidden_states = outputs[0]
+                #mean_hidden_states = torch.mean(last_hidden_states, 1, keepdim=False)
                 #input = torch.cat((mean_hidden_states, b_extras), dim=1)
                 #input = b_extras
-                input = mean_hidden_states
+                #input = mean_hidden_states
 
-                predicts = model2(input)
-                loss = torch.nn.CrossEntropyLoss()
-                output = loss(predicts, b_labels)
-                output.backward()
-                optimizer.step()
+                #predicts = model2(input)
+                loss_fn = torch.nn.CrossEntropyLoss()
+                loss2 = loss_fn(predicts, b_labels)
+                loss2.backward()
+                optimizer2.step()
+                scheduler2.step()
 
                 #mean_hidden_states = mean_hidden_states.detach().cpu().numpy()
 
                 # Update tracking variables
-                tr_loss += output.item()
+                tr_loss += loss2.item()
                 nb_tr_steps += 1
 
             print("Train loss: {}".format(tr_loss/nb_tr_steps))
@@ -229,7 +235,7 @@ for seq_length in range(1, 3):
             # Validation
 
             # Put model in evaluation mode to evaluate loss on the validation set
-            #model.eval()
+            model2.eval()
 
             # Tracking variables 
             eval_loss, eval_accuracy = 0, 0
@@ -243,16 +249,20 @@ for seq_length in range(1, 3):
                 b_input_ids, b_input_mask, b_labels, b_extras = batch
                 # Telling the model not to compute or store gradients, saving memory and speeding up validation
                 with torch.no_grad():
+                    outputs = model(b_input_ids, token_type_ids=None, attention_mask=b_input_mask, labels=b_labels)
+                    loss, logits = outputs[:2]
+                    logits = logits.to(device)
+
                     # Forward pass, calculate logit predictions
-                    logits = model(b_input_ids)
-                    last_hidden_states = logits[0]
-                    mean_hidden_states = torch.mean(last_hidden_states, 1, keepdim=False)
+                    predicts = model2(logits)
+                    #last_hidden_states = logits[0]
+                    #mean_hidden_states = torch.mean(last_hidden_states, 1, keepdim=False)
                     #input = torch.cat((mean_hidden_states, b_extras), dim=1)
                     #input = b_extras
-                    input = mean_hidden_states
+                    #input = mean_hidden_states
                     
-                    predicts = model2(input)
-
+                    #predicts = model2(input)
+                    
                 # Move logits and labels to CPU
                 predicts = predicts.detach().cpu().numpy()
                 label_ids = b_labels.to('cpu').numpy()
@@ -263,11 +273,9 @@ for seq_length in range(1, 3):
                 nb_eval_steps += 1
 
             print ("Validation Accuracy: {}".format(eval_accuracy/nb_eval_steps))
-        
+
         except Exception as e:
-            print ('Error occured during training')
             print (e)
-            print ('cuda memory: ', torch.cuda.memory_allocated())
             torch.cuda.empty_cache()
             torch.cuda.ipc_collect()
             sys.exit()
@@ -276,8 +284,7 @@ for seq_length in range(1, 3):
 
     df = df.dropna()
     df.label = df.label.astype(int)
-    df_class1 = df[df.label == 0]
-    df_class2 = df[df.label == 1]
+    df_class1, df_class2 = df[df.label == 0], df[df.label == 1]
 
     print ("test dataset [%d]: %d, [%d]: %d"%(df_class1.label.values[0], len(df_class1), df_class2.label.values[0], len(df_class2)))
     # Create sentence and label lists
@@ -332,21 +339,21 @@ for seq_length in range(1, 3):
 
     # Predict
     for batch in prediction_dataloader:
-      # Add batch to GPU
-      batch = tuple(t.to(device) for t in batch)
-      # Unpack the inputs from our dataloader
       b_input_ids, b_input_mask, b_labels, b_extras = batch
       # Telling the model not to compute or store gradients, saving memory and speeding up prediction
       with torch.no_grad():
+        outputs = model(b_input_ids, token_type_ids=None, attention_mask=b_input_mask, labels=b_labels)
+        loss, logits = outputs[:2]
+        logits = logits.to(device)
         # Forward pass, calculate logit predictions
-        logits = model(b_input_ids)
-        last_hidden_states = logits[0]
-        mean_hidden_states = torch.mean(last_hidden_states, 1, keepdim=False)
+        predicts = model2(logits)
+        #last_hidden_states = logits[0]
+        #mean_hidden_states = torch.mean(last_hidden_states, 1, keepdim=False)
         #input = b_extras
         #input = torch.cat((mean_hidden_states, b_extras), dim=1)
-        input = mean_hidden_states
+        #input = mean_hidden_states
 
-        predicts = model2(input)
+        #predicts = model2(input)
 
       # Move logits and labels to CPU
       predicts = predicts.detach().cpu().numpy()
