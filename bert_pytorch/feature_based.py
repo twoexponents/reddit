@@ -16,7 +16,7 @@ from sklearn.metrics import precision_recall_fscore_support, accuracy_score, roc
 
 user_features_fields = ['posts', 'comments']
 input_dim = len(user_features_fields)
-MAX_LEN = 32
+MAX_LEN = 128
 batch_size = 32
 epochs = 4
 
@@ -32,7 +32,7 @@ else:
 
 
 # START
-for seq_length in range(10, 11):
+for seq_length in range(1, 3):
     print ('seq_length: %d'%(seq_length))
     train_set = "data/leaf_depth/seq.learn." + str(seq_length) + ".tsv"
     test_set = "data/leaf_depth/seq.test." + str(seq_length) + ".tsv"
@@ -275,7 +275,6 @@ for seq_length in range(10, 11):
     flat_predictions = np.argmax(flat_predictions, axis=1).flatten()
     flat_true_labels = [item for sublist in true_labels for item in sublist]
 
-
     predicts = []
     for v1, v2 in zip(flat_true_labels, flat_predictions):
         decision = True if v1 == v2 else False
@@ -283,5 +282,5 @@ for seq_length in range(10, 11):
 
     print ('# predicts: %d, # corrects: %d, # 0: %d, # 1: %d, acc: %f, auc: %f'%
         (len(predicts), len(list(filter(lambda x:x, predicts))), len(list(filter(lambda x:x == 0, flat_predictions))), len(list(filter(lambda x:x == 1, flat_predictions))), accuracy_score(flat_true_labels, flat_predictions), roc_auc_score(flat_true_labels, flat_predictions)))
-    
+
 
