@@ -53,7 +53,7 @@ def main(argv):
     for _ in range(1):
         seq_length = input_length
         #f = open('../data/seq.learn.%d.csv'%(seq_length), 'r')
-        f = open('../data/seq.learn.%d.csv'%(seq_length), 'r')
+        f = open('/home/jhlim/data/seq.learn.%d.csv'%(seq_length), 'r')
         learn_instances = list(map(lambda x:x.replace('\n', '').split(','), f.readlines()))
         f.close()
 
@@ -100,7 +100,7 @@ def main(argv):
         print (Counter(list(map(lambda x:x[0], learn_Y))))
 
         #f = open('../data/seq.test.%d.csv'%(seq_length), 'r')
-        f = open('../data/seq.test.%d.csv'%(seq_length), 'r')
+        f = open('/home/jhlim/data/seq.test.%d.csv'%(seq_length), 'r')
         test_instances = list(map(lambda x:x.replace('\n', '').split(','), f.readlines()))
         f.close()
 

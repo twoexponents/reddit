@@ -6,35 +6,29 @@ from keras.preprocessing.sequence import pad_sequences
 from sklearn.model_selection import train_test_split
 from tqdm import tqdm, trange
 import pandas as pd
-import io
 import numpy as np
-import matplotlib.pyplot as plt
-import sys
 import pickle
-
-from sklearn.utils import resample
-from sklearn.metrics import precision_recall_fscore_support, roc_curve, auc
+import mylib
 from twoLayerNet import TwoLayerNet
+from sklearn.utils import resample
+from sklearn.metrics import precision_recall_fscore_support, accuracy_score, roc_auc_score
 
 user_features_fields = ['posts', 'comments']
 input_dim = len(user_features_fields)
+MAX_LEN = 128
+batch_size = 100
+epochs = 50
+
 with open('/home/jhlim/SequencePrediction/data/userfeatures.activity.p', 'rb') as f:
     d_userfeatures = pickle.load(f)
-
-# Function to calculate the accuracy of our predictions vs labels
-def flat_accuracy(preds, labels):
-    pred_flat = np.argmax(preds, axis=1).flatten()
-    labels_flat = labels.flatten()
-    return np.sum(pred_flat == labels_flat) / len(labels_flat)
 
 if torch.cuda.is_available():
     print ('cuda is available. use gpu.')
     device = torch.device("cuda")
-    n_gpu = torch.cuda.device_count()
-    torch.cuda.get_device_name(0)
 else:
     print ('cuda is not available. use cpu.')
     device = torch.device("cpu")
+
 
 # START
 for seq_length in range(1, 6):
@@ -43,40 +37,23 @@ for seq_length in range(1, 6):
     test_set = "data/leaf_depth/seq.test." + str(seq_length) + ".tsv"
 
     df = pd.read_csv(train_set, delimiter='\t', header=None, engine='python', names=['sentence_source', 'label', 'label_notes', 'sentence'])
-    df = df.dropna()
-    df.label = df.label.astype(int) 
-
 
     # jhlim: additional features dataset
     element_list = df.sentence_source.values
     extra_features = []
-    notin = 0
     for element in element_list:
-        user_features = [0.0]*len(user_features_fields)
         if element in d_userfeatures:
             user_features = [float(item) for item in d_userfeatures[element]['user'][0:2]]
         else:
-            user_features = -1.0
+            #user_features = -1.0
+            user_features = None
         extra_features.append(user_features)
     
     df['user'] = extra_features
-    df = df[df.user != -1.0]
+    df = df.dropna()
 
-    # jhlim: undersampling training set using dataframe
-    df_class1 = df[df.label == 0]
-    df_class2 = df[df.label == 1]
-
-    (df_majority, df_minority) = (df_class1, df_class2) if len(df_class1) > len(df_class2) else (df_class2, df_class1)
-
-    print ("train dataset [%d]: %d, [%d]: %d"%(df_majority.label.values[0], len(df_majority), df_minority.label.values[0], len(df_minority)))
-    length_minority = 30000 if len(df_minority) > 30000 else len(df_minority)
-    
-    df_majority_downsampled = resample(df_majority, replace=False, n_samples=length_minority, random_state=123)
-    df_minority_downsampled = resample(df_minority, replace=False, n_samples=length_minority, random_state=123)
-    df_downsampled = pd.concat([df_majority_downsampled, df_minority_downsampled])
-    df = df_downsampled
-
-    print ("train dataset [%d]: %d, [%d]: %d"%(df_majority_downsampled.label.values[0], len(df_majority_downsampled), df_minority_downsampled.label.values[0], len(df_minority_downsampled)))
+    df = mylib.processDataFrame(df, is_training=True)
+    input_ids, attention_masks, labels = mylib.makeBertElements(df, MAX_LEN)
 
     extras = df.user.values
     labels = df.label.values
@@ -91,13 +68,6 @@ for seq_length in range(1, 6):
     validation_labels = torch.tensor(validation_labels)
     train_extras = torch.tensor(train_extras)
     validation_extras = torch.tensor(validation_extras)
-
-
-    # Select a batch size for training. For fine-tuning BERT on a specific task, the authors recommend a batch size of 16 or 32
-    batch_size = 100
-
-    # Create an iterator of our data with torch DataLoader. This helps save on memory during training because, unlike a for loop, 
-    # with an iterator the entire dataset does not need to be loaded into memory
 
     train_data = TensorDataset(train_labels, train_extras)
     train_sampler = RandomSampler(train_data)
@@ -114,9 +84,6 @@ for seq_length in range(1, 6):
 
     # Store our loss and accuracy for plotting
     train_loss_set = []
-
-    # Number of training epochs (authors recommend between 2 and 4)
-    epochs = 50
 
     # trange is a tqdm wrapper around the normal python range
     for _ in trange(epochs, desc="Epoch"):
@@ -181,27 +148,24 @@ for seq_length in range(1, 6):
 
     df = pd.read_csv(test_set, delimiter='\t', header=None, names=['sentence_source', 'label', 'label_notes', 'sentence'], engine='python')
 
-    df = df.dropna()
-    df.label = df.label.astype(int)
+    #df = df.dropna()
+    #df.label = df.label.astype(int)
 
     # jhlim: additional features dataset
     element_list = df.sentence_source.values
     extra_features = []
     for element in element_list:
-        user_features = [0.0]*len(user_features_fields)
         if element in d_userfeatures:
             user_features = [float(item) for item in d_userfeatures[element]['user'][0:2]]
         else:
-            user_features = -1.0
+            user_features = None
         extra_features.append(user_features)
 
     df['user'] = extra_features
-    df = df[df.user != -1.0]
+    df = df.dropna()
 
-    df_class1 = df[df.label == 0]
-    df_class2 = df[df.label == 1]
-
-    print ("test dataset [%d]: %d, [%d]: %d"%(df_class1.label.values[0], len(df_class1), df_class2.label.values[0], len(df_class2)))
+    df = mylib.processDataFrame(df, is_training=False) # Undersampling
+    input_ids, attention_masks, labels = mylib.makeBertElements(df, MAX_LEN)
 
     extras = df.user.values
     labels = df.label.values
@@ -227,7 +191,6 @@ for seq_length in range(1, 6):
       b_labels, b_extras = batch
       with torch.no_grad():
         input = b_extras
-
         predicts = model(input)
 
       # Move logits and labels to CPU
@@ -244,17 +207,10 @@ for seq_length in range(1, 6):
 
     predicts = []
     for v1, v2 in zip(flat_true_labels, flat_predictions):
-        decision = False
-
-        if v1 == v2:
-            decision = True
+        decision = True if v1 == v2 else False
         predicts.append(decision)
 
-    num_predicts = len(predicts)
-    num_corrects = len(list(filter(lambda x:x, predicts)))
-
-    fpr, tpr, thresholds = roc_curve(list(map(int, flat_true_labels)), flat_predictions)
     print ('# predicts: %d, # corrects: %d, # 0: %d, # 1: %d, acc: %f, auc: %f'%
-        (num_predicts, num_corrects, len(list(filter(lambda x:x == 0, flat_predictions))), len(list(filter(lambda x:x == 1, flat_predictions))), num_corrects/num_predicts, auc(fpr,tpr)))
+        (len(predicts), len(list(filter(lambda x:x, predicts))), len(list(filter(lambda x:x == 0, flat_predictions))), len(list(filter(lambda x:x == 1, flat_predictions))), accuracy_score(flat_true_labels, flat_predictions), roc_auc_score(flat_ture_labels, flat_predictions)))
 
 

@@ -6,7 +6,7 @@ import pickle
 import time
 
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import precision_recall_fscore_support, roc_curve, auc
+from sklearn.metrics import precision_recall_fscore_support, roc_auc_score, accuracy_score
 
 from imblearn.over_sampling import SMOTE
 from imblearn.under_sampling import RandomUnderSampler
@@ -35,7 +35,7 @@ def main(argv):
     print ('learning_rate: %f, batch_size %d, epochs %d' % (learning_rate, batch_size, epochs))
 
     # 1.1 load feature dataset
-    with open('../data/userfeatures.activity.p', 'rb') as f:
+    with open('/home/jhlim/SequencePrediction/data/userfeatures.activity.p', 'rb') as f:
         d_userfeatures = pickle.load(f)
 
     print ('features are loaded')
@@ -230,8 +230,7 @@ def main(argv):
                             decision = True
                         predicts.append(decision)
 
-                    fpr, tpr, thresholds = roc_curve(list(map(int, test_Y)), out)
-                    print ('seq_length: %d, # predicts: %d, # corrects: %d, acc: %f, auc: %f' % (seq_length, len(predicts), len(list(filter(lambda x:x, predicts))), len(list((filter(lambda x:x, predicts))))/len(predicts), auc(fpr,tpr)))
+                    print ('seq_length: %d, # predicts: %d, # corrects: %d, acc: %f, auc: %f' % (seq_length, len(predicts), len(list(filter(lambda x:x, predicts))), accuracy_score(test_Y, out), roc_auc_score(test_Y, out)))
                     print (precision_recall_fscore_support(list(map(int, test_Y)), out))
                     test_Y = list(map(lambda x:[x], test_Y))
             

@@ -4,8 +4,7 @@ from pytorch_transformers import *
 from keras.preprocessing.sequence import pad_sequences
 from sklearn.utils import resample
 
-def processDataFrame(file):
-   df = pd.read_csv(file, delimiter='\t', header=None, engine='python', names=['sentence_source', 'label', 'label_notes', 'sentence'])
+def processDataFrame(df, is_training):
    df = df.dropna()
    df.label = df.label.astype(int)
 
@@ -13,9 +12,9 @@ def processDataFrame(file):
 
    (df_majority, df_minority) = (df_class1, df_class2) if len(df_class1) > len(df_class2) else (df_class2, df_class1)
 
-   print ('train datset [%d]: %d, [%d]: %d'%(df_majority.label.values[0], len(df_majority), df_minority.label.values[0], len(df_minority)))
 
-   if 'learn' in file:
+   if is_training:
+      print ('train datset [%d]: %d, [%d]: %d'%(df_majority.label.values[0], len(df_majority), df_minority.label.values[0], len(df_minority)))
       length_minority = 20000 if len(df_minority) > 20000 else len(df_minority)
 
       df_majority_downsampled = resample(df_majority, replace=False, n_samples=length_minority, random_state=123)
@@ -25,6 +24,8 @@ def processDataFrame(file):
       df = df_downsampled
 
       print ('train datset [%d]: %d, [%d]: %d'%(df_majority_downsampled.label.values[0], len(df_majority_downsampled), df_minority_downsampled.label.values[0], len(df_minority_downsampled)))
+   else:   
+      print ('test datset [%d]: %d, [%d]: %d'%(df_majority.label.values[0], len(df_majority), df_minority.label.values[0], len(df_minority)))
 
    return df
 

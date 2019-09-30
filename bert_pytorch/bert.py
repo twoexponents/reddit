@@ -15,6 +15,7 @@ user_features_fields = ['posts', 'comments']
 input_dim = len(user_features_fields)
 MAX_LEN = 128
 batch_size = 32
+epochs = 4 # Number of training epochs (authors recommend between 2 and 4)
 
 if torch.cuda.is_available():
     print ('cuda is available. use gpu.')
@@ -30,7 +31,8 @@ for seq_length in range(1, 10):
     train_set = "data/leaf_depth/seq.learn." + str(seq_length) + ".tsv"
     test_set = "data/leaf_depth/seq.test." + str(seq_length) + ".tsv"
 
-    df = mylib.processDataFrame(train_set) # Undersampling
+    df = pd.read_csv(train_set, delimiter='\t', header=None, engine='python', names=['sentence_source', 'label', 'label_notes', 'sentence'])
+    df = mylib.processDataFrame(df, is_training=True) # Undersampling
     input_ids, attention_masks, labels = mylib.makeBertElements(df, MAX_LEN)
 
     # Use train_test_split to split our data into train and validation sets for training
@@ -76,8 +78,6 @@ for seq_length in range(1, 10):
     optimizer = AdamW(optimizer_grouped_parameters, lr=2e-5, correct_bias=False)
     #scheduler = WarmupLinearSchedule(optimizer, warmup_steps=100, t_total=1000)
 
-    # Number of training epochs (authors recommend between 2 and 4)
-    epochs = 4
 
     # trange is a tqdm wrapper around the normal python range
     for _ in trange(epochs, desc="Epoch"):
@@ -145,7 +145,8 @@ for seq_length in range(1, 10):
 
         print("Validation Accuracy: {}".format(eval_accuracy/nb_eval_steps))
 
-    df = mylib.processDataFrame(test_set)
+    df = pd.read_csv(test_set, delimiter='\t', header=None, engine='python', names=['sentence_source', 'label', 'label_notes', 'sentence'])
+    df = mylib.processDataFrame(test_set, is_training=False)
     input_ids, attention_masks, labels = mylib.makeBertElements(df, MAX_LEN)
 
     prediction_inputs = torch.tensor(input_ids)
