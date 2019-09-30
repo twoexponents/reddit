@@ -20,7 +20,7 @@ MAX_LEN = 128
 batch_size = 32
 epochs = 4
 
-with open('/home/jhlim/SequencePrediction/data/userfeatures.activity.p', 'rb') as f:
+with open('features/userfeatures.activity.p', 'rb') as f:
     d_userfeatures = pickle.load(f)
 
 if torch.cuda.is_available():
