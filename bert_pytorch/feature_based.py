@@ -296,6 +296,7 @@ for seq_length in range(2, 7):
 
     del model, model2, outputs
     torch.cuda.empty_cache()
+    torch.cuda.ipc_collect()
 
 
 
