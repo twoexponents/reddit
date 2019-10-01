@@ -13,7 +13,9 @@ def processDataFrame(df, is_training):
    (df_majority, df_minority) = (df_class1, df_class2) if len(df_class1) > len(df_class2) else (df_class2, df_class1)
 
 
-   if is_training:
+   if not is_training:
+      print ('test datset [%d]: %d, [%d]: %d'%(df_majority.label.values[0], len(df_majority), df_minority.label.values[0], len(df_minority)))
+   else:
       print ('train datset [%d]: %d, [%d]: %d'%(df_majority.label.values[0], len(df_majority), df_minority.label.values[0], len(df_minority)))
       length_minority = 20000 if len(df_minority) > 20000 else len(df_minority)
 
@@ -24,10 +26,55 @@ def processDataFrame(df, is_training):
       df = df_downsampled
 
       print ('train datset [%d]: %d, [%d]: %d'%(df_majority_downsampled.label.values[0], len(df_majority_downsampled), df_minority_downsampled.label.values[0], len(df_minority_downsampled)))
-   else:   
-      print ('test datset [%d]: %d, [%d]: %d'%(df_majority.label.values[0], len(df_majority), df_minority.label.values[0], len(df_minority)))
 
    return df
+
+def processDataFrameVader(df, is_training):
+    df = df.dropna()
+    
+    df.loc[df.label >= 0.05, 'label'] = 2.0
+    df.loc[(df.label > -0.05) & (df.label < 0.05), 'label'] = 1.0
+    df.loc[df.label <= -0.05, 'label'] = 0.0
+    
+    df.label = df.label.astype(int)
+        
+    df_class0 = df[df.label == 0] # negative
+    df_class1 = df[df.label == 1] # neutral
+    df_class2 = df[df.label == 2] # positive
+    
+    if len(df_class1) > len(df_class2) and len(df_class0) > len(df_class2):
+        df_majority1 = df_class1
+        df_majority2 = df_class0
+        df_minority = df_class2
+    elif len(df_class1) > len(df_class0) and len(df_class2) > len(df_class0):
+        df_majority1 = df_class1
+        df_majority2 = df_class2
+        df_minority = df_class0
+    else:
+        df_majority1 = df_class0
+        df_majority2 = df_class2
+        df_minority = df_class1
+
+    if not is_training:
+        print ("test dataset [%d]: %d, [%d]: %d, [%d]: %d"%(df_majority1.label.values[0], len(df_majority1), df_majority2.label.values[0], len(df_majority2), df_minority.label.values[0], len(df_minority)))
+    else:
+        print ("train dataset [%d]: %d, [%d]: %d, [%d]: %d"%(df_majority1.label.values[0], len(df_majority1), df_majority2.label.values[0], len(df_majority2), df_minority.label.values[0], len(df_minority)))
+
+        df_majority1_downsampled = resample(df_majority1,
+                                        replace=False,
+                                        n_samples=len(df_minority),
+                                        random_state=123)
+        df_majority2_downsampled = resample(df_majority2,
+                                        replace=False,
+                                        n_samples=len(df_minority),
+                                        random_state=123)
+        df_downsampled = pd.concat([df_majority1_downsampled, df_majority2_downsampled, df_minority])
+
+        df = df_downsampled
+
+        print ("train dataset [%d]: %d, [%d]: %d, [%d]: %d"%(df_majority1_downsampled.label.values[0], len(df_majority1_downsampled), df_majority2_downsampled.label.values[0], len(df_majority2_downsampled), df_minority.label.values[0], len(df_minority)))
+
+    return df
 
 def makeBertElements(df, MAX_LEN):
     # Create sentence and label lists

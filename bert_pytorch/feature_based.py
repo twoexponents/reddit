@@ -18,7 +18,9 @@ user_features_fields = ['posts', 'comments']
 input_dim = len(user_features_fields)
 MAX_LEN = 128
 batch_size = 32
+batch_size2 = 100
 epochs = 4
+epochs2 = 4
 
 with open('features/userfeatures.activity.p', 'rb') as f:
     d_userfeatures = pickle.load(f)
@@ -32,30 +34,41 @@ else:
 
 
 # START
-for seq_length in range(1, 3):
+for seq_length in range(2, 7):
     print ('seq_length: %d'%(seq_length))
     train_set = "data/leaf_depth/seq.learn." + str(seq_length) + ".tsv"
     test_set = "data/leaf_depth/seq.test." + str(seq_length) + ".tsv"
 
     df = pd.read_csv(train_set, delimiter='\t', header=None, engine='python', names=['sentence_source', 'label', 'label_notes', 'sentence'])
-    df = mylib.processDataFrame(df, is_training=True) # Undersampling
-    input_ids, attention_masks, labels = mylib.makeBertElements(df, MAX_LEN)
 
     # jhlim: additional features dataset
     element_list = df.sentence_source.values
     extra_features = []
     for element in element_list:
-        user_features = [0.0]*len(user_features_fields)
         if element in d_userfeatures:
             user_features = d_userfeatures[element]['user'][0:2]
+        else:
+            user_features = None
 
         extra_features.append(user_features)
 
+    df['user'] = extra_features
+    df = df.dropna()
+
+
+    df = mylib.processDataFrame(df, is_training=True)
+    input_ids, attention_masks, labels = mylib.makeBertElements(df, MAX_LEN)
+
+    extras = df.user.values
+    labels = df.label.values
+
     # Use train_test_split to split our data into train and validation sets for training
-    train_inputs, validation_inputs, train_labels, validation_labels, train_extras, validation_extras = train_test_split(input_ids, labels, extra_features, random_state=2018, test_size=0.1)
+    train_inputs, validation_inputs, train_labels, validation_labels, train_extras, validation_extras = train_test_split(input_ids, labels, extras, random_state=2018, test_size=0.1)
     train_masks, validation_masks, _, _ = train_test_split(attention_masks, input_ids,
                                                  random_state=2018, test_size=0.1)
-
+    train_extras = [item for item in train_extras]
+    validation_extras = [item for item in validation_extras]
+        
     # Convert all of our data into torch tensors, the required datatype for our model
     train_inputs = torch.tensor(train_inputs)
     validation_inputs = torch.tensor(validation_inputs)
@@ -66,8 +79,6 @@ for seq_length in range(1, 3):
     train_extras = torch.tensor(train_extras)
     validation_extras = torch.tensor(validation_extras)
 
-    # Create an iterator of our data with torch DataLoader. This helps save on memory during training because, unlike a for loop, 
-    # with an iterator the entire dataset does not need to be loaded into memory
     train_data = TensorDataset(train_inputs, train_masks, train_labels, train_extras)
     train_sampler = RandomSampler(train_data)
     train_dataloader = DataLoader(train_data, sampler=train_sampler, batch_size=batch_size)
@@ -97,7 +108,7 @@ for seq_length in range(1, 3):
     scheduler = WarmupLinearSchedule(optimizer, warmup_steps=100, t_total=1000)
     
     # TwoLayerNet
-    N, D_in, H, D_out = batch_size, 2, 100, 2
+    N, D_in, H, D_out = batch_size2, 4, 100, 2
     model2 = TwoLayerNet(D_in, H, D_out)
     optimizer2 = AdamW(model2.parameters(), lr=0.005)
     scheduler2 = WarmupLinearSchedule(optimizer2, warmup_steps=100, t_total=1000)
@@ -129,90 +140,86 @@ for seq_length in range(1, 3):
     model2.train()
     # 2. Model2 TwoLayerNet Training
     print ('Start model 2 TwoLayerNet Training')
-    for _ in trange(epochs, desc="Epoch"):
-        try:
-            tr_loss = 0; nb_tr_steps = 0
+    for _ in trange(epochs2, desc="Epoch"):
+        tr_loss = 0; nb_tr_steps = 0
 
-            # Train the data for one epoch
-            for step, batch in enumerate(train_dataloader):
-                #batch = tuple(t.to(device) for t in batch)
-                b_input_ids, b_input_mask, b_labels, b_extras = batch
-                # Clear out the gradients (by default they accumulate)
-                optimizer2.zero_grad()
-                with torch.no_grad():
-                    outputs = model(b_input_ids, token_type_ids=None, attention_mask=b_input_mask, labels=b_labels)
+        # Train the data for one epoch
+        for step, batch in enumerate(train_dataloader):
+            #batch = tuple(t.to(device) for t in batch)
+            b_input_ids, b_input_mask, b_labels, b_extras = batch
+            # Clear out the gradients (by default they accumulate)
+            optimizer2.zero_grad()
+            with torch.no_grad():
+                outputs = model(b_input_ids, token_type_ids=None, attention_mask=b_input_mask, labels=b_labels)
+            loss, logits = outputs[:2] # At first, try to use logits only (dimension 2)
+            logits = logits.to(device)
+            b_labels = b_labels.to(device)
+            b_extras = b_extras.to(device)
+            b_extras = b_extras.float()
+            
+            #loss = model(b_input_ids, token_type_ids=None, attention_mask=b_input_mask, labels=b_labels)
+            predicts = model2(torch.cat((logits, b_extras), dim=1))
+            #last_hidden_states = outputs[0]
+            #mean_hidden_states = torch.mean(last_hidden_states, 1, keepdim=False)
+            #input = torch.cat((mean_hidden_states, b_extras), dim=1)
+            #input = b_extras
+            #input = mean_hidden_states
+
+            #predicts = model2(input)
+            loss_fn = torch.nn.CrossEntropyLoss()
+            loss2 = loss_fn(predicts, b_labels)
+            loss2.backward()
+            optimizer2.step()
+            scheduler2.step()
+
+            #mean_hidden_states = mean_hidden_states.detach().cpu().numpy()
+
+            # Update tracking variables
+            tr_loss += loss2.item()
+            nb_tr_steps += 1
+
+        print("Train loss: {}".format(tr_loss/nb_tr_steps))
+
+        # Validation
+
+        # Put model in evaluation mode to evaluate loss on the validation set
+        model2.eval()
+
+        # Tracking variables 
+        eval_loss, eval_accuracy = 0, 0
+        nb_eval_steps, nb_eval_examples = 0, 0
+
+        # Evaluate data for one epoch
+        for batch in validation_dataloader:
+            #batch = tuple(t.to(device) for t in batch)
+            b_input_ids, b_input_mask, b_labels, b_extras = batch
+            with torch.no_grad():
+                outputs = model(b_input_ids, token_type_ids=None, attention_mask=b_input_mask, labels=b_labels)
                 loss, logits = outputs[:2]
                 logits = logits.to(device)
-                b_labels = b_labels.to(device)
-                
-                #loss = model(b_input_ids, token_type_ids=None, attention_mask=b_input_mask, labels=b_labels)
-                predicts = model2(logits)
-                #last_hidden_states = outputs[0]
+                b_extras = b_extras.to(device)
+                b_extras = b_extras.float()
+
+                # Forward pass, calculate logit predictions
+                predicts = model2(torch.cat((logits, b_extras), dim=1))
+                #last_hidden_states = logits[0]
                 #mean_hidden_states = torch.mean(last_hidden_states, 1, keepdim=False)
                 #input = torch.cat((mean_hidden_states, b_extras), dim=1)
                 #input = b_extras
                 #input = mean_hidden_states
-
+                
                 #predicts = model2(input)
-                loss_fn = torch.nn.CrossEntropyLoss()
-                loss2 = loss_fn(predicts, b_labels)
-                loss2.backward()
-                optimizer2.step()
-                scheduler2.step()
+                
+            # Move logits and labels to CPU
+            predicts = predicts.detach().cpu().numpy()
+            label_ids = b_labels.to('cpu').numpy()
 
-                #mean_hidden_states = mean_hidden_states.detach().cpu().numpy()
+            tmp_eval_accuracy = mylib.flat_accuracy(predicts, label_ids)
 
-                # Update tracking variables
-                tr_loss += loss2.item()
-                nb_tr_steps += 1
+            eval_accuracy += tmp_eval_accuracy
+            nb_eval_steps += 1
 
-            print("Train loss: {}".format(tr_loss/nb_tr_steps))
-
-            # Validation
-
-            # Put model in evaluation mode to evaluate loss on the validation set
-            model2.eval()
-
-            # Tracking variables 
-            eval_loss, eval_accuracy = 0, 0
-            nb_eval_steps, nb_eval_examples = 0, 0
-
-            # Evaluate data for one epoch
-            for batch in validation_dataloader:
-                #batch = tuple(t.to(device) for t in batch)
-                b_input_ids, b_input_mask, b_labels, b_extras = batch
-                with torch.no_grad():
-                    outputs = model(b_input_ids, token_type_ids=None, attention_mask=b_input_mask, labels=b_labels)
-                    loss, logits = outputs[:2]
-                    logits = logits.to(device)
-                    b_labels = b_labels.to(device) 
-
-                    # Forward pass, calculate logit predictions
-                    predicts = model2(logits)
-                    #last_hidden_states = logits[0]
-                    #mean_hidden_states = torch.mean(last_hidden_states, 1, keepdim=False)
-                    #input = torch.cat((mean_hidden_states, b_extras), dim=1)
-                    #input = b_extras
-                    #input = mean_hidden_states
-                    
-                    #predicts = model2(input)
-                    
-                # Move logits and labels to CPU
-                predicts = predicts.detach().cpu().numpy()
-                label_ids = b_labels.to('cpu').numpy()
-
-                tmp_eval_accuracy = mylib.flat_accuracy(predicts, label_ids)
-
-                eval_accuracy += tmp_eval_accuracy
-                nb_eval_steps += 1
-
-            print ("Validation Accuracy: {}".format(eval_accuracy/nb_eval_steps))
-
-        except Exception as e:
-            print (e)
-            torch.cuda.empty_cache()
-            torch.cuda.ipc_collect()
-            sys.exit()
+        print ("Validation Accuracy: {}".format(eval_accuracy/nb_eval_steps))
 
     df = pd.read_csv(test_set, delimiter='\t', header=None, engine='python', names=['sentence_source', 'label', 'label_notes', 'sentence'])
     df = mylib.processDataFrame(df, is_training=False)
@@ -226,6 +233,8 @@ for seq_length in range(1, 3):
             user_features = d_userfeatures[element]['user'][0:2]
 
         extra_features.append(user_features)
+    
+    extras_features = [item for item in extra_features]
 
     prediction_inputs = torch.tensor(input_ids)
     prediction_masks = torch.tensor(attention_masks)
@@ -252,9 +261,11 @@ for seq_length in range(1, 3):
         outputs = model(b_input_ids, token_type_ids=None, attention_mask=b_input_mask, labels=b_labels)
         loss, logits = outputs[:2]
         logits = logits.to(device)
+        b_extras = b_extras.to(device)
+        b_extras = b_extras.float()
 
         # Forward pass, calculate logit predictions
-        predicts = model2(logits)
+        predicts = model2(torch.cat((logits, b_extras), dim=1))
         #last_hidden_states = logits[0]
         #mean_hidden_states = torch.mean(last_hidden_states, 1, keepdim=False)
         #input = b_extras
@@ -282,5 +293,9 @@ for seq_length in range(1, 3):
 
     print ('# predicts: %d, # corrects: %d, # 0: %d, # 1: %d, acc: %f, auc: %f'%
         (len(predicts), len(list(filter(lambda x:x, predicts))), len(list(filter(lambda x:x == 0, flat_predictions))), len(list(filter(lambda x:x == 1, flat_predictions))), accuracy_score(flat_true_labels, flat_predictions), roc_auc_score(flat_true_labels, flat_predictions)))
+
+    del model, model2, outputs
+    torch.cuda.empty_cache()
+
 
 

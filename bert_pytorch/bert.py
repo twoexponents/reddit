@@ -26,7 +26,7 @@ else:
 
 
 # START
-for seq_length in range(1, 10):
+for seq_length in range(1, 11):
     print ('seq_length: %d'%(seq_length))
     train_set = "data/leaf_depth/seq.learn." + str(seq_length) + ".tsv"
     test_set = "data/leaf_depth/seq.test." + str(seq_length) + ".tsv"
