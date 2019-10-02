@@ -33,7 +33,7 @@ for seq_length in range(1, 11):
 
     df = pd.read_csv(train_set, delimiter='\t', header=None, engine='python', names=['sentence_source', 'label', 'label_notes', 'sentence'])
     df = mylib.processDataFrame(df, is_training=True) # Undersampling
-    input_ids, attention_masks, labels = mylib.makeBertElements(df, MAX_LEN)
+    input_ids, attention_masks, labels = mylib.makeXlnetElements(df, MAX_LEN)
 
     # Use train_test_split to split our data into train and validation sets for training
     train_inputs, validation_inputs, train_labels, validation_labels = train_test_split(input_ids, labels, random_state=2018, test_size=0.1)
