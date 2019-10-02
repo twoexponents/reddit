@@ -147,7 +147,7 @@ for seq_length in range(1, 11):
 
     df = pd.read_csv(test_set, delimiter='\t', header=None, engine='python', names=['sentence_source', 'label', 'label_notes', 'sentence'])
     df = mylib.processDataFrame(test_set, is_training=False)
-    input_ids, attention_masks, labels = mylib.makeBertElements(df, MAX_LEN)
+    input_ids, attention_masks, labels = mylib.makeXlnetElements(df, MAX_LEN)
 
     prediction_inputs = torch.tensor(input_ids)
     prediction_masks = torch.tensor(attention_masks)
