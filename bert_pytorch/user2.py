@@ -16,10 +16,10 @@ from sklearn.metrics import precision_recall_fscore_support, accuracy_score, roc
 user_features_fields = ['posts', 'comments']
 input_dim = len(user_features_fields)
 MAX_LEN = 128
-batch_size = 100
-epochs = 50
+batch_size = 32 
+epochs = 200
 
-with open('/home/jhlim/SequencePrediction/data/userfeatures.activity.p', 'rb') as f:
+with open('/home/jhlim/data/userfeatures.activity.p', 'rb') as f:
     d_userfeatures = pickle.load(f)
 
 if torch.cuda.is_available():
@@ -86,7 +86,7 @@ for seq_length in range(1, 6):
     train_loss_set = []
 
     # trange is a tqdm wrapper around the normal python range
-    for _ in trange(epochs, desc="Epoch"):
+    for e in trange(epochs, desc="Epoch"):
         # Training
       
         # Tracking variables
@@ -115,7 +115,6 @@ for seq_length in range(1, 6):
             tr_loss += loss.item()
             nb_tr_steps += 1
 
-        print("Train loss: {}".format(tr_loss/nb_tr_steps))
 
         # Put model in evaluation mode to evaluate loss on the validation set
         model.eval()
@@ -144,7 +143,9 @@ for seq_length in range(1, 6):
             eval_accuracy += tmp_eval_accuracy
             nb_eval_steps += 1
 
-        print("Validation Accuracy: {}".format(eval_accuracy/nb_eval_steps))
+        if (e % 100 == 0): 
+            print("Train loss: {}".format(tr_loss/nb_tr_steps))
+            print("Validation Accuracy: {}".format(eval_accuracy/nb_eval_steps))
 
     df = pd.read_csv(test_set, delimiter='\t', header=None, names=['sentence_source', 'label', 'label_notes', 'sentence'], engine='python')
 

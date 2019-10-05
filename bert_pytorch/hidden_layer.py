@@ -17,20 +17,12 @@ from sklearn.metrics import precision_recall_fscore_support, accuracy_score, roc
 user_features_fields = ['posts', 'comments']
 input_dim = len(user_features_fields)
 MAX_LEN = 128
-<<<<<<< HEAD
 batch_size = 16
-=======
-batch_size = 32
->>>>>>> 4fba2d87849b2cc8b80d16d033d2595c4e69d52a
 batch_size2 = 100
 epochs = 4
 epochs2 = 4
 
-<<<<<<< HEAD
 with open('/home/jhlim/data/userfeatures.activity.p', 'rb') as f:
-=======
-with open('features/userfeatures.activity.p', 'rb') as f:
->>>>>>> 4fba2d87849b2cc8b80d16d033d2595c4e69d52a
     d_userfeatures = pickle.load(f)
 
 if torch.cuda.is_available():
@@ -42,11 +34,7 @@ else:
 
 
 # START
-<<<<<<< HEAD
 for seq_length in range(1, 2):
-=======
-for seq_length in range(2, 7):
->>>>>>> 4fba2d87849b2cc8b80d16d033d2595c4e69d52a
     print ('seq_length: %d'%(seq_length))
     train_set = "data/leaf_depth/seq.learn." + str(seq_length) + ".tsv"
     test_set = "data/leaf_depth/seq.test." + str(seq_length) + ".tsv"
@@ -99,7 +87,6 @@ for seq_length in range(2, 7):
     validation_sampler = SequentialSampler(validation_data)
     validation_dataloader = DataLoader(validation_data, sampler=validation_sampler, batch_size=batch_size)
 
-<<<<<<< HEAD
     try:
         model = BertForSequenceClassification.from_pretrained('./models/len' + str(seq_length) + '/') # load
         exist = True
@@ -156,55 +143,6 @@ for seq_length in range(2, 7):
     model2 = TwoLayerNet(D_in, H, D_out)
     optimizer2 = AdamW(model2.parameters(), lr=0.005)
     #scheduler2 = WarmupLinearSchedule(optimizer2, warmup_steps=100, t_total=1000)
-=======
-    # Load BertForSequenceClassification, the pretrained BERT model with a single linear classification layer on top. 
-    model = BertForSequenceClassification.from_pretrained("bert-base-uncased", num_labels=2)
-
-    # Load model parameters to GPU Buffer
-    if torch.cuda.is_available():
-        model.cuda()
-
-    param_optimizer = list(model.named_parameters())
-    no_decay = ['bias', 'gamma', 'beta']
-    optimizer_grouped_parameters = [
-        {'params': [p for n, p in param_optimizer if not any(nd in n for nd in no_decay)],
-         'weight_decay_rate': 0.01},
-        {'params': [p for n, p in param_optimizer if any(nd in n for nd in no_decay)],
-         'weight_decay_rate': 0.0}
-    ]
-    
-    # This variable contains all of the hyperparemeter information our training loop needs
-    optimizer = AdamW(optimizer_grouped_parameters, lr=2e-5, correct_bias=False)
-    scheduler = WarmupLinearSchedule(optimizer, warmup_steps=100, t_total=1000)
-    
-    # TwoLayerNet
-    N, D_in, H, D_out = batch_size2, 4, 100, 2
-    model2 = TwoLayerNet(D_in, H, D_out)
-    optimizer2 = AdamW(model2.parameters(), lr=0.005)
-    scheduler2 = WarmupLinearSchedule(optimizer2, warmup_steps=100, t_total=1000)
-
-    
-    # 1. Model1 BertForSequenceClassification Training
-    print ('Start model 1 BertForSequenceClassification Training')
-    for _ in trange(epochs, desc="Epoch"):
-        model.train()
-        
-        for step, batch in enumerate(train_dataloader):
-            batch = tuple(t.to(device) for t in batch)
-            b_input_ids, b_input_mask, b_labels, b_extras = batch
-            optimizer.zero_grad()
-            outputs = model(b_input_ids, token_type_ids=None, attention_mask=b_input_mask, labels=b_labels)
-
-            loss, logits = outputs[:2]
-
-            loss.backward()
-            optimizer.step()
-            scheduler.step()
-    
-    model.eval()
-    model = model.to('cpu')
-
->>>>>>> 4fba2d87849b2cc8b80d16d033d2595c4e69d52a
     if torch.cuda.is_available():
         model2.cuda()
 
@@ -241,11 +179,7 @@ for seq_length in range(2, 7):
             loss2 = loss_fn(predicts, b_labels)
             loss2.backward()
             optimizer2.step()
-<<<<<<< HEAD
             #scheduler2.step()
-=======
-            scheduler2.step()
->>>>>>> 4fba2d87849b2cc8b80d16d033d2595c4e69d52a
 
             #mean_hidden_states = mean_hidden_states.detach().cpu().numpy()
 
@@ -328,10 +262,7 @@ for seq_length in range(2, 7):
     # Tracking variables
     predictions , true_labels = [], []
 
-<<<<<<< HEAD
     print ('Start a prediction')
-=======
->>>>>>> 4fba2d87849b2cc8b80d16d033d2595c4e69d52a
     # Predict
     for batch in prediction_dataloader:
       b_input_ids, b_input_mask, b_labels, b_extras = batch
@@ -377,8 +308,3 @@ for seq_length in range(2, 7):
     torch.cuda.empty_cache()
     torch.cuda.ipc_collect()
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 4fba2d87849b2cc8b80d16d033d2595c4e69d52a

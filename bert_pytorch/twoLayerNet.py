@@ -8,6 +8,7 @@ class TwoLayerNet(nn.Module):
         # add batch normalization soon
         self.linear1 = nn.Linear(D_in, H)
         self.bn1 = nn.BatchNorm1d(H)
+        #self.linear2 = nn.Linear(H, D_out)
         self.linear2 = nn.Linear(H, H)
         self.bn2 = nn.BatchNorm1d(H)
         self.linear3 = nn.Linear(H, D_out)

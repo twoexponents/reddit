@@ -16,14 +16,18 @@ input_dim = len(user_features_fields)
 MAX_LEN = 128
 batch_size = 32
 epochs = 4 # Number of training epochs (authors recommend between 2 and 4)
+cuda_available = False
 
+'''
 if torch.cuda.is_available():
     print ('cuda is available. use gpu.')
+    cuda_available = True
     device = torch.device("cuda")
 else:
     print ('cuda is not available. use cpu.')
     device = torch.device("cpu")
-
+'''
+device = torch.device("cpu")
 
 # START
 for seq_length in range(1, 11):
@@ -59,10 +63,10 @@ for seq_length in range(1, 11):
     validation_dataloader = DataLoader(validation_data, sampler=validation_sampler, batch_size=batch_size)
 
     # Load BertForSequenceClassification, the pretrained BERT model with a single linear classification layer on top. 
-    model = XLNetForSequenceClassification.from_pretrained("xlnet-base-uncased", num_labels=2)
+    model = XLNetForSequenceClassification.from_pretrained("xlnet-base-cased", num_labels=2)
 
     # Load model parameters to GPU Buffer
-    if torch.cuda.is_available():
+    if cuda_available:
         model.cuda()
 
     param_optimizer = list(model.named_parameters())

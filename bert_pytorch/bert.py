@@ -1,8 +1,6 @@
-import tensorflow as tf
 import torch
 from pytorch_transformers import *
 from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler
-from keras.preprocessing.sequence import pad_sequences
 from sklearn.model_selection import train_test_split
 from tqdm import tqdm, trange
 import pandas as pd
@@ -11,8 +9,6 @@ import pickle
 import mylib
 from sklearn.metrics import precision_recall_fscore_support, accuracy_score, roc_auc_score
 
-user_features_fields = ['posts', 'comments']
-input_dim = len(user_features_fields)
 MAX_LEN = 128
 batch_size = 32
 epochs = 4 # Number of training epochs (authors recommend between 2 and 4)
@@ -26,7 +22,7 @@ else:
 
 
 # START
-for seq_length in range(1, 11):
+for seq_length in range(1, 6):
     print ('seq_length: %d'%(seq_length))
     train_set = "data/leaf_depth/seq.learn." + str(seq_length) + ".tsv"
     test_set = "data/leaf_depth/seq.test." + str(seq_length) + ".tsv"
@@ -146,7 +142,7 @@ for seq_length in range(1, 11):
         print("Validation Accuracy: {}".format(eval_accuracy/nb_eval_steps))
 
     df = pd.read_csv(test_set, delimiter='\t', header=None, engine='python', names=['sentence_source', 'label', 'label_notes', 'sentence'])
-    df = mylib.processDataFrame(test_set, is_training=False)
+    df = mylib.processDataFrame(df, is_training=False)
     input_ids, attention_masks, labels = mylib.makeBertElements(df, MAX_LEN)
 
     prediction_inputs = torch.tensor(input_ids)

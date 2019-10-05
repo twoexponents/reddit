@@ -84,7 +84,7 @@ def makeXlnetElements(df, MAX_LEN):
     sentences = ["[CLS] " + str(sentence) + " [SEP]" for sentence in sentences]
     labels = df.label.values
 
-    tokenizer = XLNetTokenizer.from_pretrained('xlnet-base-uncased', do_lower_case=True)
+    tokenizer = XLNetTokenizer.from_pretrained('xlnet-base-cased')
     tokenized_texts = [tokenizer.tokenize(sent) for sent in sentences]
 
     # Set the maximum sequence length. The longest sequence in our training set is 47, but we'll leave room on the end anyway. 

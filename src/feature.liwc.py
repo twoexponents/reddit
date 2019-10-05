@@ -1,4 +1,3 @@
-from __future__ import division
 import tensorflow as tf
 import numpy as np
 import sys
@@ -42,18 +41,17 @@ epochs = 50
 def main(argv):
     start_time = time.time()
 
-    print 'learning_rate: %f, batch_size %d, epochs %d' %(learning_rate, batch_size, epochs)
+    print ('learning_rate: %f, batch_size %d, epochs %d' %(learning_rate, batch_size, epochs))
 
     # 1.1 load feature dataset
-    d_features = pickle.load(open('../data/contentfeatures.others.p', 'r'))
-    #d_features = pickle.load(open('/home/jhlim/data/contentfeatures.others.p', 'r'))
+    d_features = pickle.load(open('/home/jhlim/data/contentfeatures.others.p', 'rb'))
     #d_w2vfeatures = pickle.load(open('../data/contentfeatures.googlenews.posts.p', 'r'))
     #d_userfeatures = pickle.load(open('../data/userfeatures.activity.p', 'r'))
 
-    print 'features are loaded'
+    print ('features are loaded')
 
-    for seq_length in range(1, 11):
-        f = open('../data/seq.learn.%d.csv'%(seq_length), 'r')
+    for seq_length in range(2, 7):
+        f = open('/home/jhlim/data/seq.learn.%d.csv'%(seq_length), 'r')
         learn_instances = map(lambda x:x.replace('\n', '').split(','), f.readlines())
         f.close()
 
@@ -83,9 +81,9 @@ def main(argv):
                 # print e
                 continue
 
-        print 'size of learn_Y: %d' % len(learn_Y)
+        print ('size of learn_Y: %d' % len(learn_Y))
 
-        print Counter(learn_Y) # shows the number of '0' and '1'
+        print (Counter(learn_Y)) # shows the number of '0' and '1'
 
         learn_X_reshape = np.reshape(np.array(learn_X), [-1, seq_length*input_dim]) # row num = file's row num
         sample_model = RandomUnderSampler(random_state=42) # random_state = seed. undersampling: diminish majority class
@@ -100,9 +98,9 @@ def main(argv):
         learn_X = map(itemgetter(0), matrix)
         learn_Y = map(lambda x:[x], map(itemgetter(1), matrix))
 
-        print Counter(map(lambda x:x[0], learn_Y))
+        print (Counter(map(lambda x:x[0], learn_Y)))
 
-        f = open('../data/seq.test.%d.csv'%(seq_length), 'r')
+        f = open('/home/jhlim/data/seq.test.%d.csv'%(seq_length), 'r')
         test_instances = map(lambda x:x.replace('\n', '').split(','), f.readlines())
         f.close()
 
@@ -120,7 +118,6 @@ def main(argv):
                     if d_features.has_key(element):
                         liwc_features = d_features[element]['liwc']
                     else:
-                        #print 'It does not contain the element'
                         continue
 
                     if liwc_features != []:
@@ -136,7 +133,7 @@ def main(argv):
         test_Y = map(lambda x:[x], test_Y)
 
         
-        print 'Data loading Complete learn:%d, test:%d'%(len(learn_Y), len(test_Y))
+        print ('Data loading Complete learn:%d, test:%d'%(len(learn_Y), len(test_Y)))
         tf.reset_default_graph()
 
         # 2. Run RNN
@@ -155,10 +152,6 @@ def main(argv):
             cell = tf.contrib.rnn.BasicLSTMCell(num_units=hidden_size,
                                                    state_is_tuple=True,
                                                    activation=tf.nn.relu)
-            #cell = tf.contrib.rnn.LayerNormBasicLSTMCell(num_units=hidden_size,
-            #                                            activation=tf.nn.relu,
-            #                                            dropout_keep_prob=keep_prob) # Layer Normalization. num_units: ouput size
-
             cells.append(cell)
 
         cells = tf.nn.rnn_cell.MultiRNNCell(cells) # stackedRNN
@@ -222,7 +215,7 @@ def main(argv):
             count = 0
             for e in range(epochs):
                 if e % 5 == 0:
-                    print 'epochs: %d'%(e)
+                    print ('epochs: %d'%(e))
                 batch_index_start = 0
                 batch_index_end = batch_size
 
@@ -254,11 +247,11 @@ def main(argv):
                 predicts.append(decision)
 
             fpr, tpr, thresholds = roc_curve(map(int, test_Y), out)
-            print 'seq_length: %d, # predicts: %d, # corrects: %d, acc: %f, auc: %f' %(seq_length, len(predicts), len(filter(lambda x:x, predicts)), (len(filter(lambda x:x, predicts))/len(predicts)), auc(fpr,tpr))
-            print precision_recall_fscore_support(map(int, test_Y), out)
+            print ('seq_length: %d, # predicts: %d, # corrects: %d, acc: %f, auc: %f' %(seq_length, len(predicts), len(filter(lambda x:x, predicts)), (len(filter(lambda x:x, predicts))/len(predicts)), auc(fpr,tpr)))
+            print (precision_recall_fscore_support(map(int, test_Y), out))
     
-    print 'work time: %s sec'%(time.time()-start_time)
-    print '\n\n'
+    print ('work time: %s sec'%(time.time()-start_time))
+    print ('\n\n')
 
 
 
