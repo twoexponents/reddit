@@ -4,6 +4,47 @@ from pytorch_transformers import *
 from keras.preprocessing.sequence import pad_sequences
 from sklearn.utils import resample
 
+class MyBertForSequenceClassification(BertPreTrainedModel):
+    def __init__(self, config):
+        super(MyBertForSequenceClassification, self).__init__(config)
+        self.num_labels = config.num_labels
+
+        self.bert = BertModel(config)
+        self.dropout = nn.Dropout(config.hidden_dropout_prob)
+        self.classifier = nn.Linear(config.hidden_size, self.config.num_labels)
+
+        self.init_weights()
+
+    def forward(self, input_ids, attention_mask=None, token_type_ids=None,
+            position_ids=None, head_mask=None, labels=None):
+
+        outputs = self.bert(input_ids,
+                            attention_mask=attention_mask,
+                            token_type_ids=token_type_ids,
+                            position_ids=position_ids,
+                            head_mask=head_mask)
+        
+        pooled_output = outputs[1]
+
+        return pooled_output
+        '''
+        pooled_output = self.dropout(pooled_output)
+        logits = self.classifier(pooled_output)
+
+        outputs = (logits,) + outputs[2:]
+
+        if labels is not None:
+            if self.num_labels == 1:
+                loss_fct = MSELoss()
+                loss = loss_fct(logits.view(-1), labels.view(-1))
+            else:
+                loss_fct = CrossEntropyLoss()
+                loss = loss_fct(logits.view(-1, self.num_labels), labels.view(-1))
+            outputs = (loss,) + outputs
+
+        return outputs # (loss), logits, (hidden_states), (attentions)
+        '''
+
 def processDataFrame(df, is_training):
    df = df.dropna()
    df.label = df.label.astype(int)
@@ -14,10 +55,11 @@ def processDataFrame(df, is_training):
 
 
    if not is_training:
-      print ('test datset [%d]: %d, [%d]: %d'%(df_majority.label.values[0], len(df_majority), df_minority.label.values[0], len(df_minority)))
+      print ('test dataset [%d]: %d, [%d]: %d'%(df_majority.label.values[0], len(df_majority), df_minority.label.values[0], len(df_minority)))
    else:
-      print ('train datset [%d]: %d, [%d]: %d'%(df_majority.label.values[0], len(df_majority), df_minority.label.values[0], len(df_minority)))
+      print ('train dataset [%d]: %d, [%d]: %d'%(df_majority.label.values[0], len(df_majority), df_minority.label.values[0], len(df_minority)))
       length_minority = 20000 if len(df_minority) > 20000 else len(df_minority)
+      #length_minority = len(df_minority)
 
       df_majority_downsampled = resample(df_majority, replace=False, n_samples=length_minority, random_state=123)
       df_minority_downsampled = resample(df_minority, replace=False, n_samples=length_minority, random_state=123)
@@ -25,7 +67,7 @@ def processDataFrame(df, is_training):
       df_downsampled = pd.concat([df_majority_downsampled, df_minority_downsampled])
       df = df_downsampled
 
-      print ('train datset [%d]: %d, [%d]: %d'%(df_majority_downsampled.label.values[0], len(df_majority_downsampled), df_minority_downsampled.label.values[0], len(df_minority_downsampled)))
+      print ('train dataset [%d]: %d, [%d]: %d'%(df_majority_downsampled.label.values[0], len(df_majority_downsampled), df_minority_downsampled.label.values[0], len(df_minority_downsampled)))
 
    return df
 
@@ -107,6 +149,46 @@ def makeBertElements(df, MAX_LEN):
         seq_mask = [float(i>0) for i in seq]
         attention_masks.append(seq_mask)
 
+    return input_ids, attention_masks, labels
+
+def makeBertElement(sentence, tokenizer, MAX_LEN):
+    sentence = "[CLS] " + sentence + " [SEP]"
+    tokenized_texts = tokenizer.tokenize(sentence)
+    input_id = tokenizer.convert_tokens_to_ids(tokenized_texts)
+    input_ids = pad_sequences([input_id], maxlen=MAX_LEN, dtype="long", truncating="post", padding="post")
+    attention_masks = []
+    for seq in input_ids:
+        seq_mask = [float(i>0) for i in seq]
+        attention_masks.append(seq_mask)
+
+    return input_ids, attention_masks
+
+def makeBertElementsList(df, MAX_LEN):
+
+    input_ids = []
+    attention_masks = []
+    learn_instances = df.sentence.values
+    tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=True)
+
+    for sentences in learn_instances:
+        sub_x = []
+        sub_attention = []
+        for sentence in sentences:
+            temp = "[CLS]" + str(sentence) + " [SEP]"
+            tokenized_text = tokenizer.tokenize(temp)
+
+            input_id = tokenizer.convert_tokens_to_ids(tokenized_text)
+
+            sub_x.append(input_id)
+
+            temp_mask = [float(i>0) for i in input_id]
+            sub_attention.append(temp_mask)
+            
+        sub_x = pad_sequences(sub_x, maxlen=MAX_LEN, dtype="long", truncating="post", padding="post")
+        input_ids.append(sub_x)
+        attention_masks.append(sub_attention)
+
+    labels = df.label.values
     return input_ids, attention_masks, labels
 
 # Function to calculate the accuracy of our predictions vs labels

@@ -2,7 +2,7 @@ import tensorflow as tf
 import numpy as np
 import sys
 #import data_processing as dp
-import cPickle as pickle
+import pickle
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import *
 import pandas as pd
@@ -52,26 +52,16 @@ def main(argv):
   # 1.1 load feature dataset
   #d_features = pickle.load(open('/home/jhlim/SequencePrediction/data/contentfeatures.others.p', 'r'))
   #d_w2vfeatures = pickle.load(open('/home/jhlim/data/contentfeatures.googlenews.nozero.p', 'r'))
-  d_userfeatures = pickle.load(open('/home/jhlim/SequencePrediction/data/userfeatures.activity.p', 'r'))
+  d_userfeatures = pickle.load(open('/home/jhlim/data/userfeatures.activity.p', 'rb'))
 
-  print 'features are loaded'
+  print ('features are loaded')
 
-  for seq_length in xrange(1, 11):
+  for seq_length in range(1, 5):
     input_length = 1
     f = open('/home/jhlim/data/vader/seq.learn.%d.csv'%(seq_length), 'r')
-    learn_instances = map(lambda x:x.replace('\n', '').split(','), f.readlines())
+    learn_instances = list(map(lambda x:x.replace('\n', '').split(','), f.readlines()))
     f.close()
 
-    lst = []
-    for element in learn_instances:
-        if float(element[-1]) > 0.05:
-            element[-1] = '2'
-        elif float(element[-1]) > -0.05:
-            element[-1] = '1'
-        else:
-            element[-1] = '0'
-        lst.append(element)
-    learn_instances = lst
 
     np.random.shuffle(learn_instances)
 
@@ -88,7 +78,7 @@ def main(argv):
           user_features = [0.0]*len(user_features_fields)
 
           #if d_w2vfeatures.has_key(element):
-          if d_userfeatures.has_key(element):
+          if element in d_userfeatures:
           #if d_features.has_key(element):
             #cont_features = d_features[element]['cont']
             #cont_features = d_features[element]['cont'][:len(common_features_fields)]
@@ -120,11 +110,11 @@ def main(argv):
           learn_X.append(np.array(sub_x))
           learn_Y.append(seq[-1])
 
-      except Exception, e:
+      except Exception as e:
         # print e
         continue
 
-    print Counter(learn_Y)
+    print (Counter(learn_Y))
     
     learn_X = np.reshape(np.array(learn_X), [-1, input_length*input_dim])
     
@@ -132,23 +122,12 @@ def main(argv):
     #learn_X, learn_Y = sample_model.fit_sample(learn_X_reshape, learn_Y)
     #learn_X = np.reshape(learn_X, [-1, seq_length, input_dim])
 
-    print Counter(learn_Y)
+    print (Counter(learn_Y))
 
-    f = open('/home/jhlim/data/seq.test.%d.csv'%(seq_length), 'r')
-    test_instances = map(lambda x:x.replace('\n', '').split(','), f.readlines())
+    f = open('/home/jhlim/SequencePrediction/data/seq.test.%d.csv'%(seq_length), 'r')
+    test_instances = list(map(lambda x:x.replace('\n', '').split(','), f.readlines()))
     f.close()
 
-    lst = []
-    for element in test_instances:
-        if float(element[-1]) > 0.05:
-            element[-1] = '2'
-        elif float(element[-1]) > -0.05:
-            element[-1] = '1'
-        else:
-            element[-1] = '0'
-        lst.append(element)
-    test_instances = lst
-    
     np.random.shuffle(test_instances)
 
     test_X = []; test_Y = []
@@ -164,7 +143,7 @@ def main(argv):
           user_features = [0.0]*len(user_features_fields)
 
           #if d_w2vfeatures.has_key(element):
-          if d_userfeatures.has_key(element):
+          if element in d_userfeatures:
           #if d_features.has_key(element):
             #cont_features = d_features[element]['cont']
             #cont_features = d_features[element]['cont'][:len(common_features_fields)]
@@ -197,7 +176,7 @@ def main(argv):
             test_X.append(np.array(sub_x))
             test_Y.append(seq[-1])
 
-      except Exception, e:
+      except Exception as e:
         continue
 
     test_X = np.reshape(np.array(test_X), [-1, input_length*input_dim])
@@ -207,7 +186,7 @@ def main(argv):
     clf = RandomForestClassifier(n_jobs=-1)
     clf.fit(learn_X, learn_Y)
 
-    out = map(int, clf.predict(test_X).tolist())
+    out = list(map(int, clf.predict(test_X).tolist()))
     predicts = []
 
     for v1, v2 in zip(out, test_Y):
@@ -217,18 +196,18 @@ def main(argv):
         decision = True
       predicts.append(decision)
 
-    y_true = map(int, test_Y)
+    y_true = list(map(int, test_Y))
 
     n = len(predicts)
-    corrects = len(filter(lambda x:x, predicts))
+    corrects = len(list(filter(lambda x:x, predicts)))
 
     acc = float(corrects)/n
     #ap = average_precision_score (y_true, out)
     #print '%d,%d,%d,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f'%(
     #  seq_length, n, corrects, acc,
     #  prec[0], prec[1], rec[0], rec[1], f1[0], f1[1], auc_v, ap)
-    print 'seq_length: %d, n: %d, corrects: %d, acc: %.3f'%(
-      seq_length, n, corrects, acc)
+    print ('seq_length: %d, n: %d, corrects: %d, acc: %.3f'%(
+      seq_length, n, corrects, acc))
 
     #print seq_length, n, corrects
     #print prec, rec, f1, support, auc, ap

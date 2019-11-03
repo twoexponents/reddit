@@ -7,29 +7,27 @@ input_dim = 1
 with open('/home/jhlim/data/commentbodyfeatures.p', 'rb') as f:
     sentencefile = pickle.load(f)
 
+print ('Start converting')
+for seq_length in range(1, 10):
+    files = ['seq.learn.%d.csv'%(seq_length), 'seq.test.%d.csv'%(seq_length)]
 
-filename = sys.argv[1]
-f = open('/home/jhlim/data/%s'%filename, 'r')
-seq_length = int(filename.split('.')[2])
-print ('seq_length: ', seq_length)
+    for filename in files:
+        f = open('/home/jhlim/data/%s'%filename, 'r')
+        seq_length = int(filename.split('.')[2])
+        print ('seq_length: ', seq_length)
 
-learn_instances = list(map(lambda x:x.replace('\n', '').split(','), f.readlines()))
+        learn_instances = list(map(lambda x:x.replace('\n', '').split(','), f.readlines()))
 
-filename = filename.replace('csv', 'tsv')
-f = open(filename, 'w')
-for instance in learn_instances:
-    id = instance[0]
-    label = instance[seq_length]
-    element = instance[seq_length-1]
-    sentence = ""
-    if element in sentencefile:
-        sentence = sentencefile[element].replace('\n', ' ')
-    if len(sentence) < 1:
-        continue
-    if len(sentence) > 200:
-        continue
+        filename = filename.replace('csv', 'tsv')
+        f = open(filename, 'w')
+        for instance in learn_instances:
+            label = instance[seq_length]
+            element = instance[seq_length-1]
+            sentence = ""
+            if element in sentencefile:
+                sentence = sentencefile[element].replace('\n', ' ')
+            if len(sentence) < 1 or len(sentence) > 100:
+                continue
 
-    f.write(element + '\t' + label + '\t' + '*' + '\t' + sentence + '\n')
-
-    
+            f.write(element + '\t' + label + '\t' + '*' + '\t' + sentence + '\n')
 

@@ -6,11 +6,11 @@ with open('/home/jhlim/data/commentbodyfeatures.p', 'rb') as f:
     sentencefile = pickle.load(f)
 
 print ('Start converting')
-for seq_length in range(1, 10):
+for seq_length in range(1, 4):
     files = ['seq.learn.%d.csv'%(seq_length), 'seq.test.%d.csv'%(seq_length)]
 
     for filename in files:
-        f = open('/home/jhlim/data/%s'%filename, 'r')
+        f = open('/home/jhlim/SequencePrediction/data/%s'%filename, 'r')
         seq_length = int(filename.split('.')[2])
         print ('seq_length: ', seq_length)
 
@@ -19,27 +19,23 @@ for seq_length in range(1, 10):
         filename = filename.replace('csv', 'tsv')
         f = open(filename, 'w')
         for instance in learn_instances:
-            id = instance[-2]
-            label = instance[seq_length]
+            id = '\t'.join(instance[:-1])
+            label = instance[-1]
             sub_x = []
             for element in instance[:-1]:
                 if element in sentencefile:
                     sentence = sentencefile[element].replace('\n', ' ')
-                    if len(sentence) < 1:
-                        continue
-                    sub_x.append(np.array(sentence))
+                    sentence = sentence.replace('\t', ' ')
+                    if len(sentence) < 1 or len(sentence) > 300:
+                        break
+                    sub_x.append(sentence)
+
             if len(sub_x) != seq_length:
                 continue
-            sentence = str(sub_x[0])
-            flag = False;
-            for element in sub_x[1:]:
-                if len(str(element)) > 200:
-                    flag = True;
-                    break;
-                sentence = sentence + ". " + str(element)
 
-            if not flag:
-                f.write(id + '\t' + label + '\t' + '*' + '\t' + sentence + '\n')
+            sentences = '\t'.join(sub_x)
+            
+            f.write(id + '\t' + label + '\t' + '*' + '\t' + sentences + '\n')
 
     
 

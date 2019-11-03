@@ -56,7 +56,7 @@ def main(argv):
 
   for seq_length in xrange(1, 11):
     input_length = 1
-    f = open('/home/jhlim/data/seq.learn.%d.csv'%(seq_length), 'r')
+    f = open('/home/jhlim/SequencePrediction/data/seq.learn.%d.csv'%(seq_length), 'r')
     learn_instances = map(lambda x:x.replace('\n', '').split(','), f.readlines())
     f.close()
 
@@ -178,7 +178,7 @@ def main(argv):
 
     print Counter(learn_Y)
 
-    f = open('/home/jhlim/data/seq.test.%d.csv'%(seq_length), 'r')
+    f = open('/home/jhlim/SequencePrediction/data/seq.test.%d.csv'%(seq_length), 'r')
     test_instances = map(lambda x:x.replace('\n', '').split(','), f.readlines())
     f.close()
 

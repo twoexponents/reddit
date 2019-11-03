@@ -22,7 +22,7 @@ output_dim = 1 # (range 0 to 1)
 hidden_size = 100
 learning_rate = 0.005
 batch_size = 100
-epochs = 50
+epochs = 100
 
 def main(argv):
     start_time = time.time()
@@ -30,14 +30,14 @@ def main(argv):
     print ('learning_rate: %f, batch_size %d, epochs %d' % (learning_rate, batch_size, epochs))
 
     # 1.1 load feature dataset
-    with open('../data/userfeatures.activity.p', 'rb') as f:
+    with open('/home/jhlim/data/userfeatures.activity.p', 'rb') as f:
         d_userfeatures = pickle.load(f)
 
     print ('features are loaded')
 
     for seq_length in range(1, 11):
         #f = open('../data/seq.learn.%d.csv'%(seq_length), 'r')
-        f = open('/home/jhlim/data/seq.learn.%d.csv'%(seq_length), 'r')
+        f = open('/home/jhlim/SequencePrediction/data/seq.learn.%d.csv'%(seq_length), 'r')
         learn_instances = list(map(lambda x:x.replace('\n', '').split(','), f.readlines()))
         f.close()
 
@@ -84,7 +84,7 @@ def main(argv):
         print (Counter(list(map(lambda x:x[0], learn_Y))))
 
         #f = open('../data/seq.test.%d.csv'%(seq_length), 'r')
-        f = open('/home/jhlim/data/seq.test.%d.csv'%(seq_length), 'r')
+        f = open('/home/jhlim/SequencePrediction/data/seq.test.%d.csv'%(seq_length), 'r')
         test_instances = list(map(lambda x:x.replace('\n', '').split(','), f.readlines()))
         f.close()
 
