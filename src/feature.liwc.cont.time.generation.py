@@ -10,7 +10,7 @@ tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
 hidden_size = 16
 learning_rate = 0.001
 batch_size = 32
-epochs = 20
+epochs = 100
 keep_rate = 0.5
 
 def main(argv):
@@ -28,7 +28,7 @@ def main(argv):
     print ('features are loaded')
 
     for seq_length in range(input_length, input_length+1):
-        learn_X, learn_Y, test_X, test_Y = makeLearnTestSet(seq_length, liwc=1, cont=1, exclude_newbie=exclude_newbie)
+        learn_X, learn_Y, test_X, test_Y = makeLearnTestSet(seq_length, liwc=1, cont=1, time=1, exclude_newbie=exclude_newbie)
 
         runRNNModel(seq_length, learn_X, learn_Y, test_X, test_Y, hidden_size, learning_rate, batch_size, epochs, keep_rate)
 

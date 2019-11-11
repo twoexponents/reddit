@@ -15,18 +15,12 @@ test_size = 20000 # -1
 
 def load_bertfeatures(seq_length=1):
     return pickle.load(open('/home/jhlim/data/bertfeatures' + str(seq_length) + '.p', 'rb'))
-
 def load_userfeatures():
     return pickle.load(open('/home/jhlim/data/userfeatures.activity.p', 'rb'))
-
 def load_contfeatures():
     return pickle.load(open('/home/jhlim/data/contentfeatures.others.p', 'rb'))
-
 def load_timefeatures():
     return pickle.load(open('/home/jhlim/data/temporalfeatures.p', 'rb'))
-
-def load_bodyfeatures():
-    return pickle.load(open('/home/jhlim/data/commentbodyfeatures.p', 'rb'))
 
 
 def makeLearnTestSet(seq_length=1, bert=0, user=0, liwc=0, cont=0, time=0, exclude_newbie=0, rf=0):
@@ -49,8 +43,6 @@ def makeLearnTestSet(seq_length=1, bert=0, user=0, liwc=0, cont=0, time=0, exclu
     f = open('/home/jhlim/data/seq.test.%d.csv'%(seq_length), 'r')
     test_instances = list(map(lambda x:x.replace('\n', '').split(','), f.readlines()))
     f.close()
-
-    #np.random.shuffle(learn_instances)
 
     learn_X = []; learn_Y = []
         

@@ -9,9 +9,10 @@ from pytorch_transformers import *
 from keras.preprocessing.sequence import pad_sequences
 from sklearn.utils import resample
 from tqdm import tqdm, trange
+from myloaddatalib import load_userfeatures, load_contfeatures, load_timefeatures
 
 MAX_LEN = 128
-seq_length = 3
+seq_length = 2 
 batch_size = 400
 
 def main():
@@ -25,17 +26,25 @@ def main():
     test_instances = list(map(lambda x:x.replace('\n', '').split(','), f.readlines()))
     f.close()
 
+    d_user = load_userfeatures()
+    d_liwc = load_contfeatures()
+    d_time = load_timefeatures()
+
     tuples = []
     for seq in learn_instances:
         for i, element in enumerate(seq):
+            if False in list(map(lambda x:element in x, [d_user, d_liwc, d_time])):
+                continue
             if i > (seq_length-1):
-                break;
+                break
             if element in sentencefile:
                 tuples.append((element, sentencefile[element]))
     for seq in test_instances:
         for i, element in enumerate(seq):
+            if False in list(map(lambda x:element in x, [d_user, d_liwc, d_time])):
+                continue
             if i > (seq_length-1):
-                break;
+                break
             if element in sentencefile:
                 tuples.append((element, sentencefile[element]))
 

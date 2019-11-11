@@ -2,8 +2,9 @@ import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import *
 
-def runRFModel(seq_length, learn_X, learn_Y, test_X, test_Y, input_dim):
+def runRFModel(seq_length, learn_X, learn_Y, test_X, test_Y):
     test_parent = True
+    input_dim = int(len(learn_X[0]) / seq_length)
 
     # To test 1st comment -> 2nd comment
     if test_parent:

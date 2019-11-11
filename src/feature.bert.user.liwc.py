@@ -10,7 +10,7 @@ tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
 hidden_size = 16
 learning_rate = 0.001
 batch_size = 32
-epochs = 20
+epochs = 100
 keep_rate = 0.5
 
 def main(argv):
