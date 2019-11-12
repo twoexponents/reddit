@@ -8,7 +8,7 @@ with open('/home/jhlim/data/commentbodyfeatures.p', 'rb') as f:
     sentencefile = pickle.load(f)
 
 print ('Start converting')
-for seq_length in range(1, 10):
+for seq_length in range(1, 4):
     files = ['seq.learn.%d.csv'%(seq_length), 'seq.test.%d.csv'%(seq_length)]
 
     for filename in files:
@@ -26,7 +26,7 @@ for seq_length in range(1, 10):
             sentence = ""
             if element in sentencefile:
                 sentence = sentencefile[element].replace('\n', ' ')
-            if len(sentence) < 1 or len(sentence) > 100:
+            if len(sentence) < 1 or len(sentence) > 500:
                 continue
 
             f.write(element + '\t' + label + '\t' + '*' + '\t' + sentence + '\n')

@@ -25,8 +25,9 @@ def load_timefeatures():
     return pickle.load(open('/home/jhlim/data/temporalfeatures.p', 'rb'))
 
 def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, seq_length=1, exclude_newbie=0, bert=0, user=0, liwc=0, cont=0, time=0):
-    test_parent = True # for 1st -> 2nd test
-    print_wrongs = False
+    test_parent = False # for 1st -> 2nd test
+    print_body = False
+    print ('test_parent: %r'%(test_parent))
 
     # Prepare the dataset
     feature_list = [bert, user, liwc, cont, time]
@@ -41,6 +42,8 @@ def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, seq_l
         if feature_list[i] == 1:
             input_dim += length_list[i]
     print ('seq_length: %d, input_dim: %d'%(seq_length, input_dim))
+    rnn_hidden_size = hidden_size
+    rnn_hidden_size = 100 # input_dim
 
     f = open('/home/jhlim/data/seq.learn.%d.csv'%(seq_length), 'r')
     learn_instances = list(map(lambda x:x.replace('\n', '').split(','), f.readlines()))
@@ -73,6 +76,7 @@ def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, seq_l
     learn_X, learn_Y = sample_model.fit_sample(learn_X_reshape, learn_Y)
 
     test_X = []; test_Y = []
+    element_list = []
     for seq in test_instances[:test_size]:
         sub_x = []
 
@@ -92,10 +96,15 @@ def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, seq_l
                 if feature_list[4] == 1:
                     features += d_time[element]['ict']
 
-                sub_x.append(features)
+                if features != []:
+                    if exclude_newbie == 1 and d_user[element]['user'] == [0.0, 0.0, 0.0]:
+                        continue
+                    sub_x.append(features)
+
             if (len(sub_x) == seq_length):
                 test_X.append(np.array(sub_x))
                 test_Y.append(float(seq[-1]))
+                element_list.append(element)
 
         except Exception as e:
             continue
@@ -126,10 +135,6 @@ def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, seq_l
             learn_X = np.array(learn_X)[:, (seq_length-2):, :].tolist()
             test_X = np.array(test_X)[:, (seq_length-2):, :].tolist()
             seq_length = seq_length-1
-    if print_wrongs and seq_length > 1:
-        element_list = np.array(element_list)[:, (seq_length-1):].tolist()
-        print (np.array(element_list).shape)
-        sentencefile = pickle.load(open('/home/jhlim/data/commentbodyfeatures.p', 'rb'))
 
     tf.reset_default_graph()
     tf.set_random_seed(50)
@@ -144,7 +149,7 @@ def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, seq_l
 
     cells = []
     for _ in range(1):
-        cell = tf.contrib.rnn.BasicLSTMCell(num_units=hidden_size,
+        cell = tf.contrib.rnn.BasicLSTMCell(num_units=rnn_hidden_size,
                                             state_is_tuple=True,
                                             activation=tf.nn.relu)
         cells.append(cell)
@@ -159,7 +164,7 @@ def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, seq_l
     bn_output = tf.contrib.layers.batch_norm(outputs, center=True, scale=True, is_training=is_training)
 
     key = 'fc_l1'
-    weights[key] = tf.Variable(tf.random_normal([hidden_size, hidden_size]))
+    weights[key] = tf.Variable(tf.random_normal([rnn_hidden_size, hidden_size]))
     biases[key] = tf.Variable(tf.random_normal([hidden_size]))
 
     key = 'fc_l2'
@@ -175,8 +180,8 @@ def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, seq_l
 
     #10_dropout = tf.layers.dropout(outputs, rate=1-keep_prob, training=is_training)
 
-    #l1_output = tf.matmul(bn_output, weights['fc_l1']) + biases['fc_l1']
-    l1_output = tf.nn.relu(tf.matmul(outputs, weights['fc_l1']) + biases['fc_l1']) # might move relu layer to the behind of bn
+    l1_output = tf.nn.relu(tf.matmul(bn_output, weights['fc_l1']) + biases['fc_l1'])
+    #l1_output = tf.nn.relu(tf.matmul(outputs, weights['fc_l1']) + biases['fc_l1']) # might move relu layer to the behind of bn
     l1_bn_output = tf.contrib.layers.batch_norm(l1_output, center=True, scale=True, is_training=is_training)
     l1_dropout = tf.layers.dropout(l1_bn_output, rate=1-keep_prob, training=is_training)
 
@@ -267,28 +272,19 @@ def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, seq_l
                 
                 test_Y = list(map(lambda x:[x], test_Y))
 
-            if print_wrongs and e == 10:
+            if print_body and e == 10:
+                print ('print correct elements.')
                 test_Y = list(map(lambda x:x[0], test_Y))
-                print ('element size: %d, out size: %d, test_Y size: %d'%(len(element_list), len(out), len(test_Y)))
+                f = open('result/out.txt', 'w')
 
-                f = open('failed_comments.txt', 'w')
-                index = ['element', 'sentence', 'predicts', 'label']
-                f.write('\t'.join(index) + '\n')
-
-                for idx, tu in enumerate(zip(out, test_Y)):
-                    v1, v2 = tu
-                    if v1 != int(v2):
-                        if element_list[idx][1] in sentencefile:
-                            sentence = sentencefile[element_list[idx][1]]
-                            sentence = sentence.replace('\n', ' ')
-                        else:
-                            sentence = 'NULL'
-                        index = [element_list[idx][1], sentence, str(v1), str(v2)]
-                        f.write('\t'.join(index) + '\n')
-
+                for i, item in enumerate(zip(out, test_Y)):
+                    v1, v2 = item
+                    if v1 == int(v2):
+                        f.write(element_list[i] + '\t' + str(v1) + '\t' + str(v2) + '\n')
+                
                 f.close()
-                test_Y = list(map(lambda x:[x], test_Y))
 
+                test_Y = list(map(lambda x:[x], test_Y))
 
         print ('\n\n')
 

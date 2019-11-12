@@ -13,7 +13,7 @@ from myloaddatalib import load_userfeatures, load_contfeatures, load_timefeature
 
 MAX_LEN = 128
 seq_length = 2 
-batch_size = 400
+batch_size = 300
 
 def main():
     with open('/home/jhlim/data/commentbodyfeatures.p', 'rb') as f:
@@ -73,6 +73,14 @@ def main():
     tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=True)
     tokenized_texts = [tokenizer.tokenize(sent) for sent in sentences]
 
+    temp = elements; temp2 = tokenized_texts
+    elements = []; tokenized_texts = []
+    for item in zip(temp, temp2):
+        t1, t2 = item
+        if len(t2) < 512:
+            elements.append(t1)
+            tokenized_texts.append(t2)
+            
     input_ids = [tokenizer.convert_tokens_to_ids(x) for x in tokenized_texts]
     input_ids = pad_sequences(input_ids, maxlen=MAX_LEN, dtype="long", truncating="post", padding="post")
 

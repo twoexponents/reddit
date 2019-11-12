@@ -3,7 +3,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import *
 
 def runRFModel(seq_length, learn_X, learn_Y, test_X, test_Y):
-    test_parent = True
+    test_parent = False
     input_dim = int(len(learn_X[0]) / seq_length)
 
     # To test 1st comment -> 2nd comment
@@ -12,7 +12,7 @@ def runRFModel(seq_length, learn_X, learn_Y, test_X, test_Y):
         test_X = np.array(test_X)[:, (seq_length-1)*input_dim:].tolist()
         print (np.array(learn_X).shape)
 
-    clf = RandomForestClassifier(n_jobs=-1)
+    clf = RandomForestClassifier(n_estimators=100, n_jobs=-1)
     clf.fit(learn_X, learn_Y)
 
     out = list(map(int, clf.predict(test_X).tolist()))

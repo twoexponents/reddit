@@ -3,7 +3,7 @@ import sys
 from myrflib import runRFModel
 from myloaddatalib import makeLearnTestSet
 
-def main(argv):
+def main():
   exclude_newbie = 0; input_length = 1
   if len(sys.argv) >= 3:
     exclude_newbie = int(sys.argv[2])
@@ -20,5 +20,5 @@ def main(argv):
     runRFModel(seq_length, learn_X, learn_Y, test_X, test_Y)
 
 if __name__ == '__main__':
-  tf.app.run(main=main, argv=[sys.argv])
+  main()
 

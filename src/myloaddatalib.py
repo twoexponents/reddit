@@ -63,33 +63,19 @@ def makeLearnTestSet(seq_length=1, bert=0, user=0, liwc=0, cont=0, time=0, exclu
                     continue
 
                 features = []
-                if element in d_bert:
+                if features_list[0] == 1:
                     features.append(d_bert[element])
-                else:
-                    features.append([])
-                if element in d_user:
+                if features_list[1] == 1:
                     features.append(d_user[element]['user'])
-                else:
-                    features.append([])
-                if element in d_liwc:
+                if features_list[2] == 1:
                     features.append(d_liwc[element]['liwc'])
-                else:
-                    features.append([])
-                if element in d_cont:
+                if features_list[3] == 1:
                     features.append(d_cont[element]['cont'][0:3])
-                else:
-                    features.append([])
-                if element in d_time:
+                if features_list[4] == 1:
                     features.append(d_time[element]['ict'])
-                else:
-                    features.append([])
 
-                if [] not in features:
-                    sub_sub_x = np.array([])
-                    for i, f in enumerate(feature_list):
-                        if f == 1:
-                            sub_sub_x = np.concatenate((sub_sub_x, np.array(features[i])))
-                    sub_x.append(sub_sub_x)
+                if features != []:
+                    sub_x.append(features)
 
             if (len(sub_x) == seq_length):
                 learn_X.append(np.array(sub_x)) # feature list
@@ -118,37 +104,21 @@ def makeLearnTestSet(seq_length=1, bert=0, user=0, liwc=0, cont=0, time=0, exclu
                     continue
 
                 features = []
-                if element in d_bert:
+                if features_list[0] == 1:
                     features.append(d_bert[element])
-                else:
-                    features.append([])
-                if element in d_user:
+                if features_list[1] == 1:
                     features.append(d_user[element]['user'])
-                else:
-                    features.append([])
-                if element in d_liwc:
+                if features_list[2] == 1:
                     features.append(d_liwc[element]['liwc'])
-                else:
-                    features.append([])
-                if element in d_cont:
+                if features_list[3] == 1:
                     features.append(d_cont[element]['cont'][0:3])
-                else:
-                    features.append([])
-                if element in d_time:
+                if features_list[4] == 1:
                     features.append(d_time[element]['ict'])
-                else:
-                    features.append([])
 
-                if [] not in features:
-                    # exclude newbie
-                    if exclude_newbie == 1 and features[1] == [0.0, 0.0, 0.0]:
+                if features != []:
+                    if exclude_newbie == 1 and d_user[element]['user'] == [0.0, 0.0, 0.0]: #w/o newbie
                         continue
-
-                    sub_sub_x = np.array([])
-                    for i, f in enumerate(feature_list):
-                        if f == 1:
-                            sub_sub_x = np.concatenate((sub_sub_x, np.array(features[i])))
-                    sub_x.append(sub_sub_x)
+                    sub_x.append(features)
 
             if (len(sub_x) == seq_length):
                 test_X.append(np.array(sub_x))
