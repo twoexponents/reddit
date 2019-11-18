@@ -1,0 +1,240 @@
+exclude_newbie: 0
+seq_length: 1, input_dim: 867
+size of learn_Y: 18038
+Counter({1: 9104, 0: 8934})
+learn_Y:  Counter({0: 8934, 1: 8934})
+test_Y:  Counter({0.0: 2905, 1.0: 2779})
+Data loading Complete learn:17868, test:5684
+input_dim: 867
+(17868, 867)
+(5684, 867)
+0.7160450387051372
+seq_length: 1, n: 5684, corrects: 4070, acc: 0.716, auc_v: 0.713
+exclude_newbie: 0
+seq_length: 1, input_dim: 867
+size of learn_Y: 18038
+Counter({1: 9104, 0: 8934})
+learn_Y:  Counter({0: 8934, 1: 8934})
+test_Y:  Counter({0.0: 2905, 1.0: 2779})
+Data loading Complete learn:17868, test:5684
+input_dim: 867
+(17868, 867)
+(5684, 867)
+0.7146375791695989
+seq_length: 1, n: 5684, corrects: 4062, acc: 0.715, auc_v: 0.712
+exclude_newbie: 0
+seq_length: 1, input_dim: 867
+size of learn_Y: 18038
+Counter({1: 9104, 0: 8934})
+learn_Y:  Counter({0: 8934, 1: 8934})
+test_Y:  Counter({0.0: 2905, 1.0: 2779})
+Data loading Complete learn:17868, test:5684
+input_dim: 867
+(17868, 867)
+(5684, 867)
+0.7227304714989444
+seq_length: 1, n: 5684, corrects: 4108, acc: 0.723, auc_v: 0.720
+exclude_newbie: 0
+seq_length: 1, input_dim: 867
+size of learn_Y: 18038
+Counter({1: 9104, 0: 8934})
+learn_Y:  Counter({0: 8934, 1: 8934})
+test_Y:  Counter({0.0: 2905, 1.0: 2779})
+Data loading Complete learn:17868, test:5684
+input_dim: 867
+(17868, 867)
+(5684, 867)
+0.7237860661505982
+seq_length: 1, n: 5684, corrects: 4114, acc: 0.724, auc_v: 0.722
+exclude_newbie: 0
+seq_length: 1, input_dim: 867
+size of learn_Y: 18038
+Counter({1: 9104, 0: 8934})
+learn_Y:  Counter({0: 8934, 1: 8934})
+test_Y:  Counter({0.0: 2905, 1.0: 2779})
+Data loading Complete learn:17868, test:5684
+input_dim: 867
+(17868, 867)
+(5684, 867)
+0.7132301196340605
+seq_length: 1, n: 5684, corrects: 4054, acc: 0.713, auc_v: 0.711
+exclude_newbie: 0
+seq_length: 1, input_dim: 867
+size of learn_Y: 18038
+Counter({1: 9104, 0: 8934})
+learn_Y:  Counter({0: 8934, 1: 8934})
+test_Y:  Counter({0.0: 2905, 1.0: 2779})
+Data loading Complete learn:17868, test:5684
+input_dim: 867
+(17868, 867)
+(5684, 867)
+0.7232582688247713
+seq_length: 1, n: 5684, corrects: 4111, acc: 0.723, auc_v: 0.721
+exclude_newbie: 0
+seq_length: 1, input_dim: 867
+size of learn_Y: 18038
+Counter({1: 9104, 0: 8934})
+learn_Y:  Counter({0: 8934, 1: 8934})
+test_Y:  Counter({0.0: 2905, 1.0: 2779})
+Data loading Complete learn:17868, test:5684
+input_dim: 867
+(17868, 867)
+(5684, 867)
+0.7232582688247713
+seq_length: 1, n: 5684, corrects: 4111, acc: 0.723, auc_v: 0.721
+exclude_newbie: 0
+seq_length: 1, input_dim: 867
+size of learn_Y: 18038
+Counter({1: 9104, 0: 8934})
+learn_Y:  Counter({0: 8934, 1: 8934})
+test_Y:  Counter({0.0: 2905, 1.0: 2779})
+Data loading Complete learn:17868, test:5684
+input_dim: 867
+(17868, 867)
+(5684, 867)
+0.7169247009148487
+seq_length: 1, n: 5684, corrects: 4075, acc: 0.717, auc_v: 0.715
+exclude_newbie: 0
+seq_length: 1, input_dim: 867
+size of learn_Y: 18038
+Counter({1: 9104, 0: 8934})
+learn_Y:  Counter({0: 8934, 1: 8934})
+test_Y:  Counter({0.0: 2905, 1.0: 2779})
+Data loading Complete learn:17868, test:5684
+input_dim: 867
+(17868, 867)
+(5684, 867)
+0.7151653764954258
+seq_length: 1, n: 5684, corrects: 4065, acc: 0.715, auc_v: 0.714
+exclude_newbie: 0
+seq_length: 1, input_dim: 867
+size of learn_Y: 18038
+Counter({1: 9104, 0: 8934})
+learn_Y:  Counter({0: 8934, 1: 8934})
+test_Y:  Counter({0.0: 2905, 1.0: 2779})
+Data loading Complete learn:17868, test:5684
+input_dim: 867
+(17868, 867)
+(5684, 867)
+0.7098874032371569
+seq_length: 1, n: 5684, corrects: 4035, acc: 0.710, auc_v: 0.709
+exclude_newbie: 0
+seq_length: 1, input_dim: 867
+size of learn_Y: 18038
+Counter({1: 9104, 0: 8934})
+learn_Y:  Counter({0: 8934, 1: 8934})
+test_Y:  Counter({0.0: 2905, 1.0: 2779})
+Data loading Complete learn:17868, test:5684
+input_dim: 867
+(17868, 867)
+(5684, 867)
+0.6979239971850809
+seq_length: 1, n: 5684, corrects: 3967, acc: 0.698, auc_v: 0.697
+exclude_newbie: 0
+seq_length: 1, input_dim: 867
+size of learn_Y: 18038
+Counter({1: 9104, 0: 8934})
+learn_Y:  Counter({0: 8934, 1: 8934})
+test_Y:  Counter({0.0: 2905, 1.0: 2779})
+Data loading Complete learn:17868, test:5684
+input_dim: 867
+(17868, 867)
+(5684, 867)
+0.7132301196340605
+seq_length: 1, n: 5684, corrects: 4054, acc: 0.713, auc_v: 0.713
+exclude_newbie: 0
+seq_length: 1, input_dim: 867
+size of learn_Y: 18038
+Counter({1: 9104, 0: 8934})
+learn_Y:  Counter({0: 8934, 1: 8934})
+test_Y:  Counter({0.0: 2905, 1.0: 2779})
+Data loading Complete learn:17868, test:5684
+input_dim: 867
+(17868, 867)
+(5684, 867)
+0.7068965517241379
+seq_length: 1, n: 5684, corrects: 4018, acc: 0.707, auc_v: 0.706
+exclude_newbie: 0
+seq_length: 1, input_dim: 867
+size of learn_Y: 18038
+Counter({1: 9104, 0: 8934})
+learn_Y:  Counter({0: 8934, 1: 8934})
+test_Y:  Counter({0.0: 2905, 1.0: 2779})
+Data loading Complete learn:17868, test:5684
+input_dim: 867
+(17868, 867)
+(5684, 867)
+0.7061928219563688
+seq_length: 1, n: 5684, corrects: 4014, acc: 0.706, auc_v: 0.706
+exclude_newbie: 0
+seq_length: 1, input_dim: 867
+size of learn_Y: 18038
+Counter({1: 9104, 0: 8934})
+learn_Y:  Counter({0: 8934, 1: 8934})
+test_Y:  Counter({0.0: 2905, 1.0: 2779})
+Data loading Complete learn:17868, test:5684
+input_dim: 867
+(17868, 867)
+(5684, 867)
+0.699155524278677
+seq_length: 1, n: 5684, corrects: 3974, acc: 0.699, auc_v: 0.699
+exclude_newbie: 0
+seq_length: 1, input_dim: 867
+size of learn_Y: 18038
+Counter({1: 9104, 0: 8934})
+learn_Y:  Counter({0: 8934, 1: 8934})
+test_Y:  Counter({0.0: 2905, 1.0: 2779})
+Data loading Complete learn:17868, test:5684
+input_dim: 867
+(17868, 867)
+(5684, 867)
+0.7005629838142153
+seq_length: 1, n: 5684, corrects: 3982, acc: 0.701, auc_v: 0.701
+exclude_newbie: 0
+seq_length: 1, input_dim: 867
+size of learn_Y: 18038
+Counter({1: 9104, 0: 8934})
+learn_Y:  Counter({0: 8934, 1: 8934})
+test_Y:  Counter({0.0: 2905, 1.0: 2779})
+Data loading Complete learn:17868, test:5684
+input_dim: 867
+(17868, 867)
+(5684, 867)
+0.6801548205489092
+seq_length: 1, n: 5684, corrects: 3866, acc: 0.680, auc_v: 0.681
+exclude_newbie: 0
+seq_length: 1, input_dim: 867
+size of learn_Y: 18038
+Counter({1: 9104, 0: 8934})
+learn_Y:  Counter({0: 8934, 1: 8934})
+test_Y:  Counter({0.0: 2905, 1.0: 2779})
+Data loading Complete learn:17868, test:5684
+input_dim: 867
+(17868, 867)
+(5684, 867)
+0.6954609429978889
+seq_length: 1, n: 5684, corrects: 3953, acc: 0.695, auc_v: 0.695
+exclude_newbie: 0
+seq_length: 1, input_dim: 867
+size of learn_Y: 18038
+Counter({1: 9104, 0: 8934})
+learn_Y:  Counter({0: 8934, 1: 8934})
+test_Y:  Counter({0.0: 2905, 1.0: 2779})
+Data loading Complete learn:17868, test:5684
+input_dim: 867
+(17868, 867)
+(5684, 867)
+0.6826178747361014
+seq_length: 1, n: 5684, corrects: 3880, acc: 0.683, auc_v: 0.683
+exclude_newbie: 0
+seq_length: 1, input_dim: 867
+size of learn_Y: 18038
+Counter({1: 9104, 0: 8934})
+learn_Y:  Counter({0: 8934, 1: 8934})
+test_Y:  Counter({0.0: 2905, 1.0: 2779})
+Data loading Complete learn:17868, test:5684
+input_dim: 867
+(17868, 867)
+(5684, 867)
+0.6831456720619282
+seq_length: 1, n: 5684, corrects: 3883, acc: 0.683, auc_v: 0.684

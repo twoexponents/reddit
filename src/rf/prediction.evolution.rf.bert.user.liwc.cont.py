@@ -1,3 +1,4 @@
+import tensorflow as tf
 import numpy as np
 import sys
 from myrflib import runRFModel
@@ -10,14 +11,17 @@ def main(argv):
   if len(sys.argv) >= 2:
     input_length = int(sys.argv[1])
   print ('exclude_newbie: %d'%(exclude_newbie))
+  max_features = 10
+  if len(sys.argv) > 3:
+    max_features = int(sys.argv[3])
 
-  for seq_length in range(1, 3):
+  for seq_length in range(1, 2):
     f = open('/home/jhlim/data/seq.learn.%d.csv'%(seq_length), 'r')
     learn_instances = list(map(lambda x:x.replace('\n', '').split(','), f.readlines()))
     f.close()
 
     learn_X, learn_Y, test_X, test_Y = makeLearnTestSet(seq_length, bert=1, user=1, liwc=1, cont=1, exclude_newbie=exclude_newbie, rf=1)
-    runRFModel(seq_length, learn_X, learn_Y, test_X, test_Y)
+    runRFModel(seq_length, learn_X, learn_Y, test_X, test_Y, max_features=max_features)
 
 if __name__ == '__main__':
   tf.app.run(main=main, argv=[sys.argv])

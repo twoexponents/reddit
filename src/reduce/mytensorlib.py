@@ -6,14 +6,8 @@ from collections import Counter
 from operator import itemgetter
 from sklearn.metrics import precision_recall_fscore_support, roc_auc_score, accuracy_score
 
-user_features_fields = ['posts', 'comments', 'receives']
-common_features_fields = ['vader_score', 'vader', 'difficulty']
-len_liwc_features = 93
-len_bert_features = 768
-output_dim = 1
 learn_size = 60000
 test_size = 20000
-
 
 def load_bertfeatures(seq_length=1):
     return pickle.load(open('/home/jhlim/data/bertfeatures' + str(seq_length) + '.p', 'rb'))
@@ -23,27 +17,46 @@ def load_contfeatures():
     return pickle.load(open('/home/jhlim/data/contentfeatures.others.p', 'rb'))
 def load_timefeatures():
     return pickle.load(open('/home/jhlim/data/temporalfeatures.p', 'rb'))
+def load_w2vfeatures():
+    return pickle.load(open('/home/jhlim/data/contentfeatures.googlenews.nozero.p', 'rb'))
+def load_commentbodyfeatures():
+    return pickle.load(open('/home/jhlim/data/commentbodyfeatures.p', 'rb'))
+def load_bert(d_bert, element):
+    return d_bert[element]
+def load_user(d_user, element):
+    return d_user[element]['user']
+def load_liwc(d_liwc, element):
+    return d_liwc[element]['liwc']
+def load_cont(d_cont, element):
+    return d_cont[element]['cont'][0:3]
+def load_time(d_time, element):
+    return d_time[element]['ict']
+def load_w2v(d_w2v, element):
+    return d_w2v[element]['google.mean'][0].tolist()
 
-def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, seq_length=1, exclude_newbie=0, bert=0, user=0, liwc=0, cont=0, time=0):
+def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, seq_length=1, exclude_newbie=0, bert=0, user=0, liwc=0, cont=0, time=0, w2v=0):
+    feature_list = [bert, user, liwc, cont, time]
+    length_list = [768, 3, 93, 3, 1, 300]
     test_parent = False # for 1st -> 2nd test
     print_body = False
     print ('test_parent: %r'%(test_parent))
 
     # Prepare the dataset
-    feature_list = [bert, user, liwc, cont, time]
-    length_list = [768, 3, 93, 3, 1]
     d_bert = load_bertfeatures(seq_length)
     d_user = load_userfeatures()
     d_liwc = load_contfeatures()
     d_cont = d_liwc
     d_time = load_timefeatures()
-    input_dim = 0
+    d_w2v = load_w2vfeatures() if w2v == 1 else {}
+    sentencefile = load_commentbodyfeatures()
+
+    input_dim = 0 if w2v == 0 else 300 
     for i in range(len(feature_list)):
         if feature_list[i] == 1:
             input_dim += length_list[i]
     print ('seq_length: %d, input_dim: %d'%(seq_length, input_dim))
     rnn_hidden_size = hidden_size
-    rnn_hidden_size = 100 # input_dim
+    #rnn_hidden_size = 100 
 
     f = open('/home/jhlim/data/seq.learn.%d.csv'%(seq_length), 'r')
     learn_instances = list(map(lambda x:x.replace('\n', '').split(','), f.readlines()))
@@ -61,6 +74,10 @@ def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, seq_l
             for i, element in enumerate(seq[:-1]): # seq[-1] : Y. element: 't3_7dfvv'
                 if False in list(map(lambda x:element in x, [d_bert, d_user, d_cont, d_time])):
                     continue
+                #if element in sentencefile and len(sentencefile[element]) < 10:
+                #    continue
+                if w2v == 1 and element not in d_w2v:
+                    continue
                 sub_x.append(element)
             if (len(sub_x) == seq_length):
                 learn_X.append(sub_x) 
@@ -77,24 +94,28 @@ def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, seq_l
 
     test_X = []; test_Y = []
     element_list = []
+    
     for seq in test_instances[:test_size]:
         sub_x = []
-
         try:
             for i, element in enumerate(seq[:-1]):
                 if False in list(map(lambda x:element in x, [d_bert, d_user, d_cont, d_time])):
                     continue
+                #if element in sentencefile and len(sentencefile[element]) < 100:
+                #    continue
                 features = []
                 if feature_list[0] == 1: # Bert
-                    features += d_bert[element]
+                    features += load_bert(d_bert, element)
                 if feature_list[1] == 1: # User
-                    features += d_user[element]['user']
+                    features += load_user(d_user, element)
                 if feature_list[2] == 1:
-                    features += d_liwc[element]['liwc']
+                    features += load_liwc(d_liwc, element)
                 if feature_list[3] == 1:
-                    features += d_cont[element]['cont'][0:3]
+                    features += load_cont(d_cont, element)
                 if feature_list[4] == 1:
-                    features += d_time[element]['ict']
+                    features += load_time(d_time, element)
+                if w2v == 1 and element in d_w2v:
+                    features += load_w2v(d_w2v, element)
 
                 if features != []:
                     if exclude_newbie == 1 and d_user[element]['user'] == [0.0, 0.0, 0.0]:
@@ -147,6 +168,7 @@ def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, seq_l
     weights = {}
     biases = {}
 
+    
     cells = []
     for _ in range(1):
         cell = tf.contrib.rnn.BasicLSTMCell(num_units=rnn_hidden_size,
@@ -155,9 +177,11 @@ def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, seq_l
         cells.append(cell)
 
     cells = tf.nn.rnn_cell.MultiRNNCell(cells)
+    
 
     outputs, states = tf.nn.dynamic_rnn(cells, X,
             dtype=tf.float32)
+    
 
     outputs = outputs[:, -1]
 
@@ -198,7 +222,6 @@ def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, seq_l
     cost = tf.reduce_mean(loss)
 
     update_ops = tf.get_collection(tf.GraphKeys.UPDATE_OPS)
-    #with tf.control_dependencies(update_ops): # Segmentation fault error
     optimizers = tf.compat.v1.train.AdamOptimizer(learning_rate=learning_rate).minimize(cost)
     optimizers = tf.group([optimizers, update_ops])
 
@@ -226,15 +249,18 @@ def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, seq_l
                         element = element[0]
                         features = []
                         if feature_list[0] == 1: # Bert
-                            features += d_bert[element]
+                            features += load_bert(d_bert, element)
                         if feature_list[1] == 1: # User
-                            features += d_user[element]['user']
-                        if feature_list[2] == 1: # Liwc
-                            features += d_liwc[element]['liwc']
-                        if feature_list[3] == 1: # Cont
-                            features += d_cont[element]['cont'][0:3]
-                        if feature_list[4] == 1: # Time
-                            features += d_time[element]['ict']
+                            features += load_user(d_user, element)
+                        if feature_list[2] == 1:
+                            features += load_liwc(d_liwc, element)
+                        if feature_list[3] == 1:
+                            features += load_cont(d_cont, element)
+                        if feature_list[4] == 1:
+                            features += load_time(d_time, element)
+                        if w2v == 1 and element in d_w2v:
+                            features += load_w2v(d_w2v, element)
+                        
                         sub_x.append(features)
 
                     sequences.append(sub_x)
@@ -242,13 +268,14 @@ def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, seq_l
                 X_train_batch = np.array(sequences)
                 Y_train_batch = np.array(Y_train_batch)
 
+
                 opt, c, o, h, l, acc = sess.run([optimizers, cost, outputs, hypothesis, logits, accuracy],
                         feed_dict={X: X_train_batch, Y: Y_train_batch, keep_prob:keep_rate, is_training:True})
                 
                 batch_index_start += batch_size
                 batch_index_end += batch_size
 
-            if (e % 2 == 0):
+            if (e % 2 == 0 or (seq_length > 1 and bert == 1) or hidden_size > 32):
                 print ('[epochs : %d, cost: %.8f]'%(e, c))
 
                 # TEST
@@ -268,8 +295,6 @@ def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, seq_l
                     predicts.append(decision)
 
                 print ('seq_length: %d, # predicts: %d, # corrects: %d, acc: %f, auc: %f' %(seq_length, len(predicts), len(list(filter(lambda x:x, predicts))), accuracy_score(test_Y, out), roc_auc_score(test_Y, out)))
-                #print (precision_recall_fscore_support(list(map(int, test_Y)), out))
-                
                 test_Y = list(map(lambda x:[x], test_Y))
 
             if print_body and e == 10:

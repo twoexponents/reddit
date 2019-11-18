@@ -29,7 +29,7 @@ def load_bodyfeatures():
     return pickle.load(open('/home/jhlim/data/commentbodyfeatures.p', 'rb'))
 
 def load_w2vfeatures():
-    return pickle.load(open('home/jhlim/data/contentfeatures.googlenews.nozer.p', 'rb'))
+    return pickle.load(open('/home/jhlim/data/contentfeatures.googlenews.nozero.p', 'rb'))
 
 def makeLearnTestSet(seq_length=1, bert=0, user=0, liwc=0, cont=0, time=0, w2v=0,exclude_newbie=0, lr=0):
     feature_list = [bert, user, liwc, cont, time, w2v]
@@ -39,8 +39,11 @@ def makeLearnTestSet(seq_length=1, bert=0, user=0, liwc=0, cont=0, time=0, w2v=0
     d_liwc = load_contfeatures()
     d_cont = d_liwc
     d_time = load_timefeatures()
+    d_w2v = {}
     if w2v == 1:
         d_w2v = load_w2vfeatures()
+
+    print ('load data completed.')
 
     input_dim = 0
     for i in range(len(feature_list)):
@@ -69,17 +72,17 @@ def makeLearnTestSet(seq_length=1, bert=0, user=0, liwc=0, cont=0, time=0, w2v=0
 
                 features = []
                 if feature_list[0] == 1:
-                    features.append(d_bert[element])
+                    features += d_bert[element]
                 if feature_list[1] == 1:
-                    features.append(d_user[element]['user'])
+                    features += d_user[element]['user']
                 if feature_list[2] == 1:
-                    features.append(d_liwc[element]['liwc'])
+                    features += d_liwc[element]['liwc']
                 if feature_list[3] == 1:
-                    features.append(d_cont[element]['cont'][0:3])
+                    features += d_cont[element]['cont'][0:3]
                 if feature_list[4] == 1:
-                    features.append(d_time[element]['ict'])
+                    features += d_time[element]['ict']
                 if element in d_w2v:
-                    features.append(d_w2v[element]['google.mean'][0])
+                    features += d_w2v[element]['google.mean'][0]
 
                 if features != []:
                     sub_x.append(features)
@@ -112,17 +115,17 @@ def makeLearnTestSet(seq_length=1, bert=0, user=0, liwc=0, cont=0, time=0, w2v=0
 
                 features = []
                 if feature_list[0] == 1:
-                    features.append(d_bert[element])
+                    features += d_bert[element]
                 if feature_list[1] == 1:
-                    features.append(d_user[element]['user'])
+                    features += d_user[element]['user']
                 if feature_list[2] == 1:
-                    features.append(d_liwc[element]['liwc'])
+                    features += d_liwc[element]['liwc']
                 if feature_list[3] == 1:
-                    features.append(d_cont[element]['cont'][0:3])
+                    features += d_cont[element]['cont'][0:3]
                 if feature_list[4] == 1:
-                    features.append(d_time[element]['ict'])
+                    features += d_time[element]['ict']
                 if element in d_w2v:
-                    features.append(d_w2v[element]['google.mean'][0])
+                    features += d_w2v[element]['google.mean'][0]
 
                 if features != []:
                     if exclude_newbie == 1 and d_user[element]['user'] == [0.0, 0.0, 0.0]: #w/o newbie 

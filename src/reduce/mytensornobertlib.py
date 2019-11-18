@@ -37,7 +37,7 @@ def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, seq_l
     d_liwc = load_contfeatures()
     d_cont = d_liwc
     d_time = load_timefeatures()
-    rnn_hidden_size = 10
+    rnn_hidden_size = 10 
     input_dim = 0
     for i in range(len(feature_list)):
         if feature_list[i] == 1:

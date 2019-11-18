@@ -11,9 +11,9 @@ from sklearn.utils import resample
 from tqdm import tqdm, trange
 from myloaddatalib import load_userfeatures, load_contfeatures, load_timefeatures
 
-MAX_LEN = 128
-seq_length = 2 
-batch_size = 300
+MAX_LEN = 512#128
+seq_length = 5 
+batch_size = 40
 
 def main():
     with open('/home/jhlim/data/commentbodyfeatures.p', 'rb') as f:
@@ -73,6 +73,14 @@ def main():
     tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=True)
     tokenized_texts = [tokenizer.tokenize(sent) for sent in sentences]
 
+    '''
+    f = open('showtokens.txt', 'w')
+    for texts in tokenized_texts:
+        f.write(' '.join(texts) + '\n')
+    
+    return 0;
+    '''
+
     temp = elements; temp2 = tokenized_texts
     elements = []; tokenized_texts = []
     for item in zip(temp, temp2):
@@ -100,26 +108,30 @@ def main():
 
     
     for i in trange(math.ceil(len(input_ids)/batch_size), desc="batch"):
-        batch_elements = elements[i*batch_size:(i+1)*batch_size]
-        inputs = input_ids[i*batch_size:(i+1)*batch_size]
-        attentions = attention_masks[i*batch_size:(i+1)*batch_size]
-        with torch.no_grad():
-            outputs = model(inputs, token_type_ids=None, attention_mask=attentions)
-            if flag:
-                print (outputs[0].shape)
-            outputs = outputs[0]
-            mean_outputs = torch.mean(outputs, 1, keepdim=False)
-            if flag:
-                flag = False
-                print (mean_outputs.shape)
-            mean_outputs = mean_outputs.to('cpu').tolist()
+        try:
+            batch_elements = elements[i*batch_size:(i+1)*batch_size]
+            inputs = input_ids[i*batch_size:(i+1)*batch_size]
+            attentions = attention_masks[i*batch_size:(i+1)*batch_size]
+            with torch.no_grad():
+                outputs = model(inputs, token_type_ids=None, attention_mask=attentions)
+                if flag:
+                    print (outputs[0].shape)
+                outputs = outputs[0]
+                mean_outputs = torch.mean(outputs, 1, keepdim=False)
+                if flag:
+                    flag = False
+                    print (mean_outputs.shape)
+                mean_outputs = mean_outputs.to('cpu').tolist()
 
-        if len(batch_elements) != len(mean_outputs):
-            print ('the size is different. elements: %d, outputs: %d.'%(len(elements), len(mean_outputs)))
-            sys.exit(-1)
+            if len(batch_elements) != len(mean_outputs):
+                print ('the size is different. elements: %d, outputs: %d.'%(len(elements), len(mean_outputs)))
+                sys.exit(-1)
 
-        for element, feature in zip(batch_elements, mean_outputs):
-            d_bertfeatures[element] = feature
+            for element, feature in zip(batch_elements, mean_outputs):
+                d_bertfeatures[element] = feature
+        except Exception as e:
+            print (e)
+            del model, outputs, input_ids, attention_masks, elements
 
 
     print ('size of d_bertfeatures: ', len(d_bertfeatures))

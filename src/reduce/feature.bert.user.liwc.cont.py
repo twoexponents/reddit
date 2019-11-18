@@ -4,7 +4,7 @@ from mytensorlib import runRNNModel
 
 tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
 
-hidden_size = 16
+hidden_size = 64
 learning_rate = 0.005
 batch_size = 32
 epochs = 30

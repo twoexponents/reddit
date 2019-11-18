@@ -1,3 +1,4 @@
+import tensorflow as tf
 import numpy as np
 import sys
 from myrflib import runRFModel
@@ -17,7 +18,7 @@ def main(argv):
     f.close()
 
     learn_X, learn_Y, test_X, test_Y = makeLearnTestSet(seq_length, time=1, exclude_newbie=exclude_newbie, rf=1)
-    runRFModel(seq_length, learn_X, learn_Y, test_X, test_Y)
+    runRFModel(seq_length, learn_X, learn_Y, test_X, test_Y, max_features=1)
 
 if __name__ == '__main__':
   tf.app.run(main=main, argv=[sys.argv])
