@@ -6,7 +6,7 @@ from operator import itemgetter
 
 def draw(data):
     plt.rcParams.update({'font.size': 22})
-    data = data[1:]
+    #data = data[1:]
     data = list(map(lambda x:x/1000, data))
     
     plt.plot(data)
@@ -15,6 +15,9 @@ def draw(data):
     plt.ylabel('Number of Sequences (x1000)')
     plt.rcParams["figure.figsize"] = (8, 4)
     plt.rcParams['axes.grid'] = True
+    plt.xlim(xmin=0)
+    plt.ylim(ymin=0)
+    plt.grid()
     plt.show()
     
 def main():
@@ -31,7 +34,10 @@ def main():
 
 
     s_list = sorted(d.items(), key=itemgetter(0))
-    draw(list(map(lambda x:x[1], s_list)))
+    f = open('len_distribution.txt', 'w')
+    for item in s_list[:59]:
+        f.write(str(item[0]) + ',' + str(item[1]) + '\n')
+    draw(list(map(lambda x:x[1], s_list[:59])))
 
     f.close()
 

@@ -17,7 +17,8 @@ def sql_close(cursor, conn):
 
 
 if __name__ == '__main__':
-  sentences = pickle.load(open('/home/jhlim/data/commentbodyfeatures.p', 'rb'))
+  sentences = pickle.load(open('/home/jhlim/data/lastcommentbodyfeatures.p', 'rb'))
+  #sentences = pickle.load(open('/home/jhlim/data/commentbodyfeatures.p', 'rb'))
   conn, cursor, = sql_connect()
 
   d = {}
@@ -64,17 +65,9 @@ if __name__ == '__main__':
   for line in lines:
       items = line.replace('\n', '').split(',')
       for i, item in enumerate(items):
-          '''
-          if i > 1:
-              break
-          elif d[item]['valid'] == 0:
-              no_valid += 1
-              break
-          '''
-          
           if i == 0 and item not in posts:
               posts[item] = 1
-          elif item not in comments:
+          elif i != 0 and item not in comments:
               comments[item] = 1
 
           if item in d:
@@ -82,7 +75,7 @@ if __name__ == '__main__':
               if user not in users:
                   users[user] = 1
 
-          if i == 0 and item in sentences:
+          if i != 0 and item in sentences:
               if item not in comment_lens:
                   comment_lens[item] = len(sentences[item])
                   comment_words[item] = len(sentences[item].split(' '))

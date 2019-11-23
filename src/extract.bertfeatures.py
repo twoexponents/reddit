@@ -12,7 +12,7 @@ from tqdm import tqdm, trange
 from myloaddatalib import load_userfeatures, load_contfeatures, load_timefeatures
 
 MAX_LEN = 512#128
-seq_length = 5 
+seq_length = 2 
 batch_size = 40
 
 def main():
@@ -32,7 +32,7 @@ def main():
 
     tuples = []
     for seq in learn_instances:
-        for i, element in enumerate(seq):
+        for i, element in enumerate(seq[:-1]):
             if False in list(map(lambda x:element in x, [d_user, d_liwc, d_time])):
                 continue
             if i > (seq_length-1):
@@ -40,7 +40,7 @@ def main():
             if element in sentencefile:
                 tuples.append((element, sentencefile[element]))
     for seq in test_instances:
-        for i, element in enumerate(seq):
+        for i, element in enumerate(seq[:-1]):
             if False in list(map(lambda x:element in x, [d_user, d_liwc, d_time])):
                 continue
             if i > (seq_length-1):
@@ -77,7 +77,6 @@ def main():
     f = open('showtokens.txt', 'w')
     for texts in tokenized_texts:
         f.write(' '.join(texts) + '\n')
-    
     return 0;
     '''
 
@@ -104,7 +103,7 @@ def main():
     model.eval()
 
     flag = True
-    print (len(elements))
+    #print (len(elements))
 
     
     for i in trange(math.ceil(len(input_ids)/batch_size), desc="batch"):

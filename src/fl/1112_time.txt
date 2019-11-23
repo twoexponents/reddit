@@ -1,0 +1,1140 @@
+feature.time.nobert.py,2,0,0
+sequence len: 2
+learning_rate: 0.001000, batch_size 32, epochs 100
+exclude_newbie: 0
+test_parent: False
+seq_length: 2, input_dim: 1
+size of learn_Y: 54299
+Counter({1: 32422, 0: 21877})
+learn_Y:  Counter({0: 21877, 1: 21877})
+test_Y:  Counter({1.0: 10420, 0.0: 7771})
+Data loading Complete learn:43754, test:18191
+[epochs : 0, cost: 0.68483102]
+seq_length: 2, # predicts: 18191, # corrects: 10461, acc: 0.575065, auc: 0.505877
+[epochs : 2, cost: 0.69015563]
+seq_length: 2, # predicts: 18191, # corrects: 11748, acc: 0.645814, auc: 0.652723
+[epochs : 4, cost: 0.67978978]
+seq_length: 2, # predicts: 18191, # corrects: 11415, acc: 0.627508, auc: 0.646509
+[epochs : 6, cost: 0.67076349]
+seq_length: 2, # predicts: 18191, # corrects: 11897, acc: 0.654005, auc: 0.632474
+[epochs : 8, cost: 0.70208246]
+seq_length: 2, # predicts: 18191, # corrects: 10728, acc: 0.589742, auc: 0.624503
+[epochs : 10, cost: 0.68216598]
+seq_length: 2, # predicts: 18191, # corrects: 11389, acc: 0.626079, auc: 0.581518
+[epochs : 12, cost: 0.68810964]
+seq_length: 2, # predicts: 18191, # corrects: 11744, acc: 0.645594, auc: 0.612652
+[epochs : 14, cost: 0.71473938]
+seq_length: 2, # predicts: 18191, # corrects: 11922, acc: 0.655379, auc: 0.630697
+[epochs : 16, cost: 0.66220796]
+seq_length: 2, # predicts: 18191, # corrects: 7782, acc: 0.427794, auc: 0.500528
+[epochs : 18, cost: 0.73722100]
+seq_length: 2, # predicts: 18191, # corrects: 11591, acc: 0.637183, auc: 0.599226
+[epochs : 20, cost: 0.68229055]
+seq_length: 2, # predicts: 18191, # corrects: 11791, acc: 0.648178, auc: 0.617754
+[epochs : 22, cost: 0.70414400]
+seq_length: 2, # predicts: 18191, # corrects: 11328, acc: 0.622726, auc: 0.575924
+[epochs : 24, cost: 0.68657815]
+seq_length: 2, # predicts: 18191, # corrects: 8526, acc: 0.468693, auc: 0.535198
+[epochs : 26, cost: 0.70439851]
+seq_length: 2, # predicts: 18191, # corrects: 11775, acc: 0.647298, auc: 0.616119
+[epochs : 28, cost: 0.68348163]
+seq_length: 2, # predicts: 18191, # corrects: 11893, acc: 0.653785, auc: 0.647200
+[epochs : 30, cost: 0.68996906]
+seq_length: 2, # predicts: 18191, # corrects: 11325, acc: 0.622561, auc: 0.575372
+[epochs : 32, cost: 0.66720569]
+seq_length: 2, # predicts: 18191, # corrects: 11716, acc: 0.644055, auc: 0.609509
+[epochs : 34, cost: 0.69694757]
+seq_length: 2, # predicts: 18191, # corrects: 11586, acc: 0.636908, auc: 0.598462
+[epochs : 36, cost: 0.62247121]
+seq_length: 2, # predicts: 18191, # corrects: 11320, acc: 0.622286, auc: 0.574935
+[epochs : 38, cost: 0.67996132]
+seq_length: 2, # predicts: 18191, # corrects: 11394, acc: 0.626354, auc: 0.581136
+[epochs : 40, cost: 0.62391961]
+seq_length: 2, # predicts: 18191, # corrects: 11183, acc: 0.614755, auc: 0.563961
+[epochs : 42, cost: 0.68006313]
+seq_length: 2, # predicts: 18191, # corrects: 11847, acc: 0.651256, auc: 0.622796
+[epochs : 44, cost: 0.68130547]
+seq_length: 2, # predicts: 18191, # corrects: 11204, acc: 0.615909, auc: 0.565672
+[epochs : 46, cost: 0.69530767]
+seq_length: 2, # predicts: 18191, # corrects: 11804, acc: 0.648892, auc: 0.618165
+[epochs : 48, cost: 0.70148623]
+seq_length: 2, # predicts: 18191, # corrects: 11506, acc: 0.632511, auc: 0.590354
+[epochs : 50, cost: 0.67279041]
+seq_length: 2, # predicts: 18191, # corrects: 11404, acc: 0.626903, auc: 0.582009
+[epochs : 52, cost: 0.69338804]
+seq_length: 2, # predicts: 18191, # corrects: 11081, acc: 0.609147, auc: 0.556139
+[epochs : 54, cost: 0.69900531]
+seq_length: 2, # predicts: 18191, # corrects: 11379, acc: 0.625529, auc: 0.579484
+[epochs : 56, cost: 0.70608699]
+seq_length: 2, # predicts: 18191, # corrects: 11532, acc: 0.633940, auc: 0.592681
+[epochs : 58, cost: 0.69878346]
+seq_length: 2, # predicts: 18191, # corrects: 11202, acc: 0.615799, auc: 0.565347
+[epochs : 60, cost: 0.70344949]
+seq_length: 2, # predicts: 18191, # corrects: 11396, acc: 0.626464, auc: 0.581167
+[epochs : 62, cost: 0.69348413]
+seq_length: 2, # predicts: 18191, # corrects: 11395, acc: 0.626409, auc: 0.581102
+[epochs : 64, cost: 0.69725543]
+seq_length: 2, # predicts: 18191, # corrects: 11712, acc: 0.643835, auc: 0.608778
+[epochs : 66, cost: 0.68260390]
+seq_length: 2, # predicts: 18191, # corrects: 11450, acc: 0.629432, auc: 0.585950
+[epochs : 68, cost: 0.65949351]
+seq_length: 2, # predicts: 18191, # corrects: 11769, acc: 0.646968, auc: 0.614032
+[epochs : 70, cost: 0.70172989]
+seq_length: 2, # predicts: 18191, # corrects: 11744, acc: 0.645594, auc: 0.611834
+[epochs : 72, cost: 0.72202897]
+seq_length: 2, # predicts: 18191, # corrects: 11496, acc: 0.631961, auc: 0.589776
+[epochs : 74, cost: 0.70759749]
+seq_length: 2, # predicts: 18191, # corrects: 11339, acc: 0.623330, auc: 0.576272
+[epochs : 76, cost: 0.63891774]
+seq_length: 2, # predicts: 18191, # corrects: 11312, acc: 0.621846, auc: 0.573963
+[epochs : 78, cost: 0.68768793]
+seq_length: 2, # predicts: 18191, # corrects: 11897, acc: 0.654005, auc: 0.650549
+[epochs : 80, cost: 0.69903988]
+seq_length: 2, # predicts: 18191, # corrects: 11629, acc: 0.639272, auc: 0.601327
+[epochs : 82, cost: 0.69501674]
+seq_length: 2, # predicts: 18191, # corrects: 11097, acc: 0.610027, auc: 0.557103
+[epochs : 84, cost: 0.72810638]
+seq_length: 2, # predicts: 18191, # corrects: 11766, acc: 0.646803, auc: 0.614199
+[epochs : 86, cost: 0.68004721]
+seq_length: 2, # predicts: 18191, # corrects: 11433, acc: 0.628498, auc: 0.584071
+[epochs : 88, cost: 0.66712403]
+seq_length: 2, # predicts: 18191, # corrects: 11257, acc: 0.618822, auc: 0.569982
+[epochs : 90, cost: 0.69668603]
+seq_length: 2, # predicts: 18191, # corrects: 10650, acc: 0.585454, auc: 0.521391
+[epochs : 92, cost: 0.71104300]
+seq_length: 2, # predicts: 18191, # corrects: 11303, acc: 0.621351, auc: 0.573236
+[epochs : 94, cost: 0.70205903]
+seq_length: 2, # predicts: 18191, # corrects: 11573, acc: 0.636194, auc: 0.596252
+[epochs : 96, cost: 0.67845786]
+seq_length: 2, # predicts: 18191, # corrects: 11645, acc: 0.640152, auc: 0.603207
+[epochs : 98, cost: 0.67217618]
+seq_length: 2, # predicts: 18191, # corrects: 11271, acc: 0.619592, auc: 0.570818
+
+
+
+feature.time.nobert.py,3,0,0
+sequence len: 3
+learning_rate: 0.001000, batch_size 32, epochs 100
+exclude_newbie: 0
+test_parent: False
+seq_length: 3, input_dim: 1
+size of learn_Y: 55013
+Counter({1: 28956, 0: 26057})
+learn_Y:  Counter({1: 26057, 0: 26057})
+test_Y:  Counter({1.0: 9412, 0.0: 9172})
+Data loading Complete learn:52114, test:18584
+[epochs : 0, cost: 0.60189569]
+seq_length: 3, # predicts: 18584, # corrects: 9430, acc: 0.507426, auc: 0.501063
+[epochs : 2, cost: 0.55948818]
+seq_length: 3, # predicts: 18584, # corrects: 11651, acc: 0.626937, auc: 0.628282
+[epochs : 4, cost: 0.56565070]
+seq_length: 3, # predicts: 18584, # corrects: 11208, acc: 0.603099, auc: 0.606610
+[epochs : 6, cost: 0.61122501]
+seq_length: 3, # predicts: 18584, # corrects: 11199, acc: 0.602615, auc: 0.600307
+[epochs : 8, cost: 0.59978694]
+seq_length: 3, # predicts: 18584, # corrects: 9168, acc: 0.493328, auc: 0.499768
+[epochs : 10, cost: 0.56743878]
+seq_length: 3, # predicts: 18584, # corrects: 10531, acc: 0.566670, auc: 0.569033
+[epochs : 12, cost: 0.56376958]
+seq_length: 3, # predicts: 18584, # corrects: 11581, acc: 0.623170, auc: 0.623067
+[epochs : 14, cost: 0.60825640]
+seq_length: 3, # predicts: 18584, # corrects: 11471, acc: 0.617251, auc: 0.616367
+[epochs : 16, cost: 0.58218110]
+seq_length: 3, # predicts: 18584, # corrects: 11452, acc: 0.616229, auc: 0.615295
+[epochs : 18, cost: 0.58430320]
+seq_length: 3, # predicts: 18584, # corrects: 11055, acc: 0.594867, auc: 0.598456
+[epochs : 20, cost: 0.61554539]
+seq_length: 3, # predicts: 18584, # corrects: 11380, acc: 0.612355, auc: 0.615372
+[epochs : 22, cost: 0.56546670]
+seq_length: 3, # predicts: 18584, # corrects: 11271, acc: 0.606489, auc: 0.604230
+[epochs : 24, cost: 0.58865786]
+seq_length: 3, # predicts: 18584, # corrects: 11584, acc: 0.623332, auc: 0.625472
+[epochs : 26, cost: 0.56734771]
+seq_length: 3, # predicts: 18584, # corrects: 10419, acc: 0.560644, auc: 0.565463
+[epochs : 28, cost: 0.61268359]
+seq_length: 3, # predicts: 18584, # corrects: 11049, acc: 0.594544, auc: 0.591160
+[epochs : 30, cost: 0.59779358]
+seq_length: 3, # predicts: 18584, # corrects: 9480, acc: 0.510116, auc: 0.516244
+[epochs : 32, cost: 0.60923594]
+seq_length: 3, # predicts: 18584, # corrects: 10974, acc: 0.590508, auc: 0.587049
+[epochs : 34, cost: 0.57569051]
+seq_length: 3, # predicts: 18584, # corrects: 10486, acc: 0.564249, auc: 0.559621
+[epochs : 36, cost: 0.60033095]
+seq_length: 3, # predicts: 18584, # corrects: 11544, acc: 0.621180, auc: 0.620886
+[epochs : 38, cost: 0.57327980]
+seq_length: 3, # predicts: 18584, # corrects: 11388, acc: 0.612785, auc: 0.610991
+[epochs : 40, cost: 0.55203104]
+seq_length: 3, # predicts: 18584, # corrects: 10689, acc: 0.575172, auc: 0.579319
+[epochs : 42, cost: 0.59188771]
+seq_length: 3, # predicts: 18584, # corrects: 11289, acc: 0.607458, auc: 0.605164
+[epochs : 44, cost: 0.58474159]
+seq_length: 3, # predicts: 18584, # corrects: 11413, acc: 0.614130, auc: 0.612443
+[epochs : 46, cost: 0.58653033]
+seq_length: 3, # predicts: 18584, # corrects: 11441, acc: 0.615637, auc: 0.614045
+[epochs : 48, cost: 0.63305163]
+seq_length: 3, # predicts: 18584, # corrects: 11388, acc: 0.612785, auc: 0.611051
+[epochs : 50, cost: 0.58103371]
+seq_length: 3, # predicts: 18584, # corrects: 11422, acc: 0.614615, auc: 0.612959
+[epochs : 52, cost: 0.58232033]
+seq_length: 3, # predicts: 18584, # corrects: 11507, acc: 0.619189, auc: 0.618097
+[epochs : 54, cost: 0.60866517]
+seq_length: 3, # predicts: 18584, # corrects: 11286, acc: 0.607297, auc: 0.604818
+[epochs : 56, cost: 0.59716499]
+seq_length: 3, # predicts: 18584, # corrects: 11603, acc: 0.624354, auc: 0.624429
+[epochs : 58, cost: 0.58708525]
+seq_length: 3, # predicts: 18584, # corrects: 11505, acc: 0.619081, auc: 0.618235
+[epochs : 60, cost: 0.63503414]
+seq_length: 3, # predicts: 18584, # corrects: 11549, acc: 0.621449, auc: 0.621240
+[epochs : 62, cost: 0.59439600]
+seq_length: 3, # predicts: 18584, # corrects: 11345, acc: 0.610471, auc: 0.608355
+[epochs : 64, cost: 0.62401891]
+seq_length: 3, # predicts: 18584, # corrects: 11536, acc: 0.620749, auc: 0.620427
+[epochs : 66, cost: 0.60392582]
+seq_length: 3, # predicts: 18584, # corrects: 11443, acc: 0.615745, auc: 0.614163
+[epochs : 68, cost: 0.58219141]
+seq_length: 3, # predicts: 18584, # corrects: 11595, acc: 0.623924, auc: 0.624072
+[epochs : 70, cost: 0.60626489]
+seq_length: 3, # predicts: 18584, # corrects: 11328, acc: 0.609557, auc: 0.607469
+[epochs : 72, cost: 0.60786879]
+seq_length: 3, # predicts: 18584, # corrects: 11085, acc: 0.596481, auc: 0.593191
+[epochs : 74, cost: 0.58534348]
+seq_length: 3, # predicts: 18584, # corrects: 11270, acc: 0.606436, auc: 0.603830
+[epochs : 76, cost: 0.62009585]
+seq_length: 3, # predicts: 18584, # corrects: 11569, acc: 0.622525, auc: 0.622415
+[epochs : 78, cost: 0.58023989]
+seq_length: 3, # predicts: 18584, # corrects: 11413, acc: 0.614130, auc: 0.612307
+[epochs : 80, cost: 0.59711969]
+seq_length: 3, # predicts: 18584, # corrects: 11432, acc: 0.615153, auc: 0.613533
+[epochs : 82, cost: 0.61075449]
+seq_length: 3, # predicts: 18584, # corrects: 11470, acc: 0.617198, auc: 0.615912
+[epochs : 84, cost: 0.62379467]
+seq_length: 3, # predicts: 18584, # corrects: 11313, acc: 0.608749, auc: 0.606529
+[epochs : 86, cost: 0.61481076]
+seq_length: 3, # predicts: 18584, # corrects: 11496, acc: 0.618597, auc: 0.617297
+[epochs : 88, cost: 0.61863589]
+seq_length: 3, # predicts: 18584, # corrects: 11404, acc: 0.613646, auc: 0.611936
+[epochs : 90, cost: 0.59423137]
+seq_length: 3, # predicts: 18584, # corrects: 11432, acc: 0.615153, auc: 0.613480
+[epochs : 92, cost: 0.59942555]
+seq_length: 3, # predicts: 18584, # corrects: 11298, acc: 0.607942, auc: 0.605725
+[epochs : 94, cost: 0.58984494]
+seq_length: 3, # predicts: 18584, # corrects: 11509, acc: 0.619296, auc: 0.618088
+[epochs : 96, cost: 0.58150887]
+seq_length: 3, # predicts: 18584, # corrects: 11092, acc: 0.596858, auc: 0.593656
+[epochs : 98, cost: 0.60281444]
+seq_length: 3, # predicts: 18584, # corrects: 11439, acc: 0.615529, auc: 0.613937
+
+
+
+feature.time.nobert.py,4,0,0
+sequence len: 4
+learning_rate: 0.001000, batch_size 32, epochs 100
+exclude_newbie: 0
+test_parent: False
+seq_length: 4, input_dim: 1
+size of learn_Y: 55348
+Counter({0: 27859, 1: 27489})
+learn_Y:  Counter({0: 27489, 1: 27489})
+test_Y:  Counter({0.0: 9672, 1.0: 8995})
+Data loading Complete learn:54978, test:18667
+[epochs : 0, cost: 0.79253167]
+seq_length: 4, # predicts: 18667, # corrects: 9438, acc: 0.505598, auc: 0.521683
+[epochs : 2, cost: 0.74895108]
+seq_length: 4, # predicts: 18667, # corrects: 11762, acc: 0.630096, auc: 0.626576
+[epochs : 4, cost: 0.75796306]
+seq_length: 4, # predicts: 18667, # corrects: 10575, acc: 0.566508, auc: 0.576812
+[epochs : 6, cost: 0.74742937]
+seq_length: 4, # predicts: 18667, # corrects: 11556, acc: 0.619060, auc: 0.611394
+[epochs : 8, cost: 0.75805897]
+seq_length: 4, # predicts: 18667, # corrects: 11786, acc: 0.631382, auc: 0.629525
+[epochs : 10, cost: 0.73659223]
+seq_length: 4, # predicts: 18667, # corrects: 11601, acc: 0.621471, auc: 0.614214
+[epochs : 12, cost: 0.71987760]
+seq_length: 4, # predicts: 18667, # corrects: 11681, acc: 0.625757, auc: 0.619560
+[epochs : 14, cost: 0.75673389]
+seq_length: 4, # predicts: 18667, # corrects: 11376, acc: 0.609418, auc: 0.600011
+[epochs : 16, cost: 0.78076494]
+seq_length: 4, # predicts: 18667, # corrects: 11738, acc: 0.628810, auc: 0.628887
+[epochs : 18, cost: 0.75548011]
+seq_length: 4, # predicts: 18667, # corrects: 11754, acc: 0.629667, auc: 0.628532
+[epochs : 20, cost: 0.71303034]
+seq_length: 4, # predicts: 18667, # corrects: 11773, acc: 0.630685, auc: 0.629179
+[epochs : 22, cost: 0.77629483]
+seq_length: 4, # predicts: 18667, # corrects: 11760, acc: 0.629989, auc: 0.629313
+[epochs : 24, cost: 0.76005757]
+seq_length: 4, # predicts: 18667, # corrects: 11740, acc: 0.628917, auc: 0.628901
+[epochs : 26, cost: 0.75459546]
+seq_length: 4, # predicts: 18667, # corrects: 11788, acc: 0.631489, auc: 0.629239
+[epochs : 28, cost: 0.72648585]
+seq_length: 4, # predicts: 18667, # corrects: 11784, acc: 0.631274, auc: 0.629620
+[epochs : 30, cost: 0.77057141]
+seq_length: 4, # predicts: 18667, # corrects: 11684, acc: 0.625917, auc: 0.627563
+[epochs : 32, cost: 0.74570346]
+seq_length: 4, # predicts: 18667, # corrects: 11661, acc: 0.624685, auc: 0.626331
+[epochs : 34, cost: 0.75265920]
+seq_length: 4, # predicts: 18667, # corrects: 11743, acc: 0.629078, auc: 0.625773
+[epochs : 36, cost: 0.72650731]
+seq_length: 4, # predicts: 18667, # corrects: 11737, acc: 0.628757, auc: 0.627976
+[epochs : 38, cost: 0.72610646]
+seq_length: 4, # predicts: 18667, # corrects: 11667, acc: 0.625007, auc: 0.626715
+[epochs : 40, cost: 0.75072014]
+seq_length: 4, # predicts: 18667, # corrects: 11708, acc: 0.627203, auc: 0.627947
+[epochs : 42, cost: 0.72378606]
+seq_length: 4, # predicts: 18667, # corrects: 11685, acc: 0.625971, auc: 0.627439
+[epochs : 44, cost: 0.80123109]
+seq_length: 4, # predicts: 18667, # corrects: 11733, acc: 0.628542, auc: 0.628582
+[epochs : 46, cost: 0.75087166]
+seq_length: 4, # predicts: 18667, # corrects: 11765, acc: 0.630257, auc: 0.627859
+[epochs : 48, cost: 0.77748984]
+seq_length: 4, # predicts: 18667, # corrects: 11701, acc: 0.626828, auc: 0.628021
+[epochs : 50, cost: 0.73021835]
+seq_length: 4, # predicts: 18667, # corrects: 11539, acc: 0.618150, auc: 0.621880
+[epochs : 52, cost: 0.73849857]
+seq_length: 4, # predicts: 18667, # corrects: 11791, acc: 0.631649, auc: 0.629511
+[epochs : 54, cost: 0.75162733]
+seq_length: 4, # predicts: 18667, # corrects: 11597, acc: 0.621257, auc: 0.623991
+[epochs : 56, cost: 0.75065088]
+seq_length: 4, # predicts: 18667, # corrects: 11710, acc: 0.627310, auc: 0.628533
+[epochs : 58, cost: 0.72126627]
+seq_length: 4, # predicts: 18667, # corrects: 11698, acc: 0.626667, auc: 0.627687
+[epochs : 60, cost: 0.76459765]
+seq_length: 4, # predicts: 18667, # corrects: 11697, acc: 0.626614, auc: 0.627795
+[epochs : 62, cost: 0.75532508]
+seq_length: 4, # predicts: 18667, # corrects: 11531, acc: 0.617721, auc: 0.621439
+[epochs : 64, cost: 0.73709786]
+seq_length: 4, # predicts: 18667, # corrects: 11744, acc: 0.629132, auc: 0.629190
+[epochs : 66, cost: 0.78790319]
+seq_length: 4, # predicts: 18667, # corrects: 11764, acc: 0.630203, auc: 0.629088
+[epochs : 68, cost: 0.73682666]
+seq_length: 4, # predicts: 18667, # corrects: 11519, acc: 0.617078, auc: 0.620725
+[epochs : 70, cost: 0.73658776]
+seq_length: 4, # predicts: 18667, # corrects: 11649, acc: 0.624042, auc: 0.625886
+[epochs : 72, cost: 0.74104536]
+seq_length: 4, # predicts: 18667, # corrects: 11744, acc: 0.629132, auc: 0.629318
+[epochs : 74, cost: 0.75016141]
+seq_length: 4, # predicts: 18667, # corrects: 11739, acc: 0.628864, auc: 0.628889
+[epochs : 76, cost: 0.70960826]
+seq_length: 4, # predicts: 18667, # corrects: 11572, acc: 0.619918, auc: 0.622928
+[epochs : 78, cost: 0.75396967]
+seq_length: 4, # predicts: 18667, # corrects: 11559, acc: 0.619221, auc: 0.622358
+[epochs : 80, cost: 0.73425496]
+seq_length: 4, # predicts: 18667, # corrects: 11766, acc: 0.630310, auc: 0.628891
+[epochs : 82, cost: 0.75053042]
+seq_length: 4, # predicts: 18667, # corrects: 11611, acc: 0.622007, auc: 0.624614
+[epochs : 84, cost: 0.72527039]
+seq_length: 4, # predicts: 18667, # corrects: 11761, acc: 0.630042, auc: 0.630431
+[epochs : 86, cost: 0.75884497]
+seq_length: 4, # predicts: 18667, # corrects: 11547, acc: 0.618578, auc: 0.622041
+[epochs : 88, cost: 0.74357110]
+seq_length: 4, # predicts: 18667, # corrects: 11629, acc: 0.622971, auc: 0.625412
+[epochs : 90, cost: 0.72892129]
+seq_length: 4, # predicts: 18667, # corrects: 11729, acc: 0.628328, auc: 0.629177
+[epochs : 92, cost: 0.69276011]
+seq_length: 4, # predicts: 18667, # corrects: 11563, acc: 0.619435, auc: 0.622564
+[epochs : 94, cost: 0.78657115]
+seq_length: 4, # predicts: 18667, # corrects: 11500, acc: 0.616060, auc: 0.620035
+[epochs : 96, cost: 0.73874772]
+seq_length: 4, # predicts: 18667, # corrects: 11755, acc: 0.629721, auc: 0.629327
+[epochs : 98, cost: 0.73115253]
+seq_length: 4, # predicts: 18667, # corrects: 11594, acc: 0.621096, auc: 0.623859
+
+
+
+feature.time.nobert.py,5,0,0
+sequence len: 5
+learning_rate: 0.001000, batch_size 32, epochs 100
+exclude_newbie: 0
+test_parent: False
+seq_length: 5, input_dim: 1
+size of learn_Y: 55380
+Counter({0: 28196, 1: 27184})
+learn_Y:  Counter({0: 27184, 1: 27184})
+test_Y:  Counter({0.0: 9747, 1.0: 9037})
+Data loading Complete learn:54368, test:18784
+[epochs : 0, cost: 0.64758837]
+seq_length: 5, # predicts: 18784, # corrects: 9740, acc: 0.518526, auc: 0.533866
+[epochs : 2, cost: 0.64117879]
+seq_length: 5, # predicts: 18784, # corrects: 10176, acc: 0.541738, auc: 0.524796
+[epochs : 4, cost: 0.63804376]
+seq_length: 5, # predicts: 18784, # corrects: 11297, acc: 0.601416, auc: 0.591365
+[epochs : 6, cost: 0.66399449]
+seq_length: 5, # predicts: 18784, # corrects: 11424, acc: 0.608177, auc: 0.599101
+[epochs : 8, cost: 0.62297964]
+seq_length: 5, # predicts: 18784, # corrects: 11671, acc: 0.621327, auc: 0.617176
+[epochs : 10, cost: 0.69795585]
+seq_length: 5, # predicts: 18784, # corrects: 11668, acc: 0.621167, auc: 0.620133
+[epochs : 12, cost: 0.68331850]
+seq_length: 5, # predicts: 18784, # corrects: 11208, acc: 0.596678, auc: 0.585896
+[epochs : 14, cost: 0.65201318]
+seq_length: 5, # predicts: 18784, # corrects: 11644, acc: 0.619889, auc: 0.615130
+[epochs : 16, cost: 0.67116630]
+seq_length: 5, # predicts: 18784, # corrects: 11599, acc: 0.617494, auc: 0.611911
+[epochs : 18, cost: 0.66483164]
+seq_length: 5, # predicts: 18784, # corrects: 11641, acc: 0.619730, auc: 0.614819
+[epochs : 20, cost: 0.60103601]
+seq_length: 5, # predicts: 18784, # corrects: 11609, acc: 0.618026, auc: 0.612113
+[epochs : 22, cost: 0.62355071]
+seq_length: 5, # predicts: 18784, # corrects: 11675, acc: 0.621540, auc: 0.619315
+[epochs : 24, cost: 0.67655855]
+seq_length: 5, # predicts: 18784, # corrects: 11595, acc: 0.617281, auc: 0.611379
+[epochs : 26, cost: 0.63606274]
+seq_length: 5, # predicts: 18784, # corrects: 11691, acc: 0.622391, auc: 0.618573
+[epochs : 28, cost: 0.62988293]
+seq_length: 5, # predicts: 18784, # corrects: 11535, acc: 0.614086, auc: 0.606504
+[epochs : 30, cost: 0.65361977]
+seq_length: 5, # predicts: 18784, # corrects: 11592, acc: 0.617121, auc: 0.617976
+[epochs : 32, cost: 0.64042163]
+seq_length: 5, # predicts: 18784, # corrects: 11701, acc: 0.622924, auc: 0.620415
+[epochs : 34, cost: 0.61592126]
+seq_length: 5, # predicts: 18784, # corrects: 11617, acc: 0.618452, auc: 0.613305
+[epochs : 36, cost: 0.64279234]
+seq_length: 5, # predicts: 18784, # corrects: 11665, acc: 0.621007, auc: 0.618803
+[epochs : 38, cost: 0.62671709]
+seq_length: 5, # predicts: 18784, # corrects: 11555, acc: 0.615151, auc: 0.608215
+[epochs : 40, cost: 0.64522243]
+seq_length: 5, # predicts: 18784, # corrects: 11695, acc: 0.622604, auc: 0.619209
+[epochs : 42, cost: 0.66244853]
+seq_length: 5, # predicts: 18784, # corrects: 11669, acc: 0.621220, auc: 0.617017
+[epochs : 44, cost: 0.64008999]
+seq_length: 5, # predicts: 18784, # corrects: 11704, acc: 0.623083, auc: 0.619852
+[epochs : 46, cost: 0.63543969]
+seq_length: 5, # predicts: 18784, # corrects: 11647, acc: 0.620049, auc: 0.619785
+[epochs : 48, cost: 0.65945077]
+seq_length: 5, # predicts: 18784, # corrects: 11605, acc: 0.617813, auc: 0.612057
+[epochs : 50, cost: 0.67120612]
+seq_length: 5, # predicts: 18784, # corrects: 11694, acc: 0.622551, auc: 0.618718
+[epochs : 52, cost: 0.64934051]
+seq_length: 5, # predicts: 18784, # corrects: 11697, acc: 0.622711, auc: 0.618949
+[epochs : 54, cost: 0.62020218]
+seq_length: 5, # predicts: 18784, # corrects: 11682, acc: 0.621912, auc: 0.617764
+[epochs : 56, cost: 0.61368597]
+seq_length: 5, # predicts: 18784, # corrects: 11707, acc: 0.623243, auc: 0.620542
+[epochs : 58, cost: 0.65042055]
+seq_length: 5, # predicts: 18784, # corrects: 11694, acc: 0.622551, auc: 0.618968
+[epochs : 60, cost: 0.64545637]
+seq_length: 5, # predicts: 18784, # corrects: 11652, acc: 0.620315, auc: 0.616471
+[epochs : 62, cost: 0.67071140]
+seq_length: 5, # predicts: 18784, # corrects: 11678, acc: 0.621699, auc: 0.620138
+[epochs : 64, cost: 0.66779649]
+seq_length: 5, # predicts: 18784, # corrects: 11664, acc: 0.620954, auc: 0.618493
+[epochs : 66, cost: 0.64970922]
+seq_length: 5, # predicts: 18784, # corrects: 11667, acc: 0.621114, auc: 0.619236
+[epochs : 68, cost: 0.66677415]
+seq_length: 5, # predicts: 18784, # corrects: 11677, acc: 0.621646, auc: 0.619608
+[epochs : 70, cost: 0.66344476]
+seq_length: 5, # predicts: 18784, # corrects: 11632, acc: 0.619250, auc: 0.620020
+[epochs : 72, cost: 0.61374450]
+seq_length: 5, # predicts: 18784, # corrects: 11655, acc: 0.620475, auc: 0.619720
+[epochs : 74, cost: 0.61220026]
+seq_length: 5, # predicts: 18784, # corrects: 11700, acc: 0.622871, auc: 0.619494
+[epochs : 76, cost: 0.68597674]
+seq_length: 5, # predicts: 18784, # corrects: 11694, acc: 0.622551, auc: 0.620310
+[epochs : 78, cost: 0.65589994]
+seq_length: 5, # predicts: 18784, # corrects: 11706, acc: 0.623190, auc: 0.619447
+[epochs : 80, cost: 0.64018476]
+seq_length: 5, # predicts: 18784, # corrects: 11682, acc: 0.621912, auc: 0.620001
+[epochs : 82, cost: 0.62913936]
+seq_length: 5, # predicts: 18784, # corrects: 11666, acc: 0.621060, auc: 0.619370
+[epochs : 84, cost: 0.62980700]
+seq_length: 5, # predicts: 18784, # corrects: 11624, acc: 0.618825, auc: 0.619504
+[epochs : 86, cost: 0.65837163]
+seq_length: 5, # predicts: 18784, # corrects: 11572, acc: 0.616056, auc: 0.617627
+[epochs : 88, cost: 0.65665531]
+seq_length: 5, # predicts: 18784, # corrects: 11617, acc: 0.618452, auc: 0.620141
+[epochs : 90, cost: 0.65253532]
+seq_length: 5, # predicts: 18784, # corrects: 11676, acc: 0.621593, auc: 0.621237
+[epochs : 92, cost: 0.64318299]
+seq_length: 5, # predicts: 18784, # corrects: 11704, acc: 0.623083, auc: 0.621746
+[epochs : 94, cost: 0.61441404]
+seq_length: 5, # predicts: 18784, # corrects: 11584, acc: 0.616695, auc: 0.618170
+[epochs : 96, cost: 0.67992049]
+seq_length: 5, # predicts: 18784, # corrects: 11627, acc: 0.618984, auc: 0.619997
+[epochs : 98, cost: 0.63525259]
+seq_length: 5, # predicts: 18784, # corrects: 11646, acc: 0.619996, auc: 0.620488
+
+
+
+feature.time.nobert.py,6,0,0
+sequence len: 6
+learning_rate: 0.001000, batch_size 32, epochs 100
+exclude_newbie: 0
+test_parent: False
+seq_length: 6, input_dim: 1
+size of learn_Y: 49241
+Counter({0: 25417, 1: 23824})
+learn_Y:  Counter({0: 23824, 1: 23824})
+test_Y:  Counter({0.0: 8672, 1.0: 8222})
+Data loading Complete learn:47648, test:16894
+[epochs : 0, cost: 0.78891534]
+seq_length: 6, # predicts: 16894, # corrects: 8222, acc: 0.486682, auc: 0.500000
+[epochs : 2, cost: 0.63225305]
+seq_length: 6, # predicts: 16894, # corrects: 9228, acc: 0.546229, auc: 0.534951
+[epochs : 4, cost: 0.67542517]
+seq_length: 6, # predicts: 16894, # corrects: 8222, acc: 0.486682, auc: 0.500000
+[epochs : 6, cost: 0.61140108]
+seq_length: 6, # predicts: 16894, # corrects: 10351, acc: 0.612703, auc: 0.608772
+[epochs : 8, cost: 0.65973711]
+seq_length: 6, # predicts: 16894, # corrects: 10409, acc: 0.616136, auc: 0.612895
+[epochs : 10, cost: 0.63395005]
+seq_length: 6, # predicts: 16894, # corrects: 9853, acc: 0.583225, auc: 0.589138
+[epochs : 12, cost: 0.64548981]
+seq_length: 6, # predicts: 16894, # corrects: 10431, acc: 0.617438, auc: 0.616594
+[epochs : 14, cost: 0.64835024]
+seq_length: 6, # predicts: 16894, # corrects: 10395, acc: 0.615307, auc: 0.616364
+[epochs : 16, cost: 0.65049303]
+seq_length: 6, # predicts: 16894, # corrects: 10409, acc: 0.616136, auc: 0.613978
+[epochs : 18, cost: 0.71039724]
+seq_length: 6, # predicts: 16894, # corrects: 10329, acc: 0.611400, auc: 0.606317
+[epochs : 20, cost: 0.67941844]
+seq_length: 6, # predicts: 16894, # corrects: 9089, acc: 0.538002, auc: 0.526217
+[epochs : 22, cost: 0.64410663]
+seq_length: 6, # predicts: 16894, # corrects: 10108, acc: 0.598319, auc: 0.591199
+[epochs : 24, cost: 0.63788903]
+seq_length: 6, # predicts: 16894, # corrects: 9832, acc: 0.581982, auc: 0.573319
+[epochs : 26, cost: 0.65997618]
+seq_length: 6, # predicts: 16894, # corrects: 9921, acc: 0.587250, auc: 0.579114
+[epochs : 28, cost: 0.63606292]
+seq_length: 6, # predicts: 16894, # corrects: 10413, acc: 0.616373, auc: 0.614092
+[epochs : 30, cost: 0.63159060]
+seq_length: 6, # predicts: 16894, # corrects: 10439, acc: 0.617912, auc: 0.614991
+[epochs : 32, cost: 0.67643869]
+seq_length: 6, # predicts: 16894, # corrects: 10356, acc: 0.612999, auc: 0.614762
+[epochs : 34, cost: 0.65745848]
+seq_length: 6, # predicts: 16894, # corrects: 10360, acc: 0.613235, auc: 0.609502
+[epochs : 36, cost: 0.61921352]
+seq_length: 6, # predicts: 16894, # corrects: 10267, acc: 0.607731, auc: 0.601783
+[epochs : 38, cost: 0.69155848]
+seq_length: 6, # predicts: 16894, # corrects: 10409, acc: 0.616136, auc: 0.613066
+[epochs : 40, cost: 0.67115283]
+seq_length: 6, # predicts: 16894, # corrects: 9792, acc: 0.579614, auc: 0.570773
+[epochs : 42, cost: 0.65747023]
+seq_length: 6, # predicts: 16894, # corrects: 10343, acc: 0.612229, auc: 0.607244
+[epochs : 44, cost: 0.68343556]
+seq_length: 6, # predicts: 16894, # corrects: 10314, acc: 0.610513, auc: 0.605178
+[epochs : 46, cost: 0.63007557]
+seq_length: 6, # predicts: 16894, # corrects: 9830, acc: 0.581863, auc: 0.588200
+[epochs : 48, cost: 0.65964049]
+seq_length: 6, # predicts: 16894, # corrects: 10105, acc: 0.598141, auc: 0.590881
+[epochs : 50, cost: 0.62896103]
+seq_length: 6, # predicts: 16894, # corrects: 10421, acc: 0.616846, auc: 0.615828
+[epochs : 52, cost: 0.67166233]
+seq_length: 6, # predicts: 16894, # corrects: 10431, acc: 0.617438, auc: 0.615527
+[epochs : 54, cost: 0.61292684]
+seq_length: 6, # predicts: 16894, # corrects: 10339, acc: 0.611992, auc: 0.606925
+[epochs : 56, cost: 0.61134124]
+seq_length: 6, # predicts: 16894, # corrects: 8884, acc: 0.525867, auc: 0.513243
+[epochs : 58, cost: 0.64849925]
+seq_length: 6, # predicts: 16894, # corrects: 10280, acc: 0.608500, auc: 0.602690
+[epochs : 60, cost: 0.65276533]
+seq_length: 6, # predicts: 16894, # corrects: 10245, acc: 0.606428, auc: 0.600246
+[epochs : 62, cost: 0.63228321]
+seq_length: 6, # predicts: 16894, # corrects: 9793, acc: 0.579673, auc: 0.570809
+[epochs : 64, cost: 0.65488952]
+seq_length: 6, # predicts: 16894, # corrects: 9859, acc: 0.583580, auc: 0.574901
+[epochs : 66, cost: 0.64543617]
+seq_length: 6, # predicts: 16894, # corrects: 9072, acc: 0.536995, auc: 0.525120
+[epochs : 68, cost: 0.69558072]
+seq_length: 6, # predicts: 16894, # corrects: 10382, acc: 0.614538, auc: 0.610824
+[epochs : 70, cost: 0.64931113]
+seq_length: 6, # predicts: 16894, # corrects: 10439, acc: 0.617912, auc: 0.616023
+[epochs : 72, cost: 0.66792512]
+seq_length: 6, # predicts: 16894, # corrects: 10348, acc: 0.612525, auc: 0.607532
+[epochs : 74, cost: 0.68531322]
+seq_length: 6, # predicts: 16894, # corrects: 10250, acc: 0.606724, auc: 0.600547
+[epochs : 76, cost: 0.64155269]
+seq_length: 6, # predicts: 16894, # corrects: 10421, acc: 0.616846, auc: 0.614001
+[epochs : 78, cost: 0.65764427]
+seq_length: 6, # predicts: 16894, # corrects: 10063, acc: 0.595655, auc: 0.600608
+[epochs : 80, cost: 0.63679129]
+seq_length: 6, # predicts: 16894, # corrects: 10438, acc: 0.617852, auc: 0.617253
+[epochs : 82, cost: 0.66294932]
+seq_length: 6, # predicts: 16894, # corrects: 10369, acc: 0.613768, auc: 0.615815
+[epochs : 84, cost: 0.65114486]
+seq_length: 6, # predicts: 16894, # corrects: 10430, acc: 0.617379, auc: 0.618139
+[epochs : 86, cost: 0.67502260]
+seq_length: 6, # predicts: 16894, # corrects: 10344, acc: 0.612288, auc: 0.607415
+[epochs : 88, cost: 0.62948036]
+seq_length: 6, # predicts: 16894, # corrects: 10363, acc: 0.613413, auc: 0.609713
+[epochs : 90, cost: 0.65353632]
+seq_length: 6, # predicts: 16894, # corrects: 10451, acc: 0.618622, auc: 0.617375
+[epochs : 92, cost: 0.67630905]
+seq_length: 6, # predicts: 16894, # corrects: 9586, acc: 0.567420, auc: 0.557514
+[epochs : 94, cost: 0.66878057]
+seq_length: 6, # predicts: 16894, # corrects: 10342, acc: 0.612170, auc: 0.607136
+[epochs : 96, cost: 0.66379857]
+seq_length: 6, # predicts: 16894, # corrects: 10415, acc: 0.616491, auc: 0.613920
+[epochs : 98, cost: 0.67337656]
+seq_length: 6, # predicts: 16894, # corrects: 10434, acc: 0.617616, auc: 0.617215
+
+
+
+feature.time.nobert.py,2,0,1
+sequence len: 2
+learning_rate: 0.001000, batch_size 32, epochs 100
+exclude_newbie: 0
+test_parent: True
+seq_length: 2, input_dim: 1
+size of learn_Y: 54299
+Counter({1: 32422, 0: 21877})
+learn_Y:  Counter({1: 21877, 0: 21877})
+test_Y:  Counter({1.0: 10420, 0.0: 7771})
+Data loading Complete learn:43754, test:18191
+[epochs : 0, cost: 0.67848194]
+seq_length: 1, # predicts: 18191, # corrects: 10464, acc: 0.575230, auc: 0.505056
+[epochs : 2, cost: 0.61516434]
+seq_length: 1, # predicts: 18191, # corrects: 11018, acc: 0.605684, auc: 0.634035
+[epochs : 4, cost: 0.65820420]
+seq_length: 1, # predicts: 18191, # corrects: 11551, acc: 0.634984, auc: 0.650745
+[epochs : 6, cost: 0.69571316]
+seq_length: 1, # predicts: 18191, # corrects: 9741, acc: 0.535485, auc: 0.587136
+[epochs : 8, cost: 0.64535439]
+seq_length: 1, # predicts: 18191, # corrects: 11898, acc: 0.654060, auc: 0.636710
+[epochs : 10, cost: 0.64577937]
+seq_length: 1, # predicts: 18191, # corrects: 7867, acc: 0.432467, auc: 0.504541
+[epochs : 12, cost: 0.64796525]
+seq_length: 1, # predicts: 18191, # corrects: 11092, acc: 0.609752, auc: 0.636490
+[epochs : 14, cost: 0.68040001]
+seq_length: 1, # predicts: 18191, # corrects: 8561, acc: 0.470617, auc: 0.536747
+[epochs : 16, cost: 0.67190987]
+seq_length: 1, # predicts: 18191, # corrects: 11892, acc: 0.653730, auc: 0.637894
+[epochs : 18, cost: 0.66362607]
+seq_length: 1, # predicts: 18191, # corrects: 11881, acc: 0.653125, auc: 0.653740
+[epochs : 20, cost: 0.69954920]
+seq_length: 1, # predicts: 18191, # corrects: 11877, acc: 0.652905, auc: 0.643161
+[epochs : 22, cost: 0.71164155]
+seq_length: 1, # predicts: 18191, # corrects: 9035, acc: 0.496674, auc: 0.557676
+[epochs : 24, cost: 0.68284148]
+seq_length: 1, # predicts: 18191, # corrects: 11875, acc: 0.652795, auc: 0.643212
+[epochs : 26, cost: 0.65923357]
+seq_length: 1, # predicts: 18191, # corrects: 8748, acc: 0.480897, auc: 0.545033
+[epochs : 28, cost: 0.70421875]
+seq_length: 1, # predicts: 18191, # corrects: 11893, acc: 0.653785, auc: 0.638122
+[epochs : 30, cost: 0.66783798]
+seq_length: 1, # predicts: 18191, # corrects: 11519, acc: 0.633225, auc: 0.591436
+[epochs : 32, cost: 0.58614725]
+seq_length: 1, # predicts: 18191, # corrects: 11889, acc: 0.653565, auc: 0.651261
+[epochs : 34, cost: 0.67285919]
+seq_length: 1, # predicts: 18191, # corrects: 11107, acc: 0.610577, auc: 0.558057
+[epochs : 36, cost: 0.69910055]
+seq_length: 1, # predicts: 18191, # corrects: 11908, acc: 0.654609, auc: 0.636862
+[epochs : 38, cost: 0.61230880]
+seq_length: 1, # predicts: 18191, # corrects: 10620, acc: 0.583805, auc: 0.620825
+[epochs : 40, cost: 0.65477204]
+seq_length: 1, # predicts: 18191, # corrects: 11918, acc: 0.655159, auc: 0.633318
+[epochs : 42, cost: 0.64750993]
+seq_length: 1, # predicts: 18191, # corrects: 8760, acc: 0.481557, auc: 0.545592
+[epochs : 44, cost: 0.66455102]
+seq_length: 1, # predicts: 18191, # corrects: 11017, acc: 0.605629, auc: 0.634150
+[epochs : 46, cost: 0.65603083]
+seq_length: 1, # predicts: 18191, # corrects: 11710, acc: 0.643725, auc: 0.653647
+[epochs : 48, cost: 0.63512999]
+seq_length: 1, # predicts: 18191, # corrects: 11827, acc: 0.650157, auc: 0.654420
+[epochs : 50, cost: 0.63122219]
+seq_length: 1, # predicts: 18191, # corrects: 11913, acc: 0.654884, auc: 0.633716
+[epochs : 52, cost: 0.64024198]
+seq_length: 1, # predicts: 18191, # corrects: 11417, acc: 0.627618, auc: 0.647194
+[epochs : 54, cost: 0.63353145]
+seq_length: 1, # predicts: 18191, # corrects: 11843, acc: 0.651036, auc: 0.621835
+[epochs : 56, cost: 0.66409290]
+seq_length: 1, # predicts: 18191, # corrects: 11920, acc: 0.655269, auc: 0.629947
+[epochs : 58, cost: 0.63535941]
+seq_length: 1, # predicts: 18191, # corrects: 11729, acc: 0.644769, auc: 0.610215
+[epochs : 60, cost: 0.63498312]
+seq_length: 1, # predicts: 18191, # corrects: 11862, acc: 0.652081, auc: 0.654611
+[epochs : 62, cost: 0.64664912]
+seq_length: 1, # predicts: 18191, # corrects: 11396, acc: 0.626464, auc: 0.581412
+[epochs : 64, cost: 0.64774197]
+seq_length: 1, # predicts: 18191, # corrects: 11894, acc: 0.653840, auc: 0.640672
+[epochs : 66, cost: 0.65284264]
+seq_length: 1, # predicts: 18191, # corrects: 11926, acc: 0.655599, auc: 0.629940
+[epochs : 68, cost: 0.67321724]
+seq_length: 1, # predicts: 18191, # corrects: 11903, acc: 0.654335, auc: 0.639207
+[epochs : 70, cost: 0.64973915]
+seq_length: 1, # predicts: 18191, # corrects: 11913, acc: 0.654884, auc: 0.649321
+[epochs : 72, cost: 0.67501926]
+seq_length: 1, # predicts: 18191, # corrects: 11880, acc: 0.653070, auc: 0.644270
+[epochs : 74, cost: 0.68360376]
+seq_length: 1, # predicts: 18191, # corrects: 11868, acc: 0.652411, auc: 0.651284
+[epochs : 76, cost: 0.70733851]
+seq_length: 1, # predicts: 18191, # corrects: 11886, acc: 0.653400, auc: 0.651444
+[epochs : 78, cost: 0.66821194]
+seq_length: 1, # predicts: 18191, # corrects: 11885, acc: 0.653345, auc: 0.642302
+[epochs : 80, cost: 0.64016843]
+seq_length: 1, # predicts: 18191, # corrects: 11914, acc: 0.654939, auc: 0.633666
+[epochs : 82, cost: 0.67636669]
+seq_length: 1, # predicts: 18191, # corrects: 11591, acc: 0.637183, auc: 0.598310
+[epochs : 84, cost: 0.67824119]
+seq_length: 1, # predicts: 18191, # corrects: 10353, acc: 0.569128, auc: 0.610843
+[epochs : 86, cost: 0.66233861]
+seq_length: 1, # predicts: 18191, # corrects: 9389, acc: 0.516134, auc: 0.572765
+[epochs : 88, cost: 0.62979865]
+seq_length: 1, # predicts: 18191, # corrects: 11650, acc: 0.640427, auc: 0.653598
+[epochs : 90, cost: 0.69824982]
+seq_length: 1, # predicts: 18191, # corrects: 9403, acc: 0.516904, auc: 0.573240
+[epochs : 92, cost: 0.60511458]
+seq_length: 1, # predicts: 18191, # corrects: 11892, acc: 0.653730, auc: 0.639137
+[epochs : 94, cost: 0.62868989]
+seq_length: 1, # predicts: 18191, # corrects: 11906, acc: 0.654499, auc: 0.647644
+[epochs : 96, cost: 0.71495211]
+seq_length: 1, # predicts: 18191, # corrects: 9682, acc: 0.532241, auc: 0.584894
+[epochs : 98, cost: 0.64878023]
+seq_length: 1, # predicts: 18191, # corrects: 9677, acc: 0.531966, auc: 0.584703
+
+
+
+feature.time.nobert.py,3,0,1
+sequence len: 3
+learning_rate: 0.001000, batch_size 32, epochs 100
+exclude_newbie: 0
+test_parent: True
+seq_length: 3, input_dim: 1
+size of learn_Y: 55013
+Counter({1: 28956, 0: 26057})
+learn_Y:  Counter({0: 26057, 1: 26057})
+test_Y:  Counter({1.0: 9412, 0.0: 9172})
+Data loading Complete learn:52114, test:18584
+[epochs : 0, cost: 0.72682792]
+seq_length: 2, # predicts: 18584, # corrects: 9585, acc: 0.515766, auc: 0.509716
+[epochs : 2, cost: 0.70455706]
+seq_length: 2, # predicts: 18584, # corrects: 9789, acc: 0.526743, auc: 0.520973
+[epochs : 4, cost: 0.71359116]
+seq_length: 2, # predicts: 18584, # corrects: 10525, acc: 0.566347, auc: 0.562318
+[epochs : 6, cost: 0.69520700]
+seq_length: 2, # predicts: 18584, # corrects: 11467, acc: 0.617036, auc: 0.616168
+[epochs : 8, cost: 0.71755707]
+seq_length: 2, # predicts: 18584, # corrects: 9911, acc: 0.533308, auc: 0.538993
+[epochs : 10, cost: 0.71103317]
+seq_length: 2, # predicts: 18584, # corrects: 11557, acc: 0.621879, auc: 0.624173
+[epochs : 12, cost: 0.70947856]
+seq_length: 2, # predicts: 18584, # corrects: 11661, acc: 0.627475, auc: 0.628878
+[epochs : 14, cost: 0.75070047]
+seq_length: 2, # predicts: 18584, # corrects: 11590, acc: 0.623655, auc: 0.625683
+[epochs : 16, cost: 0.71966362]
+seq_length: 2, # predicts: 18584, # corrects: 11596, acc: 0.623978, auc: 0.624007
+[epochs : 18, cost: 0.77525461]
+seq_length: 2, # predicts: 18584, # corrects: 11179, acc: 0.601539, auc: 0.605155
+[epochs : 20, cost: 0.72715050]
+seq_length: 2, # predicts: 18584, # corrects: 11261, acc: 0.605951, auc: 0.603354
+[epochs : 22, cost: 0.70374537]
+seq_length: 2, # predicts: 18584, # corrects: 11537, acc: 0.620803, auc: 0.623174
+[epochs : 24, cost: 0.71498549]
+seq_length: 2, # predicts: 18584, # corrects: 11386, acc: 0.612678, auc: 0.615607
+[epochs : 26, cost: 0.72199482]
+seq_length: 2, # predicts: 18584, # corrects: 11569, acc: 0.622525, auc: 0.624694
+[epochs : 28, cost: 0.69975924]
+seq_length: 2, # predicts: 18584, # corrects: 11647, acc: 0.626722, auc: 0.628433
+[epochs : 30, cost: 0.79183030]
+seq_length: 2, # predicts: 18584, # corrects: 11590, acc: 0.623655, auc: 0.625733
+[epochs : 32, cost: 0.73169506]
+seq_length: 2, # predicts: 18584, # corrects: 11636, acc: 0.626130, auc: 0.626371
+[epochs : 34, cost: 0.68256664]
+seq_length: 2, # predicts: 18584, # corrects: 11325, acc: 0.609395, auc: 0.607279
+[epochs : 36, cost: 0.66603178]
+seq_length: 2, # predicts: 18584, # corrects: 11612, acc: 0.624839, auc: 0.626712
+[epochs : 38, cost: 0.75593507]
+seq_length: 2, # predicts: 18584, # corrects: 11481, acc: 0.617789, auc: 0.616891
+[epochs : 40, cost: 0.69639766]
+seq_length: 2, # predicts: 18584, # corrects: 11595, acc: 0.623924, auc: 0.625730
+[epochs : 42, cost: 0.67631233]
+seq_length: 2, # predicts: 18584, # corrects: 11648, acc: 0.626776, auc: 0.627823
+[epochs : 44, cost: 0.70736223]
+seq_length: 2, # predicts: 18584, # corrects: 11503, acc: 0.618973, auc: 0.618370
+[epochs : 46, cost: 0.68568814]
+seq_length: 2, # predicts: 18584, # corrects: 11646, acc: 0.626668, auc: 0.628088
+[epochs : 48, cost: 0.70502359]
+seq_length: 2, # predicts: 18584, # corrects: 11639, acc: 0.626291, auc: 0.627389
+[epochs : 50, cost: 0.69948447]
+seq_length: 2, # predicts: 18584, # corrects: 11425, acc: 0.614776, auc: 0.617630
+[epochs : 52, cost: 0.76302749]
+seq_length: 2, # predicts: 18584, # corrects: 11554, acc: 0.621718, auc: 0.623947
+[epochs : 54, cost: 0.75053084]
+seq_length: 2, # predicts: 18584, # corrects: 11637, acc: 0.626184, auc: 0.626965
+[epochs : 56, cost: 0.71952349]
+seq_length: 2, # predicts: 18584, # corrects: 11629, acc: 0.625753, auc: 0.626111
+[epochs : 58, cost: 0.75638890]
+seq_length: 2, # predicts: 18584, # corrects: 11621, acc: 0.625323, auc: 0.626997
+[epochs : 60, cost: 0.71596801]
+seq_length: 2, # predicts: 18584, # corrects: 11577, acc: 0.622955, auc: 0.625181
+[epochs : 62, cost: 0.72301435]
+seq_length: 2, # predicts: 18584, # corrects: 11609, acc: 0.624677, auc: 0.626350
+[epochs : 64, cost: 0.70028055]
+seq_length: 2, # predicts: 18584, # corrects: 11612, acc: 0.624839, auc: 0.626497
+[epochs : 66, cost: 0.67290878]
+seq_length: 2, # predicts: 18584, # corrects: 11573, acc: 0.622740, auc: 0.624845
+[epochs : 68, cost: 0.70240092]
+seq_length: 2, # predicts: 18584, # corrects: 11582, acc: 0.623224, auc: 0.623235
+[epochs : 70, cost: 0.69818914]
+seq_length: 2, # predicts: 18584, # corrects: 11631, acc: 0.625861, auc: 0.627111
+[epochs : 72, cost: 0.68803269]
+seq_length: 2, # predicts: 18584, # corrects: 11637, acc: 0.626184, auc: 0.626586
+[epochs : 74, cost: 0.75698018]
+seq_length: 2, # predicts: 18584, # corrects: 11562, acc: 0.622148, auc: 0.622052
+[epochs : 76, cost: 0.66747385]
+seq_length: 2, # predicts: 18584, # corrects: 11556, acc: 0.621825, auc: 0.621645
+[epochs : 78, cost: 0.68025339]
+seq_length: 2, # predicts: 18584, # corrects: 11414, acc: 0.614184, auc: 0.612386
+[epochs : 80, cost: 0.73218453]
+seq_length: 2, # predicts: 18584, # corrects: 11654, acc: 0.627099, auc: 0.628054
+[epochs : 82, cost: 0.71010643]
+seq_length: 2, # predicts: 18584, # corrects: 11586, acc: 0.623440, auc: 0.625217
+[epochs : 84, cost: 0.67047948]
+seq_length: 2, # predicts: 18584, # corrects: 11518, acc: 0.619780, auc: 0.618801
+[epochs : 86, cost: 0.72356105]
+seq_length: 2, # predicts: 18584, # corrects: 11498, acc: 0.618704, auc: 0.617811
+[epochs : 88, cost: 0.74760127]
+seq_length: 2, # predicts: 18584, # corrects: 11580, acc: 0.623117, auc: 0.623079
+[epochs : 90, cost: 0.70910382]
+seq_length: 2, # predicts: 18584, # corrects: 11580, acc: 0.623117, auc: 0.624791
+[epochs : 92, cost: 0.65387523]
+seq_length: 2, # predicts: 18584, # corrects: 11556, acc: 0.621825, auc: 0.621544
+[epochs : 94, cost: 0.70600003]
+seq_length: 2, # predicts: 18584, # corrects: 11607, acc: 0.624570, auc: 0.625153
+[epochs : 96, cost: 0.71253824]
+seq_length: 2, # predicts: 18584, # corrects: 11543, acc: 0.621126, auc: 0.620607
+[epochs : 98, cost: 0.71650624]
+seq_length: 2, # predicts: 18584, # corrects: 11516, acc: 0.619673, auc: 0.618932
+
+
+
+feature.time.nobert.py,4,0,1
+sequence len: 4
+learning_rate: 0.001000, batch_size 32, epochs 100
+exclude_newbie: 0
+test_parent: True
+seq_length: 4, input_dim: 1
+size of learn_Y: 55348
+Counter({0: 27859, 1: 27489})
+learn_Y:  Counter({1: 27489, 0: 27489})
+test_Y:  Counter({0.0: 9672, 1.0: 8995})
+Data loading Complete learn:54978, test:18667
+[epochs : 0, cost: 0.63033628]
+seq_length: 1, # predicts: 18667, # corrects: 9275, acc: 0.496866, auc: 0.513564
+[epochs : 2, cost: 0.61713660]
+seq_length: 1, # predicts: 18667, # corrects: 11730, acc: 0.628382, auc: 0.623568
+[epochs : 4, cost: 0.60468251]
+seq_length: 1, # predicts: 18667, # corrects: 11732, acc: 0.628489, auc: 0.624387
+[epochs : 6, cost: 0.64410841]
+seq_length: 1, # predicts: 18667, # corrects: 11450, acc: 0.613382, auc: 0.604673
+[epochs : 8, cost: 0.59881175]
+seq_length: 1, # predicts: 18667, # corrects: 11722, acc: 0.627953, auc: 0.623310
+[epochs : 10, cost: 0.62616962]
+seq_length: 1, # predicts: 18667, # corrects: 11726, acc: 0.628167, auc: 0.623306
+[epochs : 12, cost: 0.64706028]
+seq_length: 1, # predicts: 18667, # corrects: 11797, acc: 0.631971, auc: 0.629685
+[epochs : 14, cost: 0.62810826]
+seq_length: 1, # predicts: 18667, # corrects: 9881, acc: 0.529330, auc: 0.512003
+[epochs : 16, cost: 0.63521713]
+seq_length: 1, # predicts: 18667, # corrects: 10110, acc: 0.541597, auc: 0.525133
+[epochs : 18, cost: 0.63263386]
+seq_length: 1, # predicts: 18667, # corrects: 9711, acc: 0.520223, auc: 0.502215
+[epochs : 20, cost: 0.62117314]
+seq_length: 1, # predicts: 18667, # corrects: 10626, acc: 0.569240, auc: 0.554808
+[epochs : 22, cost: 0.62977707]
+seq_length: 1, # predicts: 18667, # corrects: 9721, acc: 0.520759, auc: 0.502805
+[epochs : 24, cost: 0.64641786]
+seq_length: 1, # predicts: 18667, # corrects: 9719, acc: 0.520651, auc: 0.502694
+[epochs : 26, cost: 0.64916801]
+seq_length: 1, # predicts: 18667, # corrects: 11772, acc: 0.630632, auc: 0.629065
+[epochs : 28, cost: 0.61378241]
+seq_length: 1, # predicts: 18667, # corrects: 11753, acc: 0.629614, auc: 0.626570
+[epochs : 30, cost: 0.64350879]
+seq_length: 1, # predicts: 18667, # corrects: 9707, acc: 0.520009, auc: 0.501988
+[epochs : 32, cost: 0.60981572]
+seq_length: 1, # predicts: 18667, # corrects: 9709, acc: 0.520116, auc: 0.502119
+[epochs : 34, cost: 0.58325756]
+seq_length: 1, # predicts: 18667, # corrects: 11720, acc: 0.627846, auc: 0.623517
+[epochs : 36, cost: 0.64408296]
+seq_length: 1, # predicts: 18667, # corrects: 11327, acc: 0.606793, auc: 0.596906
+[epochs : 38, cost: 0.62804186]
+seq_length: 1, # predicts: 18667, # corrects: 10303, acc: 0.551937, auc: 0.536203
+[epochs : 40, cost: 0.60133815]
+seq_length: 1, # predicts: 18667, # corrects: 11727, acc: 0.628221, auc: 0.623226
+[epochs : 42, cost: 0.62681705]
+seq_length: 1, # predicts: 18667, # corrects: 11209, acc: 0.600471, auc: 0.589716
+[epochs : 44, cost: 0.60501790]
+seq_length: 1, # predicts: 18667, # corrects: 11080, acc: 0.593561, auc: 0.581911
+[epochs : 46, cost: 0.62429345]
+seq_length: 1, # predicts: 18667, # corrects: 10300, acc: 0.551776, auc: 0.536048
+[epochs : 48, cost: 0.62750220]
+seq_length: 1, # predicts: 18667, # corrects: 11597, acc: 0.621257, auc: 0.623910
+[epochs : 50, cost: 0.61159837]
+seq_length: 1, # predicts: 18667, # corrects: 11389, acc: 0.610114, auc: 0.600726
+[epochs : 52, cost: 0.65359664]
+seq_length: 1, # predicts: 18667, # corrects: 10067, acc: 0.539294, auc: 0.522684
+[epochs : 54, cost: 0.63442814]
+seq_length: 1, # predicts: 18667, # corrects: 10686, acc: 0.572454, auc: 0.558326
+[epochs : 56, cost: 0.68158817]
+seq_length: 1, # predicts: 18667, # corrects: 11708, acc: 0.627203, auc: 0.628189
+[epochs : 58, cost: 0.62700695]
+seq_length: 1, # predicts: 18667, # corrects: 11526, acc: 0.617453, auc: 0.609376
+[epochs : 60, cost: 0.65607786]
+seq_length: 1, # predicts: 18667, # corrects: 11286, acc: 0.604596, auc: 0.594284
+[epochs : 62, cost: 0.63246477]
+seq_length: 1, # predicts: 18667, # corrects: 11476, acc: 0.614775, auc: 0.606301
+[epochs : 64, cost: 0.64745665]
+seq_length: 1, # predicts: 18667, # corrects: 10068, acc: 0.539348, auc: 0.522740
+[epochs : 66, cost: 0.63655758]
+seq_length: 1, # predicts: 18667, # corrects: 9776, acc: 0.523705, auc: 0.505983
+[epochs : 68, cost: 0.65213692]
+seq_length: 1, # predicts: 18667, # corrects: 11404, acc: 0.610918, auc: 0.601773
+[epochs : 70, cost: 0.61154091]
+seq_length: 1, # predicts: 18667, # corrects: 11555, acc: 0.619007, auc: 0.611564
+[epochs : 72, cost: 0.60637885]
+seq_length: 1, # predicts: 18667, # corrects: 11056, acc: 0.592275, auc: 0.580464
+[epochs : 74, cost: 0.63736689]
+seq_length: 1, # predicts: 18667, # corrects: 11650, acc: 0.624096, auc: 0.617887
+[epochs : 76, cost: 0.64728659]
+seq_length: 1, # predicts: 18667, # corrects: 11323, acc: 0.606578, auc: 0.596699
+[epochs : 78, cost: 0.58890080]
+seq_length: 1, # predicts: 18667, # corrects: 11565, acc: 0.619543, auc: 0.612271
+[epochs : 80, cost: 0.63712817]
+seq_length: 1, # predicts: 18667, # corrects: 11542, acc: 0.618310, auc: 0.610534
+[epochs : 82, cost: 0.65786028]
+seq_length: 1, # predicts: 18667, # corrects: 11720, acc: 0.627846, auc: 0.623533
+[epochs : 84, cost: 0.62353146]
+seq_length: 1, # predicts: 18667, # corrects: 10088, acc: 0.540419, auc: 0.523887
+[epochs : 86, cost: 0.63803577]
+seq_length: 1, # predicts: 18667, # corrects: 9781, acc: 0.523973, auc: 0.506273
+[epochs : 88, cost: 0.59348851]
+seq_length: 1, # predicts: 18667, # corrects: 10612, acc: 0.568490, auc: 0.553983
+[epochs : 90, cost: 0.66691804]
+seq_length: 1, # predicts: 18667, # corrects: 10725, acc: 0.574543, auc: 0.560606
+[epochs : 92, cost: 0.62259924]
+seq_length: 1, # predicts: 18667, # corrects: 11039, acc: 0.591364, auc: 0.579422
+[epochs : 94, cost: 0.61103570]
+seq_length: 1, # predicts: 18667, # corrects: 11680, acc: 0.625703, auc: 0.619952
+[epochs : 96, cost: 0.64071405]
+seq_length: 1, # predicts: 18667, # corrects: 11743, acc: 0.629078, auc: 0.625695
+[epochs : 98, cost: 0.60950577]
+seq_length: 1, # predicts: 18667, # corrects: 11089, acc: 0.594043, auc: 0.582486
+
+
+
+feature.time.nobert.py,5,0,1
+sequence len: 5
+learning_rate: 0.001000, batch_size 32, epochs 100
+exclude_newbie: 0
+test_parent: True
+seq_length: 5, input_dim: 1
+size of learn_Y: 55380
+Counter({0: 28196, 1: 27184})
+learn_Y:  Counter({0: 27184, 1: 27184})
+test_Y:  Counter({0.0: 9747, 1.0: 9037})
+Data loading Complete learn:54368, test:18784
+[epochs : 0, cost: 0.66858733]
+seq_length: 1, # predicts: 18784, # corrects: 9362, acc: 0.498403, auc: 0.515475
+[epochs : 2, cost: 0.67961693]
+seq_length: 1, # predicts: 18784, # corrects: 11628, acc: 0.619037, auc: 0.619028
+[epochs : 4, cost: 0.63973296]
+seq_length: 1, # predicts: 18784, # corrects: 11704, acc: 0.623083, auc: 0.619860
+[epochs : 6, cost: 0.67774254]
+seq_length: 1, # predicts: 18784, # corrects: 11543, acc: 0.614512, auc: 0.616252
+[epochs : 8, cost: 0.68328613]
+seq_length: 1, # predicts: 18784, # corrects: 11680, acc: 0.621806, auc: 0.618169
+[epochs : 10, cost: 0.67572188]
+seq_length: 1, # predicts: 18784, # corrects: 11601, acc: 0.617600, auc: 0.612219
+[epochs : 12, cost: 0.64526933]
+seq_length: 1, # predicts: 18784, # corrects: 11620, acc: 0.618612, auc: 0.619126
+[epochs : 14, cost: 0.69337618]
+seq_length: 1, # predicts: 18784, # corrects: 11317, acc: 0.602481, auc: 0.607375
+[epochs : 16, cost: 0.67198932]
+seq_length: 1, # predicts: 18784, # corrects: 11612, acc: 0.618186, auc: 0.618828
+[epochs : 18, cost: 0.64849353]
+seq_length: 1, # predicts: 18784, # corrects: 11115, acc: 0.591727, auc: 0.598476
+[epochs : 20, cost: 0.64459157]
+seq_length: 1, # predicts: 18784, # corrects: 11720, acc: 0.623935, auc: 0.621584
+[epochs : 22, cost: 0.67488950]
+seq_length: 1, # predicts: 18784, # corrects: 11624, acc: 0.618825, auc: 0.619432
+[epochs : 24, cost: 0.70003998]
+seq_length: 1, # predicts: 18784, # corrects: 11607, acc: 0.617920, auc: 0.618781
+[epochs : 26, cost: 0.66309369]
+seq_length: 1, # predicts: 18784, # corrects: 11643, acc: 0.619836, auc: 0.619306
+[epochs : 28, cost: 0.66505295]
+seq_length: 1, # predicts: 18784, # corrects: 11314, acc: 0.602321, auc: 0.607245
+[epochs : 30, cost: 0.65849960]
+seq_length: 1, # predicts: 18784, # corrects: 11569, acc: 0.615897, auc: 0.617267
+[epochs : 32, cost: 0.64840138]
+seq_length: 1, # predicts: 18784, # corrects: 11630, acc: 0.619144, auc: 0.619482
+[epochs : 34, cost: 0.64237934]
+seq_length: 1, # predicts: 18784, # corrects: 11472, acc: 0.610733, auc: 0.613771
+[epochs : 36, cost: 0.65028477]
+seq_length: 1, # predicts: 18784, # corrects: 10890, acc: 0.579749, auc: 0.588066
+[epochs : 38, cost: 0.64407760]
+seq_length: 1, # predicts: 18784, # corrects: 11209, acc: 0.596731, auc: 0.602830
+[epochs : 40, cost: 0.67248386]
+seq_length: 1, # predicts: 18784, # corrects: 11718, acc: 0.623829, auc: 0.621066
+[epochs : 42, cost: 0.64881909]
+seq_length: 1, # predicts: 18784, # corrects: 11364, acc: 0.604983, auc: 0.609367
+[epochs : 44, cost: 0.64808464]
+seq_length: 1, # predicts: 18784, # corrects: 11040, acc: 0.587734, auc: 0.594967
+[epochs : 46, cost: 0.65777284]
+seq_length: 1, # predicts: 18784, # corrects: 11075, acc: 0.589598, auc: 0.596682
+[epochs : 48, cost: 0.64759457]
+seq_length: 1, # predicts: 18784, # corrects: 9757, acc: 0.519431, auc: 0.534690
+[epochs : 50, cost: 0.68182778]
+seq_length: 1, # predicts: 18784, # corrects: 10584, acc: 0.563458, auc: 0.573744
+[epochs : 52, cost: 0.66231018]
+seq_length: 1, # predicts: 18784, # corrects: 10823, acc: 0.576182, auc: 0.584940
+[epochs : 54, cost: 0.67187238]
+seq_length: 1, # predicts: 18784, # corrects: 11040, acc: 0.587734, auc: 0.595084
+[epochs : 56, cost: 0.67647493]
+seq_length: 1, # predicts: 18784, # corrects: 11723, acc: 0.624095, auc: 0.621862
+[epochs : 58, cost: 0.65578234]
+seq_length: 1, # predicts: 18784, # corrects: 11626, acc: 0.618931, auc: 0.619559
+[epochs : 60, cost: 0.68420750]
+seq_length: 1, # predicts: 18784, # corrects: 11145, acc: 0.593324, auc: 0.599910
+[epochs : 62, cost: 0.66804612]
+seq_length: 1, # predicts: 18784, # corrects: 11332, acc: 0.603279, auc: 0.608048
+[epochs : 64, cost: 0.72201657]
+seq_length: 1, # predicts: 18784, # corrects: 10586, acc: 0.563565, auc: 0.573826
+[epochs : 66, cost: 0.62760532]
+seq_length: 1, # predicts: 18784, # corrects: 11389, acc: 0.606314, auc: 0.610146
+[epochs : 68, cost: 0.64954329]
+seq_length: 1, # predicts: 18784, # corrects: 11114, acc: 0.591674, auc: 0.598453
+[epochs : 70, cost: 0.69677675]
+seq_length: 1, # predicts: 18784, # corrects: 10936, acc: 0.582198, auc: 0.590277
+[epochs : 72, cost: 0.65849042]
+seq_length: 1, # predicts: 18784, # corrects: 11292, acc: 0.601150, auc: 0.606379
+[epochs : 74, cost: 0.67923421]
+seq_length: 1, # predicts: 18784, # corrects: 10459, acc: 0.556804, auc: 0.567896
+[epochs : 76, cost: 0.65627271]
+seq_length: 1, # predicts: 18784, # corrects: 11717, acc: 0.623776, auc: 0.620998
+[epochs : 78, cost: 0.63209760]
+seq_length: 1, # predicts: 18784, # corrects: 11175, acc: 0.594921, auc: 0.601239
+[epochs : 80, cost: 0.61530405]
+seq_length: 1, # predicts: 18784, # corrects: 11707, acc: 0.623243, auc: 0.621392
+[epochs : 82, cost: 0.65041304]
+seq_length: 1, # predicts: 18784, # corrects: 10850, acc: 0.577619, auc: 0.586216
+[epochs : 84, cost: 0.68539673]
+seq_length: 1, # predicts: 18784, # corrects: 10468, acc: 0.557283, auc: 0.568353
+[epochs : 86, cost: 0.64694989]
+seq_length: 1, # predicts: 18784, # corrects: 11522, acc: 0.613394, auc: 0.615731
+[epochs : 88, cost: 0.65825546]
+seq_length: 1, # predicts: 18784, # corrects: 11669, acc: 0.621220, auc: 0.620378
+[epochs : 90, cost: 0.65136403]
+seq_length: 1, # predicts: 18784, # corrects: 11556, acc: 0.615204, auc: 0.608604
+[epochs : 92, cost: 0.62128276]
+seq_length: 1, # predicts: 18784, # corrects: 11726, acc: 0.624255, auc: 0.621549
+[epochs : 94, cost: 0.64595103]
+seq_length: 1, # predicts: 18784, # corrects: 11723, acc: 0.624095, auc: 0.621467
+[epochs : 96, cost: 0.70627451]
+seq_length: 1, # predicts: 18784, # corrects: 11075, acc: 0.589598, auc: 0.578070
+[epochs : 98, cost: 0.64568877]
+seq_length: 1, # predicts: 18784, # corrects: 11509, acc: 0.612702, auc: 0.615177
+
+
+
+feature.time.nobert.py,6,0,1
+sequence len: 6
+learning_rate: 0.001000, batch_size 32, epochs 100
+exclude_newbie: 0
+test_parent: True
+seq_length: 6, input_dim: 1
+size of learn_Y: 49241
+Counter({0: 25417, 1: 23824})
+learn_Y:  Counter({0: 23824, 1: 23824})
+test_Y:  Counter({0.0: 8672, 1.0: 8222})
+Data loading Complete learn:47648, test:16894
+[epochs : 0, cost: 0.68402171]
+seq_length: 1, # predicts: 16894, # corrects: 9327, acc: 0.552089, auc: 0.560905
+[epochs : 2, cost: 0.70599771]
+seq_length: 1, # predicts: 16894, # corrects: 10412, acc: 0.616313, auc: 0.616174
+[epochs : 4, cost: 0.66722012]
+seq_length: 1, # predicts: 16894, # corrects: 10232, acc: 0.605659, auc: 0.600058
+[epochs : 6, cost: 0.68850946]
+seq_length: 1, # predicts: 16894, # corrects: 10061, acc: 0.595537, auc: 0.588407
+[epochs : 8, cost: 0.70021373]
+seq_length: 1, # predicts: 16894, # corrects: 9884, acc: 0.585060, auc: 0.576892
+[epochs : 10, cost: 0.67343229]
+seq_length: 1, # predicts: 16894, # corrects: 10433, acc: 0.617557, auc: 0.617810
+[epochs : 12, cost: 0.69300765]
+seq_length: 1, # predicts: 16894, # corrects: 10433, acc: 0.617557, auc: 0.617823
+[epochs : 14, cost: 0.66237575]
+seq_length: 1, # predicts: 16894, # corrects: 10416, acc: 0.616550, auc: 0.616556
+[epochs : 16, cost: 0.69538987]
+seq_length: 1, # predicts: 16894, # corrects: 10372, acc: 0.613946, auc: 0.611482
+[epochs : 18, cost: 0.69775444]
+seq_length: 1, # predicts: 16894, # corrects: 10370, acc: 0.613827, auc: 0.615595
+[epochs : 20, cost: 0.64558327]
+seq_length: 1, # predicts: 16894, # corrects: 10380, acc: 0.614419, auc: 0.610725
+[epochs : 22, cost: 0.73271030]
+seq_length: 1, # predicts: 16894, # corrects: 10408, acc: 0.616077, auc: 0.615618
+[epochs : 24, cost: 0.63902491]
+seq_length: 1, # predicts: 16894, # corrects: 10412, acc: 0.616313, auc: 0.615710
+[epochs : 26, cost: 0.68921632]
+seq_length: 1, # predicts: 16894, # corrects: 10426, acc: 0.617142, auc: 0.617214
+[epochs : 28, cost: 0.68046945]
+seq_length: 1, # predicts: 16894, # corrects: 10435, acc: 0.617675, auc: 0.617992
+[epochs : 30, cost: 0.68012178]
+seq_length: 1, # predicts: 16894, # corrects: 10421, acc: 0.616846, auc: 0.617582
+[epochs : 32, cost: 0.71907413]
+seq_length: 1, # predicts: 16894, # corrects: 10415, acc: 0.616491, auc: 0.615630
+[epochs : 34, cost: 0.68034935]
+seq_length: 1, # predicts: 16894, # corrects: 10437, acc: 0.617793, auc: 0.618085
+[epochs : 36, cost: 0.66215909]
+seq_length: 1, # predicts: 16894, # corrects: 10305, acc: 0.609980, auc: 0.612239
+[epochs : 38, cost: 0.71757996]
+seq_length: 1, # predicts: 16894, # corrects: 10354, acc: 0.612880, auc: 0.614824
+[epochs : 40, cost: 0.67645156]
+seq_length: 1, # predicts: 16894, # corrects: 10377, acc: 0.614242, auc: 0.611196
+[epochs : 42, cost: 0.66846055]
+seq_length: 1, # predicts: 16894, # corrects: 10384, acc: 0.614656, auc: 0.612275
+[epochs : 44, cost: 0.70269406]
+seq_length: 1, # predicts: 16894, # corrects: 10416, acc: 0.616550, auc: 0.615003
+[epochs : 46, cost: 0.71056342]
+seq_length: 1, # predicts: 16894, # corrects: 10411, acc: 0.616254, auc: 0.615617
+[epochs : 48, cost: 0.65928161]
+seq_length: 1, # predicts: 16894, # corrects: 10412, acc: 0.616313, auc: 0.614460
+[epochs : 50, cost: 0.67192477]
+seq_length: 1, # predicts: 16894, # corrects: 10195, acc: 0.603469, auc: 0.606903
+[epochs : 52, cost: 0.68712938]
+seq_length: 1, # predicts: 16894, # corrects: 10421, acc: 0.616846, auc: 0.617358
+[epochs : 54, cost: 0.66242135]
+seq_length: 1, # predicts: 16894, # corrects: 10376, acc: 0.614183, auc: 0.615483
+[epochs : 56, cost: 0.72575843]
+seq_length: 1, # predicts: 16894, # corrects: 9968, acc: 0.590032, auc: 0.595146
+[epochs : 58, cost: 0.65596449]
+seq_length: 1, # predicts: 16894, # corrects: 10419, acc: 0.616728, auc: 0.615069
+[epochs : 60, cost: 0.67711252]
+seq_length: 1, # predicts: 16894, # corrects: 10417, acc: 0.616609, auc: 0.615701
+[epochs : 62, cost: 0.69430113]
+seq_length: 1, # predicts: 16894, # corrects: 10401, acc: 0.615662, auc: 0.613577
+[epochs : 64, cost: 0.66305053]
+seq_length: 1, # predicts: 16894, # corrects: 10416, acc: 0.616550, auc: 0.614672
+[epochs : 66, cost: 0.65702343]
+seq_length: 1, # predicts: 16894, # corrects: 10413, acc: 0.616373, auc: 0.615559
+[epochs : 68, cost: 0.66809052]
+seq_length: 1, # predicts: 16894, # corrects: 10422, acc: 0.616905, auc: 0.615273
+[epochs : 70, cost: 0.65158582]
+seq_length: 1, # predicts: 16894, # corrects: 10384, acc: 0.614656, auc: 0.612325
+[epochs : 72, cost: 0.69158781]
+seq_length: 1, # predicts: 16894, # corrects: 10376, acc: 0.614183, auc: 0.610447
+[epochs : 74, cost: 0.69059914]
+seq_length: 1, # predicts: 16894, # corrects: 10278, acc: 0.608382, auc: 0.610934
+[epochs : 76, cost: 0.68489528]
+seq_length: 1, # predicts: 16894, # corrects: 10403, acc: 0.615781, auc: 0.614421
+[epochs : 78, cost: 0.68686491]
+seq_length: 1, # predicts: 16894, # corrects: 9520, acc: 0.563514, auc: 0.571225
+[epochs : 80, cost: 0.70513678]
+seq_length: 1, # predicts: 16894, # corrects: 10408, acc: 0.616077, auc: 0.615861
+[epochs : 82, cost: 0.65210640]
+seq_length: 1, # predicts: 16894, # corrects: 10416, acc: 0.616550, auc: 0.615035
+[epochs : 84, cost: 0.70282483]
+seq_length: 1, # predicts: 16894, # corrects: 10367, acc: 0.613650, auc: 0.610196
+[epochs : 86, cost: 0.71449459]
+seq_length: 1, # predicts: 16894, # corrects: 10418, acc: 0.616669, auc: 0.615567
+[epochs : 88, cost: 0.64214587]
+seq_length: 1, # predicts: 16894, # corrects: 10369, acc: 0.613768, auc: 0.609841
+[epochs : 90, cost: 0.65971053]
+seq_length: 1, # predicts: 16894, # corrects: 10406, acc: 0.615958, auc: 0.615389
+[epochs : 92, cost: 0.66508257]
+seq_length: 1, # predicts: 16894, # corrects: 10366, acc: 0.613591, auc: 0.609640
+[epochs : 94, cost: 0.69015884]
+seq_length: 1, # predicts: 16894, # corrects: 10405, acc: 0.615899, auc: 0.615335
+[epochs : 96, cost: 0.65622002]
+seq_length: 1, # predicts: 16894, # corrects: 10432, acc: 0.617497, auc: 0.618090
+[epochs : 98, cost: 0.71156007]
+seq_length: 1, # predicts: 16894, # corrects: 10384, acc: 0.614656, auc: 0.615825
+
+
+

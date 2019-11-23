@@ -26,7 +26,7 @@ len_bert_features = 768
 input_dim = len_bert_features
 
 output_dim = 2 # (range 0 to 1)
-hidden_size = 100
+hidden_size = 32
 learning_rate = 0.001
 batch_size = 32
 epochs = 1000
@@ -49,10 +49,8 @@ def main(argv):
         d_userfeatures = pickle.load(f)
     #with open('/home/jhlim/data/contentfeatures.others.p', 'rb') as f:
     #    d_features = pickle.load(f)
-    with open('/home/jhlim/data/bertfeatures.p', 'rb') as f:
-        d_bertfeatures1 = pickle.load(f)
     with open('/home/jhlim/data/bertfeatures2.p', 'rb') as f:
-        d_bertfeatures2 = pickle.load(f)
+        d_bertfeatures = pickle.load(f)
     
     print ('features are loaded')
 
@@ -70,13 +68,10 @@ def main(argv):
             
         for seq in learn_instances:
             sub_x = []
-            flag = -1
 
             try:
                 for element in seq[:-1]: # seq[-1] : Y. element: 't3_7dfvv'
                     user_features = []; liwc_features = []; bert_features = []
-                    flag += 1
-                    d_bertfeatures = d_bertfeatures1 if flag == 0 else d_bertfeatures2
 
                     #if element in d_userfeatures and element in d_features:
                     if element in d_bertfeatures:
@@ -138,7 +133,7 @@ def main(argv):
 
                     #if user_features != [] and liwc_features != []:
                     if bert_features != []:
-                        if exclude_newbie == 1 and user_features == [0.0, 0.0]:
+                        if exclude_newbie == 1 and user_features == [0.0, 0.0, 0.0]:
                             continue
                         sub_x.append(np.array(bert_features))
 
@@ -205,7 +200,7 @@ def main(argv):
         #10_dropout = tf.layers.dropout(outputs, rate=1-keep_prob, training=is_training)
 
         #l1_output = tf.matmul(bn_output, weights['fc_l1']) + biases['fc_l1']
-        l1_output = tf.nn.relu(tf.matmul(outputs, weights['fc_l1']) + biases['fc_l1']) # might move relu layer to the behind of bn
+        l1_output = tf.nn.relu(tf.matmul(bn_output, weights['fc_l1']) + biases['fc_l1']) # might move relu layer to the behind of bn
         l1_bn_output = tf.contrib.layers.batch_norm(l1_output, center=True, scale=True, is_training=is_training)
         #l1_dropout = tf.layers.dropout(l1_output, rate=1-keep_prob, training=is_training)
 
