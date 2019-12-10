@@ -1,0 +1,258 @@
+5) seed change
+input_length hidden_size learning_rate batch_size keep_rate seed1 seed2
+3 128 0.001 128 0.9 300 50
+seq_length: 3, input_dim: 865
+make element list of learn_instances.
+(90781, 3)
+size of learn_Y: 90781
+Counter({1: 59353, 0: 31428})
+make features of test_instances.
+learn_Y:  Counter({1: 31428, 0: 31428})
+test_Y:  Counter({1.0: 3527, 0.0: 2001})
+Data loading Complete learn:62856, test:5528
+[epochs : 0, cost: 0.65805024]
+seq_len: 3, # preds: 5528, # corrs: 3538, acc: 0.640, auc: 0.540, sens: 0.178, spec: 0.902
+[epochs : 1, cost: 0.61201394]
+seq_len: 3, # preds: 5528, # corrs: 3631, acc: 0.657, auc: 0.557, sens: 0.193, spec: 0.920
+[epochs : 2, cost: 0.60057622]
+seq_len: 3, # preds: 5528, # corrs: 3689, acc: 0.667, auc: 0.605, sens: 0.377, spec: 0.832
+[epochs : 3, cost: 0.57822311]
+seq_len: 3, # preds: 5528, # corrs: 3640, acc: 0.658, auc: 0.562, sens: 0.214, spec: 0.911
+[epochs : 4, cost: 0.57209617]
+seq_len: 3, # preds: 5528, # corrs: 3645, acc: 0.659, auc: 0.579, sens: 0.289, spec: 0.870
+[epochs : 5, cost: 0.55670714]
+seq_len: 3, # preds: 5528, # corrs: 3659, acc: 0.662, auc: 0.626, sens: 0.495, spec: 0.756
+[epochs : 6, cost: 0.56860429]
+seq_len: 3, # preds: 5528, # corrs: 3673, acc: 0.664, auc: 0.621, sens: 0.464, spec: 0.778
+[epochs : 7, cost: 0.56712866]
+seq_len: 3, # preds: 5528, # corrs: 3691, acc: 0.668, auc: 0.606, sens: 0.383, spec: 0.829
+[epochs : 8, cost: 0.57088327]
+seq_len: 3, # preds: 5528, # corrs: 3662, acc: 0.662, auc: 0.618, sens: 0.455, spec: 0.780
+[epochs : 9, cost: 0.55930334]
+seq_len: 3, # preds: 5528, # corrs: 3527, acc: 0.638, auc: 0.640, sens: 0.648, spec: 0.632
+[epochs : 10, cost: 0.57464081]
+seq_len: 3, # preds: 5528, # corrs: 3503, acc: 0.634, auc: 0.633, sens: 0.632, spec: 0.635
+[epochs : 11, cost: 0.55586880]
+seq_len: 3, # preds: 5528, # corrs: 3606, acc: 0.652, auc: 0.625, sens: 0.527, spec: 0.723
+[epochs : 12, cost: 0.54170454]
+seq_len: 3, # preds: 5528, # corrs: 3612, acc: 0.653, auc: 0.591, sens: 0.365, spec: 0.817
+[epochs : 13, cost: 0.52604127]
+seq_len: 3, # preds: 5528, # corrs: 3613, acc: 0.654, auc: 0.587, sens: 0.348, spec: 0.827
+[epochs : 14, cost: 0.53721869]
+seq_len: 3, # preds: 5528, # corrs: 3621, acc: 0.655, auc: 0.593, sens: 0.367, spec: 0.818
+[epochs : 15, cost: 0.52672827]
+seq_len: 3, # preds: 5528, # corrs: 3584, acc: 0.648, auc: 0.595, sens: 0.401, spec: 0.789
+[epochs : 16, cost: 0.51535553]
+seq_len: 3, # preds: 5528, # corrs: 3574, acc: 0.647, auc: 0.604, sens: 0.450, spec: 0.758
+[epochs : 17, cost: 0.50659150]
+seq_len: 3, # preds: 5528, # corrs: 3424, acc: 0.619, auc: 0.626, sens: 0.648, spec: 0.603
+[epochs : 18, cost: 0.51886475]
+seq_len: 3, # preds: 5528, # corrs: 3359, acc: 0.608, auc: 0.629, sens: 0.707, spec: 0.551
+[epochs : 19, cost: 0.46757948]
+seq_len: 3, # preds: 5528, # corrs: 3349, acc: 0.606, auc: 0.628, sens: 0.708, spec: 0.548
+[epochs : 20, cost: 0.49820614]
+seq_len: 3, # preds: 5528, # corrs: 3249, acc: 0.588, auc: 0.623, sens: 0.750, spec: 0.496
+[epochs : 21, cost: 0.43868417]
+seq_len: 3, # preds: 5528, # corrs: 3269, acc: 0.591, auc: 0.623, sens: 0.736, spec: 0.509
+[epochs : 22, cost: 0.47412747]
+seq_len: 3, # preds: 5528, # corrs: 3130, acc: 0.566, auc: 0.613, sens: 0.782, spec: 0.444
+[epochs : 23, cost: 0.45582369]
+seq_len: 3, # preds: 5528, # corrs: 3089, acc: 0.559, auc: 0.609, sens: 0.792, spec: 0.426
+[epochs : 24, cost: 0.46051928]
+seq_len: 3, # preds: 5528, # corrs: 3123, acc: 0.565, auc: 0.614, sens: 0.791, spec: 0.437
+[epochs : 25, cost: 0.41110718]
+seq_len: 3, # preds: 5528, # corrs: 3039, acc: 0.550, auc: 0.607, sens: 0.816, spec: 0.399
+[epochs : 26, cost: 0.41842732]
+seq_len: 3, # preds: 5528, # corrs: 2693, acc: 0.487, auc: 0.576, sens: 0.898, spec: 0.254
+[epochs : 27, cost: 0.39886671]
+seq_len: 3, # preds: 5528, # corrs: 2826, acc: 0.511, auc: 0.589, sens: 0.869, spec: 0.308
+[epochs : 28, cost: 0.40733862]
+seq_len: 3, # preds: 5528, # corrs: 2766, acc: 0.500, auc: 0.584, sens: 0.887, spec: 0.281
+[epochs : 29, cost: 0.42837381]
+seq_len: 3, # preds: 5528, # corrs: 2904, acc: 0.525, auc: 0.594, sens: 0.843, spec: 0.345
+
+
+
+input_length hidden_size learning_rate batch_size keep_rate seed1 seed2
+3 128 0.001 128 0.9 300 100
+seq_length: 3, input_dim: 865
+make element list of learn_instances.
+(90781, 3)
+size of learn_Y: 90781
+Counter({1: 59353, 0: 31428})
+make features of test_instances.
+learn_Y:  Counter({1: 31428, 0: 31428})
+test_Y:  Counter({1.0: 3527, 0.0: 2001})
+Data loading Complete learn:62856, test:5528
+[epochs : 0, cost: 0.63159829]
+seq_len: 3, # preds: 5528, # corrs: 3107, acc: 0.562, auc: 0.556, sens: 0.533, spec: 0.578
+[epochs : 1, cost: 0.60008526]
+seq_len: 3, # preds: 5528, # corrs: 3257, acc: 0.589, auc: 0.587, sens: 0.578, spec: 0.595
+[epochs : 2, cost: 0.59783393]
+seq_len: 3, # preds: 5528, # corrs: 3600, acc: 0.651, auc: 0.608, sens: 0.453, spec: 0.764
+[epochs : 3, cost: 0.60102618]
+seq_len: 3, # preds: 5528, # corrs: 3595, acc: 0.650, auc: 0.624, sens: 0.531, spec: 0.718
+[epochs : 4, cost: 0.58692449]
+seq_len: 3, # preds: 5528, # corrs: 3653, acc: 0.661, auc: 0.568, sens: 0.234, spec: 0.903
+[epochs : 5, cost: 0.58955550]
+seq_len: 3, # preds: 5528, # corrs: 3653, acc: 0.661, auc: 0.597, sens: 0.364, spec: 0.829
+[epochs : 6, cost: 0.57483566]
+seq_len: 3, # preds: 5528, # corrs: 3624, acc: 0.656, auc: 0.616, sens: 0.472, spec: 0.760
+[epochs : 7, cost: 0.57123649]
+seq_len: 3, # preds: 5528, # corrs: 3644, acc: 0.659, auc: 0.574, sens: 0.264, spec: 0.883
+[epochs : 8, cost: 0.56610233]
+seq_len: 3, # preds: 5528, # corrs: 3662, acc: 0.662, auc: 0.591, sens: 0.331, spec: 0.850
+[epochs : 9, cost: 0.56867421]
+seq_len: 3, # preds: 5528, # corrs: 3626, acc: 0.656, auc: 0.589, sens: 0.349, spec: 0.830
+[epochs : 10, cost: 0.58291161]
+seq_len: 3, # preds: 5528, # corrs: 3577, acc: 0.647, auc: 0.601, sens: 0.433, spec: 0.769
+[epochs : 11, cost: 0.53964055]
+seq_len: 3, # preds: 5528, # corrs: 3602, acc: 0.652, auc: 0.601, sens: 0.419, spec: 0.784
+[epochs : 12, cost: 0.52774507]
+seq_len: 3, # preds: 5528, # corrs: 3558, acc: 0.644, auc: 0.632, sens: 0.588, spec: 0.675
+[epochs : 13, cost: 0.50217652]
+seq_len: 3, # preds: 5528, # corrs: 3561, acc: 0.644, auc: 0.627, sens: 0.564, spec: 0.690
+[epochs : 14, cost: 0.51631069]
+seq_len: 3, # preds: 5528, # corrs: 3416, acc: 0.618, auc: 0.636, sens: 0.701, spec: 0.571
+[epochs : 15, cost: 0.51797140]
+seq_len: 3, # preds: 5528, # corrs: 3582, acc: 0.648, auc: 0.609, sens: 0.467, spec: 0.751
+[epochs : 16, cost: 0.51702958]
+seq_len: 3, # preds: 5528, # corrs: 3531, acc: 0.639, auc: 0.624, sens: 0.573, spec: 0.676
+[epochs : 17, cost: 0.49433881]
+seq_len: 3, # preds: 5528, # corrs: 3309, acc: 0.599, auc: 0.629, sens: 0.737, spec: 0.520
+[epochs : 18, cost: 0.48080438]
+seq_len: 3, # preds: 5528, # corrs: 3421, acc: 0.619, auc: 0.635, sens: 0.696, spec: 0.575
+[epochs : 19, cost: 0.46343851]
+seq_len: 3, # preds: 5528, # corrs: 3527, acc: 0.638, auc: 0.636, sens: 0.631, spec: 0.642
+[epochs : 20, cost: 0.47750518]
+seq_len: 3, # preds: 5528, # corrs: 3552, acc: 0.643, auc: 0.621, sens: 0.541, spec: 0.700
+[epochs : 21, cost: 0.48050550]
+seq_len: 3, # preds: 5528, # corrs: 3520, acc: 0.637, auc: 0.630, sens: 0.607, spec: 0.654
+[epochs : 22, cost: 0.46339345]
+seq_len: 3, # preds: 5528, # corrs: 3457, acc: 0.625, auc: 0.630, sens: 0.648, spec: 0.612
+[epochs : 23, cost: 0.46619868]
+seq_len: 3, # preds: 5528, # corrs: 3369, acc: 0.609, auc: 0.626, sens: 0.685, spec: 0.566
+[epochs : 24, cost: 0.46317843]
+seq_len: 3, # preds: 5528, # corrs: 3484, acc: 0.630, auc: 0.611, sens: 0.542, spec: 0.680
+[epochs : 25, cost: 0.49272573]
+seq_len: 3, # preds: 5528, # corrs: 3460, acc: 0.626, auc: 0.616, sens: 0.578, spec: 0.653
+[epochs : 26, cost: 0.43921101]
+seq_len: 3, # preds: 5528, # corrs: 3523, acc: 0.637, auc: 0.613, sens: 0.523, spec: 0.702
+[epochs : 27, cost: 0.44488305]
+seq_len: 3, # preds: 5528, # corrs: 3423, acc: 0.619, auc: 0.620, sens: 0.622, spec: 0.618
+[epochs : 28, cost: 0.39755672]
+seq_len: 3, # preds: 5528, # corrs: 3591, acc: 0.650, auc: 0.611, sens: 0.472, spec: 0.750
+[epochs : 29, cost: 0.39733970]
+seq_len: 3, # preds: 5528, # corrs: 3483, acc: 0.630, auc: 0.621, sens: 0.589, spec: 0.653
+
+
+
+input_length hidden_size learning_rate batch_size keep_rate seed1 seed2
+3 128 0.001 128 0.9 300 200
+seq_length: 3, input_dim: 865
+make element list of learn_instances.
+(90781, 3)
+size of learn_Y: 90781
+Counter({1: 59353, 0: 31428})
+make features of test_instances.
+learn_Y:  Counter({1: 31428, 0: 31428})
+test_Y:  Counter({1.0: 3527, 0.0: 2001})
+Data loading Complete learn:62856, test:5528
+[epochs : 0, cost: 0.67641807]
+seq_len: 3, # preds: 5528, # corrs: 3522, acc: 0.637, auc: 0.509, sens: 0.046, spec: 0.972
+[epochs : 1, cost: 0.62239951]
+seq_len: 3, # preds: 5528, # corrs: 3582, acc: 0.648, auc: 0.539, sens: 0.145, spec: 0.933
+[epochs : 2, cost: 0.58591473]
+seq_len: 3, # preds: 5528, # corrs: 3616, acc: 0.654, auc: 0.569, sens: 0.258, spec: 0.879
+[epochs : 3, cost: 0.59691191]
+seq_len: 3, # preds: 5528, # corrs: 3645, acc: 0.659, auc: 0.567, sens: 0.232, spec: 0.902
+[epochs : 4, cost: 0.57841313]
+seq_len: 3, # preds: 5528, # corrs: 3626, acc: 0.656, auc: 0.570, sens: 0.260, spec: 0.881
+[epochs : 5, cost: 0.56903803]
+seq_len: 3, # preds: 5528, # corrs: 3570, acc: 0.646, auc: 0.614, sens: 0.497, spec: 0.730
+[epochs : 6, cost: 0.57713848]
+seq_len: 3, # preds: 5528, # corrs: 3550, acc: 0.642, auc: 0.637, sens: 0.619, spec: 0.655
+[epochs : 7, cost: 0.56277901]
+seq_len: 3, # preds: 5528, # corrs: 3635, acc: 0.658, auc: 0.615, sens: 0.459, spec: 0.770
+[epochs : 8, cost: 0.54976618]
+seq_len: 3, # preds: 5528, # corrs: 3555, acc: 0.643, auc: 0.635, sens: 0.608, spec: 0.663
+[epochs : 9, cost: 0.56028473]
+seq_len: 3, # preds: 5528, # corrs: 3618, acc: 0.654, auc: 0.621, sens: 0.498, spec: 0.743
+[epochs : 10, cost: 0.55390573]
+seq_len: 3, # preds: 5528, # corrs: 3581, acc: 0.648, auc: 0.634, sens: 0.584, spec: 0.684
+[epochs : 11, cost: 0.55747330]
+seq_len: 3, # preds: 5528, # corrs: 3540, acc: 0.640, auc: 0.628, sens: 0.581, spec: 0.674
+[epochs : 12, cost: 0.55947542]
+seq_len: 3, # preds: 5528, # corrs: 3584, acc: 0.648, auc: 0.634, sens: 0.584, spec: 0.685
+[epochs : 13, cost: 0.55408335]
+seq_len: 3, # preds: 5528, # corrs: 3284, acc: 0.594, auc: 0.628, sens: 0.750, spec: 0.506
+[epochs : 14, cost: 0.56015760]
+seq_len: 3, # preds: 5528, # corrs: 3456, acc: 0.625, auc: 0.635, sens: 0.672, spec: 0.599
+[epochs : 15, cost: 0.54988396]
+seq_len: 3, # preds: 5528, # corrs: 3461, acc: 0.626, auc: 0.640, sens: 0.689, spec: 0.590
+[epochs : 16, cost: 0.53144038]
+seq_len: 3, # preds: 5528, # corrs: 3450, acc: 0.624, auc: 0.642, sens: 0.705, spec: 0.578
+[epochs : 17, cost: 0.55487120]
+seq_len: 3, # preds: 5528, # corrs: 3272, acc: 0.592, auc: 0.628, sens: 0.757, spec: 0.498
+[epochs : 18, cost: 0.55746812]
+seq_len: 3, # preds: 5528, # corrs: 3621, acc: 0.655, auc: 0.627, sens: 0.525, spec: 0.729
+[epochs : 19, cost: 0.55355191]
+seq_len: 3, # preds: 5528, # corrs: 3499, acc: 0.633, auc: 0.632, sens: 0.631, spec: 0.634
+[epochs : 20, cost: 0.56248653]
+seq_len: 3, # preds: 5528, # corrs: 3496, acc: 0.632, auc: 0.629, sens: 0.617, spec: 0.641
+[epochs : 21, cost: 0.53862119]
+seq_len: 3, # preds: 5528, # corrs: 3505, acc: 0.634, auc: 0.620, sens: 0.570, spec: 0.670
+[epochs : 22, cost: 0.55322158]
+seq_len: 3, # preds: 5528, # corrs: 3417, acc: 0.618, auc: 0.625, sens: 0.650, spec: 0.600
+[epochs : 23, cost: 0.49883351]
+seq_len: 3, # preds: 5528, # corrs: 3374, acc: 0.610, auc: 0.616, sens: 0.637, spec: 0.595
+[epochs : 24, cost: 0.50825512]
+seq_len: 3, # preds: 5528, # corrs: 3211, acc: 0.581, auc: 0.621, sens: 0.765, spec: 0.476
+[epochs : 25, cost: 0.50546145]
+seq_len: 3, # preds: 5528, # corrs: 3283, acc: 0.594, auc: 0.622, sens: 0.726, spec: 0.519
+[epochs : 26, cost: 0.49174669]
+seq_len: 3, # preds: 5528, # corrs: 3492, acc: 0.632, auc: 0.617, sens: 0.564, spec: 0.670
+[epochs : 27, cost: 0.45555559]
+seq_len: 3, # preds: 5528, # corrs: 3535, acc: 0.639, auc: 0.613, sens: 0.515, spec: 0.710
+[epochs : 28, cost: 0.45929387]
+seq_len: 3, # preds: 5528, # corrs: 3401, acc: 0.615, auc: 0.617, sens: 0.623, spec: 0.611
+[epochs : 29, cost: 0.45063818]
+seq_len: 3, # preds: 5528, # corrs: 3351, acc: 0.606, auc: 0.623, sens: 0.683, spec: 0.563
+
+
+
+input_length hidden_size learning_rate batch_size keep_rate seed1 seed2
+3 128 0.001 128 0.9 300 300
+seq_length: 3, input_dim: 865
+make element list of learn_instances.
+(90781, 3)
+size of learn_Y: 90781
+Counter({1: 59353, 0: 31428})
+make features of test_instances.
+learn_Y:  Counter({1: 31428, 0: 31428})
+test_Y:  Counter({1.0: 3527, 0.0: 2001})
+Data loading Complete learn:62856, test:5528
+[epochs : 0, cost: 0.65297031]
+seq_len: 3, # preds: 5528, # corrs: 3435, acc: 0.621, auc: 0.557, sens: 0.325, spec: 0.789
+[epochs : 1, cost: 0.60275471]
+seq_len: 3, # preds: 5528, # corrs: 3663, acc: 0.663, auc: 0.559, sens: 0.184, spec: 0.934
+[epochs : 2, cost: 0.57667673]
+seq_len: 3, # preds: 5528, # corrs: 3688, acc: 0.667, auc: 0.577, sens: 0.252, spec: 0.903
+[epochs : 3, cost: 0.58946300]
+seq_len: 3, # preds: 5528, # corrs: 3711, acc: 0.671, auc: 0.620, sens: 0.433, spec: 0.806
+[epochs : 4, cost: 0.57908571]
+seq_len: 3, # preds: 5528, # corrs: 3705, acc: 0.670, auc: 0.609, sens: 0.385, spec: 0.832
+[epochs : 5, cost: 0.55908227]
+seq_len: 3, # preds: 5528, # corrs: 3669, acc: 0.664, auc: 0.618, sens: 0.452, spec: 0.784
+[epochs : 6, cost: 0.56441891]
+seq_len: 3, # preds: 5528, # corrs: 3660, acc: 0.662, auc: 0.641, sens: 0.566, spec: 0.717
+[epochs : 7, cost: 0.57416487]
+seq_len: 3, # preds: 5528, # corrs: 3631, acc: 0.657, auc: 0.642, sens: 0.590, spec: 0.695
+[epochs : 8, cost: 0.55281091]
+seq_len: 3, # preds: 5528, # corrs: 3545, acc: 0.641, auc: 0.639, sens: 0.633, spec: 0.646
+[epochs : 9, cost: 0.58015001]
+seq_len: 3, # preds: 5528, # corrs: 3483, acc: 0.630, auc: 0.641, sens: 0.680, spec: 0.602
+[epochs : 10, cost: 0.55923831]
+seq_len: 3, # preds: 5528, # corrs: 3128, acc: 0.566, auc: 0.623, sens: 0.830, spec: 0.416
+[epochs : 11, cost: 0.55368155]
+seq_len: 3, # preds: 5528, # corrs: 3055, acc: 0.553, auc: 0.616, sens: 0.844, spec: 0.388
