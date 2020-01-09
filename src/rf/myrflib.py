@@ -14,6 +14,8 @@ def runRFModel(seq_length, learn_X, learn_Y, test_X, test_Y, max_features=4):
         test_X = np.array(test_X)[:, (seq_length-1)*input_dim:].tolist()
         print (np.array(learn_X).shape)
 
+    max_features = 1 + input_dim // 2 
+
     clf = RandomForestClassifier(n_estimators=100, n_jobs=-1, random_state=0, max_features=max_features)
     clf.fit(learn_X, learn_Y)
 
@@ -26,12 +28,16 @@ def runRFModel(seq_length, learn_X, learn_Y, test_X, test_Y, max_features=4):
 
     test_Y = [int(i) for i in test_Y]
 
+    idx = []; i = 0
     for v1, v2 in zip(out, test_Y):
       decision = False
 
       if v1 == int(v2):
         decision = True
+        idx.append(str(i))
       predicts.append(decision)
+      i += 1
+
 
     y_true = list(map(int, test_Y))
 
@@ -46,6 +52,11 @@ def runRFModel(seq_length, learn_X, learn_Y, test_X, test_Y, max_features=4):
     #print ('%d,%d,%d,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f'%(
     #  seq_length, n, corrects, acc,
     #  prec[0], prec[1], rec[0], rec[1], f1[0], f1[1], auc_v, ap))
-    print ('seq_length: %d, n: %d, corrects: %d, acc: %.3f, auc_v: %.3f'%(
-        seq_length, n, corrects, accuracy_score(test_Y, out), roc_auc_score(test_Y, out)))
+    print ('seq_length: %d, n: %d, corrects: %d, acc: %.3f, auc_v: %.3f, f1: '%(
+        seq_length, n, corrects, accuracy_score(test_Y, out), roc_auc_score(test_Y, out)), precision_recall_fscore_support(test_Y, out)[2])
+    print (classification_report(test_Y, out, labels=[0, 1]))
+    f = open('result.txt', 'w')
+    f.write('\n'.join(idx))
+    f.close()
+
 

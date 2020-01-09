@@ -63,16 +63,16 @@ def makeLearnTestSet(seq_length=1, bert=0, user=0, liwc=0, cont=0, time=0, exclu
                     continue
 
                 features = []
-                if features_list[0] == 1:
-                    features.append(d_bert[element])
-                if features_list[1] == 1:
-                    features.append(d_user[element]['user'])
-                if features_list[2] == 1:
-                    features.append(d_liwc[element]['liwc'])
-                if features_list[3] == 1:
-                    features.append(d_cont[element]['cont'][0:3])
-                if features_list[4] == 1:
-                    features.append(d_time[element]['ict'])
+                if feature_list[0] == 1:
+                    features += d_bert[element]
+                if feature_list[1] == 1:
+                    features += d_user[element]['user']
+                if feature_list[2] == 1:
+                    features += d_liwc[element]['liwc']
+                if feature_list[3] == 1:
+                    features += d_cont[element]['cont'][0:3]
+                if feature_list[4] == 1:
+                    features += d_time[element]['ict']
 
                 if features != []:
                     sub_x.append(features)
@@ -104,16 +104,16 @@ def makeLearnTestSet(seq_length=1, bert=0, user=0, liwc=0, cont=0, time=0, exclu
                     continue
 
                 features = []
-                if features_list[0] == 1:
-                    features.append(d_bert[element])
-                if features_list[1] == 1:
-                    features.append(d_user[element]['user'])
-                if features_list[2] == 1:
-                    features.append(d_liwc[element]['liwc'])
-                if features_list[3] == 1:
-                    features.append(d_cont[element]['cont'][0:3])
-                if features_list[4] == 1:
-                    features.append(d_time[element]['ict'])
+                if feature_list[0] == 1:
+                    features += d_bert[element]
+                if feature_list[1] == 1:
+                    features += d_user[element]['user']
+                if feature_list[2] == 1:
+                    features += d_liwc[element]['liwc']
+                if feature_list[3] == 1:
+                    features += d_cont[element]['cont'][0:3]
+                if feature_list[4] == 1:
+                    features += d_time[element]['ict']
 
                 if features != []:
                     if exclude_newbie == 1 and d_user[element]['user'] == [0.0, 0.0, 0.0]: #w/o newbie

@@ -4,7 +4,7 @@ from mydynamiclib import runRNNModel
 
 tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
 
-hidden_size = 32#64#32
+hidden_size = 16#32#64#32
 learning_rate = 0.001
 batch_size = 128#128#64 #32
 epochs = 100

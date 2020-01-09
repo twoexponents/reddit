@@ -43,7 +43,7 @@ def load_w2v(d_w2v, element):
 def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, seq_length=1, exclude_newbie=0, bert=0, user=0, liwc=0, cont=0, time=0, w2v=0, seed1=10, seed2=40):
     feature_list = [bert, user, liwc, cont, time]
     length_list = [768, 3, 93, 6, 1, 300]
-    test_parent = True#False
+    test_parent = False
     print_body = True#False
 
     # Prepare the dataset
@@ -125,6 +125,7 @@ def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, seq_l
 
     test_X = []; test_Y = []
     element_list = []
+    post_list = []
     
     print ('make features of test_instances.')
     for seq in test_instances:
@@ -161,6 +162,7 @@ def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, seq_l
                 test_X.append(np.array(sub_x))
                 test_Y.append(float(seq[-1]))
                 element_list.append(element)
+                post_list.append(seq[0])
 
         except Exception as e:
             continue
@@ -344,17 +346,21 @@ def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, seq_l
                 test_Y = list(map(lambda x:[float(x)], test_Y))
 
 
-            if print_body and e == 17:
+            if print_body and e == 9:
                 print ('print correct elements.')
                 test_Y = list(map(lambda x:x[0], test_Y))
                 f = open('result/out.txt', 'w')
+                f2 = open('result/wrong.out.txt', 'w')
 
                 for i, item in enumerate(zip(out, test_Y)):
                     v1, v2 = item
                     if v1 == int(v2):
                         f.write(element_list[i] + '\t' + str(v1) + '\t' + str(v2) + '\n')
+                    else:
+                        f2.write(post_list[i] + '\t' + str(v1) + '\t' + str(v2) + '\n')
                 
                 f.close()
+                f2.close()
 
                 test_Y = list(map(lambda x:[x], test_Y))
 

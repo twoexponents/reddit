@@ -11,6 +11,7 @@ def runRNNModel(seq_length, learn_X, learn_Y, test_X, test_Y, hidden_size, learn
     print_wrongs = False
     input_dim = len(learn_X[0][0])
 
+
     if test_parent:
         if seq_length != 3:
             learn_X = np.array(learn_X)[:, (seq_length-1):, :].tolist()

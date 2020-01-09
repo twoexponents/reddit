@@ -4,6 +4,7 @@ from imblearn.over_sampling import SMOTE
 from imblearn.under_sampling import RandomUnderSampler
 from collections import Counter
 from operator import itemgetter
+from numpy.random import seed
 
 user_features_fields = ['posts', 'comments', 'receives']
 common_features_fiels = ['vader_score', 'vader', 'difficulty']
@@ -93,7 +94,6 @@ def makeLearnTestSet(seq_length=1, bert=0, user=0, liwc=0, cont=0, time=0, w2v=0
 
         except Exception as e:
             continue
-
     print ('size of learn_Y: %d' % len(learn_Y))
     print (Counter(learn_Y)) # shows the number of '0' and '1'
 
@@ -139,23 +139,18 @@ def makeLearnTestSet(seq_length=1, bert=0, user=0, liwc=0, cont=0, time=0, w2v=0
 
         except Exception as e:
             continue
+    seed(1)
+    #learn_X = np.reshape(learn_X, [-1, seq_length, input_dim])
+    matrix = []
+    for v1, v2 in zip(learn_X, learn_Y):
+        matrix.append([v1, v2])
+    np.random.shuffle(matrix)
+    learn_X = list(map(itemgetter(0), matrix))
+    learn_Y = list(map(itemgetter(1), matrix))
 
-    if lr != 1:
-        learn_X = np.reshape(learn_X, [-1, seq_length, input_dim])
-        matrix = []
-        for v1, v2 in zip(learn_X, learn_Y):
-            matrix.append([v1, v2])
-        np.random.shuffle(matrix)
-        learn_X = list(map(itemgetter(0), matrix))
-        learn_Y = list(map(lambda x:[x], list(map(itemgetter(1), matrix))))
-
-        test_Y = list(map(lambda x:[x], test_Y))
-        print ('learn_Y: ', Counter(list(map(lambda x:x[0], learn_Y))))
-        print ('test_Y: ', Counter(list(map(lambda x:x[0], test_Y))))
-    else:
-        test_X = np.reshape(np.array(test_X), [-1, seq_length*input_dim])
-        print ('learn_Y: ', Counter(learn_Y))
-        print ('test_Y: ', Counter(test_Y))
+    test_X = np.reshape(np.array(test_X), [-1, seq_length*input_dim])
+    print ('learn_Y: ', Counter(learn_Y))
+    print ('test_Y: ', Counter(test_Y))
 
     print ('Data loading Complete learn:%d, test:%d'%(len(learn_Y), len(test_Y)))
 

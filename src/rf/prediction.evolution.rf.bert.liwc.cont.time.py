@@ -1,3 +1,4 @@
+import tensorflow as tf
 import numpy as np
 import sys
 from myrflib import runRFModel
@@ -11,7 +12,7 @@ def main(argv):
     input_length = int(sys.argv[1])
   print ('exclude_newbie: %d'%(exclude_newbie))
 
-  for seq_length in range(1, 2):
+  for seq_length in range(2, 3):
     f = open('/home/jhlim/data/seq.learn.%d.csv'%(seq_length), 'r')
     learn_instances = list(map(lambda x:x.replace('\n', '').split(','), f.readlines()))
     f.close()

@@ -12,8 +12,9 @@ from tqdm import tqdm, trange
 from myloaddatalib import load_userfeatures, load_contfeatures, load_timefeatures
 
 MAX_LEN = 512#128
-seq_length = 2 
-batch_size = 40
+seq_length = int(sys.argv[1])
+print ("seq_length: ", seq_length)
+batch_size = 30
 
 def main():
     with open('/home/jhlim/data/commentbodyfeatures.p', 'rb') as f:
@@ -73,12 +74,12 @@ def main():
     tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=True)
     tokenized_texts = [tokenizer.tokenize(sent) for sent in sentences]
 
-    '''
-    f = open('showtokens.txt', 'w')
-    for texts in tokenized_texts:
-        f.write(' '.join(texts) + '\n')
-    return 0;
-    '''
+    if seq_length == 2:
+        f = open('showtokens.txt', 'w')
+        for texts in tokenized_texts:
+            f.write(' '.join(texts) + '\n')
+        f.close()
+    #return 0;
 
     temp = elements; temp2 = tokenized_texts
     elements = []; tokenized_texts = []
@@ -130,7 +131,7 @@ def main():
                 d_bertfeatures[element] = feature
         except Exception as e:
             print (e)
-            del model, outputs, input_ids, attention_masks, elements
+            del model, input_ids, attention_masks, elements
 
 
     print ('size of d_bertfeatures: ', len(d_bertfeatures))

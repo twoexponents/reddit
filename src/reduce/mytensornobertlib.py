@@ -5,13 +5,14 @@ from imblearn.under_sampling import RandomUnderSampler
 from collections import Counter
 from operator import itemgetter
 from sklearn.metrics import precision_recall_fscore_support, roc_auc_score, accuracy_score
+from numpy.random import seed
 
 user_features_fields = ['posts', 'comments', 'receives']
 common_features_fields = ['vader_score', 'vader', 'difficulty']
 len_liwc_features = 93
 len_bert_features = 768
 output_dim = 1
-learn_size = 60000
+learn_size = 100000
 test_size = 20000
 
 
@@ -37,13 +38,13 @@ def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, seq_l
     d_liwc = load_contfeatures()
     d_cont = d_liwc
     d_time = load_timefeatures()
-    rnn_hidden_size = 10 
     input_dim = 0
     for i in range(len(feature_list)):
         if feature_list[i] == 1:
             input_dim += length_list[i]
     print ('seq_length: %d, input_dim: %d'%(seq_length, input_dim))
 
+    rnn_hidden_size = hidden_size
     f = open('/home/jhlim/data/seq.learn.%d.csv'%(seq_length), 'r')
     learn_instances = list(map(lambda x:x.replace('\n', '').split(','), f.readlines()))
     f.close() 
@@ -104,6 +105,8 @@ def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, seq_l
 
         except Exception as e:
             continue
+
+    seed(1)
 
     learn_X = np.reshape(learn_X, [-1, seq_length, 1])
     matrix = []

@@ -11,12 +11,12 @@ def draw(data):
     
     plt.plot(data)
 
-    plt.xlabel('Length of Sequence')
-    plt.ylabel('Number of Sequences (x1000)')
+    plt.xlabel('Depth of Thread')
+    plt.ylabel('Number of Threads (x1000)')
     plt.rcParams["figure.figsize"] = (8, 4)
     plt.rcParams['axes.grid'] = True
-    plt.xlim(xmin=0)
-    plt.ylim(ymin=0)
+    #plt.xlim(xmin=0)
+    #plt.ylim(ymin=0)
     plt.grid()
     plt.show()
     
@@ -27,7 +27,7 @@ def main():
     d = {}
     for line in lines:
         lst = line.split(',')
-        length = len(lst)
+        length = len(lst)-1
         if length not in d:
             d[length] = 0
         d[length] += 1
@@ -35,9 +35,10 @@ def main():
 
     s_list = sorted(d.items(), key=itemgetter(0))
     f = open('len_distribution.txt', 'w')
-    for item in s_list[:59]:
+    for item in s_list:
         f.write(str(item[0]) + ',' + str(item[1]) + '\n')
-    draw(list(map(lambda x:x[1], s_list[:59])))
+    
+    draw(list(map(lambda x:x[1], s_list)))
 
     f.close()
 

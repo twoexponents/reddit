@@ -4,10 +4,10 @@ from mytensorlib import runRNNModel
 
 tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
 
-hidden_size = 4
-learning_rate = 0.001
-batch_size = 32
-epochs = 50
+hidden_size = 2
+learning_rate = 0.01
+batch_size = 64 
+epochs = 100
 keep_rate = 0.5
 
 def main(argv):

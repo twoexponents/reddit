@@ -10,8 +10,8 @@ common_features_fiels = ['vader_score', 'vader', 'difficulty']
 len_liwc_features = 93
 len_bert_features = 768
 output_dim = 1 # (range 0 to 1)
-learn_size = 60000 # -1
-test_size = 20000 # -1
+learn_size = 80000 # -1
+test_size = 10000 # -1
 
 def load_bertfeatures(seq_length=1):
     return pickle.load(open('/home/jhlim/data/bertfeatures' + str(seq_length) + '.p', 'rb'))

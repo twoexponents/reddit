@@ -10,11 +10,11 @@ pd.options.display.max_rows = 1000
 
 common_features_fields = ['vader_score', 'vader', 'difficulty']
 user_features_fields = ['posts', 'comments', 'receives']
-cont_features_fields = common_features_fields
+cont_features_fields = [30] * 11#common_features_fields
 len_liwc_features = 93
 len_bert_features = 768
 
-d_userfeatures = pickle.load(open('/home/jhlim/data/userfeatures.activity.p', 'rb')) #3
+d_userfeatures = pickle.load(open('/home/jhlim/data/userfeatures.activity.log.p', 'rb')) #3
 d_features = pickle.load(open('/home/jhlim/data/contentfeatures.others.p', 'rb')) #93 + 3
 d_timefeatures = pickle.load(open('/home/jhlim/data/temporalfeatures.p', 'rb')) #1
 d_bertfeatures = pickle.load(open('/home/jhlim/data/bertfeatures1.p', 'rb')) #768
@@ -38,20 +38,21 @@ for seq in learn_instances:
             liwc_features = []
             cont_features = []
             time_features = []
-            bert_features = []
-            if element in d_userfeatures and element in d_features: #and element in d_bertfeatures:
+            #bert_features = []
+            if element in d_userfeatures: #and element in d_features: #and element in d_bertfeatures:
                 user_features = d_userfeatures[element]['user']
                 liwc_features = d_features[element]['liwc']
-                cont_features = d_features[element]['cont'][:3]
+                cont_features = d_features[element]['cont'][0:len(cont_features_fields)]
                 time_features = d_timefeatures[element]['ict']
-                bert_features = d_bertfeatures[element]
+                #bert_features = d_bertfeatures[element]
             else:
                 continue
             
-            #if user_features != [] and liwc_features != [] and cont_features != [] and bert_features != []:
-            if user_features != []:
-                #sub_x.append((user_features + liwc_features + cont_features + time_features))
-                sub_x.append((user_features + liwc_features + cont_features + time_features + bert_features))
+            if user_features != [] and liwc_features != [] and cont_features != [] and time_features != []:
+            #if user_features != []:
+                sub_x.append((user_features + liwc_features + cont_features + time_features))
+                #sub_x.append((user_features + liwc_features + cont_features + time_features + bert_features))
+                #sub_x.append(user_features)
 
         if (len(sub_x) == 1):
             learn_X.append(np.array(sub_x))
@@ -62,12 +63,11 @@ for seq in learn_instances:
 
 x = np.array(learn_X)
 print (x.shape)
-print (x[10, :, :])
 user_f = x[:, 0, 0:len(user_features_fields)]
 liwc_f = x[:, 0, len(user_features_fields):len(user_features_fields) + len_liwc_features]
 cont_f = x[:, 0, len(user_features_fields)+len_liwc_features:len(user_features_fields) + len_liwc_features + len(cont_features_fields)]
 time_f = x[:, 0, len(user_features_fields)+len_liwc_features + len(cont_features_fields) : len(user_features_fields) + len_liwc_features + len(cont_features_fields) + 1]
-bert_f = x[:, 0, len(user_features_fields) + len_liwc_features + len(cont_features_fields) + 1 :]
+#bert_f = x[:, 0, len(user_features_fields) + len_liwc_features + len(cont_features_fields) + 1 :]
 
 #print (np.array(bert_f).shape)
 
@@ -81,9 +81,10 @@ for i in range(len_liwc_features):
 for i in range(len(cont_features_fields)):
     df['cont' + str(i)] = cont_f[:, i:i+1]
 df['time'] = time_f[:, 0]
+'''
 for i in range(len_bert_features):
     df['bert' + str(i)] = bert_f[:, i:i+1]
-
+'''
 df_label = pd.DataFrame()
 df_label['label'] = learn_Y
 

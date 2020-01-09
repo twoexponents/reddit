@@ -7,6 +7,7 @@ import numpy as np
 import pickle
 import mylib
 from sklearn.metrics import precision_recall_fscore_support, accuracy_score, roc_auc_score
+from sklearn.metrics import classification_report
 
 MAX_LEN = 128 # 128
 batch_size = 32 # For fine-tuning BERT on a specific task, the authors recommend a batch size of 16 or 32
@@ -148,8 +149,12 @@ for seq_length in range(2, 3):
         predicts.append(decision)
         i += 1
 
+    ftl = flat_true_labels
+    fpd = flat_predictions
+
     print ('# predicts: %d, # corrects: %d, # 0: %d, # 1: %d, acc: %f, auc: %f'%
-        (len(predicts), len(list(filter(lambda x:x, predicts))), len(list(filter(lambda x:x == 0, flat_predictions))), len(list(filter(lambda x:x == 1, flat_predictions))), accuracy_score(flat_true_labels, flat_predictions), roc_auc_score(flat_true_labels, flat_predictions)))
+        (len(predicts), len(list(filter(lambda x:x, predicts))), len(list(filter(lambda x:x == 0, flat_predictions))), len(list(filter(lambda x:x == 1, fpd))), accuracy_score(ftl, fpd), roc_auc_score(ftl, fpd)))
+    print (classification_report(ftl, fpd, labels=[0, 1]))
 
     model.save_pretrained('./models/len' + str(seq_length) + '/') # Save the model
 

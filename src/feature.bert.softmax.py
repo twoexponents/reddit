@@ -26,9 +26,9 @@ len_bert_features = 768
 input_dim = len_bert_features
 
 output_dim = 2 # (range 0 to 1)
-hidden_size = 32
+hidden_size = 128
 learning_rate = 0.001
-batch_size = 32
+batch_size = 128
 epochs = 1000
 MAX_LEN = 128
 
@@ -49,7 +49,7 @@ def main(argv):
         d_userfeatures = pickle.load(f)
     #with open('/home/jhlim/data/contentfeatures.others.p', 'rb') as f:
     #    d_features = pickle.load(f)
-    with open('/home/jhlim/data/bertfeatures2.p', 'rb') as f:
+    with open('/home/jhlim/data/bertfeatures1.p', 'rb') as f:
         d_bertfeatures = pickle.load(f)
     
     print ('features are loaded')
