@@ -8,59 +8,47 @@ from sklearn.metrics import precision_recall_fscore_support, roc_auc_score, accu
 
 learn_size = 60000
 test_size = 20000
+d_bert = []; d_user = []; d_liwc = []; d_cont = []; d_time = []
 
-def load_bertfeatures(seq_length=1):
-    return pickle.load(open('/home/jhlim/data/bertfeatures' + str(seq_length) + '.p', 'rb'))
-def load_userfeatures():
-    return pickle.load(open('/home/jhlim/data/userfeatures.activity.p', 'rb'))
-def load_contfeatures():
-    return pickle.load(open('/home/jhlim/data/contentfeatures.others.p', 'rb'))
-def load_timefeatures():
-    return pickle.load(open('/home/jhlim/data/temporalfeatures.p', 'rb'))
-def load_w2vfeatures():
-    return pickle.load(open('/home/jhlim/data/contentfeatures.googlenews.nozero.p', 'rb'))
-def load_bert(d_bert, element):
-    return d_bert[element]
-def load_user(d_user, element):
-    return d_user[element]['user']
-def load_liwc(d_liwc, element):
-    return d_liwc[element]['liwc']
-def load_cont(d_cont, element):
-    return d_cont[element]['cont'][0:3]
-def load_time(d_time, element):
-    return d_time[element]['ict']
-def load_w2v(d_w2v, element):
-    return d_w2v[element]['google.mean'][0].tolist()
+def load_feature_vector(idx, element):
+    if idx == 0:
+        return d_bert[element]
+    elif idx == 1:
+        return d_user[element]['user']
+    elif idx == 2:
+        return d_liwc[element]['liwc']
+    elif idx == 3:
+        return d_cont[element]['cont'][0:3]
+    elif idx == 4:
+        return d_time[element]['ict']
 
+def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, fs, seq_length=1):
+    feature_types = ["bert", "user", "liwc", "cont", "time"]
+    feature_uses = list(map(lambda x: x in fs, feature_types))
+    print ('features:   ', feature_types)
+    print ('uses:       ', feature_uses)
 
-def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, fs, seq_length=1, exclude_newbie=0):
-    bert = 1 if "bert" in fs else 0
-    user = 1 if  "user" in fs else 0
-    liwc = 1 if "liwc" in fs else 0
-    cont = 1 if "cont" in fs else 0
-    time = 1 if "time" in fs else 0
-    w2v = 1 if "w2v" in fs else 0
-    feature_list = [bert, user, liwc, cont, time]
-    length_list = [768, 3, 93, 3, 1, 300]
+    length_list = [768, 3, 93, 3, 1]
     test_parent = False # for 1st -> 2nd test
     print_body = False
-    print ('features: ', feature_list)
+
     print ('test_parent: %r'%(test_parent))
 
     # Prepare the dataset
-    d_bert = load_bertfeatures(seq_length)
-    d_user = load_userfeatures()
-    d_liwc = load_contfeatures()
+    global d_bert, d_user, d_liwc, d_cont, d_time
+    d_bert = pickle.load(open('/home/jhlim/data/bertfeatures' + str(seq_length) + '.p', 'rb'))
+    d_user = pickle.load(open('/home/jhlim/data/userfeatures.activity.p', 'rb'))
+    d_liwc = pickle.load(open('/home/jhlim/data/contentfeatures.others.p', 'rb'))
     d_cont = d_liwc
-    d_time = load_timefeatures()
-    d_w2v = load_w2vfeatures() if w2v == 1 else {}
-    input_dim = 0 if w2v == 0 else 300 
-    for i in range(len(feature_list)):
-        if feature_list[i] == 1:
+    d_time = pickle.load(open('/home/jhlim/data/temporalfeatures.p', 'rb'))
+    list_d_types = [d_bert, d_user, d_liwc, d_cont, d_time]
+
+    input_dim = 0
+    for i in range(len(feature_uses)):
+        if feature_uses[i]:
             input_dim += length_list[i]
     print ('seq_length: %d, input_dim: %d'%(seq_length, input_dim))
     rnn_hidden_size = hidden_size
-    #rnn_hidden_size = 100 
 
     f = open('/home/jhlim/data/seq.learn.%d.csv'%(seq_length), 'r')
     learn_instances = list(map(lambda x:x.replace('\n', '').split(','), f.readlines()))
@@ -69,16 +57,13 @@ def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, fs, s
     test_instances = list(map(lambda x:x.replace('\n', '').split(','), f.readlines()))
     f.close()
 
-    learn_X = []; learn_Y = []
-        
+    learn_X = []; learn_Y = []        
     for seq in learn_instances[:learn_size]:
         sub_x = []
 
         try:
             for i, element in enumerate(seq[:-1]): # seq[-1] : Y. element: 't3_7dfvv'
-                if False in list(map(lambda x:element in x, [d_bert, d_user, d_cont, d_time])):
-                    continue
-                if w2v == 1 and element not in d_w2v:
+                if False in list(map(lambda x:element in x, list_d_types)):
                     continue
                 sub_x.append(element)
             if (len(sub_x) == seq_length):
@@ -101,25 +86,15 @@ def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, fs, s
         sub_x = []
         try:
             for i, element in enumerate(seq[:-1]):
-                if False in list(map(lambda x:element in x, [d_bert, d_user, d_cont, d_time])):
+                if False in list(map(lambda x:element in x, list_d_types)):
                     continue
                 features = []
-                if feature_list[0] == 1: # Bert
-                    features += load_bert(d_bert, element)
-                if feature_list[1] == 1: # User
-                    features += load_user(d_user, element)
-                if feature_list[2] == 1:
-                    features += load_liwc(d_liwc, element)
-                if feature_list[3] == 1:
-                    features += load_cont(d_cont, element)
-                if feature_list[4] == 1:
-                    features += load_time(d_time, element)
-                if w2v == 1 and element in d_w2v:
-                    features += load_w2v(d_w2v, element)
+
+                for j in range(len(list_d_types)):
+                    if feature_uses[j]:
+                        features += load_feature_vector(j, element)
 
                 if features != []:
-                    if exclude_newbie == 1 and d_user[element]['user'] == [0.0, 0.0, 0.0]:
-                        continue
                     sub_x.append(features)
 
             if (len(sub_x) == seq_length):
@@ -145,7 +120,7 @@ def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, fs, s
 
 
 
-    # Start to running the model
+    # Start to run the model
 
     if test_parent:
         if seq_length != 3:
@@ -199,8 +174,6 @@ def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, fs, s
     optimizers = {}
     pred = []
 
-    #10_dropout = tf.layers.dropout(outputs, rate=1-keep_prob, training=is_training)
-
     l1_output = tf.nn.relu(tf.matmul(bn_output, weights['fc_l1']) + biases['fc_l1'])
     #l1_output = tf.nn.relu(tf.matmul(outputs, weights['fc_l1']) + biases['fc_l1']) # might move relu layer to the behind of bn
     l1_bn_output = tf.contrib.layers.batch_norm(l1_output, center=True, scale=True, is_training=is_training)
@@ -211,7 +184,6 @@ def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, fs, s
     l2_bn_output = tf.contrib.layers.batch_norm(l2_output, center=True, scale=True, is_training=is_training)
     l2_dropout = tf.layers.dropout(l2_bn_output, rate=1-keep_prob, training=is_training)
 
-    #logits = tf.matmul(l2_bn_output, weights['fc_l3']) + biases['fc_l3']
     logits = tf.matmul(l2_dropout, weights['fc_l3']) + biases['fc_l3']
     labels = Y
 
@@ -245,26 +217,17 @@ def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, fs, s
                     for element in sequence:
                         element = element[0]
                         features = []
-                        if feature_list[0] == 1: # Bert
-                            features += load_bert(d_bert, element)
-                        if feature_list[1] == 1: # User
-                            features += load_user(d_user, element)
-                        if feature_list[2] == 1:
-                            features += load_liwc(d_liwc, element)
-                        if feature_list[3] == 1:
-                            features += load_cont(d_cont, element)
-                        if feature_list[4] == 1:
-                            features += load_time(d_time, element)
-                        if w2v == 1 and element in d_w2v:
-                            features += load_w2v(d_w2v, element)
-                        
+
+                        for j in range(len(list_d_types)):
+                            if feature_uses[j]:
+                                features += load_feature_vector(j, element)
+
                         sub_x.append(features)
 
                     sequences.append(sub_x)
 
                 X_train_batch = np.array(sequences)
                 Y_train_batch = np.array(Y_train_batch)
-
 
                 opt, c, o, h, l, acc = sess.run([optimizers, cost, outputs, hypothesis, logits, accuracy],
                         feed_dict={X: X_train_batch, Y: Y_train_batch, keep_prob:keep_rate, is_training:True})

@@ -168,7 +168,7 @@ def runRNNModel(hidden_size, learning_rate, batch_size, epochs, keep_rate, seq_l
 
 
 
-    # Start to running the model
+    # Start to run the model
 
     if test_parent:
         if seq_length != 3:
